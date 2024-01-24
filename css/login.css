@@ -158,6 +158,7 @@ input {
     border-radius: 8px;
     border: none;
     background: #2A3647;
+    cursor: pointer;
 }
 
 .signUpButton:hover {
