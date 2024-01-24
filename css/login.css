@@ -175,4 +175,5 @@ input {
     text-decoration: none;
     display: flex;
     gap: 16px;
+    cursor: pointer;
 }
