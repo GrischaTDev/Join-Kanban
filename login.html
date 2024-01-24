@@ -4,24 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="css/fonts.css">
     <title>Join - Login</title>
 </head>
 <body>
+    <div class="loadAnimation"></div>
+
     <img class="logo" src="./assets/img/mobile-logo.svg" alt="">
-    <div class="logIn">
+
+    <div class="logInBox">
         <div class="titel">
             <h1>Log in</h1>
             <img src="./assets/img/login-border.svg" alt="">
         </div>
-        <form class="inputLogin">
+        <form class="inputBox">
             <div class="inputField">
                 <input type="email" required>
                 <input type="password" required>
             </div>
-            <div>
-                checkbox
+            <div class="checkbox">
+                <input type="checkbox">
+                <div>Remember me</div>
             </div>
         </form>
+        <div class="buttonBox">
+            <button class="logInButton">Log in</button>
+            <button class="guestLogInButton">Guest Log in</button>
+        </div>
+    </div>
+
+    <div class="otherOptions">
+        <div class="signUp">
+            <span class="notUserText">Not a Join user?</span>
+            <button class="signUpButton">Sign up</button>
+        </div>
+        <div class="legalTopics">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Legal notice</a>
+        </div>
     </div>
 </body>
 </html>
