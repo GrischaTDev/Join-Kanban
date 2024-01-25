@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="./assets/fonts/inter-v13-latin-regular.woff2">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
@@ -10,13 +11,15 @@
 </head>
 
 <body onload="initContactList()">
-<div class="contacts_list_box">
-    <div class="contacts_list" id="contacts_list_container">
+
+    <div class="contacts_list_box">
+        <div class="contacts_list" id="contacts_list_container">
+        </div>
+        <div class="add_contacts_button_box">
+            <img onclick="openAddContact()" class="add_contacts_button" src="./assets/img/add_contact_icon.svg"
+                alt="add Contact button">
+        </div>
     </div>
-    <div class="add_contacts_button_box">
-        <img onclick="openAddContact()" class="add_contacts_button" src="./assets/img/add_contact_icon.svg" alt="add Contact button">
-    </div>
-</div>
 </body>
 
 </html>

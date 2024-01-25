@@ -57,28 +57,58 @@ const contact_list = [
     }
 ]
 
-function initContactList(){
+function initContactList() {
     document.getElementById('contacts_list_container').innerHTML = '';
+    const groupedContacts = groupContactsByFirstLetter(contact_list);
 
-    for (let i = 0; i < contact_list.length; i++) {
-        const contact = contact_list[i];
-        const initials = contact['given_name'][0] + contact['name'][0];
-        const backgroundColor = contact['color'] ? `style="background-color: ${contact['color']};"` : '';
+    for (const [letter, contacts] of groupedContacts) {
+        // Erstelle Letterbox
         document.getElementById('contacts_list_container').innerHTML += `
-        <div class="contact_list_snippet_box">
-        <div class="initials_circle" ${backgroundColor}>
-        ${initials}
-    </div>
-    <div class="name_and_email_snippet">
-        <div class="contacts_name">
-        ${contact['given_name']} ${contact['name']}
-        </div>
-
-        <div class="contacts_e-mail">
-            ${contact['e-mail']}
-        </div>
-    </div>
-</div>
+            <div class="letter_box">
+                <div class="letter">${letter}</div>
+            </div>
         `;
+
+        // Füge Kontakte zur jeweiligen Letterbox hinzu
+        for (const contact of contacts) {
+            const initials = contact['given_name'][0] + contact['name'][0];
+            const backgroundColor = contact['color'] ? `style="background-color: ${contact['color']};"` : '';
+            document.getElementById('contacts_list_container').innerHTML += `
+                <div class="contact_list_snippet_box">
+                    <div class="initials_circle" ${backgroundColor}>
+                        ${initials}
+                    </div>
+                    <div class="name_and_email_snippet">
+                        <div class="contacts_name">
+                            ${contact['given_name']} ${contact['name']}
+                        </div>
+                        <div class="contacts_e-mail">
+                            ${contact['e-mail']}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
     }
+}
+
+function groupContactsByFirstLetter(contacts) {
+    const groupedContacts = new Map();
+
+    for (const contact of contacts) {
+        const firstLetter = contact['name'][0].toUpperCase();
+        if (!groupedContacts.has(firstLetter)) {
+            groupedContacts.set(firstLetter, []);
+        }
+
+        groupedContacts.get(firstLetter).push(contact);
+    }
+
+    // Filtere Buchstaben ohne Kontakte
+    const filteredGroupedContacts = new Map([...groupedContacts.entries()].filter(([letter, contacts]) => contacts.length > 0));
+
+    // Sortiere nach Anfangsbuchstaben
+    const sortedGroupedContacts = new Map([...filteredGroupedContacts.entries()].sort());
+
+    return sortedGroupedContacts;
 }
