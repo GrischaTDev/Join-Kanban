@@ -1,0 +1,44 @@
+
+.contacts_name{
+    font-size: 18px;
+}
+.contacts_e-mail{
+    color: rgb(0,124,238);
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.contact_list_snippet_box {
+    width: 100%;
+    display: flex;
+    padding: 16px 10px;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 2px;
+}
+
+.initials_circle{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 10px;
+    color:white
+}
+.contacts_list_box{
+    display: flex;
+    justify-content: space-evenly;
+}
+.add_contacts_button_box{
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.add_contacts_button{
+    cursor: pointer;
+}
