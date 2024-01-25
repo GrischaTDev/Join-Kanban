@@ -16,8 +16,27 @@
         <div class="contacts_list" id="contacts_list_container">
         </div>
         <div class="add_contacts_button_box">
-            <img onclick="openAddContact()" class="add_contacts_button" src="./assets/img/add_contact_icon.svg"
-                alt="add Contact button">
+            <img onclick="openAddContactCard()" class="add_contacts_button" src="./assets/img/add_contact_icon.svg"
+                alt="open add Contact button">
+        </div>
+    </div>
+
+    <div id="addContactScreen" class="d-none add_contact_card-bg " onclick="closeAddContactCard()">
+        <div class="add_contact_card">
+            <div class="add_contact_card_header">
+                <div class="close_icon_box">
+                    <img style="cursor: pointer;" onclick="closeAddContactCard()" src="./assets/img/close_icon.svg"
+                        alt="close Button">
+                </div>
+                <div>
+                    <h1>Add contact</h1>
+                    <p>Tasks are better with a team!</p>
+                    <div class="blue_line"></div>
+                </div>
+            </div>
+            <div class="add_contact_card_footer">
+                <div></div>
+            </div>
         </div>
     </div>
 </body>

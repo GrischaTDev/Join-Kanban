@@ -1,22 +1,38 @@
-
-body{
+body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
-.contacts_name{
+
+.d-none {
+    display: none !important;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+p {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+.contacts_name {
     font-size: 18px;
 }
-.contacts_e-mail{
-    color: rgb(0,124,238);
+
+.contacts_e-mail {
+    color: rgb(0, 124, 238);
     font-size: 14px;
     margin-top: 5px;
 }
 
 .contact_list_snippet_box {
-    
+
     display: flex;
     padding: 16px 10px;
     align-items: center;
@@ -24,7 +40,7 @@ body{
     margin-bottom: 2px;
 }
 
-.initials_circle{
+.initials_circle {
     width: 40px;
     height: 40px;
     display: flex;
@@ -32,28 +48,31 @@ body{
     justify-content: center;
     border-radius: 50%;
     margin-right: 10px;
-    color:white;
+    color: white;
     font-size: 12px;
-    
+
 }
-.contacts_list_box{
+
+.contacts_list_box {
     height: 100%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     position: relative;
 }
-.letter_box{
+
+.letter_box {
     display: flex;
     align-items: center;
-    border-bottom-color: rgb(209,209,209)!important;
-    
+    border-bottom-color: rgb(209, 209, 209) !important;
+
     border-bottom: 1px solid;
-    
+
     font-size: 20px;
     height: 60px;
 }
-.letter{
+
+.letter {
     width: 40px;
     height: 40px;
     display: flex;
@@ -62,13 +81,71 @@ body{
     border-radius: 50%;
     margin-right: 10px;
 }
-.add_contacts_button_box{
+
+
+.add_contacts_button_box {
     position: fixed;
-    bottom: 20px; 
+    bottom: 20px;
     right: 20px;
 }
 
-.add_contacts_button{
+.add_contacts_button {
     cursor: pointer;
     margin-right: 2px;
+}
+
+.add_contact_card-bg {
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add_contact_card {
+    height: 76vh;
+    width: 76vw;
+    background-color: white;
+
+    border-radius: 30px;
+    display: flex;
+    overflow: hidden;
+
+
+
+
+}
+
+.add_contact_card_header {
+    background-color: rgb(42, 54, 71);
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.add_contact_card_footer {
+    height: 60%;
+}
+
+.close_icon_box {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.blue_line {
+    background-color: rgb(39, 170, 228);
+    height: 5px;
+    width: 90px;
+    border-radius: 1px;
 }
