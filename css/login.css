@@ -1,3 +1,7 @@
+:root {
+    --Ligth-blue: #29ABE2;
+}
+
 body {
     margin: 0;
     background-color: #ffffff;
@@ -5,6 +9,9 @@ body {
     height: 100vh;
     font-size: 16px;
     font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 /* .loadAnimation {
@@ -59,19 +66,25 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 32px;
 }
 
 .inputField {
     display: flex;
     width: 364px;
-    height: 152px;
     flex-direction: column;
     align-items: flex-start;
     gap: 32px;
+    cursor: pointer;
+}
+
+.inputField img {
+    position: absolute;
+    margin: 12px 0 0 320px;
 }
 
 input {
+    font-size: 20px;
     display: flex;
     padding: 12px 21px;
     align-items: center;
@@ -80,11 +93,23 @@ input {
     border-radius: 10px;
     border: 1px solid #D1D1D1;
     background: #FFF;
+    cursor: pointer;
+}
+
+input::placeholder {
+    color: #D1D1D1;
+}
+
+input:focus-visible {
+    outline: none;
+    border: 1px solid var(--Ligth-blue);
 }
 
 .checkbox {
     display: flex;
+    align-items: center;
     gap: 8px;
+    cursor: pointer;
 }
 
 .buttonBox {
@@ -107,7 +132,7 @@ input {
 }
 
 .logInButton:hover {
-    background: #29ABE2;
+    background: var(--Ligth-blue);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -126,7 +151,7 @@ input {
 
 .guestLogInButton:hover {
     color: #29ABE2;
-    border: 1px solid #29ABE2;
+    border: 1px solid var(--Ligth-blue);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -135,7 +160,7 @@ input {
     flex-direction: column;
     align-items: center;
     padding: 40px;
-    gap: 40px;
+    gap: 60px;
 }
 
 .notUserText {
@@ -162,7 +187,7 @@ input {
 }
 
 .signUpButton:hover {
-    background: #29ABE2;
+    background: var(--Ligth-blue);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
