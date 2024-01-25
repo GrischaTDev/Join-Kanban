@@ -112,3 +112,11 @@ function groupContactsByFirstLetter(contacts) {
 
     return sortedGroupedContacts;
 }
+
+function openAddContactCard() {
+    document.getElementById('addContactScreen').classList.remove('d-none');
+}
+
+function closeAddContactCard() {
+    document.getElementById('addContactScreen').classList.add('d-none');
+}
