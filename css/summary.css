@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    background: #F6F7F8;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+.d-none {
+    display: none;
+}
+
+h1 {
+    color: var(--Ligth-blue, #29ABE2);
+    font-size: 47px;
+    font-weight: 700;
+    margin: 0;
+}
+
+h2 {
+    color: #2A3647;
+    font-size: 36px;
+    font-weight: 400;
+    margin: 0;
+}
+
+h3 {
+    color: #2A3647;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+}
+
+h4 {
+    color: #2A3647;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
+
+/* GREATING SITES */
+.greating-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.greating-guest {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* SUMMARY CONTENT */
+.content {
+    height: 100vh;
+    margin: 120px 16px;
+}
+
+.titel-box {
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.summary-title, h1 {
+    color: black;
+}
+
+.summary-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.task-info-box-row-1 {
+    display: flex;
+    justify-content: space-around;
+    gap: 24px;
+}
+
+.to-do-box {
+    background-color: #fff;
+    display: flex;
+    width: 186px;
+    height: 110px;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.number-of-to-do {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.to-do-number {
+    font-size: 47px;
+    font-weight: 600;
+}

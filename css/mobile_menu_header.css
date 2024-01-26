@@ -1,18 +1,4 @@
-body {
-    margin: 0;
-    font-size: 16px;
-    font-family: 'Inter', sans-serif;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-}
-
 /* HEADER */
-
 header {
     display: flex;
     padding: 20px 16px;
@@ -20,6 +6,10 @@ header {
     align-items: center;
     background-color: #fff;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0;
 }
 
 .logo {
@@ -34,19 +24,22 @@ header {
 }
 
 /* MENU */
-
 menu {
     display: flex;
     height: 80px;
     padding: 0px 16px;
+    margin: 0;
     justify-content: space-around;
     align-items: center;
     background: #2A3647;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
-    margin: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
-.menuTab {
+.menu-tab {
     display: flex;
     width: 76px;
     height: 76px;
@@ -59,6 +52,6 @@ menu {
     border-radius: 8px;
 }
 
-.menuTab:hover {
+.menu-tab:hover {
     background-color: #091931;
 }
