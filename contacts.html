@@ -7,20 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
     <script src="./js/contact.js"></script>
-    <script src="./includehtml.js"></script>
+    <script src="./script.js"></script>
     <link rel="stylesheet" href="./css/contacts.css">
     <link rel="stylesheet" href="./css/mobile_menu_header.css">
 
 </head>
 
 <body onload="loadMenu(), initContactList()">
-
+    <div w3-include-html="assets/templates/mobile_header.html"></div>
     <div class="contacts_list_box">
-        <header>
-            <img class="logo" src="/assets/img/mobile-logo.svg" alt="Join Logo">
-            <img class="user" src="/assets/img/user_profile.svg" alt="User Profile">
-        </header>
-        <div w3-include-html="assets/templates/mobile_menu.html"></div>
+
+        
+
+        
+
         <div class="contacts_list" id="contacts_list_container">
 
         </div>
@@ -28,7 +28,10 @@
         <div class="add_contacts_button_box">
            <div onclick="openAddContactCard()" class="add_contacts_button"><img src="./assets/img/add_person_icon.svg" alt=""> </div>
         </div>
+        
     </div>
+
+
 
     <div id="addContactScreen" class="d-none add_contact_card-bg " onclick="closeAddContactCard()">
         <div class="add_contact_card" onclick="doNotClose(event)">
@@ -101,6 +104,7 @@
             </div> 
         </div>
     </div>
+    <div w3-include-html="assets/templates/mobile_menu.html"></div>
 </body>
 
 </html>

@@ -68,6 +68,8 @@ p {
     justify-content: space-between;
     flex-direction: column;
     position: relative;
+    padding-top: 80px;
+    padding-bottom: 170px
 }
 
 .letter_box {
