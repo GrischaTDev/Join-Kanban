@@ -6,6 +6,15 @@ body {
     height: 100vh;
 }
 
+a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Inter' sans-serif;
+    ;
+    font-size: 16px;
+}
+
 .d-none {
     display: none !important;
 }
@@ -108,13 +117,14 @@ p {
 }
 
 .add_contact_card {
-    height: 76vh;
-    width: 76vw;
+    height: 80vh;
+    width: 80vw;
     background-color: white;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    transition: all 220ms ease-in-out !important;
 }
 
 .add_contact_card_header {
@@ -169,11 +179,47 @@ p {
     height: 40px;
 }
 
-.save_contact_box {}
+
+.submit_create_contact_button {
+    background: #2A3647;
+    width: 180px;
+    height: 51px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Inter' sans-serif;
+    ;
+    font-size: 16px;
+}
 
 .submit_save_contact_button {
-    background-color: rgba(0, 0, 0, 0.2);
-    color: white;
-    font-size: 20px;
-    border-radius: 10px;
+    background: #2A3647;
+    width: 90px;
+    height: 51px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Inter' sans-serif;
+    ;
+    font-size: 16px;
+}
+
+.submit_delete_contact_button {
+    background: white;
+    width: 90px;
+    height: 51px;
+    border-radius: 8px;
+    border: 1px solid #D1D1D1;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+    font-family: 'Inter' sans-serif;
+    ;
+    font-size: 16px;
 }

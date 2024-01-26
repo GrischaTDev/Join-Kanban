@@ -7,21 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
     <script src="./js/contact.js"></script>
+    <script src="./includehtml.js"></script>
     <link rel="stylesheet" href="./css/contacts.css">
+    <link rel="stylesheet" href="css/mobile_menu.css">
 </head>
 
-<body onload="initContactList()">
+<body onload="loadMenu(), initContactList()">
 
     <div class="contacts_list_box">
+        <div w3-include-html="assets/templates/mobile_menu.html"></div>
         <div class="contacts_list" id="contacts_list_container">
+
         </div>
+
         <div class="add_contacts_button_box">
             <img onclick="openAddContactCard()" class="add_contacts_button" src="./assets/img/add_contact_icon.svg"
                 alt="open add Contact button">
         </div>
     </div>
 
-    <div id="addContactScreen" class="d-non add_contact_card-bg " onclick="closeAddContactCard()">
+    <div id="addContactScreen" class="d-none add_contact_card-bg " onclick="closeAddContactCard()">
         <div class="add_contact_card" onclick="doNotClose(event)">
             <div class="add_contact_card_header">
                 <div class="close_icon_box">
@@ -49,7 +54,44 @@
                     <img src="./assets/img/phone_icon.svg" alt="phone icon">
                 </div>
                 <div class="save_contact_box">
-                    <button onclick="saveContact" class="submit_save_contact_button">Create contact</button>
+                    <button onclick="saveContact" class="submit_create_contact_button"><a href="">Create
+                            contact</a></button>
+                    <img src="./assets/img/check.svg" alt="check">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="editContactScreen" class="d-none add_contact_card-bg " onclick="closeEditContactCard()">
+        <div class="add_contact_card" onclick="doNotClose(event)">
+            <div class="add_contact_card_header">
+                <div class="close_icon_box">
+                    <img style="cursor: pointer;" onclick="closeEditContactCard()" src="./assets/img/close_icon.svg"
+                        alt="close Button">
+                </div>
+                <div>
+                    <h1>Edit contact</h1>
+                    <div class="blue_line"></div>
+                </div>
+            </div>
+            <div class="add_contact_card_footer">
+                <img class="profile_picture" src="./assets/img/profile_picture.svg" alt="profile picture">
+                <div class="inputfield_box">
+                    <input class="inputfield" type="text" required placeholder="Name">
+                    <img src="./assets/img/profile_mini_icon.svg" alt="profile icon">
+                </div>
+                <div class="inputfield_box">
+                    <input class="inputfield" type="email" required placeholder="Email">
+                    <img src="./assets/img/mail_icon.svg" alt="email icon">
+                </div>
+                <div class="inputfield_box">
+                    <input class="inputfield" type="number" required placeholder="Phone">
+                    <img src="./assets/img/phone_icon.svg" alt="phone icon">
+                </div>
+                <div class="save_contact_box">
+                    <button onclick="saveContact" class="submit_delete_contact_button">Delete</button>
+                    <button onclick="saveContact" class="submit_save_contact_button">Save</button>
                     <img src="./assets/img/check.svg" alt="check">
                 </div>
             </div>

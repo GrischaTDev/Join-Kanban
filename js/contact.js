@@ -121,6 +121,14 @@ function closeAddContactCard() {
     document.getElementById('addContactScreen').classList.add('d-none');
 }
 
+function openEditContactCard() {
+    document.getElementById('editContactScreen').classList.remove('d-none');
+}
+
+function closeEditContactCard() {
+    document.getElementById('editContactScreen').classList.add('d-none');
+}
+
 function doNotClose(event) {
     event.stopPropagation();
 }
