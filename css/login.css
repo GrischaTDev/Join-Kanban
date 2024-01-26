@@ -123,13 +123,17 @@ input:focus-visible {
 }
 
 .logInButton {
-    color: #fff;
     background: #2A3647;
     width: 180px;
     height: 51px;
     border-radius: 8px;
     border: none;
     cursor: pointer;
+}
+
+.logInButton a {
+    color: #fff;
+    text-decoration: none;
     font-weight: 700;
     font-family: 'Inter';
     font-size: 16px;
