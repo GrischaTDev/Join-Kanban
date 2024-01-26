@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/assets/img/header_logo.svg">
+    <title>Board</title>
+    <link rel="stylesheet" href="/css/header_footer.css">
+    <link rel="stylesheet" href="/css/board.css">
+    <script src="script.js"></script>
+    <script src="/js/board.js"></script>
+</head>
+
+<body onload="includeHTML()">
+    <div w3-include-html="/assets/templates/mobile_header.html"></div>
+
+ <div class="board_body">
+
+    <div class="task_topic">
+        <h1>Board</h1>
+        <a class="button_add_task" href="#" onclick="newTask()">
+            <img class="plus_button" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
+        </a>
+    </div>
+
+
+    <div>
+        <form action="submit">
+
+            <div class="search-container">
+                <input oninput="findTask()" id="search" class="search" type="text" placeholder="Find Task">
+                <a href="#"><div class="search-icon"></div></a>
+            </div>
+        </form>
+    </div>
+
+    <div class="todo_container">
+        <h2>To do</h2>
+        <a class="button_add_task_todo" href="#" onclick="newTask()">
+            <img class="plus_button" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
+        </a>
+
+    </div>
+    <div id="mytasks">
+
+    </div>
+
+</div>
+
+
+
+    <div w3-include-html="/assets/templates/mobile_menu.html"></div>
+</body>
+
+</html>
