@@ -79,10 +79,15 @@ h4 {
     gap: 8px;
 }
 
+.task-info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .task-info-box-row-1 {
     display: flex;
     justify-content: space-around;
-    gap: 24px;
 }
 
 .to-do-box {
@@ -90,7 +95,7 @@ h4 {
     display: flex;
     width: 186px;
     height: 110px;
-    border-radius: 8px;
+    border-radius: 20px;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -108,4 +113,37 @@ h4 {
 .to-do-number {
     font-size: 47px;
     font-weight: 600;
+}
+
+.urgent-task-box {
+    background-color: #fff;
+    display: flex;
+    height: 110px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.how-many-task-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.how-many-task {
+    background-color: #fff;
+    width: 186px;
+    height: 110px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
