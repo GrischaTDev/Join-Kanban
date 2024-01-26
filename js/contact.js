@@ -120,3 +120,7 @@ function openAddContactCard() {
 function closeAddContactCard() {
     document.getElementById('addContactScreen').classList.add('d-none');
 }
+
+function doNotClose(event) {
+    event.stopPropagation();
+}

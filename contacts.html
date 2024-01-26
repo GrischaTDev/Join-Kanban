@@ -21,8 +21,8 @@
         </div>
     </div>
 
-    <div id="addContactScreen" class="d-none add_contact_card-bg " onclick="closeAddContactCard()">
-        <div class="add_contact_card">
+    <div id="addContactScreen" class="d-non add_contact_card-bg " onclick="closeAddContactCard()">
+        <div class="add_contact_card" onclick="doNotClose(event)">
             <div class="add_contact_card_header">
                 <div class="close_icon_box">
                     <img style="cursor: pointer;" onclick="closeAddContactCard()" src="./assets/img/close_icon.svg"
@@ -35,7 +35,23 @@
                 </div>
             </div>
             <div class="add_contact_card_footer">
-                <div></div>
+                <img class="profile_picture" src="./assets/img/profile_picture.svg" alt="profile picture">
+                <div class="inputfield_box">
+                    <input class="inputfield" type="text" required placeholder="Name">
+                    <img src="./assets/img/profile_mini_icon.svg" alt="profile icon">
+                </div>
+                <div class="inputfield_box">
+                    <input class="inputfield" type="email" required placeholder="Email">
+                    <img src="./assets/img/mail_icon.svg" alt="email icon">
+                </div>
+                <div class="inputfield_box">
+                    <input class="inputfield" type="number" required placeholder="Phone">
+                    <img src="./assets/img/phone_icon.svg" alt="phone icon">
+                </div>
+                <div class="save_contact_box">
+                    <button onclick="saveContact" class="submit_save_contact_button">Create contact</button>
+                    <img src="./assets/img/check.svg" alt="check">
+                </div>
             </div>
         </div>
     </div>

@@ -111,14 +111,10 @@ p {
     height: 76vh;
     width: 76vw;
     background-color: white;
-
     border-radius: 30px;
     display: flex;
+    flex-direction: column;
     overflow: hidden;
-
-
-
-
 }
 
 .add_contact_card_header {
@@ -133,7 +129,13 @@ p {
 }
 
 .add_contact_card_footer {
-    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: space-evenly;
+    margin-top: -100px;
+
 }
 
 .close_icon_box {
@@ -148,4 +150,30 @@ p {
     height: 5px;
     width: 90px;
     border-radius: 1px;
+}
+
+.profile_picture {
+    height: 100px;
+}
+
+.inputfield_box {
+    display: flex;
+}
+
+.inputfield {
+    color: rgb(209, 209, 209);
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    cursor: pointer;
+    height: 40px;
+}
+
+.save_contact_box {}
+
+.submit_save_contact_button {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
 }
