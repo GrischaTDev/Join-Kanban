@@ -9,20 +9,24 @@
     <script src="./js/contact.js"></script>
     <script src="./includehtml.js"></script>
     <link rel="stylesheet" href="./css/contacts.css">
-    <link rel="stylesheet" href="css/mobile_menu.css">
+    <link rel="stylesheet" href="./css/mobile_menu_header.css">
+
 </head>
 
 <body onload="loadMenu(), initContactList()">
 
     <div class="contacts_list_box">
+        <header>
+            <img class="logo" src="/assets/img/mobile-logo.svg" alt="Join Logo">
+            <img class="user" src="/assets/img/user_profile.svg" alt="User Profile">
+        </header>
         <div w3-include-html="assets/templates/mobile_menu.html"></div>
         <div class="contacts_list" id="contacts_list_container">
 
         </div>
 
         <div class="add_contacts_button_box">
-            <img onclick="openAddContactCard()" class="add_contacts_button" src="./assets/img/add_contact_icon.svg"
-                alt="open add Contact button">
+           <div onclick="openAddContactCard()" class="add_contacts_button"><img src="./assets/img/add_person_icon.svg" alt=""> </div>
         </div>
     </div>
 
@@ -43,27 +47,27 @@
                 <img class="profile_picture" src="./assets/img/profile_picture.svg" alt="profile picture">
                 <div class="inputfield_box">
                     <input class="inputfield" type="text" required placeholder="Name">
-                    <img src="./assets/img/profile_mini_icon.svg" alt="profile icon">
+                    <img class="input_icon" src="./assets/img/profile_mini_icon.svg" alt="profile icon">
                 </div>
                 <div class="inputfield_box">
                     <input class="inputfield" type="email" required placeholder="Email">
-                    <img src="./assets/img/mail_icon.svg" alt="email icon">
+                    <img class="input_icon" src="./assets/img/mail_icon.svg" alt="email icon">
                 </div>
                 <div class="inputfield_box">
                     <input class="inputfield" type="number" required placeholder="Phone">
-                    <img src="./assets/img/phone_icon.svg" alt="phone icon">
+                    <img class="input_icon" src="./assets/img/phone_icon.svg" alt="phone icon">
                 </div>
                 <div class="save_contact_box">
                     <button onclick="saveContact" class="submit_create_contact_button"><a href="">Create
                             contact</a></button>
-                    <img src="./assets/img/check.svg" alt="check">
+                    <img class="input_icon" src="./assets/img/check.svg" alt="check">
                 </div>
             </div>
         </div>
     </div>
 
 
-    <div id="editContactScreen" class="d-none add_contact_card-bg " onclick="closeEditContactCard()">
+    <div id="editContactScreen" class="d-non add_contact_card-bg " onclick="closeEditContactCard()">
         <div class="add_contact_card" onclick="doNotClose(event)">
             <div class="add_contact_card_header">
                 <div class="close_icon_box">
@@ -79,22 +83,22 @@
                 <img class="profile_picture" src="./assets/img/profile_picture.svg" alt="profile picture">
                 <div class="inputfield_box">
                     <input class="inputfield" type="text" required placeholder="Name">
-                    <img src="./assets/img/profile_mini_icon.svg" alt="profile icon">
+                    <img class="input_icon" src="./assets/img/profile_mini_icon.svg" alt="profile icon">
                 </div>
                 <div class="inputfield_box">
                     <input class="inputfield" type="email" required placeholder="Email">
-                    <img src="./assets/img/mail_icon.svg" alt="email icon">
+                    <img class="input_icon" src="./assets/img/mail_icon.svg" alt="email icon">
                 </div>
                 <div class="inputfield_box">
                     <input class="inputfield" type="number" required placeholder="Phone">
-                    <img src="./assets/img/phone_icon.svg" alt="phone icon">
+                    <img class="input_icon" src="./assets/img/phone_icon.svg" alt="phone icon">
                 </div>
                 <div class="save_contact_box">
                     <button onclick="saveContact" class="submit_delete_contact_button">Delete</button>
-                    <button onclick="saveContact" class="submit_save_contact_button">Save</button>
-                    <img src="./assets/img/check.svg" alt="check">
+                    <button onclick="saveContact" class="submit_save_contact_button">Save   </button>
+                    <img style="margin-left: -25px;" src="./assets/img/check.svg" alt="check">
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
 </body>
