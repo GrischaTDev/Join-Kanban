@@ -23,6 +23,11 @@
 
         <div class="contacts_list" id="contacts_list_container"></div>
 
+        <div id="contact_created_confirmation" class="contact_created_confirmation d-none">
+            <p>Contact succesfully created</p>
+        </div>
+
+
         <div class="add_contacts_button_box">
             <div onclick="openAddContactCard()" class="add_contacts_button"><img src="./assets/img/add_person_icon.svg"
                     alt=""> </div>
@@ -60,8 +65,8 @@
                     <img class="input_icon" src="./assets/img/phone_icon.svg" alt="phone icon">
                 </div>
                 <div class="save_contact_box">
-                    <button onclick="saveContact" class="submit_create_contact_button"><a href="">Create
-                            contact</a></button>
+                    <button onclick="saveAddedContact()" class="submit_create_contact_button">Create
+                        contact</button>
                     <img class="input_icon" src="./assets/img/check.svg" alt="check">
                 </div>
             </div>
@@ -97,7 +102,7 @@
                 </div>
                 <div class="save_contact_box">
                     <button onclick="saveContact" class="submit_delete_contact_button">Delete</button>
-                    <button onclick="saveContact" class="submit_save_contact_button">Save </button>
+                    <button onclick="saveEditedContact()" class="submit_save_contact_button">Save </button>
                     <img style="margin-left: -25px;" src="./assets/img/check.svg" alt="check">
                 </div>
             </div>
@@ -105,7 +110,7 @@
     </div>
 
 
-    <div id="showContactContainer" class="showContactContainer d-none">
+    <div onclick="closeEditDeleteContactPopup()" id="showContactContainer" class="showContactContainer d-none">
 
         <div class="showContactHeaderBox">
             <div class="showContactHeadline">
@@ -146,11 +151,28 @@
                 <p>+49 2222 222 22 2</p>
             </div>
         </div>
+
+        <div class="edit_delete_contact_popup d-none" id="edit_delete_contact_popup">
+            <div onclick="openEditContactCard()" class="edit_delete_buttons">
+                <img src="./assets/img/edit_icon.svg" alt="edit_icon">
+                Edit
+            </div>
+
+            <div onclick="closeShowContact()" class="edit_delete_buttons">
+                <img src="./assets/img/delete_icon.svg" alt="delete_icon">
+                Delete
+            </div>
+
+        </div>
         <div class="add_contacts_button_box">
-            <div onclick="" class="add_contacts_button"><img src="./assets/img/three_points_icon.svg" alt="">
+            <div onclick="openEditDeleteContactPopup(), doNotClose(event)" class="add_contacts_button"><img
+                    src="./assets/img/three_points_icon.svg" alt="">
             </div>
         </div>
     </div>
+
+
+
     <div w3-include-html="assets/templates/mobile_menu.html"></div>
 </body>
 
