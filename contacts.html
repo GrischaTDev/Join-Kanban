@@ -17,18 +17,17 @@
     <div w3-include-html="assets/templates/mobile_header.html"></div>
     <div class="contacts_list_box">
 
-        
 
-        
 
-        <div class="contacts_list" id="contacts_list_container">
 
-        </div>
+
+        <div class="contacts_list" id="contacts_list_container"></div>
 
         <div class="add_contacts_button_box">
-           <div onclick="openAddContactCard()" class="add_contacts_button"><img src="./assets/img/add_person_icon.svg" alt=""> </div>
+            <div onclick="openAddContactCard()" class="add_contacts_button"><img src="./assets/img/add_person_icon.svg"
+                    alt=""> </div>
         </div>
-        
+
     </div>
 
 
@@ -42,7 +41,7 @@
                 </div>
                 <div>
                     <h1>Add contact</h1>
-                    <p>Tasks are better with a team!</p>
+                    <p style="text-align: center; color: white;">Tasks are better with a team!</p>
                     <div class="blue_line"></div>
                 </div>
             </div>
@@ -70,7 +69,7 @@
     </div>
 
 
-    <div id="editContactScreen" class="d-non add_contact_card-bg " onclick="closeEditContactCard()">
+    <div id="editContactScreen" class="d-none add_contact_card-bg " onclick="closeEditContactCard()">
         <div class="add_contact_card" onclick="doNotClose(event)">
             <div class="add_contact_card_header">
                 <div class="close_icon_box">
@@ -98,10 +97,58 @@
                 </div>
                 <div class="save_contact_box">
                     <button onclick="saveContact" class="submit_delete_contact_button">Delete</button>
-                    <button onclick="saveContact" class="submit_save_contact_button">Save   </button>
+                    <button onclick="saveContact" class="submit_save_contact_button">Save </button>
                     <img style="margin-left: -25px;" src="./assets/img/check.svg" alt="check">
                 </div>
-            </div> 
+            </div>
+        </div>
+    </div>
+
+
+    <div id="showContactContainer" class="showContactContainer d-none">
+
+        <div class="showContactHeaderBox">
+            <div class="showContactHeadline">
+                <h1 style="color:black; font-size: 48px; margin: 0;">Contacts</h1>
+                <p style="color:black; font-size: 20px; margin: 5px;">Better with a team!</p>
+                <div class="blue_line"></div>
+            </div>
+
+            <div class="close_icon_box">
+                <img style="cursor: pointer; height: 36px;" onclick="closeShowContact()"
+                    src="./assets/img/arrow_left.svg" alt="close Button">
+            </div>
+        </div>
+
+        <div class="showContactFooterBox">
+            <div class="show_profile_name">
+                <img class="profile_picture" src="./assets/img/profile_picture.svg" alt="profile picture">
+                <h2 style="font-size: 32px;" id="showContactName">Tatjana Wolf</h2>
+            </div>
+
+            <div class="">
+                <p style="color:black; font-size: 24px;">Contact Information</p>
+            </div>
+
+            <div class="">
+                <h3>Email</h3>
+            </div>
+
+            <div id="contact_card_email" class="contacts_e-mail">
+                wolf@gmail.com
+            </div>
+
+            <div>
+                <h3>Phone</h3>
+            </div>
+
+            <div>
+                <p>+49 2222 222 22 2</p>
+            </div>
+        </div>
+        <div class="add_contacts_button_box">
+            <div onclick="" class="add_contacts_button"><img src="./assets/img/three_points_icon.svg" alt="">
+            </div>
         </div>
     </div>
     <div w3-include-html="assets/templates/mobile_menu.html"></div>

@@ -74,7 +74,7 @@ function initContactList() {
             const initials = contact['given_name'][0] + contact['name'][0];
             const backgroundColor = contact['color'] ? `style="background-color: ${contact['color']};"` : '';
             document.getElementById('contacts_list_container').innerHTML += `
-                <div class="contact_list_snippet_box">
+                <div onclick="openShowContact()" class="contact_list_snippet_box">
                     <div class="initials_circle" ${backgroundColor}>
                         ${initials}
                     </div>
@@ -132,3 +132,12 @@ function closeEditContactCard() {
 function doNotClose(event) {
     event.stopPropagation();
 }
+
+function openShowContact() {
+    document.getElementById('showContactContainer').classList.remove('d-none');
+}
+
+function closeShowContact() {
+    document.getElementById('showContactContainer').classList.remove('d-none');
+}
+
