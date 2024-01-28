@@ -1,0 +1,53 @@
+/* Project Color */
+:root {
+    --white: #fff;
+    --black: #000;
+    --dark-blue: #2A3647;
+    --Ligth-blue: #29ABE2;
+}
+
+
+/* Global styles */
+body {
+    margin: 0;
+    background: #F6F7F8;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+.d-none {
+    display: none;
+}
+
+h1 {
+    color: var(--Ligth-blue);
+    font-size: 47px;
+    font-weight: 700;
+    margin: 0;
+}
+
+h2 {
+    color: var(--dark-blue);
+    font-size: 36px;
+    font-weight: 400;
+    margin: 0;
+}
+
+h3 {
+    color: var(--dark-blue);
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+}
+
+h4 {
+    color: var(--dark-blue);
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.anchor-style {
+    color: var(--black);
+    text-decoration: none;
+}

@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/summary.css">
     <link rel="stylesheet" href="css/mobile_menu_header.css">
     <script src="script.js"></script>
     <title>Summary</title>
 </head>
+
 <body onload="loadMenu()">
     <div w3-include-html="assets/templates/mobile_header.html"></div>
 
@@ -30,53 +33,53 @@
             </div>
         </div>
 
-        <div class="task-info-box">
-            <div class="task-info-box-row-1">
-                <div class="to-do-box">
+        <div class="summary-boxes">
+            <div class="summary-box-row-1">
+                <a href="./board.html" class="anchor-style row-1-box">
                     <img src="assets/img/to_do_icon.svg" alt="">
-                    <div class="number-of-to-do">
-                        <span class="to-do-number">1</span>
+                    <div class="number-and-name">
+                        <span>1</span>
                         <h4>To-do</h4>
                     </div>
-                </div>
-                <div class="to-do-box">
+                </a>
+                <a href="./board.html" class="anchor-style row-1-box">
                     <img src="assets/img/done_icon.svg" alt="">
-                    <div class="number-of-to-do">
-                        <span class="to-do-number">1</span>
+                    <div class="number-and-name">
+                        <span>1</span>
                         <h4>Done</h4>
                     </div>
-                </div>
+                </a>
             </div>
 
-            <div class="task-info-box-row-2">
-                <div class="urgent-task-box">
-                    <img src="assets/img/to_do_icon.svg" alt="">
-                    <div class="number-of-to-do">
-                        <span class="urgent-number">1</span>
+            <a href="./board.html" class="anchor-style summary-box-row-2">
+                <div class="urgent-number">
+                    <img src="assets/img/urgent_icon.svg" alt="">
+                    <div class="number-and-name">
+                        <span>1</span>
                         <h4>Urgent</h4>
                     </div>
-                    <div class="urgent-border"></div>
-                    <div>
-                        <span>test</span>
-                        <span>test2</span>
-                    </div>
                 </div>
-            </div>
+                <div class="urgent-border"></div>
+                <div class="urgent-data">
+                    <span>October 16, 2023</span>
+                    <h4>Upcoming Deadline</h4>
+                </div>
+            </a>
 
-            <div class="task-info-box-row-3">
+            <div class="summary-box-row-3">
                 <div class="how-many-task-box">
-                    <div class="how-many-task">
-                        <span class="to-do-number">5</span>
+                    <a href="./board.html" class="anchor-style how-many-task">
+                        <span class="number-and-name">5</span>
                         <h4>Tasks in<br> Board</h4>
-                    </div>
-                    <div class="how-many-task">
-                        <span class="to-do-number">3</span>
+                    </a>
+                    <a href="./board.html" class="anchor-style how-many-task">
+                        <span class="number-and-name">3</span>
                         <h4>Tasks in<br> Progress</h4>
-                    </div>
-                    <div class="how-many-task">
-                        <span class="to-do-number">2</span>
+                    </a>
+                    <a href="./board.html" class="anchor-style how-many-task">
+                        <span class="number-and-name">2</span>
                         <h4>Awaiting<br> feedback</h4>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -84,4 +87,5 @@
 
     <div w3-include-html="assets/templates/mobile_menu.html"></div>
 </body>
+
 </html>

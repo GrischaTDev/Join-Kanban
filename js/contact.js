@@ -138,6 +138,37 @@ function openShowContact() {
 }
 
 function closeShowContact() {
-    document.getElementById('showContactContainer').classList.remove('d-none');
+    document.getElementById('showContactContainer').classList.add('d-none');
 }
 
+function openEditDeleteContactPopup() {
+    document.getElementById('edit_delete_contact_popup').classList.remove('d-none');
+}
+
+function closeEditDeleteContactPopup() {
+    document.getElementById('edit_delete_contact_popup').classList.add('d-none');
+}
+
+
+function showContactCreatedConfirmation(){
+    document.getElementById('contact_created_confirmation').classList.remove('d-none');
+    setTimeout(closeContactCreatedConfirmation,2000);
+}
+
+function closeContactCreatedConfirmation() {
+    document.getElementById('contact_created_confirmation').classList.add('d-none');
+}
+
+function saveAddedContact(){
+    closeAddContactCard();
+    initContactList();
+    showContactCreatedConfirmation();
+}
+
+function saveEditedContact(){
+    closeEditContactCard()
+    closeShowContact();
+    closeEditDeleteContactPopup();
+    initContactList();
+    showContactCreatedConfirmation();
+}
