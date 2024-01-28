@@ -10,6 +10,7 @@ header {
     top: 0px;
     right: 0px;
     left: 0;
+    z-index: 20;
 }
 
 .logo {
@@ -37,6 +38,7 @@ menu {
     bottom: 0;
     right: 0;
     left: 0;
+    z-index: 20;
 }
 
 .menu-tab {
