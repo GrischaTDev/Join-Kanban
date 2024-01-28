@@ -1,4 +1,12 @@
 /* GREATING SITES */
+
+.greating-titel {
+    color: var(--Ligth-blue) !important ;
+    font-size: 47px;
+    font-weight: 700;
+    margin: 0;
+}
+
 .greating-user {
     display: flex;
     flex-direction: column;
