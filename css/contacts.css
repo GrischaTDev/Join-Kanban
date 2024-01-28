@@ -12,7 +12,6 @@ a {
     text-decoration: none;
     font-weight: 700;
     font-family: 'Inter' sans-serif;
-    ;
     font-size: 16px;
 }
 
@@ -21,7 +20,7 @@ a {
 }
 
 h1 {
-    color: white;
+    color: white !important;
     text-align: center;
 }
 
@@ -100,6 +99,7 @@ p {
 }
 
 .add_contacts_button {
+    display: flex;
     cursor: pointer;
     margin-right: 2px;
     background-color: #2A3647;
@@ -164,10 +164,10 @@ p {
 }
 
 .blue_line {
-    background-color: rgb(39, 170, 228);
-    height: 5px;
+    background-color: #29ABE2;
+    height: 3px;
     width: 90px;
-    border-radius: 1px;
+    border-radius: 3px;
 }
 
 .profile_picture {
@@ -191,9 +191,6 @@ p {
     margin-left: -30px;
     cursor: pointer;
 }
-
-.input_icon:hover {}
-
 
 .submit_create_contact_button {
     background: #2A3647;
@@ -268,6 +265,12 @@ p {
     flex-direction: column;
 }
 
+.showContactFooterBox {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .show_profile_name {
     display: flex;
     align-items: center;
@@ -298,23 +301,39 @@ p {
     column-gap: 8px;
 }
 
+.edit_delete_buttons:hover {
+    color:#29ABE2 !important;
+    fill: #29ABE2 !important;
+}
+
 .contact_created_confirmation {
+    width: 326 px;
+    height: 74 px;
     position: fixed;
-    bottom: 180px;
-    left: 15%;
     color: white;
     display: flex;
     z-index: 9;
     border-radius: 20px;
     background: #2A3647;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
-    border-radius: 20px;
-    background: #2A3647;
     font-size: 20px;
     padding: 10px;
-    font-size: 20px;
-    font-style: normal;
     font-weight: 400;
-    line-height: 120%;
+    
+}
 
+.confirmation_container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.fill_icon:hover{
+    fill: #29ABE2 !important;
+    color: #29ABE2 !important;
 }
