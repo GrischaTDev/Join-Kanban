@@ -133,6 +133,7 @@ p {
     flex-direction: column;
     overflow: hidden;
     transition: all 220ms ease-in-out !important;
+    animation: move-to-screen 500ms ease forwards;
 }
 
 .add_contact_card_header {
@@ -221,7 +222,6 @@ p {
     text-decoration: none;
     font-weight: 700;
     font-family: 'Inter' sans-serif;
-    ;
     font-size: 16px;
 }
 
@@ -336,4 +336,14 @@ p {
 .fill_icon:hover{
     fill: #29ABE2 !important;
     color: #29ABE2 !important;
+}
+
+@keyframes move-to-screen {
+    from {
+        margin-bottom: -1500px;
+    }
+
+    to {
+        margin-bottom: 0;
+    }
 }
