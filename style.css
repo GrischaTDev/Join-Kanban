@@ -4,13 +4,14 @@
     --black: #000;
     --dark-blue: #2A3647;
     --Ligth-blue: #29ABE2;
+    --background: #F6F7F8;
 }
 
 
 /* Global styles */
 body {
     margin: 0;
-    background: #F6F7F8;
+    background: var(--background);
     font-size: 16px;
     font-family: 'Inter', sans-serif;
 }
@@ -20,7 +21,7 @@ body {
 }
 
 h1 {
-    color: var(--Ligth-blue);
+    color: var(--black);
     font-size: 47px;
     font-weight: 700;
     margin: 0;
@@ -41,6 +42,13 @@ h3 {
 }
 
 h4 {
+    color: var(--dark-blue);
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+}
+
+h5 {
     color: var(--dark-blue);
     font-size: 14px;
     font-weight: 400;

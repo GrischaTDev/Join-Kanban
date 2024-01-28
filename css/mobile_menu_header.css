@@ -10,7 +10,7 @@ header {
     top: 0px;
     right: 0px;
     left: 0;
-    z-index: 99;
+    z-index: 20;
 }
 
 .logo {
@@ -38,7 +38,7 @@ menu {
     bottom: 0;
     right: 0;
     left: 0;
-    z-index: 99;
+    z-index: 20;
 }
 
 .menu-tab {
@@ -52,7 +52,6 @@ menu {
     gap: 4px;
     flex-shrink: 0;
     border-radius: 8px;
-    z-index: 99;
 }
 
 .menu-tab:hover {

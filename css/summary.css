@@ -1,11 +1,37 @@
 /* GREATING SITES */
+
+.greating-titel {
+    color: var(--Ligth-blue) !important ;
+    font-size: 47px;
+    font-weight: 700;
+    margin: 0;
+}
+
 .greating-user {
+    background-color: var(--background);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    opacity: 1;
+    animation: greating 0.5s ease forwards;
+    animation-delay: 1s;
 }
+
+@keyframes greating {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+      display: none;
+    }
+  }
 
 .greating-guest {
     display: flex;

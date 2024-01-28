@@ -1,28 +1,4 @@
-<<<<<<< Updated upstream
-body {
-  min-height: 100%;
-  margin-top: 70px;
-=======
-.board_body {
-  margin-top: 70px;  
->>>>>>> Stashed changes
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: #f6f7f8;
-  min-height: 100%;
-}
 
-h1 {
-  padding-left: 16px;
-  color: #000;
-  font-family: Inter;
-  font-size: 47px;
-  font-style: normal;
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-}
 
 .plus-button {
   height: 20px;
@@ -307,8 +283,6 @@ h3 {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-}
-.priority-symbold {
 }
 /*-card-section-END*/
 /*done-section*/
