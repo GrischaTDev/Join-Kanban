@@ -91,7 +91,7 @@ body {
     display: flex;
     width: 100%;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 32px;
     cursor: pointer;
 }
@@ -216,7 +216,7 @@ input:focus-visible {
 
 .legalTopics {
     position: absolute;
-    bottom: 20px;
+    bottom: 22px;
     display: flex;
     gap: 16px;
 }
@@ -235,9 +235,30 @@ input:focus-visible {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: lightblue;
     }
 
+    .logo {
+        width: 100px;
+        height: 122px;
+    }
+    
+    /* Logo postion after animation!! */
+      @keyframes move-to-top-left {
+        from {
+          top: 50%;
+          left: 50%;
+          fill: #fff;
+        }
+        to {
+          top: 150px;
+          left: 130px;
+          fill: #2A3647;
+        }
+      }
+
+    .titel-border {
+        width: 120px;
+    }
     .logInBox {
         width: 652px;
         height: 493px;
@@ -246,9 +267,68 @@ input:focus-visible {
         gap: 32px;
     }
 
+    .inputBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+        width: 422px;
+    }
+
+    .inputField {
+        width: 422px;
+    }
+
+    .checkbox {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        justify-content: flex-start;
+        width: 83%;
+    }
+
     .buttonBox {
         display: flex;
         flex-direction: row;
         gap: 35px;
+    }
+
+    .logInButton {
+       width: 110px; 
+    }
+
+    .signUp {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 35px;
+        top: 67px;
+        right: 60px;
+        bottom: inherit;
+    }
+
+    .legalTopics {
+        position: absolute;
+        bottom: 40px;
+        display: flex;
+        gap: 16px;
+    }
+
+    .legalTopics a:hover {
+        color: var(--Ligth-blue);
+        font-weight: 700;
+    }
+  }
+
+  @media screen and (min-width: 1400px) {
+    .signUp {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 35px;
+        top: 67px;
+        right: 122px;
+        bottom: inherit;
     }
   }
