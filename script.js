@@ -15,3 +15,11 @@ async function includeHTML() {
         }
     }
 }
+
+function openLegalNoticeSidebar(){
+    document.getElementById('legal_notice_sidebar').classList.remove('d-none');
+}
+
+function closeLegalNoticeSidebar(){
+    document.getElementById('legal_notice_sidebar').classList.add('d-none');
+}
