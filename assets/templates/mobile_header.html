@@ -1,4 +1,9 @@
 <header>
     <img class="logo" src="/assets/img/join-logo.svg" alt="Join Logo">
-    <img class="user" src="/assets/img/user_profile.svg" alt="User Profile">
+    <img onclick="openLegalNoticeSidebar()" class="user" src="/assets/img/user_profile.svg" alt="User Profile">
+    <div id="legal_notice_sidebar" class="legal_notice_sidebar d-none">
+        <div class="legal_notice_button" onclick="openLegalNotice()">Legal Notice</div>
+        <div class="legal_notice_button" onclick="openPrivacyPolicy()">Privacy Policy</div>
+        <div class="legal_notice_button" href=".../index.html">Log out</div>
+    </div>
 </header>
