@@ -30,7 +30,7 @@
       opacity: 0;
       display: none;
     }
-  }
+}
 
 .greating-guest {
     display: flex;
@@ -44,6 +44,10 @@
 .content {
     height: 100%;
     margin: 125px 16px;
+}
+
+.summary-content {
+    margin: 60px 60px;
 }
 
 .titel-box {
@@ -161,8 +165,5 @@
         display: flex;
     }
 
-    .content {
-        height: 100%;
-        margin: 125px 0 0 96px;
-    }
+
   }
