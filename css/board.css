@@ -130,13 +130,14 @@ span {
 /*-no_tasks-END*/
 /*-card-section*/
 .all-cards {
+
   display: flex;
   justify-content: flex-start;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 0 16px;
-  max-width: 400px;
-  max-height: 263px;
+  padding: 16px;
+  width: 100%;
+  height: 300px;
   box-sizing: border-box;
 }
 
