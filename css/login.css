@@ -245,7 +245,7 @@ input:focus-visible {
     }
 
     .loadAnimation {
-        background-color: var(--white);
+        background-color: var(--background);
     }
 
     .logo-white {
