@@ -15,7 +15,7 @@ body {
     background-color: #2A3647;
     opacity: 1;
     animation: change-background 1s ease forwards;
-    animation-delay: 1s;
+    animation-delay: 0.5s;
     z-index: 100;
   }
   
@@ -25,7 +25,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     animation: move-to-top-left 1s ease forwards;
-    animation-delay: 1s;
+    animation-delay: 0.5s;
     z-index: 101;
   }
   
@@ -238,23 +238,36 @@ input:focus-visible {
     }
 
     .logo {
-        width: 100px;
-        height: 122px;
+        height: 334px;
+        width: 274px;
+        animation: move-to-top-left 1s ease forwards;
+        animation-delay: 0.5s;
+    }
+
+    .loadAnimation {
+        background-color: var(--white);
+    }
+
+    .logo-white {
+        fill: var(--dark-blue);
     }
     
-    /* Logo postion after animation!! */
+    /* Logo postion after animation!!  */
       @keyframes move-to-top-left {
         from {
           top: 50%;
           left: 50%;
-          fill: #fff;
+          height: 334px;
+          width: 274px;
         }
         to {
           top: 150px;
           left: 130px;
           fill: #2A3647;
+          width: 100px;
+          height: 122px;
         }
-      }
+    }
 
     .titel-border {
         width: 120px;
