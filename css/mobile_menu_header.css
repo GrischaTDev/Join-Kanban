@@ -57,3 +57,14 @@ menu {
 .menu-tab:hover {
     background-color: #091931;
 }
+
+@media screen and (min-width: 800px) {
+    .mobile-menu {
+        display: none;
+    }
+
+    .mobile-header {
+        display: none;
+    }
+}
+

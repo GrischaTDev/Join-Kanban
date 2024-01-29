@@ -1,0 +1,76 @@
+/* HEADER */
+
+/* header {
+    display: flex;
+    padding: 20px 16px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0;
+    z-index: 20;
+} */
+
+.user {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+/* MENU */
+
+.desktop-menu {
+    height: 100%;
+    width: 232px;
+    padding: 64px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 150px;
+    background-color: var(--dark-blue);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.desktop-menu-logo {
+    width: 100px;
+    height:122px;
+}
+
+.logo-white {
+    fill: #fff;
+}
+
+.desktop-menu-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+    width: 232px;
+}
+
+.desktop-menu-tab {
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 8px 0px 8px 56px;
+    width: 232px;
+    height: 46px;
+}
+
+.desktop-menu-tab:hover {
+    background-color: #091931;
+}
+
+
+@media screen and (max-width: 800px) {
+    .desktop-menu {
+        display: none;
+    }
+  }
