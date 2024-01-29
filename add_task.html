@@ -38,7 +38,7 @@
             </button>
             <button class="priority-button" id="medium">
                 Medium
-                <img src="/assets/img/prio medium.svg" alt="Medium Image">
+                <img src="/assets/img/prio-medium.svg" alt="Medium Image">
             </button>
             <button class="priority-button" id="low">
                 Low
@@ -48,33 +48,34 @@
 
 
         <span>Due a date<span class="red-asterisk">*</span></span>
-        <input class="input-task" type="date" id="dueDate" style="color: rgb(209, 209, 209);"
+        <input class="input-task-date" type="date" id="dueDate" style="color: rgb(209, 209, 209);"
             placeholder="Select a Due Date" />
 
         <span>Category<span class="red-asterisk">*</span></span>
-        <div class="custom-dropdown">
-            <select class="input-task" id="categorySelect" onchange="updatePlaceholder()">
+        <div class="dropdown">
+            <select class="input-task-select" id="categorySelect" onchange="updatePlaceholder()">
                 <option value="" disabled selected>Select a Category</option>
                 <option value="technical-task">Technical Task</option>
                 <option value="user-story">User Story</option>
             </select>
-        </div>
+            <div class="dropdown"></div>
 
 
         <span>Assigned to</span>
-        <div class="custom-dropdown">
-            <select class="input-task" id="userSelect" onchange="updatePlaceholder()">
+    
+            <select class="input-task-select" id="userSelect" onchange="updatePlaceholder()">
                 <option value="" disabled selected>Select contacts to assign</option>
             </select>
-        </div>
+            <div class="dropdown"></div>
 
 
         <span>Subtask</span>
-        <div class="custom-dropdown">
-            <select class="input-task" id="subtaskSelect" onchange="updatePlaceholder()">
+        
+            <select class="input-task-select" id="subtaskSelect" onchange="updatePlaceholder()">
                 <option value="" disabled selected>Select contacts to assign</option>
             </select>
-        </div>
+            <div class="dropdown"></div>
+        
     
 
 

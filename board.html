@@ -13,10 +13,9 @@
     <script src="/js/board.js"></script>
 </head>
 
-<body onload="loadMenu()">
+<body class="body-board" onload="loadMenu()">
     <div w3-include-html="/assets/templates/mobile_header.html"></div>
 
-    <div class="board-body">
 
         <div class="task-topic">
             <h1>Board</h1>
@@ -42,99 +41,10 @@
             </a>
 
         </div>
-        <div class="all-cards">
-            <div class="card-section">
-                <div class="card">
-                    <div class="card-category">User Story</div>
-                    <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
-                    <div class="card-discription">Build start page with recipe recommendation</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill-empty"></div>
-                        </div>
-                        <div class="progress-text">0/2 Subtasks</div>
-                    </div>
-                    <div class="user-priority-container">
-                        <div class="user-container">
-                            <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
-                            <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
-                            <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
-                        </div>
-                        <div class="priority-symbols">
-                            <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
-                                onclick="changeImage('symbolUrgent')">
-                            <img id="symbol2" src="/assets/img/prio medium.svg" alt="Symbol 2"
-                                onclick="changeImage('symbolMedium')">
-                            <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
-                                onclick="changeImage('symbolLow')">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-section">
-                <div class="card">
-                    <div class="card-category">User Story</div>
-                    <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
-                    <div class="card-discription">Build start page with recipe recommendation</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill-empty"></div>
-                        </div>
-                        <div class="progress-text">0/2 Subtasks</div>
-                    </div>
-                    <div class="user-priority-container">
-                        <div class="user-container">
-                            <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
-                            <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
-                            <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
-                        </div>
-                        <div class="priority-symbols">
-                            <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
-                                onclick="changeImage('symbolUrgent')">
-                            <img id="symbol2" src="/assets/img/prio medium.svg" alt="Symbol 2"
-                                onclick="changeImage('symbolMedium')">
-                            <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
-                                onclick="changeImage('symbolLow')">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="card-section">
-                <div class="card">
-                    <div class="card-category">User Story</div>
-                    <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
-                    <div class="card-discription">Build start page with recipe recommendation</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill-empty"></div>
-                        </div>
-                        <div class="progress-text">0/2 Subtasks</div>
-                    </div>
-                    <div class="user-priority-container">
-                        <div class="user-container">
-                            <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
-                            <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
-                            <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
-                        </div>
-                        <div class="priority-symbols">
-                            <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
-                                onclick="changeImage('symbolUrgent')">
-                            <img id="symbol2" src="/assets/img/prio medium.svg" alt="Symbol 2"
-                                onclick="changeImage('symbolMedium')">
-                            <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
-                                onclick="changeImage('symbolLow')">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
 
         <div>
             <div class="no-tasks">
-                <h3>No tasks To do</h3>
+                <span>No tasks To do</span>
             </div>
         </div>
         <div class="headlines-container" id="inprogress">
@@ -155,7 +65,7 @@
                         <div class="progress-bar">
                             <div class="progress-fill-half"></div>
                         </div>
-                        <div class="progress-text">1/2 Subtasks</div>
+                        <div class="progress-text">0/2 Subtasks</div>
                     </div>
                     <div class="user-priority-container">
                         <div class="user-container">
@@ -166,7 +76,65 @@
                         <div class="priority-symbols">
                             <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
                                 onclick="changeImage('symbolUrgent')">
-                            <img id="symbol2" src="/assets/img/prio medium.svg" alt="Symbol 2"
+                            <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
+                                onclick="changeImage('symbolMedium')">
+                            <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
+                                onclick="changeImage('symbolLow')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-section">
+                <div class="card">
+                    <div class="card-category">User Story</div>
+                    <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
+                    <div class="card-discription">Build start page with recipe recommendation</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill-half"></div>
+                        </div>
+                        <div class="progress-text">0/2 Subtasks</div>
+                    </div>
+                    <div class="user-priority-container">
+                        <div class="user-container">
+                            <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
+                            <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
+                            <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
+                        </div>
+                        <div class="priority-symbols">
+                            <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
+                                onclick="changeImage('symbolUrgent')">
+                            <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
+                                onclick="changeImage('symbolMedium')">
+                            <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
+                                onclick="changeImage('symbolLow')">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-section">
+                <div class="card">
+                    <div class="card-category">User Story</div>
+                    <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
+                    <div class="card-discription">Build start page with recipe recommendation</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill-half"></div>
+                        </div>
+                        <div class="progress-text">0/2 Subtasks</div>
+                    </div>
+                    <div class="user-priority-container">
+                        <div class="user-container">
+                            <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
+                            <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
+                            <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
+                        </div>
+                        <div class="priority-symbols">
+                            <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
+                                onclick="changeImage('symbolUrgent')">
+                            <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
                                 onclick="changeImage('symbolMedium')">
                             <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
                                 onclick="changeImage('symbolLow')">
@@ -195,7 +163,7 @@
                         <div class="progress-bar">
                             <div class="progress-fill-full"></div>
                         </div>
-                        <div class="progress-text">2/2 Subtasks</div>
+                        <div class="progress-text">0/2 Subtasks</div>
                     </div>
                     <div class="user-priority-container">
                         <div class="user-container">
@@ -206,7 +174,65 @@
                         <div class="priority-symbols">
                             <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
                                 onclick="changeImage('symbolUrgent')">
-                            <img id="symbol2" src="/assets/img/prio medium.svg" alt="Symbol 2"
+                            <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
+                                onclick="changeImage('symbolMedium')">
+                            <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
+                                onclick="changeImage('symbolLow')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-section">
+                <div class="card">
+                    <div class="card-category">User Story</div>
+                    <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
+                    <div class="card-discription">Build start page with recipe recommendation</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill-full"></div>
+                        </div>
+                        <div class="progress-text">0/2 Subtasks</div>
+                    </div>
+                    <div class="user-priority-container">
+                        <div class="user-container">
+                            <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
+                            <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
+                            <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
+                        </div>
+                        <div class="priority-symbols">
+                            <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
+                                onclick="changeImage('symbolUrgent')">
+                            <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
+                                onclick="changeImage('symbolMedium')">
+                            <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
+                                onclick="changeImage('symbolLow')">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-section">
+                <div class="card">
+                    <div class="card-category">User Story</div>
+                    <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
+                    <div class="card-discription">Build start page with recipe recommendation</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill-full"></div>
+                        </div>
+                        <div class="progress-text">0/2 Subtasks</div>
+                    </div>
+                    <div class="user-priority-container">
+                        <div class="user-container">
+                            <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
+                            <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
+                            <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
+                        </div>
+                        <div class="priority-symbols">
+                            <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
+                                onclick="changeImage('symbolUrgent')">
+                            <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
                                 onclick="changeImage('symbolMedium')">
                             <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
                                 onclick="changeImage('symbolLow')">
@@ -218,43 +244,103 @@
         </div>
 
 
-        <div class="headlines-container" id="done">
+        <div class="headlines-container-done" id="done">
             <div class="section-done">
                 <h2>Done</h2>
 
 
                 <div class="all-cards">
-                    <div class="card">
-                        <div class="card-category">User Story</div>
-                        <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
-                        <div class="card-discription">Build start page with recipe recommendation</div>
-                        <div class="progress-container">
-                            <div class="progress-bar">
-                                <div class="progress-fill-full"></div>
+                    <div class="card-section">
+                        <div class="card">
+                            <div class="card-category">User Story</div>
+                            <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
+                            <div class="card-discription">Build start page with recipe recommendation</div>
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill-full"></div>
+                                </div>
+                                <div class="progress-text">0/2 Subtasks</div>
                             </div>
-                            <div class="progress-text">2/2 Subtasks</div>
-                        </div>
-                        <div class="user-priority-container">
-                            <div class="user-container">
-                                <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
-                                <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
-                                <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
-                            </div>
-                            <div class="priority-symbols">
-                                <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
-                                    onclick="changeImage('symbolUrgent')">
-                                <img id="symbol2" src="/assets/img/prio medium.svg" alt="Symbol 2"
-                                    onclick="changeImage('symbolMedium')">
-                                <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
-                                    onclick="changeImage('symbolLow')">
+                            <div class="user-priority-container">
+                                <div class="user-container">
+                                    <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
+                                    <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
+                                    <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
+                                </div>
+                                <div class="priority-symbols">
+                                    <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
+                                        onclick="changeImage('symbolUrgent')">
+                                    <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
+                                        onclick="changeImage('symbolMedium')">
+                                    <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
+                                        onclick="changeImage('symbolLow')">
+                                </div>
                             </div>
                         </div>
                     </div>
-
+        
+                    <div class="card-section">
+                        <div class="card">
+                            <div class="card-category">User Story</div>
+                            <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
+                            <div class="card-discription">Build start page with recipe recommendation</div>
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill-full"></div>
+                                </div>
+                                <div class="progress-text">0/2 Subtasks</div>
+                            </div>
+                            <div class="user-priority-container">
+                                <div class="user-container">
+                                    <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
+                                    <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
+                                    <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
+                                </div>
+                                <div class="priority-symbols">
+                                    <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
+                                        onclick="changeImage('symbolUrgent')">
+                                    <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
+                                        onclick="changeImage('symbolMedium')">
+                                    <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
+                                        onclick="changeImage('symbolLow')">
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+                    <div class="card-section">
+                        <div class="card">
+                            <div class="card-category">User Story</div>
+                            <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
+                            <div class="card-discription">Build start page with recipe recommendation</div>
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill-full"></div>
+                                </div>
+                                <div class="progress-text">0/2 Subtasks</div>
+                            </div>
+                            <div class="user-priority-container">
+                                <div class="user-container">
+                                    <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
+                                    <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
+                                    <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
+                                </div>
+                                <div class="priority-symbols">
+                                    <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
+                                        onclick="changeImage('symbolUrgent')">
+                                    <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
+                                        onclick="changeImage('symbolMedium')">
+                                    <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
+                                        onclick="changeImage('symbolLow')">
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
 
 
     <div w3-include-html="/assets/templates/mobile_menu.html"></div>
