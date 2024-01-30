@@ -1,64 +1,68 @@
 /* Project Color */
 :root {
-    --white: #fff;
-    --black: #000;
-    --dark-blue: #2A3647;
-    --Ligth-blue: #29ABE2;
-    --background: #F6F7F8;
-    --gray: #CDCDCD;
-    --dark-gray: #A8A8A8;
+  --white: #fff;
+  --black: #000;
+  --dark-blue: #2a3647;
+  --Ligth-blue: #29abe2;
+  --background: #f6f7f8;
+  --gray: #cdcdcd;
+  --dark-gray: #a8a8a8;
 }
-
 
 /* Global styles */
 body {
-    margin: 0;
-    background: var(--background);
-    font-size: 16px;
-    font-family: 'Inter', sans-serif;
+  margin: 0;
+  background: var(--background);
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
 }
 
 .d-none {
-    display: none;
+  display: none;
 }
 
 h1 {
-    color: var(--black);
-    font-size: 47px;
-    font-weight: 700;
-    margin: 0;
+  color: var(--black);
+  font-size: 47px;
+  font-weight: 700;
+  margin: 0;
 }
 
 h2 {
-    color: var(--dark-blue);
-    font-size: 36px;
-    font-weight: 400;
-    margin: 0;
+  color: var(--dark-blue);
+  font-size: 36px;
+  font-weight: 400;
+  margin: 0;
 }
 
 h3 {
-    color: var(--dark-blue);
-    font-size: 20px;
-    font-weight: 400;
-    margin: 0;
+  color: var(--dark-blue);
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
 }
 
 h4 {
-    color: var(--dark-blue);
-    font-size: 20px;
-    font-weight: 400;
-    margin: 0;
+  color: var(--dark-blue);
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
 }
 
 h5 {
-    color: var(--dark-blue);
-    font-size: 14px;
-    font-weight: 400;
-    margin: 0;
+  color: var(--dark-blue);
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+}
+h6 {
+  color: var(--dark-blue);
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 700;
 }
 
 .anchor-style {
-    color: var(--black);
-    text-decoration: none;
+  color: var(--black);
+  text-decoration: none;
 }
-

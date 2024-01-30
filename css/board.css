@@ -1,7 +1,13 @@
 .body-board{
   margin-left: 16px;
   margin-right: 16px;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
+}
+h2{
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 700;
+
 }
 .plus-button {
   height: 20px;
@@ -23,18 +29,14 @@
 }
 
 .task-topic {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: white; /* Add a background color if needed */
+  margin-top: 120px;
   height: 47px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000; /* Set a higher z-index to make sure it appears above other elements */
-  width: 100%;
 }
+
 .search-container {
   flex: 1;
   height: 48px;
@@ -283,6 +285,8 @@ span {
 /*-card-section-END*/
 /*done-section*/
 .headlines-container-done{
+  margin-top: -30px;
+height: 44px;
 width: 100%;
 }
 
