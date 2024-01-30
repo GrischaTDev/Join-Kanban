@@ -1,25 +1,5 @@
-/* HEADER */
-
-.desktop-header {
-    width: 100%;
-    padding: 20px 40px 20px 140px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
-}
-
-.user {
-    width: 40px;
-    height: 40px;
-    flex-shrink: 0;
-}
-
-/* MENU */
-
 .desktop-menu {
-    height: 100vh;
+    height: 100%;
     width: 232px;
     padding: 64px 0;
     display: flex;
@@ -30,7 +10,7 @@
     background-color: var(--dark-blue);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
     box-sizing: border-box;
-    position: relative;
+    position: absolute;
     z-index: 50;
 }
 

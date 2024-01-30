@@ -168,7 +168,7 @@
 
     .content {
         width: 100%;
-        margin: 180px 96px;
+        margin: 180px 331px;
     }
 
     .titel-box {
@@ -185,6 +185,10 @@
         align-items: center;
         justify-content: flex-start;
         gap: 30px;
+    }
+
+    .summary-title h5 {
+        font-size: 27px;
     }
 
     .desktop-summary-border {
