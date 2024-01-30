@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/summary.css">
     <link rel="stylesheet" href="css/mobile_menu_header.css">
+    <link rel="stylesheet" href="css/desktop_menu.css">
     <script src="script.js"></script>
     <title>Summary</title>
 </head>
 
 <body onload="loadMenu()">
-    <div w3-include-html="assets/templates/mobile_header.html"></div>
+    <div w3-include-html="assets/templates/header.html"></div>
+    <div w3-include-html="assets/templates/desktop_menu.html"></div>
 
     <div class="greating-user">
         <h2>Good morning,</h2>
@@ -85,7 +87,7 @@
         </div>
     </div>
 
-    <div w3-include-html="assets/templates/mobile_menu.html"></div>
+    <div class="mobile-menu" w3-include-html="assets/templates/mobile_menu.html"></div>
 </body>
 
 </html>

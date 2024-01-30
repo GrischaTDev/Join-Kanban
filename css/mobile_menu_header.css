@@ -83,6 +83,32 @@ menu {
     cursor: pointer;
 }
 
+@media screen and (max-width: 800px) {
+    .desktop-menu {
+        display: none;
+    }
+    .desktop {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .mobile-menu {
+        display: none;
+    }
+    .mobile {
+        display: none;
+    }
+
+    header {
+        padding: 20px 40px 20px 400px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+
+    }
+}
 
 @keyframes move-from-right-to-screen {
     from {
