@@ -1,7 +1,10 @@
 <header>
     <img class="logo mobile" src="/assets/img/join-logo.svg" alt="Join Logo">
     <h4 class="desktop">Kanban Project Management Tool</h4>
-    <img onclick="openLegalNoticeSidebar()" class="user" src="/assets/img/user_profile.svg" alt="User Profile">
+    <div class="help-and-user-icons">
+        <img class="help" src="./assets/img/help_icon.svg" alt="">
+        <img onclick="openLegalNoticeSidebar()" class="user" src="./assets/img/user_profile.svg" alt="User Profile">
+    </div>
 
     <div onclick="moveLegalNoticeSidebarFromScreenToRight()" id="legal_notice_sidebar_screen" class="legal_notice_sidebar_screen d-none">
         <div id="legal_notice_sidebar" class="legal_notice_sidebar">
@@ -11,7 +14,4 @@
             <div class="legal_notice_button" href=".../index.html">Log out</div>
         </div>
     </div>
-
-    
-
 </header>
