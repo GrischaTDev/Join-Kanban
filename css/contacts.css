@@ -7,6 +7,10 @@ body {
     box-sizing: border-box;
 }
 
+.contacts_background {
+    
+}
+
 a {
     color: #fff;
     text-decoration: none;
@@ -87,11 +91,7 @@ p {
     margin-right: 10px;
 }
 
-.add_contacts_button_box {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-}
+.add_contacts_button_box {}
 
 .add_contacts_button {
     display: flex;
@@ -450,8 +450,18 @@ p {
     }
 }
 
-@media(min-width:800px) {
+@media(max-width:800px) {
+    .add_contacts_button_box {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+    }
+}
 
+@media(min-width:800px) {
+    .add_contacts_button_box {
+        height: 100vh;
+    }
 }
 
 @media(max-width:700px) {
@@ -462,13 +472,13 @@ p {
     .contacts_list_box {
         width: 100%;
     }
-    
+
 }
 
 @media(min-width:700px) {
-.contacts_list_box {
+    .contacts_list_box {
         width: 400px;
     }
 
-    
+
 }
