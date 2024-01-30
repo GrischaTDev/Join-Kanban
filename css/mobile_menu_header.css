@@ -108,12 +108,33 @@ menu {
     }
 
     header {
-        padding: 20px 40px 20px 400px;
+        padding: 20px 40px 20px 350px;
         position: fixed;
         top: 0;
         right: 0;
         left: 0;
 
+    }
+
+    .help-and-user-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .user {
+        width: 56px;
+        height: 56px;
+    }
+
+    .help {
+        cursor: pointer;
+    }
+
+    .help:hover {
+        width: 39px;
+        height: 40px;
     }
 }
 

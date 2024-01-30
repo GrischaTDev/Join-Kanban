@@ -120,6 +120,7 @@
 
 .urgent-number {
     display: flex;
+    align-items: center;
     gap: 18px;
 }
 
@@ -165,5 +166,124 @@
         display: flex;
     }
 
+    .content {
+        width: 100%;
+        margin: 180px 331px;
+    }
 
-  }
+    .titel-box {
+        margin-bottom: 32px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 12px;
+    }
+
+    .summary-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 30px;
+    }
+
+    .summary-title h5 {
+        font-size: 27px;
+    }
+
+    .desktop-summary-border {
+        background-color: var(--Ligth-blue);
+        width: 3px;
+        height: 59px;
+    }
+
+    .mobile-summary-border {
+        display: none;
+    }
+
+    h1 {
+        font-size: 61px;
+    }
+
+    h5 {
+        font-size: 20px;
+    }
+
+    .left-and-right-column {
+        display: flex;
+        gap: 80px;
+
+    }
+
+    .summary-box-row-1 {
+        width: 560px;
+        height: 168px;
+        gap: 32px;
+    }
+
+    .row-1-box {
+        width: 264px;
+        height: 168px;
+        gap: 18px;
+    }
+
+    .row-1-box img {
+        width: 69px;
+        height: 69px;
+
+    }
+
+    .number-and-name {
+        font-size: 64px;
+    }
+    
+    .right-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .summary-box-row-2 {
+        width: 560px;
+        height: 168px;
+        gap: 61px;
+    }
+
+    .urgent-number img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .urgent-data {
+        font-size: 21px;
+    }
+
+    .urgent-data h5 {
+        font-size: 16px;
+    }
+
+    .summary-box-row-3 {
+        width: 560px;
+        height: 168px;
+        gap: 32px;
+    }
+
+    .how-many-task {
+        width: 168px;
+        height: 168px;
+        gap: 28px;
+    }
+    
+    .right-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .right-column {
+        display: none;
+    }
+}
