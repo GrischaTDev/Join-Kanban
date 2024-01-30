@@ -16,27 +16,39 @@
 
 <body onload="loadMenu(), initContactList()">
     <div w3-include-html="assets/templates/header.html"></div>
-    <div class="contacts_list_box">
+    
+    <div class="contacts_container" id="contacts_container">
+        <div class="contacts_list_box">
 
-
-
-
-
-        <div class="contacts_list" id="contacts_list_container"></div>
-        <div class="confirmation_container d-none" id="contact_created_confirmation">
-            <div class="contact_created_confirmation">
-                <p>Contact succesfully created</p>
+            <div class="contacts_list" id="contacts_list_container"></div>
+            <div class="confirmation_container d-none" id="contact_created_confirmation">
+                <div class="contact_created_confirmation">
+                    <p>Contact succesfully created</p>
+                </div>
             </div>
-        </div>
 
 
-        <div class="add_contacts_button_box">
-            <div onclick="openAddContactCard()" class="add_contacts_button"><img src="./assets/img/add_person_icon.svg"
-                    alt=""> </div>
+            <div class="add_contacts_button_box">
+                <div onclick="openAddContactCard()" class="add_contacts_button"><img
+                        src="./assets/img/add_person_icon.svg" alt=""> </div>
+            </div>
+
         </div>
+
+        <div class="whiteboard_container" id="whiteboard_container">
+            
+            <div class="whiteboard_headline_box">
+                <div><h1 style="color: black !important;">Contacts</h1></div>
+                <div class="blue_line_vertical"></div>
+                <div><h3>Better with a team</h3></div>
+            </div>
+
+            <div></div>
+
+        </div>
+
 
     </div>
-
 
 
     <div id="addContactScreen" class="d-none add_contact_card-bg " onclick="hideAddCardToBottomFromScreen()">
@@ -318,7 +330,7 @@
             </div>
         </div>
 
-        <div onclick="moveFromScreenToRight()" id="edit_delete_contact_popup_screen"
+        <div onclick="moveEditDeleteContactPopupFromScreenToRight()" id="edit_delete_contact_popup_screen"
             class="edit_delete_contact_popup_screen d-none">
             <div class="edit_delete_contact_popup" id="edit_delete_contact_popup">
                 <div class="fill_icon" onclick="openEditContactCard()" class="edit_delete_buttons">

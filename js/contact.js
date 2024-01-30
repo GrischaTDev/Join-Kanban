@@ -155,10 +155,12 @@ function closeShowContact() {
 
 function openEditDeleteContactPopup() {
     document.getElementById('edit_delete_contact_popup_screen').classList.remove('d-none');
+    document.getElementById('edit_delete_contact_popup').classList.add('move-from-right-to-screen');
 }
 
-function moveFromScreenToRight() {
+function moveEditDeleteContactPopupFromScreenToRight() {
     document.getElementById('edit_delete_contact_popup').classList.add('move-from-screen-to-right');
+    document.getElementById('edit_delete_contact_popup_screen').classList.remove('d-none');
     setTimeout(closeEditDeleteContactPopup, 1000);
 }
 
@@ -166,6 +168,7 @@ function closeEditDeleteContactPopup() {
     document.getElementById('edit_delete_contact_popup').classList.remove('move-from-screen-to-right');
     document.getElementById('edit_delete_contact_popup_screen').classList.add('d-none');
 }
+
 
 
 function showContactCreatedConfirmation(){
