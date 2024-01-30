@@ -60,33 +60,3 @@ h5 {
     text-decoration: none;
 }
 
-.legal_notice_sidebar-screen {
-    position: absolute;
-height: 100vh;
-width: 100vw;
-}
-
-.legal_notice_sidebar {
-    padding: 10px;
-    background-color: #2A3647;
-    border-radius: 20px 0px 20px 20px;
-    position: fixed;
-    right: 9px;
-    top: 62px;
-    animation: move-from-right-to-screen 1000ms ease forwards;
-}
-
-.legal_notice_button {
-    padding: 10px;
-    color: rgb(205,205,205);
-    cursor: pointer;
-}
-
-@keyframes move-from-right-to-screen {
-    from {
-        margin-right: -1500px;
-    }
-    to {
-        margin-right: 0;
-    }
-}

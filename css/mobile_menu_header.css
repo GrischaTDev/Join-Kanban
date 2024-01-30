@@ -58,3 +58,48 @@ menu {
 .menu-tab:hover {
     background-color: #091931;
 }
+
+.legal_notice_sidebar_screen {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.legal_notice_sidebar {
+    padding: 10px;
+    background-color: #2A3647;
+    border-radius: 20px 0px 20px 20px;
+    position: fixed;
+    right: 9px;
+    top: 62px;
+    animation: move-from-right-to-screen 1000ms ease forwards;
+}
+
+.legal_notice_button {
+    padding: 10px;
+    color: rgb(205, 205, 205);
+    cursor: pointer;
+}
+
+
+@keyframes move-from-right-to-screen {
+    from {
+        margin-right: -1500px;
+    }
+
+    to {
+        margin-right: 0;
+    }
+}
+
+@keyframes move-from-screen-to-right {
+    from {
+        margin-right: 0;
+    }
+
+    to {
+        margin-right: -1500px;
+    }
+}

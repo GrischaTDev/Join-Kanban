@@ -117,7 +117,13 @@ function openAddContactCard() {
     document.getElementById('addContactScreen').classList.remove('d-none');
 }
 
+function hideAddCardToBottomFromScreen() {
+    document.getElementById('addContactScreen').classList.add('hide-to-bottom-from-screen');
+    setTimeout(closeAddContactCard, 1000);
+}
+
 function closeAddContactCard() {
+    document.getElementById('addContactScreen').classList.remove('hide-to-bottom-from-screen');
     document.getElementById('addContactScreen').classList.add('d-none');
 }
 
@@ -125,7 +131,13 @@ function openEditContactCard() {
     document.getElementById('editContactScreen').classList.remove('d-none');
 }
 
+function hideEditCardToBottomFromScreen(){
+    document.getElementById('editContactScreen').classList.add('hide-to-bottom-from-screen');
+    setTimeout(closeEditContactCard, 1000);
+}
+
 function closeEditContactCard() {
+    document.getElementById('editContactScreen').classList.remove('hide-to-bottom-from-screen');
     document.getElementById('editContactScreen').classList.add('d-none');
 }
 
@@ -142,11 +154,17 @@ function closeShowContact() {
 }
 
 function openEditDeleteContactPopup() {
-    document.getElementById('edit_delete_contact_popup').classList.remove('d-none');
+    document.getElementById('edit_delete_contact_popup_screen').classList.remove('d-none');
+}
+
+function moveFromScreenToRight() {
+    document.getElementById('edit_delete_contact_popup').classList.add('move-from-screen-to-right');
+    setTimeout(closeEditDeleteContactPopup, 1000);
 }
 
 function closeEditDeleteContactPopup() {
-    document.getElementById('edit_delete_contact_popup').classList.add('d-none');
+    document.getElementById('edit_delete_contact_popup').classList.remove('move-from-screen-to-right');
+    document.getElementById('edit_delete_contact_popup_screen').classList.add('d-none');
 }
 
 

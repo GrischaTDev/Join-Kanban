@@ -17,9 +17,17 @@ async function includeHTML() {
 }
 
 function openLegalNoticeSidebar(){
+    document.getElementById('legal_notice_sidebar_screen').classList.remove('d-none');
     document.getElementById('legal_notice_sidebar').classList.remove('d-none');
+}
+
+function moveFromScreenToRight(){
+    document.getElementById('legal_notice_sidebar').classList.remove('move-from-right-to-screen');
+    document.getElementById('legal_notice_sidebar').classList.add('move-from-screen-to-right');
+    closeLegalNoticeSidebar();
 }
 
 function closeLegalNoticeSidebar(){
     document.getElementById('legal_notice_sidebar').classList.add('d-none');
+    document.getElementById('legal_notice_sidebar_screen').classList.add('d-none');
 }
