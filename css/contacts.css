@@ -65,7 +65,7 @@ p {
     flex-direction: column;
     position: relative;
     padding-top: 80px;
-    padding-bottom: 170px
+    /*padding-bottom: 170px;*/
 }
 
 .letter_box {
@@ -294,7 +294,7 @@ p {
     border-radius: 20px 20px 0px 20px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     overflow: hidden;
-    
+
 }
 
 .edit_delete_buttons {
@@ -305,7 +305,7 @@ p {
 }
 
 .edit_delete_buttons:hover {
-    color:#29ABE2 !important;
+    color: #29ABE2 !important;
     fill: #29ABE2 !important;
 }
 
@@ -334,9 +334,9 @@ p {
     justify-content: center;
 }
 
-.fill_icon:hover path{
+.fill_icon:hover path {
     fill: #29ABE2;
-    
+
 }
 
 .hide-to-bottom-from-screen {
@@ -348,6 +348,7 @@ p {
 }
 
 .text_templates {
+    position: absolute;
     z-index: 3;
     margin-top: 80px;
     margin-bottom: 80px;
@@ -357,35 +358,73 @@ p {
 }
 
 .move-from-right-to-screen {
-animation: move-from-right-to-screen 1000ms ease forwards;
+    animation: move-from-right-to-screen 1000ms ease forwards;
 }
 
 .move-from-screen-to-right {
     animation: move-from-screen-to-right 1000ms ease forwards;
 }
 
+.contacts_container {
+    display: flex;
+}
 
+.whiteboard_container {
+    display: flex;
+    margin-top: 80px;
+    width: 100%;
+    justify-content: center;
+}
+
+.whiteboard_headline_box {
+    width: 100%;
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.blue_line_vertical {
+    background-color: #29ABE2;
+    width: 3px;
+    height: 59px;
+    border-radius: 3px;
+}
 
 @keyframes move-from-botton-to-screen {
     from {
         margin-bottom: -1800px;
     }
+
     to {
         margin-bottom: 0;
     }
 }
 
 @keyframes move-to-and-hide-from-screen {
-    0% {margin-bottom: -1500px;}
-    15% {margin-bottom: 0;}
-    85% {margin-bottom: 0;}
-    100% {margin-bottom: -1500px;}
+    0% {
+        margin-bottom: -1500px;
+    }
+
+    15% {
+        margin-bottom: 0;
+    }
+
+    85% {
+        margin-bottom: 0;
+    }
+
+    100% {
+        margin-bottom: -1500px;
+    }
 }
 
 @keyframes move-from-right-to-screen {
     from {
         margin-right: -1500px;
     }
+
     to {
         margin-right: 0;
     }
@@ -395,6 +434,7 @@ animation: move-from-right-to-screen 1000ms ease forwards;
     from {
         margin-right: 0;
     }
+
     to {
         margin-right: -1500px;
     }
@@ -404,7 +444,31 @@ animation: move-from-right-to-screen 1000ms ease forwards;
     from {
         margin-bottom: 0;
     }
+
     to {
         margin-bottom: -1800px;
     }
+}
+
+@media(min-width:800px) {
+
+}
+
+@media(max-width:700px) {
+    .whiteboard_container {
+        display: none;
+    }
+
+    .contacts_list_box {
+        width: 100%;
+    }
+    
+}
+
+@media(min-width:700px) {
+.contacts_list_box {
+        width: 400px;
+    }
+
+    
 }

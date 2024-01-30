@@ -30,3 +30,9 @@ function closeLegalNoticeSidebar() {
     document.getElementById('legal_notice_sidebar').classList.remove('move-from-screen-to-right');
     document.getElementById('legal_notice_sidebar_screen').classList.add('d-none');
 }
+
+function openHelp(){
+    openShowContact();
+    document.getElementById('showContactContainer').classList.add('d-none');
+    document.getElementById('help_popup').classList.remove('d-none');
+}

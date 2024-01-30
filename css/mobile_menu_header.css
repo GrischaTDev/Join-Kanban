@@ -119,7 +119,7 @@ menu {
 
 @keyframes move-from-right-to-screen {
     from {
-        margin-right: -1500px;
+        margin-right: -200px;
     }
 
     to {
@@ -133,6 +133,6 @@ menu {
     }
 
     to {
-        margin-right: -1500px;
+        margin-right: -200px;
     }
 }
