@@ -10,20 +10,6 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
-/* header {
-    display: flex;
-    padding: 20px 16px;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    left: 0;
-    z-index: 20;
-} */
-
 .user {
     width: 40px;
     height: 40px;
@@ -77,6 +63,10 @@
     width: 232px;
     height: 46px;
     text-decoration: none;
+}
+
+.desktop-menu-tab img {
+    width: 30px;
 }
 
 .desktop-menu-tab:hover {
