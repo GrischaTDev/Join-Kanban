@@ -16,7 +16,7 @@ a {
 }
 
 .d-none {
-    display: none !important;
+    display: none;
 }
 
 h1 {
@@ -294,7 +294,7 @@ p {
     border-radius: 20px 20px 0px 20px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     overflow: hidden;
-    animation: move-from-right-to-screen 1000ms ease forwards;
+    
 }
 
 .edit_delete_buttons {
@@ -355,6 +355,16 @@ p {
     width: 100%;
     padding-left: 10px;
 }
+
+.move-from-right-to-screen {
+animation: move-from-right-to-screen 1000ms ease forwards;
+}
+
+.move-from-screen-to-right {
+    animation: move-from-screen-to-right 1000ms ease forwards;
+}
+
+
 
 @keyframes move-from-botton-to-screen {
     from {

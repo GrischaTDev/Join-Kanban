@@ -74,7 +74,14 @@ menu {
     position: fixed;
     right: 9px;
     top: 62px;
+}
+
+.move-from-right-to-screen {
     animation: move-from-right-to-screen 1000ms ease forwards;
+}
+
+.move-from-screen-to-right {
+    animation: move-from-screen-to-right 1000ms ease forwards;
 }
 
 .legal_notice_button {
