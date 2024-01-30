@@ -73,15 +73,15 @@ menu {
     border-radius: 20px 0px 20px 20px;
     position: fixed;
     right: 9px;
-    top: 62px;
+    top: 80px;
 }
 
 .move-from-right-to-screen {
-    animation: move-from-right-to-screen 1000ms ease forwards;
+    animation: move-from-right-to-screen 500ms ease forwards;
 }
 
 .move-from-screen-to-right {
-    animation: move-from-screen-to-right 1000ms ease forwards;
+    animation: move-from-screen-to-right 500ms ease forwards;
 }
 
 .legal_notice_button {

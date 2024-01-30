@@ -11,12 +11,14 @@
     <link rel="stylesheet" href="./css/contacts.css">
     <link rel="stylesheet" href="./css/mobile_menu_header.css">
     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="./css/desktop_menu.css">
+    
 </head>
 
 <body onload="loadMenu(), initContactList()">
     <div w3-include-html="assets/templates/header.html"></div>
-    
+    <div w3-include-html="assets/templates/desktop_menu.html"></div>
+
     <div class="contacts_container" id="contacts_container">
         <div class="contacts_list_box">
 
@@ -32,6 +34,8 @@
                 <div onclick="openAddContactCard()" class="add_contacts_button"><img
                         src="./assets/img/add_person_icon.svg" alt=""> </div>
             </div>
+
+            
 
         </div>
 
@@ -373,7 +377,6 @@
     </div>
 
     <div w3-include-html="assets/templates/mobile_menu.html"></div>
-
 
 </body>
 
