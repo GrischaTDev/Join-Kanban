@@ -13,7 +13,10 @@
 </head>
 
 <body>
-    <div class="complete_board_popup">
+    <div id="incomePopup" class="income-popup">
+
+    <div id="completeBoardPopup" class="complete_board_popup">
+
         <div class="board_popup">
             <div class="flex_container_head">
                 <div class="task_popup">
@@ -28,8 +31,9 @@
             <div class="header_popup">
                 <h2>Kochwelt Page & Recipe Recommender</h2>
             </div>
-            <p>Build start page with recipe recommendation.</p>
-
+            <div class="p-element">
+                <p>Build start page with recipe recommendation.</p>
+            </div>
             <div class="due_date_popup">
                 <p style="color: #42526E;">Due Date:</p>
                 <p id="variable_date">05/05/2024</p>
@@ -65,17 +69,23 @@
                 <div class="edit-delete" id="edit">
                     <a class="button-delete-edit" href="#" onclick="editTask()">
                         <img class="edit-delete-img" src="/assets/img/delete_icon.svg" alt="Bild plus Button" />
-                        <div class="text-container">Delete</div></a>
+                        <div class="text-container">Delete</div>
+                    </a>
 
                     <a class="button-delete-edit" href="#" onclick="editTask()">
                         <img class="edit-delete-img" src="/assets/img/edit_icon.svg" alt="Bild plus Button" />
-                        <div class="text-container">Edit</div></a>
+                        <div class="text-container">Edit</div>
+                    </a>
                 </div>
 
 
             </div>
         </div>
+
     </div>
+
+</div>
+
 
     </div>
     </div>
