@@ -99,7 +99,7 @@
 .row-1-box {
     background-color: #ffffff;
     display: flex;
-    width: 186px;
+    width: 100%;
     height: 110px;
     border-radius: 20px;
     justify-content: center;
@@ -139,7 +139,7 @@
 
 .how-many-task-box {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     gap: 24px;
     flex-shrink: 0;
@@ -171,8 +171,8 @@
 @media screen and (min-width: 800px) {
 
     .content {
-        width: 100%;
-        margin: 160px 310px;
+        margin: 160px 0 0 310px;
+        box-sizing: border-box;
     }
 
     .titel-box {
@@ -215,44 +215,50 @@
 
     }
 
-    .summary-boxes {
-        width: 500px;
-        gap: 24px;
-    }
-
     .summary-box-row-1 {
         width: 100%;
-        height: 168px;
         gap: 32px;
+    }
+
+    .summary-boxes {
+        gap: 18px;
     }
 
     .row-1-box {
         width: 100%;
-        height: 168px;
         gap: 18px;
     }
 
-    .row-1-box img {
-        width: 50px;
-        height: 50px;
+    .row-1-box:hover {
+        color: var(--white);
+        background-color: var(--dark-blue);
+    }
 
+    .row-1-box:hover .change-svg .svg-color {
+        fill: var(--white);
+    }
+
+    .row-1-box:hover .change-svg .svg-color2 {
+        fill: var(--dark-blue);
     }
     
-    .right-column {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+    .row-1-box:hover h5 {
+        color: var(--white);
+    }
+
+    .row-1-box img {
+        width: 45px;
+        height: 45px;
+
     }
 
     .summary-box-row-2 {
-        width: 100%;
-        height: 168px;
-        gap: 61px;
+        gap: 35px;
     }
 
     .urgent-number img {
-        width: 60px;
-        height: 60px;
+        width: 35px;
+        height: 35px;
     }
 
     .urgent-data {
@@ -265,20 +271,30 @@
 
     .summary-box-row-3 {
         width: 100%;
-        height: 168px;
         gap: 32px;
     }
 
     .how-many-task {
-        width: 168px;
-        height: 168px;
-        gap: 28px;
+        width: 120px;
+        height: 120px;
     }
     
     .right-column {
         display: flex;
         flex-direction: column;
         justify-content: center;
+    }
+
+    .right-column h2 {
+        font-size: 30px;
+    }
+
+    .greating-titel {
+        font-size: 40px;
+    }
+
+    .number-and-name {
+        font-size: 36px;
     }
 }
 
