@@ -1,13 +1,12 @@
-.body-board{
+.body-board {
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 150px;
 }
-h2{
+h2 {
   font-size: 27px;
   font-style: normal;
   font-weight: 700;
-
 }
 .plus-button {
   height: 20px;
@@ -99,7 +98,6 @@ h2{
   border-radius: 30%;
   border: 2px solid #ffffff;
   filter: invert(1);
-  
 }
 
 .headlines-container {
@@ -110,7 +108,7 @@ h2{
   justify-content: space-between;
   align-items: center;
 }
-.headlines-container-done{
+.headlines-container-done {
   width: 90%;
 }
 
@@ -136,7 +134,6 @@ span {
 /*-no_tasks-END*/
 /*-card-section*/
 .all-cards {
-
   display: flex;
   justify-content: flex-start;
   overflow-x: auto;
@@ -284,9 +281,155 @@ span {
 }
 /*-card-section-END*/
 /*done-section*/
-.headlines-container-done{
+.headlines-container-done {
   margin-top: -30px;
-height: 44px;
-width: 100%;
+  height: 44px;
+  width: 100%;
 }
 
+/*done-section-END*/
+/*-popup-*/
+.complete_board_popup {
+  margin: 50px 20px;
+  height: 90vh;
+  width: 90vw;
+  background-color: white;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: all 220ms ease-in-out !important;
+  animation: moveFromRightToScreen 500ms ease forwards;
+}
+
+@keyframes moveFromRightToScreen {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.flex_container_head {
+  display: flex;
+}
+
+.board_popup {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.img_popup {
+  width: 24px;
+  height: 24px;
+  filter: invert(100%);
+}
+.task_popup {
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18px;
+  width: 105px;
+  background-color: #0038ff;
+  color: white;
+  padding: 4px;
+}
+.header_popup {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.priority_popup,
+.due_date_popup {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+.assigned_popup {
+  width: 100%;
+}
+.initials_circle {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 40px;
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+}
+
+.close_icon_box {
+  width: 65%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: rgb(255, 246, 246);
+}
+.subtask_container {
+  height: 19px;
+  margin-bottom: 0px;
+}
+.user_popup_container {
+  padding: 7px 16px;
+  display: flex;
+  align-items: center;
+}
+.user_popup_item {
+  padding: 0px 12px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff; 
+}
+
+.subtask_checkbox {
+  width: 18px;
+  height: 18px;
+  margin-right: 16px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  border: 2px solid #000; 
+  border-radius: 4px; 
+  outline: none; 
+}
+
+.subtask_checkbox:checked {
+  background-color: #ffffff; 
+}
+
+.subtask_checkbox:checked::before {
+  content: "\2713"; 
+  display: block;
+  text-align: center;
+  color: #000000; 
+  font-size: 20px;
+  font-weight: bold; 
+  line-height: 1;
+  margin-top: -5px; 
+  margin-right: -4px;
+  margin-left: 1px; 
+  
+}
+.edit-delete{
+  width: 98%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0px 7px;
+}
+.button-delete-edit{
+ 
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  padding: 16px 8px;
+}
+.edit-delete-img{
+  height: 24px;
+  width: 24px;
+}
+.text-container{
+ padding-left: 8px;
+}
