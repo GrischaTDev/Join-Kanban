@@ -61,11 +61,10 @@ p {
 .contacts_list_box {
     height: 100%;
     display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+    flex-direction: column-reverse;
     position: relative;
-    padding-top: 80px;
-    /*padding-bottom: 170px;*/
+    /* padding-bottom: 170px; */
+    box-sizing: border-box;
 }
 
 .letter_box {
@@ -363,6 +362,7 @@ p {
 
 .contacts_container {
     display: flex;
+
 }
 
 .whiteboard_container {
@@ -452,15 +452,11 @@ p {
         bottom: 90px;
         right: 20px;
     }
-}
 
-@media(min-width:800px) {
-    .add_contacts_button_box {
-        height: 100vh;
+    .contacts_list_box {
+        padding-top: 80px;
     }
-}
 
-@media(max-width:700px) {
     .whiteboard_container {
         display: none;
     }
@@ -469,12 +465,25 @@ p {
         width: 100%;
     }
 
+    .add_contacts_button {}
 }
 
-@media(min-width:700px) {
-    .contacts_list_box {
-        width: 400px;
+@media(min-width:800px) {
+
+    .add_contacts_button {
+        border-radius: 10px;
     }
 
+    .contacts_list_box {
+        width: 40%;
+        padding: 20px;
+        flex-direction: column;
+    }
 
+    .contacts_container {
+        margin-top: 96px;
+        margin-left: 232px;
+        height: calc(100vh - 96px);
+        width: calc(100vw - 232px);
+    }
 }
