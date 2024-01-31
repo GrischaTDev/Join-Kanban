@@ -159,12 +159,131 @@
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
+/* Disable content on mobile */
+@media screen and (max-width: 800px) {
 
+    .right-column {
+        display: none;
+    }
+}
+
+/* Responsiv for laptop */
 @media screen and (min-width: 800px) {
 
-    body {
-        display: flex;
+    .content {
+        width: 100%;
+        margin: 160px 310px;
     }
+
+    .titel-box {
+        margin-bottom: 32px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 12px;
+    }
+
+    .summary-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 30px;
+    }
+
+    .desktop-summary-border {
+        background-color: var(--Ligth-blue);
+        width: 3px;
+        height: 48px;
+    }
+
+    .mobile-summary-border {
+        display: none;
+    }
+
+    h5 {
+        font-size: 16px;
+    }
+
+    .summary-title h5 {
+        font-size: 20px;
+    }
+
+    .left-and-right-column {
+        display: flex;
+        gap: 80px;
+
+    }
+
+    .summary-boxes {
+        width: 500px;
+        gap: 24px;
+    }
+
+    .summary-box-row-1 {
+        width: 100%;
+        height: 168px;
+        gap: 32px;
+    }
+
+    .row-1-box {
+        width: 100%;
+        height: 168px;
+        gap: 18px;
+    }
+
+    .row-1-box img {
+        width: 50px;
+        height: 50px;
+
+    }
+    
+    .right-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .summary-box-row-2 {
+        width: 100%;
+        height: 168px;
+        gap: 61px;
+    }
+
+    .urgent-number img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .urgent-data {
+        font-size: 21px;
+    }
+
+    .urgent-data h5 {
+        font-size: 16px;
+    }
+
+    .summary-box-row-3 {
+        width: 100%;
+        height: 168px;
+        gap: 32px;
+    }
+
+    .how-many-task {
+        width: 168px;
+        height: 168px;
+        gap: 28px;
+    }
+    
+    .right-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+/* Responsiv for desktop */
+@media screen and (min-width: 1600px) {
 
     .content {
         width: 100%;
@@ -281,9 +400,3 @@
     }
 }
 
-@media screen and (max-width: 800px) {
-
-    .right-column {
-        display: none;
-    }
-}

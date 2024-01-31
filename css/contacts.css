@@ -38,6 +38,10 @@ p {
     margin-top: 5px;
 }
 
+.contacts_list {
+    overflow-y:auto;
+}
+
 .contact_list_snippet_box {
     display: flex;
     padding: 16px 10px;
@@ -362,7 +366,7 @@ p {
 
 .contacts_container {
     display: flex;
-
+    
 }
 
 .whiteboard_container {
@@ -468,16 +472,19 @@ p {
     .add_contacts_button {}
 }
 
-@media(min-width:800px) {
+@media(min-width:801px) {
 
     .add_contacts_button {
         border-radius: 10px;
+        margin: 10px;
     }
 
     .contacts_list_box {
-        width: 40%;
-        padding: 20px;
-        flex-direction: column;
+        min-width: 380px;
+    max-width: 456px;
+    padding: 20px;
+    flex-direction: column;
+    box-shadow: 4px, 5px, 6px, 5px rgba(0, 0, 0, 1.0);
     }
 
     .contacts_container {
@@ -485,5 +492,6 @@ p {
         margin-left: 232px;
         height: calc(100vh - 96px);
         width: calc(100vw - 232px);
+        
     }
 }
