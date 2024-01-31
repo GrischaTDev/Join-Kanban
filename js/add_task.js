@@ -1,14 +1,11 @@
-//-category//
-function updatePlaceholder() {
-    var select = document.getElementById("categorySelect");
-    var inputTask = document.getElementById("taskTitle");
+function showPopup() {
+    console.log('Showing popup');
+    document.getElementById('incomePopup').classList.remove('d-none');
+    document.getElementById('incomePopup').classList.add('income-popup');
+}
 
-    if (select.value === "technical-task") {
-        inputTask.placeholder = "Enter a Technical Task";
-    } else if (select.value === "user-story") {
-        inputTask.placeholder = "Enter a User Story";
-    } else {
-        inputTask.placeholder = "Select a Category";
-    }
-} 
-//category-END//
+function closePopup() {
+    console.log('Closing popup');
+    document.getElementById('incomePopup').classList.add('d-none');
+    document.getElementById('incomePopup').classList.remove('income-popup');
+}
