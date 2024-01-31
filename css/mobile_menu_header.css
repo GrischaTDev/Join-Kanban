@@ -73,8 +73,15 @@ menu {
     border-radius: 20px 0px 20px 20px;
     position: fixed;
     right: 9px;
-    top: 62px;
-    animation: move-from-right-to-screen 1000ms ease forwards;
+    top: 84px;
+}
+
+.move-from-right-to-screen {
+    animation: move-from-right-to-screen 250ms ease forwards;
+}
+
+.move-from-screen-to-right {
+    animation: move-from-screen-to-right 250ms ease forwards;
 }
 
 .legal_notice_button {
@@ -101,18 +108,44 @@ menu {
     }
 
     header {
-        padding: 20px 40px 20px 400px;
+        padding: 20px 40px 20px 350px;
         position: fixed;
         top: 0;
         right: 0;
         left: 0;
 
     }
+
+    .help-and-user-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .user {
+        width: 56px;
+        height: 56px;
+    }
+
+    .help {
+        cursor: pointer;
+    }
+
+    .help:hover {
+        width: 39px;
+        height: 40px;
+    }
+
+    .legal_notice_sidebar {
+        top: 96px;
+    }
+
 }
 
 @keyframes move-from-right-to-screen {
     from {
-        margin-right: -1500px;
+        margin-right: -200px;
     }
 
     to {
@@ -126,6 +159,6 @@ menu {
     }
 
     to {
-        margin-right: -1500px;
+        margin-right: -200px;
     }
 }
