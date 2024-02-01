@@ -16,6 +16,19 @@ async function includeHTML() {
     }
 }
 
+
+function openHelp() {
+    document.getElementById('help').classList.remove('d-none');
+}
+
+function openLegalNotice() {
+    document.getElementById('legal_notice').classList.remove('d-none');
+}
+
+function openPrivacyPolicy() {
+    document.getElementById('privacy_policy').classList.remove('d-none');
+}
+
 function openLegalNoticeSidebar() {
     document.getElementById('legal_notice_sidebar_screen').classList.remove('d-none');
     document.getElementById('legal_notice_sidebar').classList.add('move-from-right-to-screen');
@@ -31,8 +44,9 @@ function closeLegalNoticeSidebar() {
     document.getElementById('legal_notice_sidebar_screen').classList.add('d-none');
 }
 
-function openHelp(){
-    openShowContact();
-    document.getElementById('showContactContainer').classList.add('d-none');
-    document.getElementById('help_popup').classList.remove('d-none');
+
+
+
+function goBack() {
+    window.history.back();
 }

@@ -55,6 +55,7 @@ h5 {
   font-weight: 400;
   margin: 0;
 }
+
 h6 {
   color: var(--dark-blue);
   font-size: 27px;
@@ -67,26 +68,46 @@ h6 {
   text-decoration: none;
 }
 
+.help {
+  cursor: pointer;
+}
+
+.text_templates {
+  margin-top: 100px;
+  margin-bottom: 80px;
+  width: 100%;
+  padding: 10px;
+}
+
+.arrow_left {
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  z-index: 5;
+  cursor: pointer;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
-  
+
 }
 
 ::-webkit-scrollbar-track {
   /*box-shadow: inset 0 0 5px grey;*/
   border-radius: 8px;
-/*border:solid;
+  /*border:solid;
 border-width:  1px;
 border-color: rgb(168,168,168, 0.5);*/
 }
- 
+
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(168,168,168);; 
+  background: rgb(168, 168, 168);
+  ;
   border-radius: 8px;
 }
 
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(168,168,168); 
+  background: rgb(168, 168, 168);
 }
