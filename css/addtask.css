@@ -4,7 +4,7 @@
 
 
 .all-input-fields {
-  margin-top: 230px;
+  margin-top: 120px;
   margin-bottom: 230px;
   display: flex;
   flex-direction: column;
@@ -22,6 +22,9 @@
   z-index: 10; 
   width: 92%;
   height: 180px;
+}
+.task-topic {
+  margin-bottom: 30px;
 }
 
 
@@ -42,7 +45,7 @@ textarea{
   font-size: 16px;
   padding-top: 10px;
   padding-bottom: 10px;
-  width: 96%;
+  width: 95%;
   border-radius: 10px;
   border: 1px solid rgb(209, 209, 209);
   color: black;
@@ -54,7 +57,7 @@ textarea{
   padding-top: 18px;
   font-size: 17px;
   height: 44px;
-  width: 96%;
+  width: 95%;
   border-radius: 10px;
   border: 1px solid rgb(209, 209, 209);
   color: black;
@@ -118,7 +121,7 @@ textarea{
   font-size: 16px;
   padding-top: 10px;
   padding-bottom: 10px;
-  width: 96%;
+  width: 100%;
   border-radius: 10px;
   border: 1px solid rgb(209, 209, 209);
   color: black;
@@ -132,11 +135,11 @@ textarea{
 .input-task-select {
   margin-top: 8px;
   margin-bottom: 32px;
-  width: 103%;
+  width: 102%;
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 16px;
-  padding-right: 16px; 
+  padding-right: 16px;
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid rgb(209, 209, 209);

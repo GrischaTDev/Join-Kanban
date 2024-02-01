@@ -44,9 +44,11 @@ function closeLegalNoticeSidebar() {
     document.getElementById('legal_notice_sidebar_screen').classList.add('d-none');
 }
 
-
-
-
 function goBack() {
     window.history.back();
+}
+
+function openHelp(){
+    document.getElementById('showContactContainer').classList.add('d-none');
+    document.getElementById('help_popup').classList.remove('d-none');
 }
