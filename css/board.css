@@ -1,4 +1,4 @@
-.body-board {
+.content {
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 150px;
@@ -469,17 +469,21 @@ span {
 }
 
 
-@media screen and (min-width: 1600px) {
-
-.h1{
-  font-size: 61px;
+/* Responsiv for laptop */
+@media screen and (min-width: 800px) {
+  .content {
+    margin: 160px 0 0 310px;
+  }
+  .desktop-h1 {
+    font-size: 61px;
+  }
+  .desktop-button-add-task{
+    display: flex;
+  }
+  .desktop-search-container {
+    margin-top: -46px;
+    width: 312px;
+    height: 48px;
+    margin-left: 1200px;
+  }
 }
-.task-topic{
-  font-size: 60px;
-}
-.body-board{
-  margin-left: 350px;
-}
-}
-
-

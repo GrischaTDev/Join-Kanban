@@ -45,7 +45,7 @@ textarea{
   font-size: 16px;
   padding-top: 10px;
   padding-bottom: 10px;
-  width: 95%;
+  width: 93%;
   border-radius: 10px;
   border: 1px solid rgb(209, 209, 209);
   color: black;
@@ -57,7 +57,7 @@ textarea{
   padding-top: 18px;
   font-size: 17px;
   height: 44px;
-  width: 95%;
+  width: 93%;
   border-radius: 10px;
   border: 1px solid rgb(209, 209, 209);
   color: black;
@@ -135,7 +135,7 @@ textarea{
 .input-task-select {
   margin-top: 8px;
   margin-bottom: 32px;
-  width: 102%;
+  width: 100%;
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 16px;
