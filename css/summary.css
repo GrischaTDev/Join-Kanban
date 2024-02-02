@@ -82,6 +82,45 @@
     gap: 24px;
 }
 
+.box-row-1 {
+    background-color: #ffffff;
+    display: flex;
+    width: 100%;
+    height: 110px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.box-row-1:hover {
+    color: var(--white);
+    background-color: var(--dark-blue);
+}
+
+.box-row-1:hover .change-svg .svg-color {
+    fill: var(--white);
+}
+
+.box-row-1:hover .change-svg .svg-color2 {
+    fill: var(--dark-blue);
+}
+
+.box-row-1:hover .change-svg .svg-color3 {
+    stroke: var(--dark-blue);
+}
+
+.box-row-1:hover h5 {
+    color: var(--white);
+}
+
+.box-row-1 svg {
+    width: 45px;
+    height: 45px;
+}
+
 .summary-box-row-2 {
     background-color: #fff;
     display: flex;
@@ -95,18 +134,13 @@
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
+.summary-box-row-2:hover {
+    color: var(--white);
+    background-color: var(--dark-blue);
+}
 
-.row-1-box {
-    background-color: #ffffff;
-    display: flex;
-    width: 186px;
-    height: 110px;
-    border-radius: 20px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+.summary-box-row-2:hover h5 {
+    color: var(--white);
 }
 
 .number-and-name {
@@ -137,16 +171,25 @@
     font-weight: 700;
 }
 
-.how-many-task-box {
+.summary-box-row-3 {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     gap: 24px;
     flex-shrink: 0;
     cursor: pointer;
 }
 
-.how-many-task {
+.box-row-3:hover {
+    color: var(--white);
+    background-color: var(--dark-blue);
+}
+
+.box-row-3:hover h5 {
+    color: var(--white);
+}
+
+.box-row-3 {
     background-color: #fff;
     width: 186px;
     height: 110px;
@@ -170,9 +213,13 @@
 /* Responsiv for laptop */
 @media screen and (min-width: 800px) {
 
+    .greating-user {
+        display: none;
+    }
+
     .content {
-        width: 100%;
-        margin: 160px 310px;
+        margin: 160px 0 0 310px;
+        box-sizing: border-box;
     }
 
     .titel-box {
@@ -215,44 +262,27 @@
 
     }
 
-    .summary-boxes {
-        width: 500px;
-        gap: 24px;
-    }
-
     .summary-box-row-1 {
         width: 100%;
-        height: 168px;
         gap: 32px;
     }
 
-    .row-1-box {
-        width: 100%;
-        height: 168px;
+    .summary-boxes {
         gap: 18px;
     }
 
-    .row-1-box img {
-        width: 50px;
-        height: 50px;
-
-    }
-    
-    .right-column {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+    .box-row-1 {
+        width: 100%;
+        gap: 18px;
     }
 
     .summary-box-row-2 {
-        width: 100%;
-        height: 168px;
-        gap: 61px;
+        gap: 35px;
     }
 
     .urgent-number img {
-        width: 60px;
-        height: 60px;
+        width: 35px;
+        height: 35px;
     }
 
     .urgent-data {
@@ -265,20 +295,30 @@
 
     .summary-box-row-3 {
         width: 100%;
-        height: 168px;
         gap: 32px;
     }
 
-    .how-many-task {
-        width: 168px;
-        height: 168px;
-        gap: 28px;
+    .box-row-3 {
+        width: 120px;
+        height: 120px;
     }
     
     .right-column {
         display: flex;
         flex-direction: column;
         justify-content: center;
+    }
+
+    .right-column h2 {
+        font-size: 30px;
+    }
+
+    .greating-titel {
+        font-size: 40px;
+    }
+
+    .number-and-name {
+        font-size: 36px;
     }
 }
 
@@ -340,16 +380,15 @@
         gap: 32px;
     }
 
-    .row-1-box {
+    .box-row-1 {
         width: 264px;
         height: 168px;
         gap: 18px;
     }
 
-    .row-1-box img {
+    .box-row-1 svg {
         width: 69px;
         height: 69px;
-
     }
 
     .number-and-name {
@@ -387,7 +426,7 @@
         gap: 32px;
     }
 
-    .how-many-task {
+    .box-row-3 {
         width: 168px;
         height: 168px;
         gap: 28px;

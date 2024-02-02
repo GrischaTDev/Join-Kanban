@@ -28,6 +28,26 @@ p {
     font-size: 20px;
 }
 
+.z_index1 {
+    z-index: 1;
+}
+
+.z_index2 {
+    z-index: 2;
+}
+
+.z_index3 {
+    z-index: 3;
+}
+
+.z_index4 {
+    z-index: 4;
+}
+
+.z_index5 {
+    z-index: 5;
+}
+
 .contacts_name {
     font-size: 18px;
 }
@@ -39,7 +59,8 @@ p {
 }
 
 .contacts_list {
-    overflow-y:auto;
+    overflow-y: auto;
+    background-color: white;
 }
 
 .contact_list_snippet_box {
@@ -99,6 +120,9 @@ p {
     background-color: #2A3647;
     border-radius: 50%;
     padding: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .add_contacts_button:hover {
@@ -127,7 +151,7 @@ p {
     flex-direction: column;
     overflow: hidden;
     transition: all 220ms ease-in-out !important;
-    animation: move-from-botton-to-screen 500ms ease forwards;
+
 }
 
 .add_contact_card_header {
@@ -147,7 +171,6 @@ p {
     align-items: center;
     height: 100%;
     justify-content: space-evenly;
-    margin-top: -100px;
 
 }
 
@@ -158,10 +181,17 @@ p {
     padding-right: 18px;
 }
 
-.blue_line {
+.blue_line_horizontal {
     background-color: #29ABE2;
     height: 3px;
     width: 90px;
+    border-radius: 3px;
+}
+
+.blue_line_vertical {
+    background-color: #29ABE2;
+    width: 3px;
+    height: 59px;
     border-radius: 3px;
 }
 
@@ -185,6 +215,10 @@ p {
 .input_icon {
     margin-left: -30px;
     cursor: pointer;
+}
+
+.popup_logo {
+    padding: 5px;
 }
 
 .submit_create_contact_button {
@@ -238,7 +272,6 @@ p {
 }
 
 .showContactContainer {
-    position: fixed;
     margin-top: 80px;
     margin-bottom: 80px;
     background-color: white;
@@ -273,7 +306,7 @@ p {
 }
 
 .edit_delete_contact_popup_screen {
-    z-index: 1;
+    z-index: 6;
     top: 0;
     right: 0;
     bottom: 0;
@@ -283,7 +316,7 @@ p {
 
 .edit_delete_contact_popup {
     background-color: white;
-    z-index: 2;
+    z-index: 7;
     bottom: 90px;
     right: 20px;
     display: flex;
@@ -297,6 +330,7 @@ p {
 }
 
 .edit_delete_buttons {
+    cursor: pointer !important;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -306,6 +340,7 @@ p {
 .edit_delete_buttons:hover {
     color: #29ABE2 !important;
     fill: #29ABE2 !important;
+    cursor: pointer !important;
 }
 
 .contact_created_confirmation {
@@ -321,7 +356,27 @@ p {
     font-size: 20px;
     padding: 10px;
     font-weight: 400;
+
+}
+
+.move-to-and-hide-from-screen {
     animation: move-to-and-hide-from-screen 2000ms ease forwards;
+}
+
+.hide-to-bottom-from-screen {
+    animation: hide-to-bottom-from-screen 1000ms ease forwards;
+}
+
+.move-from-screen-to-right {
+    animation: move-from-screen-to-right 1000ms ease forwards;
+}
+
+.move-from-right-to-screen {
+    animation: move-from-right-to-screen 1000ms ease forwards;
+}
+
+.move-from-screen-to-right {
+    animation: move-from-screen-to-right 1000ms ease forwards;
 }
 
 .confirmation_container {
@@ -335,15 +390,6 @@ p {
 
 .fill_icon:hover path {
     fill: #29ABE2;
-
-}
-
-.hide-to-bottom-from-screen {
-    animation: hide-to-bottom-from-screen 1000ms ease forwards;
-}
-
-.move-from-screen-to-right {
-    animation: move-from-screen-to-right 1000ms ease forwards;
 }
 
 .text_templates {
@@ -356,40 +402,21 @@ p {
     padding-left: 10px;
 }
 
-.move-from-right-to-screen {
-    animation: move-from-right-to-screen 1000ms ease forwards;
-}
-
-.move-from-screen-to-right {
-    animation: move-from-screen-to-right 1000ms ease forwards;
-}
-
 .contacts_container {
     display: flex;
-    
 }
 
-.whiteboard_container {
+
+
+.add_new_contact_text {
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.contacts_slogan_desktop {
     display: flex;
-    margin-top: 80px;
-    width: 100%;
-    justify-content: center;
-}
-
-.whiteboard_headline_box {
-    width: 100%;
-    display: flex;
-    height: 100px;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-
-.blue_line_vertical {
-    background-color: #29ABE2;
-    width: 3px;
-    height: 59px;
-    border-radius: 3px;
+    padding-top: 40px;
 }
 
 @keyframes move-from-botton-to-screen {
@@ -451,6 +478,12 @@ p {
 }
 
 @media(max-width:800px) {
+
+    .add_contact_card {
+        animation: move-from-botton-to-screen 500ms ease forwards;
+        max-width: 480px;
+    }
+
     .add_contacts_button_box {
         position: fixed;
         bottom: 90px;
@@ -459,17 +492,31 @@ p {
 
     .contacts_list_box {
         padding-top: 80px;
-    }
-
-    .whiteboard_container {
-        display: none;
-    }
-
-    .contacts_list_box {
         width: 100%;
     }
 
-    .add_contacts_button {}
+    .add_new_contact_text {
+        text-align: center;
+    }
+
+    .showContactContainer {
+
+        position: fixed;
+    }
+
+    .popup_logo {
+        display: none;
+    }
+
+    .add_contact_card_footer {
+        margin-top: -100px;
+    }
+
+
+    .contact_created_confirmation {
+        animation: move-to-and-hide-from-screen 2000ms ease forwards;
+    }
+
 }
 
 @media(min-width:801px) {
@@ -477,21 +524,113 @@ p {
     .add_contacts_button {
         border-radius: 10px;
         margin: 10px;
+
     }
 
     .contacts_list_box {
-        min-width: 380px;
-    max-width: 456px;
-    padding: 20px;
-    flex-direction: column;
-    box-shadow: 4px, 5px, 6px, 5px rgba(0, 0, 0, 1.0);
+        min-width: 285px;
+        width: 556px;
+        padding: 20px;
+        flex-direction: column;
+        box-shadow: 4px, 5px, 6px, 5px rgba(0, 0, 0, 1.0);
     }
 
     .contacts_container {
+
         margin-top: 96px;
         margin-left: 232px;
         height: calc(100vh - 96px);
         width: calc(100vw - 232px);
-        
     }
+
+    .show_contact_desktop_version {
+        width: 100%;
+        margin: 0;
+        padding-right: 10px;
+        height: 100%;
+    }
+
+    #open_sidebar_button {
+        display: none;
+    }
+
+    .close_icon_box {
+        display: none;
+    }
+
+    .add_contact_card {
+        height: 70vh;
+        width: 80vw;
+        min-width: 780px;
+        flex-direction: row;
+        max-height: 500px;
+    }
+
+    .add_contact_card_header {
+        height: 100%;
+        width: 40%;
+        justify-content: center;
+        padding: 0px 10px;
+    }
+
+    .add_contact_card_footer {
+        display: flex;
+        width: 70%;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: row;
+    }
+
+    .add_contact_card_footer_desktop {
+        height: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .inputfields {
+        display: flex;
+        flex-direction: column;
+        height: 80%;
+        justify-content: space-evenly;
+    }
+
+    .popup_close_icon {
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
+    }
+
+    .showContactFooterBox {
+        animation: move-from-right-to-screen 250ms ease forwards !important;
+    }
+
+}
+
+@media(min-width:1001px) {
+
+    .showContactHeadline {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #blue_line_horizontal_show_contacts_container_desktop {
+        display: none;
+    }
+
+}
+
+@media(max-width:1000px) {
+
+
+    .blue_line_vertical {
+        height: 44px;
+    }
+
+    #blue_line_vertical_show_contacts_container_desktop {
+        display: none;
+    }
+
 }
