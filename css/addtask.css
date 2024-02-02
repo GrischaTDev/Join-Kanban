@@ -4,14 +4,13 @@
 
 
 .content {
-  margin: 160px 16px;
-  display: flex;
-  flex-direction: column;
-  width: 90%;
+  margin: 130px 16px 30px 16px;
+  height: 100vh;
 }
 
 .input-container {
   margin-top: 40px;
+  box-sizing: border-box;
 }
 
 
@@ -20,13 +19,55 @@
 .header-container {
   display: flex;
   align-items: flex-end;
-  background-color: #F6F7F8; 
-  z-index: 10; 
+  background-color: #F6F7F8;
+  margin-bottom: 38px;
 }
 .task-topic {
   margin-bottom: 30px;
 }
 
+
+/**********************************/
+.add-task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.add-task-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.add-task-title {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.add-task-title input {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid rgb(209, 209, 209);
+  font-family: "Inter", sans-serif;
+}
+
+.add-task-border {
+  display: none;
+}
+
+.add-task-title textarea {
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 0;
+  border-radius: 10px;
+  border: 1px solid rgb(209, 209, 209);
+  height: 60px;
+  font-family: "Inter", sans-serif;
+}
+/**********************************/
 
 /*-topic-end*/
 /*-title-*/
@@ -66,11 +107,9 @@ textarea{
 /*-title-END-*/
 /*-priority-section-*/
 .priority-buttons {
-    margin-top: 8px;
-    margin-bottom: 32px;
     display: flex;
-    justify-content: space-around;
-    gap: 8px;
+    justify-content: space-between;
+    gap: 16px;
     width: 100%;
 }
 
@@ -78,7 +117,7 @@ textarea{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 121px;
+    width: 100%;
     height: 41px;
     border-radius: 10px;
     border: 1px solid rgb(209, 209, 209);
@@ -116,12 +155,10 @@ textarea{
 /*-priority-section-END-*/
 /* due-a-date-section*/
 .input-task-date {
-  margin-bottom: 32px;
-  margin-top: 8px;
+  display: flex;
   font-size: 16px;
   padding-top: 10px;
   padding-bottom: 10px;
-  width: 100%;
   border-radius: 10px;
   border: 1px solid rgb(209, 209, 209);
   color: black;
@@ -133,8 +170,6 @@ textarea{
 
 
 .input-task-select {
-  margin-top: 8px;
-  margin-bottom: 32px;
   width: 100%;
   padding-top: 12px;
   padding-bottom: 12px;
@@ -143,12 +178,13 @@ textarea{
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid rgb(209, 209, 209);
+  font-size: 16px;
 }
 /*category-selection-END*/
 /*Create-task-button*/
 .create-task-container{
   background-color: #F6F7F8; 
-  width: 95%;
+  width: 100%;
   display: flex;
   position: fixed;
   align-items: flex-start;
@@ -157,6 +193,9 @@ textarea{
   height: 110px;
   margin-bottom: 70px;
   bottom: 0px;
+  left: 0;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .button-create{
@@ -177,5 +216,52 @@ textarea{
 @media screen and (min-width: 800px) {
   .content {
     margin: 160px 0 0 310px;
+  }
+
+  .add-task-form {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    width: 90%;
+  }
+
+  .add-task-form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .add-task-title {
+    display: flex;
+    gap: 6px;
+  }
+  
+  .add-task-title input  {
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid rgb(209, 209, 209);
+  }
+
+  .add-task-title textarea {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0;
+    border-radius: 10px;
+    border: 1px solid rgb(209, 209, 209);
+    height: 100px;
+    font-family: "Inter", sans-serif;
+  }
+  
+  .add-task-border {
+    display: flex;
+    height: 350px;
+    width: 1px;
+    background-color: rgb(209, 209, 209);
+  }
+
+  .create-task-container {
+    margin: 130px 16px 30px 16px;
   }
 }
