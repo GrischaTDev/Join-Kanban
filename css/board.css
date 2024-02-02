@@ -468,3 +468,18 @@ span {
  padding-left: 8px;
 }
 
+
+@media screen and (min-width: 1600px) {
+
+.h1{
+  font-size: 61px;
+}
+.task-topic{
+  font-size: 60px;
+}
+.body-board{
+  margin-left: 350px;
+}
+}
+
+

@@ -9,26 +9,25 @@
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/css/addtask.css">
     <link rel="stylesheet" href="css/mobile_menu_header.css">
+    <link rel="stylesheet" href="./css/desktop_menu.css">
     <script src="script.js"></script>
     <script src="/js/board.js"></script>
 </head>
 
-<body class="all-input-fields" onload="loadMenu()">
+<body onload="loadMenu()">
     <div w3-include-html="assets/templates/header.html"></div>
+    <div w3-include-html="assets/templates/desktop_menu.html"></div>
+    <div class="all-input-fields">
+        <div class="add-task-container">
+            <div class="task-topic">
+                <h1>Add Task</h1>
+            </div>
 
-    <div class="add-task-container">
-        <div class="task-topic">
-            <h1>Add Task</h1>
-        </div>
+            <span>Title<span class="red-asterisk">*</span></span>
+            <input class="input-task" type="text" id="taskTitle" placeholder="Enter a Title" />
 
-
-        <span>Title<span class="red-asterisk">*</span></span>
-        <input class="input-task" type="text" id="taskTitle" placeholder="Enter a Title" />
-
-
-        <span>Description</span>
-        <textarea class="input-task-description" id="taskDescription" placeholder="Enter a Description"></textarea>
-
+            <span>Description</span>
+            <textarea class="input-task-description" id="taskDescription" placeholder="Enter a Description"></textarea>
 
             <span>Prio</span>
             <div class="priority-buttons">
@@ -46,45 +45,35 @@
                 </button>
             </div>
 
+            <span>Due a date<span class="red-asterisk">*</span></span>
+            <input class="input-task-date" type="date" id="dueDate" style="color: rgb(209, 209, 209);"
+                placeholder="Select a Due Date" />
 
-        <span>Due a date<span class="red-asterisk">*</span></span>
-        <input class="input-task-date" type="date" id="dueDate" style="color: rgb(209, 209, 209);"
-            placeholder="Select a Due Date" />
+            <span>Category<span class="red-asterisk">*</span></span>
+            <div class="dropdown">
+                <select class="input-task-select" id="categorySelect" onchange="updatePlaceholder()">
+                    <option value="" disabled selected>Select a Category</option>
+                    <option value="technical-task">Technical Task</option>
+                    <option value="user-story">User Story</option>
+                </select>
+                <div class="dropdown"></div>
 
-        <span>Category<span class="red-asterisk">*</span></span>
-        <div class="dropdown">
-            <select class="input-task-select" id="categorySelect" onchange="updatePlaceholder()">
-                <option value="" disabled selected>Select a Category</option>
-                <option value="technical-task">Technical Task</option>
-                <option value="user-story">User Story</option>
-            </select>
-            <div class="dropdown"></div>
+                <span>Assigned to</span>
 
+                <select class="input-task-select" id="userSelect" onchange="updatePlaceholder()">
+                    <option value="" disabled selected>Select contacts to assign</option>
+                </select>
+                <div class="dropdown"></div>
 
-        <span>Assigned to</span>
-    
-            <select class="input-task-select" id="userSelect" onchange="updatePlaceholder()">
-                <option value="" disabled selected>Select contacts to assign</option>
-            </select>
-            <div class="dropdown"></div>
+                <span>Subtask</span>
 
-
-        <span>Subtask</span>
-        
-            <select class="input-task-select" id="subtaskSelect" onchange="updatePlaceholder()">
-                <option value="" disabled selected>Select contacts to assign</option>
-            </select>
-            <div class="dropdown"></div>
-        
-    
-
-
-
-    </div>
-
-
-
-    <div w3-include-html="assets/templates/mobile_menu.html"></div>
+                <select class="input-task-select" id="subtaskSelect" onchange="updatePlaceholder()">
+                    <option value="" disabled selected>Select contacts to assign</option>
+                </select>
+                <div class="dropdown"></div>
+            </div>
+        </div>
+        <div w3-include-html="assets/templates/mobile_menu.html"></div>
 </body>
 
 </html>
