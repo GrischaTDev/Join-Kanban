@@ -82,6 +82,45 @@
     gap: 24px;
 }
 
+.box-row-1 {
+    background-color: #ffffff;
+    display: flex;
+    width: 100%;
+    height: 110px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.box-row-1:hover {
+    color: var(--white);
+    background-color: var(--dark-blue);
+}
+
+.box-row-1:hover .change-svg .svg-color {
+    fill: var(--white);
+}
+
+.box-row-1:hover .change-svg .svg-color2 {
+    fill: var(--dark-blue);
+}
+
+.box-row-1:hover .change-svg .svg-color3 {
+    stroke: var(--dark-blue);
+}
+
+.box-row-1:hover h5 {
+    color: var(--white);
+}
+
+.box-row-1 svg {
+    width: 45px;
+    height: 45px;
+}
+
 .summary-box-row-2 {
     background-color: #fff;
     display: flex;
@@ -95,18 +134,13 @@
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
+.summary-box-row-2:hover {
+    color: var(--white);
+    background-color: var(--dark-blue);
+}
 
-.row-1-box {
-    background-color: #ffffff;
-    display: flex;
-    width: 100%;
-    height: 110px;
-    border-radius: 20px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+.summary-box-row-2:hover h5 {
+    color: var(--white);
 }
 
 .number-and-name {
@@ -137,7 +171,7 @@
     font-weight: 700;
 }
 
-.how-many-task-box {
+.summary-box-row-3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -146,7 +180,16 @@
     cursor: pointer;
 }
 
-.how-many-task {
+.box-row-3:hover {
+    color: var(--white);
+    background-color: var(--dark-blue);
+}
+
+.box-row-3:hover h5 {
+    color: var(--white);
+}
+
+.box-row-3 {
     background-color: #fff;
     width: 186px;
     height: 110px;
@@ -169,6 +212,10 @@
 
 /* Responsiv for laptop */
 @media screen and (min-width: 800px) {
+
+    .greating-user {
+        display: none;
+    }
 
     .content {
         margin: 160px 0 0 310px;
@@ -224,32 +271,9 @@
         gap: 18px;
     }
 
-    .row-1-box {
+    .box-row-1 {
         width: 100%;
         gap: 18px;
-    }
-
-    .row-1-box:hover {
-        color: var(--white);
-        background-color: var(--dark-blue);
-    }
-
-    .row-1-box:hover .change-svg .svg-color {
-        fill: var(--white);
-    }
-
-    .row-1-box:hover .change-svg .svg-color2 {
-        fill: var(--dark-blue);
-    }
-    
-    .row-1-box:hover h5 {
-        color: var(--white);
-    }
-
-    .row-1-box img {
-        width: 45px;
-        height: 45px;
-
     }
 
     .summary-box-row-2 {
@@ -274,7 +298,7 @@
         gap: 32px;
     }
 
-    .how-many-task {
+    .box-row-3 {
         width: 120px;
         height: 120px;
     }
@@ -356,16 +380,15 @@
         gap: 32px;
     }
 
-    .row-1-box {
+    .box-row-1 {
         width: 264px;
         height: 168px;
         gap: 18px;
     }
 
-    .row-1-box img {
+    .box-row-1 svg {
         width: 69px;
         height: 69px;
-
     }
 
     .number-and-name {
@@ -403,7 +426,7 @@
         gap: 32px;
     }
 
-    .how-many-task {
+    .box-row-3 {
         width: 168px;
         height: 168px;
         gap: 28px;
