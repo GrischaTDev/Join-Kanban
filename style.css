@@ -41,6 +41,7 @@ h3 {
   font-weight: 400;
   margin: 0;
 }
+
 h4 {
   color: var(--dark-blue);
   font-size: 20px;
@@ -62,6 +63,18 @@ h6 {
   font-weight: 700;
 }
 
+.z_index1 {
+  z-index: 1;
+}
+
+.z_index2 {
+  z-index: 2;
+}
+
+.z_index3 {
+  z-index: 3;
+}
+
 .anchor-style {
   color: var(--black);
   text-decoration: none;
@@ -78,12 +91,23 @@ h6 {
   padding: 10px;
 }
 
+
 .arrow_left {
   position: fixed;
   top: 120px;
   right: 20px;
   z-index: 5;
   cursor: pointer;
+}
+
+.help_container {
+  padding-right: 75px;
+}
+
+.text_position{
+  top:0;
+  position: absolute;
+    background-color: white;
 }
 
 ::-webkit-scrollbar {
@@ -110,3 +134,22 @@ border-color: rgb(168,168,168, 0.5);*/
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(168, 168, 168);
 }
+
+@media(max-width:800px) {
+  .help_container {
+    padding-right: 75px;
+  }
+
+  .text_templates {}
+}
+
+@media(min-width:800px) {
+  .help_container {
+    padding-right: 308px;
+  }
+
+  .text_templates {
+    margin-left: 240px;
+  }
+}
+

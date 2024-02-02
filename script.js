@@ -22,7 +22,10 @@ function openHelp() {
 }
 
 function openLegalNotice() {
-    document.getElementById('legal_notice').classList.remove('d-none');
+    
+    document.getElementById('legal_notice').classList.add('text_position, z_index3');
+    document.getElementById('legal_notice').classList.add('');
+    
 }
 
 function openPrivacyPolicy() {
