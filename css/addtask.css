@@ -161,7 +161,7 @@ textarea{
 /*Create-task-button*/
 .create-task-container{
   background-color: #F6F7F8; 
-  width: 95%;
+  width: 100%;
   display: flex;
   position: fixed;
   align-items: flex-start;
@@ -170,6 +170,9 @@ textarea{
   height: 110px;
   margin-bottom: 70px;
   bottom: 0px;
+  left: 0;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .button-create{
