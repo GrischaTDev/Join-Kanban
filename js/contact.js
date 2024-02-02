@@ -146,13 +146,17 @@ function doNotClose(event) {
 }
 
 function openShowContact() {
-    document.getElementById('showContactContainer').classList.remove('d-none');
-    document.getElementById('showContactHeaderBox').classList.remove('d-none');
+    document.getElementById('showContactContainer').classList.add('z_index5');
+    document.getElementById('showContactHeaderBox').classList.add('z_index5');
     document.getElementById('showContactFooterBox').classList.remove('d-none');
+    document.getElementById('showContactFooterBox').classList.add('z_index5');
 }
 
 function closeShowContact() {
-    document.getElementById('showContactContainer').classList.add('d-none');
+    document.getElementById('showContactContainer').classList.remove('z_index5');
+    document.getElementById('showContactHeaderBox').classList.remove('z_index5');
+    document.getElementById('showContactFooterBox').classList.remove('z_index5');
+    document.getElementById('showContactFooterBox').classList.add('d-none');
 }
 
 function openEditDeleteContactPopup() {
