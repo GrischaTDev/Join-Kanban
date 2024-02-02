@@ -4,14 +4,13 @@
 
 
 .content {
-  margin: 160px 16px;
-  display: flex;
-  flex-direction: column;
-  width: 90%;
+  margin: 130px 16px 0px 16px;
+  height: 100vh;
 }
 
 .input-container {
   margin-top: 40px;
+  box-sizing: border-box;
 }
 
 
@@ -20,13 +19,33 @@
 .header-container {
   display: flex;
   align-items: flex-end;
-  background-color: #F6F7F8; 
-  z-index: 10; 
+  background-color: #F6F7F8;
+  margin-bottom: 38px;
 }
 .task-topic {
   margin-bottom: 30px;
 }
 
+
+/**********************************/
+.add-task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.add-task-title {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.add-task-title input {
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid rgb(209, 209, 209);
+}
+/**********************************/
 
 /*-topic-end*/
 /*-title-*/
@@ -66,8 +85,6 @@ textarea{
 /*-title-END-*/
 /*-priority-section-*/
 .priority-buttons {
-    margin-top: 8px;
-    margin-bottom: 32px;
     display: flex;
     justify-content: space-around;
     gap: 8px;
@@ -116,12 +133,10 @@ textarea{
 /*-priority-section-END-*/
 /* due-a-date-section*/
 .input-task-date {
-  margin-bottom: 32px;
-  margin-top: 8px;
+  display: flex;
   font-size: 16px;
   padding-top: 10px;
   padding-bottom: 10px;
-  width: 100%;
   border-radius: 10px;
   border: 1px solid rgb(209, 209, 209);
   color: black;
@@ -133,9 +148,7 @@ textarea{
 
 
 .input-task-select {
-  margin-top: 8px;
-  margin-bottom: 32px;
-  width: 102%;
+  width: 100%;
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 16px;
