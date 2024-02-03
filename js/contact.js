@@ -74,7 +74,7 @@ function initContactList() {
             const initials = contact['given_name'][0] + contact['name'][0];
             const backgroundColor = contact['color'] ? `style="background-color: ${contact['color']};"` : '';
             document.getElementById('contacts_list_container').innerHTML += `
-                <div onclick="openShowContact()" class="contact_list_snippet_box">
+                <div onclick="openShowContact(), getContactDetails(i)" class="contact_list_snippet_box">
                     <div class="initials_circle" ${backgroundColor}>
                         ${initials}
                     </div>
@@ -150,14 +150,15 @@ function doNotClose(event) {
 }
 
 function openShowContact() {
-
     document.getElementById('contacts_list_container').classList.remove('z_index3');
     document.getElementById('showContactContainer').classList.add('z_index5');
     document.getElementById('showContactHeaderBox').classList.add('z_index5');
     document.getElementById('showContactFooterBox').classList.remove('d-none');
     document.getElementById('showContactFooterBox').classList.add('z_index5');
     document.getElementById('add_contacts_button_box').classList.remove('z_index4');
+    
 }
+
 
 function closeShowContact() {
     document.getElementById('contacts_list_container').classList.add('z_index3');
@@ -210,3 +211,4 @@ function saveEditedContact() {
     initContactList();
     showContactCreatedConfirmation();
 }
+
