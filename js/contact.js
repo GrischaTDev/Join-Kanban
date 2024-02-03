@@ -114,17 +114,23 @@ function groupContactsByFirstLetter(contacts) {
 }
 
 function openAddContactCard() {
+    document.getElementById('addContactScreen').classList.remove('hide-from-screen');
     document.getElementById('addContactScreen').classList.remove('d-none');
 }
 
 function hideAddCardToBottomFromScreen() {
-    document.getElementById('addContactScreen').classList.add('hide-to-bottom-from-screen');
-    setTimeout(closeAddContactCard, 1000);
+    document.getElementById('addContactScreen').classList.remove('move-to-screen');
+    document.getElementById('addContactScreen').classList.add('hide-from-screen');
+
+
+    setTimeout(closeAddContactCard, 800);
 }
 
 function closeAddContactCard() {
-    document.getElementById('addContactScreen').classList.remove('hide-to-bottom-from-screen');
-    document.getElementById('addContactScreen').classList.add('d-none');
+document.getElementById('addContactScreen').classList.add('d-none');
+    
+    document.getElementById('addContactScreen').classList.add('move-to-screen');
+    
 }
 
 function openEditContactCard() {
@@ -133,7 +139,7 @@ function openEditContactCard() {
 
 function hideEditCardToBottomFromScreen() {
     document.getElementById('editContactScreen').classList.add('hide-to-bottom-from-screen');
-    setTimeout(closeEditContactCard, 1000);
+    setTimeout(closeEditContactCard, 600);
 }
 
 function closeEditContactCard() {
@@ -146,17 +152,22 @@ function doNotClose(event) {
 }
 
 function openShowContact() {
+
+    document.getElementById('contacts_list_container').classList.remove('z_index3');
     document.getElementById('showContactContainer').classList.add('z_index5');
     document.getElementById('showContactHeaderBox').classList.add('z_index5');
     document.getElementById('showContactFooterBox').classList.remove('d-none');
     document.getElementById('showContactFooterBox').classList.add('z_index5');
+    document.getElementById('add_contacts_button_box').classList.remove('z_index4');
 }
 
 function closeShowContact() {
+    document.getElementById('contacts_list_container').classList.add('z_index3');
     document.getElementById('showContactContainer').classList.remove('z_index5');
     document.getElementById('showContactHeaderBox').classList.remove('z_index5');
     document.getElementById('showContactFooterBox').classList.remove('z_index5');
     document.getElementById('showContactFooterBox').classList.add('d-none');
+    document.getElementById('add_contacts_button_box').classList.add('z_index4');
 }
 
 function openEditDeleteContactPopup() {
@@ -167,7 +178,7 @@ function openEditDeleteContactPopup() {
 function moveEditDeleteContactPopupFromScreenToRight() {
     document.getElementById('edit_delete_contact_popup').classList.add('move-from-screen-to-right');
     document.getElementById('edit_delete_contact_popup_screen').classList.remove('d-none');
-    setTimeout(closeEditDeleteContactPopup, 1000);
+    setTimeout(closeEditDeleteContactPopup, 600);
 }
 
 function closeEditDeleteContactPopup() {
