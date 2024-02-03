@@ -125,7 +125,7 @@ span {
   align-items: center;
   width: 100%;
   height: 48px;
-  
+
   background-color: rgb(231, 231, 231);
   border-radius: 15px;
   border: 1px dashed #bebdbd;
@@ -144,18 +144,13 @@ span {
   box-sizing: border-box;
 }
 .section-done {
-
   width: 100%;
-  }
+}
 
-
-.card-section{
+.card-section {
   text-decoration: none;
   flex: 0 0 auto;
   margin-right: 16px;
-}
-.one{
-
 }
 .card {
   padding: 16px;
@@ -299,7 +294,6 @@ span {
 /*done-section-END*/
 /*-popup-*/
 .income-popup {
-
   animation: moveFromRightToScreen 1000ms ease forwards;
   position: fixed;
   top: 0;
@@ -320,7 +314,6 @@ span {
   to {
     transform: translateX(0);
   }
-
 }
 
 .d-none {
@@ -363,7 +356,7 @@ span {
   margin-top: 16px;
   margin-bottom: 8px;
 }
-.p-element{
+.p-element {
   width: 100%;
   height: 20px;
   margin-bottom: 26px;
@@ -412,7 +405,7 @@ span {
   align-items: center;
   height: 40px;
   border-bottom: 1px solid #ccc;
-  background-color: #fff; 
+  background-color: #fff;
   width: 100%;
 }
 
@@ -422,68 +415,116 @@ span {
   margin-right: 10px;
   cursor: pointer;
   -webkit-appearance: none;
-  border: 2px solid #000; 
-  border-radius: 4px; 
-  outline: none; 
- 
+  border: 2px solid #000;
+  border-radius: 4px;
+  outline: none;
 }
 
 .subtask_checkbox:checked {
-  background-color: #ffffff; 
+  background-color: #ffffff;
 }
 
 .subtask_checkbox:checked::before {
-  content: "\2713"; 
+  content: "\2713";
   display: block;
   text-align: center;
-  color: #000000; 
+  color: #000000;
   font-size: 20px;
-  font-weight: bold; 
+  font-weight: bold;
   line-height: 1;
-  margin-top: -5px; 
+  margin-top: -5px;
   margin-right: -4px;
-  margin-left: 1px; 
-  
+  margin-left: 1px;
 }
-.edit-delete{
+.edit-delete {
   width: 98%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   padding: 0px 7px;
 }
-.button-delete-edit{
- height: 20px;
+.button-delete-edit {
+  height: 20px;
   display: flex;
   align-items: center;
   text-decoration: none;
   color: #000;
   padding: 6px 6px;
 }
-.edit-delete-img{
+.edit-delete-img {
   height: 24px;
   width: 24px;
 }
-.text-container{
- padding-left: 8px;
+.text-container {
+  padding-left: 8px;
+}
+
+/* Responsiv for desktop */
+@media screen and (min-width: 1600px) {
+  .content {
+    margin: 160px 64px 0 310px;
+  }
+  .desktop-h1 {
+    margin-top: 200px;
+
+    font-size: 61px;
+  }
+  .desktop-task-topic{
+    margin-top: 0;
+    height: auto;
+    display: initial; 
+    justify-content: initial;
+    align-items: initial; 
+  }
+
+  .desktop-button-add-task {
+    margin-right: 88px;
+    height: 48px;
+    width: 160px;
+    border-radius: 10px;
+
+  }
+  .desktop-position-add-task-button {
+    margin-left: 70%;
+    margin-top: -50px;
+    position: absolute;
+  }
+
+  .desktop-search-container {
+    margin-top: -50px;
+    width: 20%;
+    height: 48px;
+    margin-left: 62%;
+  }
+  .add-task-text {
+    padding-right: 10px;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+.desktop-complete-container{
+  padding-top: 60px;
+  
+  display: flex;
+  height: 100vh;
+}
+.desktop-complete-card-container {
+  
+  width: 100%;
+}
+.headlines-container{
+  width: 100%;
+  width: 300px;
 }
 
 
-/* Responsiv for laptop */
-@media screen and (min-width: 800px) {
-  .content {
-    margin: 160px 0 0 310px;
+}
+@media screen and (max-width: 1600px) {
+  .add-task-text {
+    display: none;
   }
-  .desktop-h1 {
-    font-size: 61px;
-  }
-  .desktop-button-add-task{
-    display: flex;
-  }
-  .desktop-search-container {
-    margin-top: -46px;
-    width: 312px;
-    height: 48px;
-    margin-left: 1200px;
-  }
+
 }
