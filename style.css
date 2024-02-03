@@ -11,6 +11,7 @@
 
 /* Global styles */
 body {
+  box-sizing: border-box;
   margin: 0;
   background: var(--background);
   font-size: 16px;
@@ -85,8 +86,9 @@ h6 {
 }
 
 .text_templates {
+  background-color: white;
+  position: absolute;
   margin-top: 100px;
-  margin-bottom: 80px;
   width: 100%;
   padding: 10px;
 }
@@ -102,12 +104,20 @@ h6 {
 
 .help_container {
   padding-right: 75px;
+  position: relative;
 }
 
-.text_position{
-  top:0;
+.text_position {
+  top: 0;
   position: absolute;
-    background-color: white;
+  background-color: white;
+}
+
+.help-and-user-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar {
@@ -140,7 +150,11 @@ border-color: rgb(168,168,168, 0.5);*/
     padding-right: 75px;
   }
 
-  .text_templates {}
+  .text_templates {
+    margin-bottom: 80px !important;
+    width: 85%;
+    padding: 10px 10px 20px 10px;
+  }
 }
 
 @media(min-width:800px) {
@@ -150,6 +164,7 @@ border-color: rgb(168,168,168, 0.5);*/
 
   .text_templates {
     margin-left: 240px;
+    width: auto;
+    margin-right: 40px;
   }
 }
-

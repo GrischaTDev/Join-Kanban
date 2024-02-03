@@ -2,23 +2,19 @@
     <img class="logo mobile" src="/assets/img/join-logo.svg" alt="Join Logo">
     <h4 class="desktop">Kanban Project Management Tool</h4>
     <div class="help-and-user-icons">
-        <a href="help.html" onclick="openHelp()"><img class="help" src="./assets/img/help_icon.svg" alt=""></a>
+        <div onclick="openHelp()"><img class="help" src="./assets/img/help_icon.svg" alt=""></div>
         <img onclick="openLegalNoticeSidebar()" class="user" src="./assets/img/user_profile.svg" alt="User Profile">
     </div>
 
     <div onclick="moveLegalNoticeSidebarFromScreenToRight()" id="legal_notice_sidebar_screen"
         class="legal_notice_sidebar_screen d-none">
         <div id="legal_notice_sidebar" class="legal_notice_sidebar">
-            <a href="help.html">
-                <div class="legal_notice_button" onclick="openLegalNotice()">Legal Notice</div>
-            </a>
-            <a href="help.html">
-                <div class="legal_notice_button" onclick="openPrivacyPolicy()">Privacy Policy</div>
-            </a>
-            <a href="/index.html">
-                <div class="legal_notice_button">Log out</div>
-            </a>
 
+            <div class="legal_notice_button" onclick="openLegalNotice()">Legal Notice</div>
+
+            <div class="legal_notice_button" onclick="openPrivacyPolicy()">Privacy Policy</div>
+
+            <div class="legal_notice_button">Log out</div>
 
         </div>
     </div>
