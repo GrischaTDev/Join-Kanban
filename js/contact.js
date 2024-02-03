@@ -114,36 +114,34 @@ function groupContactsByFirstLetter(contacts) {
 }
 
 function openAddContactCard() {
-    document.getElementById('addContactScreen').classList.remove('hide-from-screen');
     document.getElementById('addContactScreen').classList.remove('d-none');
+    document.getElementById('add_contact_card').classList.add('move-to-screen');
 }
 
-function hideAddCardToBottomFromScreen() {
-    document.getElementById('addContactScreen').classList.remove('move-to-screen');
-    document.getElementById('addContactScreen').classList.add('hide-from-screen');
-
-
-    setTimeout(closeAddContactCard, 800);
+function hideAddContactCardFromScreen() {
+    document.getElementById('add_contact_card').classList.add('hide-from-screen');
+    document.getElementById('addContactScreen').classList.remove('d-none');
+    setTimeout(closeAddContactCard, 200);
 }
 
 function closeAddContactCard() {
-document.getElementById('addContactScreen').classList.add('d-none');
-    
-    document.getElementById('addContactScreen').classList.add('move-to-screen');
-    
+    document.getElementById('add_contact_card').classList.remove('hide-from-screen');
+    document.getElementById('addContactScreen').classList.add('d-none');
 }
 
 function openEditContactCard() {
     document.getElementById('editContactScreen').classList.remove('d-none');
+    document.getElementById('edit_contact_card').classList.add('move-to-screen');
 }
 
-function hideEditCardToBottomFromScreen() {
-    document.getElementById('editContactScreen').classList.add('hide-to-bottom-from-screen');
-    setTimeout(closeEditContactCard, 600);
+function hideEditCardFromScreen() {
+    document.getElementById('edit_contact_card').classList.add('hide-from-screen');
+    document.getElementById('editContactScreen').classList.remove('d-none');
+    setTimeout(closeEditContactCard, 200);
 }
 
 function closeEditContactCard() {
-    document.getElementById('editContactScreen').classList.remove('hide-to-bottom-from-screen');
+    document.getElementById('edit_contact_card').classList.remove('hide-from-screen');
     document.getElementById('editContactScreen').classList.add('d-none');
 }
 
@@ -189,12 +187,14 @@ function closeEditDeleteContactPopup() {
 
 
 function showContactCreatedConfirmation() {
-    document.getElementById('contact_created_confirmation').classList.remove('d-none');
+    document.getElementById('confirmation_container').classList.remove('d-none');
+    document.getElementById('confirmation_container').classList.add('move-to-and-hide-from-screen');
     setTimeout(closeContactCreatedConfirmation, 2000);
 }
 
 function closeContactCreatedConfirmation() {
     document.getElementById('contact_created_confirmation').classList.add('d-none');
+
 }
 
 function saveAddedContact() {
