@@ -216,6 +216,7 @@ textarea{
 @media screen and (min-width: 800px) {
   .content {
     margin: 160px 0 0 310px;
+    height: auto;
   }
 
   .add-task-form {
@@ -262,6 +263,40 @@ textarea{
   }
 
   .create-task-container {
-    margin: 130px 16px 30px 16px;
+    width: 90%;
+    padding: 0;
+    margin-top: 100px;
+    margin-bottom: 0;
+    position: relative;
+  }
+
+  .form-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .button-clear {
+    font-size: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2a3647;
+    width: 120px;
+    height: 56px;
+    border: 1px solid #2a3647;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .button-clear:hover {
+    color: var(--Ligth-blue);
+    border: 1px solid var(--Ligth-blue);
+  }
+
+  .button-clear path {
+    fill: #2a3647;
   }
 }
