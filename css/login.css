@@ -39,6 +39,23 @@ body {
   .checkbox-sign-up a:hover {
     text-decoration: underline;
   }
+
+  .msgBox {
+    height: 100vh;
+    width: 100%;
+    background-color: #c5c5c5a6;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .msgBox span{
+    color: white;
+    padding: 14px;
+    border-radius: 10px;
+    background-color: var(--dark-blue);
+  }
 /*************************/
 
 .loadAnimation {
@@ -94,7 +111,7 @@ body {
     }
   }
 
-.formBox {
+.form-box {
     background-color: white;
     padding: 32px 15px;
     width: 85%;
@@ -114,7 +131,7 @@ body {
     gap: 16px;
 }
 
-.inputBox {
+.input-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -122,7 +139,7 @@ body {
     width: 100%;
 }
 
-.inputField {
+.input-field {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -131,7 +148,7 @@ body {
     cursor: pointer;
 }
 
-.inputField img {
+.input-field img {
     position: absolute;
     margin: 12px 0 0 320px;
 }
@@ -317,14 +334,14 @@ input:focus-visible {
     .titel-border {
         width: 120px;
     }
-    .formBox {
+    .form-box {
         width: 384px;
         padding: 48px 115px;
         margin: 0;
         gap: 32px;
     }
 
-    .inputBox {
+    .input-box {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -332,7 +349,7 @@ input:focus-visible {
         width: 422px;
     }
 
-    .inputField {
+    .input-field {
         width: 422px;
     }
 
@@ -431,14 +448,14 @@ input:focus-visible {
     .titel-border {
         width: 120px;
     }
-    .formBox {
+    .form-box {
         width: 652px;
         padding: 48px 115px;
         margin: 0;
         gap: 32px;
     }
 
-    .inputBox {
+    .input-box {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -446,7 +463,7 @@ input:focus-visible {
         width: 422px;
     }
 
-    .inputField {
+    .input-field {
         width: 422px;
     }
 

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/fonts.css">
+    <script src="js/storage.js" defer></script>
+    <script src="js/register.js" defer></script>
     <title>Join - Login</title>
 </head>
 <body>
@@ -20,37 +22,44 @@
         </g>
     </svg>
 
-    <div class="formBox">
+    <div class="form-box">
         <a class="arrow-left" href="./index.html"><img src="./assets/img/arrow_left.svg"></a>
         <div class="titel">
             <h1>Sign up</h1>
             <img class="titel-border" src="./assets/img/login-border.svg">
         </div>
-        <form class="inputBox">
-            <div class="inputField">
-                <input class="input-field" type="text" required placeholder="Name">
+        <form class="input-box" onsubmit="addUser(); return false;" autocomplete="on">
+            <div class="input-field">
+                <input id="register-name" type="text" required placeholder="Name">
                 <img src="./assets/img/mail_icon.svg" alt="">
             </div>
-            <div class="inputField">
-                <input class="input-field" type="email" required placeholder="Email">
+            <div class="input-field">
+                <input id="register-email" type="email" required placeholder="Email">
                 <img src="./assets/img/mail_icon.svg" alt="">
             </div>
-            <div class="inputField">
-                <input type="password" required placeholder="Password">
+            <div class="input-field">
+                <input id="register-password" type="password" required placeholder="Password">
                 <img src="./assets/img/lock_icon.svg" alt="">
             </div>
-            <div class="inputField">
-                <input type="password" required placeholder="Confirm Password">
+            <div class="input-field">
+                <input id="register-confirm-password" type="password" required placeholder="Confirm Password">
                 <img src="./assets/img/lock_icon.svg" alt="">
+            </div>
+            <div>
+                <span id="password-dont-match" class="d-none dontMatch">Your Passwords don't match. Try again.</span>
             </div>
             <div class="checkbox-sign-up">
                 <img src="./assets/img/checkbox.svg">
                 <div>I accept the <a href="./">Privacy policy</a></div>
             </div>
+            <div class="buttonBox">
+                <a href=""><button id="registerButton" class="logInButton">Sign up</button></a>
+            </div>
         </form>
-        <div class="buttonBox">
-            <a href="./summary.html"><button class="logInButton">Sign up</button></a>
-        </div>
+    </div>
+
+    <div id="msgBox" class="d-none">
+        <span>You Signed Up successfully</span>
     </div>
 
     <div class="legalTopics">
