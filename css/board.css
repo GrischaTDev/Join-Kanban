@@ -299,11 +299,12 @@ span {
   top: 0;
   left: 0;
   right: 0;
-  width: 86%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   z-index: 999;
-  margin-top: 90px;
-  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 @keyframes moveFromRightToScreen {
@@ -325,6 +326,9 @@ span {
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.5s ease;
+  margin: 20px;
+  
 }
 
 .flex_container_head {
@@ -526,6 +530,18 @@ span {
   }
   .card {
     width: 75%;
+  }
+  .complete_board_popup {
+    width: 25%;
+    height: 90%;
+  }
+  .income-popup {
+    padding-left: 100px;
+    display: flex;
+    justify-content: center;
+    transition: box-shadow 0.5s ease;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 50;
   }
 }
 @media screen and (max-width: 1600px) {
