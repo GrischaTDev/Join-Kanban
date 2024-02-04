@@ -74,7 +74,7 @@ function initContactList() {
             const initials = contact['given_name'][0] + contact['name'][0];
             const backgroundColor = contact['color'] ? `style="background-color: ${contact['color']};"` : '';
             document.getElementById('contacts_list_container').innerHTML += `
-                <div onclick="openShowContact()" class="contact_list_snippet_box">
+                <div onclick="openShowContact(), getContactDetails(i)" class="contact_list_snippet_box">
                     <div class="initials_circle" ${backgroundColor}>
                         ${initials}
                     </div>
@@ -114,36 +114,34 @@ function groupContactsByFirstLetter(contacts) {
 }
 
 function openAddContactCard() {
-    document.getElementById('addContactScreen').classList.remove('hide-from-screen');
     document.getElementById('addContactScreen').classList.remove('d-none');
+    document.getElementById('add_contact_card').classList.add('move-to-screen');
 }
 
-function hideAddCardToBottomFromScreen() {
-    document.getElementById('addContactScreen').classList.remove('move-to-screen');
-    document.getElementById('addContactScreen').classList.add('hide-from-screen');
-
-
-    setTimeout(closeAddContactCard, 800);
+function hideAddContactCardFromScreen() {
+    document.getElementById('add_contact_card').classList.add('hide-from-screen');
+    document.getElementById('addContactScreen').classList.remove('d-none');
+    setTimeout(closeAddContactCard, 200);
 }
 
 function closeAddContactCard() {
-document.getElementById('addContactScreen').classList.add('d-none');
-    
-    document.getElementById('addContactScreen').classList.add('move-to-screen');
-    
+    document.getElementById('add_contact_card').classList.remove('hide-from-screen');
+    document.getElementById('addContactScreen').classList.add('d-none');
 }
 
 function openEditContactCard() {
     document.getElementById('editContactScreen').classList.remove('d-none');
+    document.getElementById('edit_contact_card').classList.add('move-to-screen');
 }
 
-function hideEditCardToBottomFromScreen() {
-    document.getElementById('editContactScreen').classList.add('hide-to-bottom-from-screen');
-    setTimeout(closeEditContactCard, 600);
+function hideEditCardFromScreen() {
+    document.getElementById('edit_contact_card').classList.add('hide-from-screen');
+    document.getElementById('editContactScreen').classList.remove('d-none');
+    setTimeout(closeEditContactCard, 200);
 }
 
 function closeEditContactCard() {
-    document.getElementById('editContactScreen').classList.remove('hide-to-bottom-from-screen');
+    document.getElementById('edit_contact_card').classList.remove('hide-from-screen');
     document.getElementById('editContactScreen').classList.add('d-none');
 }
 
@@ -152,14 +150,15 @@ function doNotClose(event) {
 }
 
 function openShowContact() {
-
     document.getElementById('contacts_list_container').classList.remove('z_index3');
     document.getElementById('showContactContainer').classList.add('z_index5');
     document.getElementById('showContactHeaderBox').classList.add('z_index5');
     document.getElementById('showContactFooterBox').classList.remove('d-none');
     document.getElementById('showContactFooterBox').classList.add('z_index5');
     document.getElementById('add_contacts_button_box').classList.remove('z_index4');
+    
 }
+
 
 function closeShowContact() {
     document.getElementById('contacts_list_container').classList.add('z_index3');
@@ -189,12 +188,14 @@ function closeEditDeleteContactPopup() {
 
 
 function showContactCreatedConfirmation() {
-    document.getElementById('contact_created_confirmation').classList.remove('d-none');
+    document.getElementById('confirmation_container').classList.remove('d-none');
+    document.getElementById('confirmation_container').classList.add('move-to-and-hide-from-screen');
     setTimeout(closeContactCreatedConfirmation, 2000);
 }
 
 function closeContactCreatedConfirmation() {
     document.getElementById('contact_created_confirmation').classList.add('d-none');
+
 }
 
 function saveAddedContact() {
@@ -210,3 +211,4 @@ function saveEditedContact() {
     initContactList();
     showContactCreatedConfirmation();
 }
+

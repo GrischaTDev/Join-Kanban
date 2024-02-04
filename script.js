@@ -59,5 +59,4 @@ function closeLegalNoticeSidebar() {
 
 function goBack() {
     window.history.back();
-
 }

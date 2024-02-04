@@ -116,7 +116,7 @@
                     <h3 style="font-weight: bold;">Phone</h3>
                 </div>
 
-                <div>
+                <div id="phone_box">
                     <p>+49 2222 222 22 2</p>
                 </div>
             </div>
@@ -138,11 +138,11 @@
 
 
 
-            <div id="addContactScreen" class="d-none add_contact_card-bg move-to-screen" onclick="hideAddCardToBottomFromScreen()">
-                <div class="add_contact_card" onclick="doNotClose(event)">
+            <div id="addContactScreen" class="d-none add_contact_card-bg" onclick="hideAddContactCardFromScreen()">
+                <div id="add_contact_card" class="add_contact_card" onclick="doNotClose(event)">
                     <div class="add_contact_card_header">
                         <div class="close_icon_box">
-                            <img style="cursor: pointer;" onclick="hideAddCardToBottomFromScreen()"
+                            <img style="cursor: pointer;" onclick="hideAddContactCardFromScreen()"
                                 src="./assets/img/close_icon.svg" alt="close Button">
                         </div>
                         <div>
@@ -177,7 +177,7 @@
                     <div class="add_contact_card_footer">
                         <img class="profile_picture" src="./assets/img/profile_picture.svg" alt="profile picture">
                         <div class="inputfields">
-                            <div onclick="hideAddCardToBottomFromScreen()" class="popup_close_icon">
+                            <div onclick="hideAddContactCardFromScreen()" class="popup_close_icon">
                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <mask id="mask0_71720_5848" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4"
@@ -215,11 +215,11 @@
             </div>
 
 
-            <div id="editContactScreen" class="d-none edit_contact_card-bg " onclick="hideEditCardToBottomFromScreen()">
-                <div class="edit_contact_card" onclick="doNotClose(event)">
+            <div id="editContactScreen" class="d-none edit_contact_card-bg " onclick="hideEditCardFromScreen()">
+                <div id="edit_contact_card" class="edit_contact_card" onclick="doNotClose(event)">
                     <div class="edit_contact_card_header">
                         <div class="close_icon_box">
-                            <img style="cursor: pointer;" onclick="hideEditCardToBottomFromScreen()"
+                            <img style="cursor: pointer;" onclick="hideEditCardFromScreen()"
                                 src="./assets/img/close_icon.svg" alt="close Button">
                         </div>
                         <div class="edit_contact_popup_headline">
@@ -255,8 +255,8 @@
                             <img class="profile_picture" src="./assets/img/profile_picture.svg" alt="profile picture">
                         </div>
                         <div class="edit_contact_card_footer_desktop">
-                            <div onclick="hideAddCardToBottomFromScreen()" class="popup_close_icon">
-                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                            <div onclick="hideEditCardFromScreen()" class="popup_close_icon">
+                                <svg onclick="hideEditCardFromScreen()" width="32" height="32" viewBox="0 0 32 32" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <mask id="mask0_71720_5848" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4"
                                         y="4" width="24" height="24">
