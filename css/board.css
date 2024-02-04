@@ -294,17 +294,19 @@ span {
 /*done-section-END*/
 /*-popup-*/
 .income-popup {
-  animation: moveFromRightToScreen 1000ms ease forwards;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  width: 86%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   z-index: 999;
-  margin-top: 90px;
-  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  transition: box-shadow 0.5s ease;
+  animation: moveFromRightToScreen 1000ms ease forwards;
 }
+
 
 @keyframes moveFromRightToScreen {
   from {
@@ -316,6 +318,7 @@ span {
   }
 }
 
+
 .d-none {
   display: none;
 }
@@ -324,7 +327,8 @@ span {
   background-color: white;
   border-radius: 30px;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin: 20px;
+  
 }
 
 .flex_container_head {
@@ -469,32 +473,29 @@ span {
 
     font-size: 61px;
   }
-  .desktop-task-topic{
+  .desktop-task-topic {
     margin-top: 0;
     height: auto;
-    display: initial; 
+    display: initial;
     justify-content: initial;
-    align-items: initial; 
+    align-items: initial;
   }
 
   .desktop-button-add-task {
-    margin-right: 88px;
     height: 48px;
     width: 160px;
     border-radius: 10px;
-
   }
   .desktop-position-add-task-button {
-    margin-left: 70%;
+    margin-left: 65%;
     margin-top: -50px;
     position: absolute;
   }
-
   .desktop-search-container {
     margin-top: -50px;
     width: 20%;
     height: 48px;
-    margin-left: 62%;
+    margin-left: 58%;
   }
   .add-task-text {
     padding-right: 10px;
@@ -504,27 +505,47 @@ span {
     font-style: normal;
     font-weight: 700;
   }
-
-.desktop-complete-container{
-  padding-top: 60px;
-  
-  display: flex;
-  height: 100vh;
-}
-.desktop-complete-card-container {
-  
-  width: 100%;
-}
-.headlines-container{
-  width: 100%;
-  width: 300px;
-}
-
-
+  .desktop-complete-container {
+    padding-top: 60px;
+    display: flex;
+    height: 100vh;
+  }
+  .desktop-complete-card-container {
+    margin-right: 52px;
+    height: 100vh;
+  }
+  .headlines-container {
+    width: 100%;
+    width: 300px;
+  }
+  .desktop-all-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+    width: 100%;
+  }
+  .card-section {
+    margin-bottom: 16px;
+  }
+  .card {
+    width: 75%;
+  }
+  .complete_board_popup {
+    width: 22%;
+    height: 75%;
+  }
+  .income-popup {
+    padding-left: 100px;
+    display: flex;
+    justify-content: center;
+    transition: box-shadow 0.5s ease;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+  }
 }
 @media screen and (max-width: 1600px) {
   .add-task-text {
     display: none;
   }
-
 }
