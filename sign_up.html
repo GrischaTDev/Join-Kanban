@@ -39,14 +39,14 @@
             </div>
             <div class="input-field">
                 <input id="register-password" type="password" required placeholder="Password">
-                <img src="./assets/img/lock_icon.svg" alt="">
+                <img id="password-icon" onclick="showPassword()" src="./assets/img/lock_icon.svg" alt="">
             </div>
             <div class="input-field">
                 <input id="register-confirm-password" type="password" required placeholder="Confirm Password">
-                <img src="./assets/img/lock_icon.svg" alt="">
+                <img id="confirm-password-icon" onclick="showPassword2()" src="./assets/img/lock_icon.svg" alt="">
             </div>
-            <div>
-                <span id="password-dont-match" class="d-none dontMatch">Your Passwords don't match. Try again.</span>
+            <div class="dont-match">
+                <span id="password-dont-match" class="d-none">Your Passwords don't match. Try again.</span>
             </div>
             <div class="checkbox-sign-up">
                 <img src="./assets/img/checkbox.svg">

@@ -6,6 +6,10 @@ body {
     height: 100vh;
 }
 
+.input-invalid {
+    border: 1px solid red;
+}
+
 
 /* Sign Up Style */
 /* The other classes on the sign_up.html is the same on login page! */
@@ -55,6 +59,14 @@ body {
     padding: 14px;
     border-radius: 10px;
     background-color: var(--dark-blue);
+  }
+
+.dont-match {
+    margin-top: -25px;
+    justify-content: flex-start;
+    width: 100%;
+    font-size: 14px;
+    color: red;
   }
 /*************************/
 
@@ -143,14 +155,14 @@ body {
     display: flex;
     width: 100%;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 32px;
     cursor: pointer;
 }
 
 .input-field img {
     position: absolute;
-    margin: 12px 0 0 320px;
+    margin: 0 0 0 320px;
 }
 
 input {
@@ -349,10 +361,6 @@ input:focus-visible {
         width: 422px;
     }
 
-    .input-field {
-        width: 422px;
-    }
-
     .checkbox {
         display: flex;
         align-items: center;
@@ -460,10 +468,6 @@ input:focus-visible {
         flex-direction: column;
         align-items: center;
         gap: 32px;
-        width: 422px;
-    }
-
-    .input-field {
         width: 422px;
     }
 
