@@ -39,17 +39,17 @@
             </div>
             <div class="input-field">
                 <input id="register-password" type="password" required placeholder="Password">
-                <img id="password-icon" onclick="showPassword()" src="./assets/img/lock_icon.svg" alt="">
+                <img id="password-icon" onclick="showPassword('register-password', 'password-icon')" src="./assets/img/lock_icon.svg" alt="">
             </div>
             <div class="input-field">
                 <input id="register-confirm-password" type="password" required placeholder="Confirm Password">
-                <img id="confirm-password-icon" onclick="showPassword2()" src="./assets/img/lock_icon.svg" alt="">
+                <img id="confirm-password-icon" onclick="showPassword('register-confirm-password', 'confirm-password-icon')" src="./assets/img/lock_icon.svg" alt="">
             </div>
             <div class="dont-match">
                 <span id="password-dont-match" class="d-none">Your Passwords don't match. Try again.</span>
             </div>
             <div class="checkbox-sign-up">
-                <img src="./assets/img/checkbox.svg">
+                <img id="checkbox" onclick="privacyCheck()" src="./assets/img/checkbox.svg">
                 <div>I accept the <a href="./">Privacy policy</a></div>
             </div>
             <div class="button-box">
