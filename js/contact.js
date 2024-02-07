@@ -58,24 +58,22 @@ const contact_list = [
 ]
 
 function initContactList() {
-    let index = 0;
+    let index = 0; // Zählervariable für die Gesamtkontakte
     document.getElementById('contacts_list_container').innerHTML = '';
     const groupedContacts = groupContactsByFirstLetter(contact_list);
 
     for (const [letter, contacts] of groupedContacts) {
-        
-
         document.getElementById('contacts_list_container').innerHTML += `
             <div class="letter_box">
                 <div class="letter">${letter}</div>
             </div>
         `;
 
-        contacts.forEach((contact, innerIndex) => {
+        contacts.forEach((contact) => {
             const initials = contact['given_name'][0] + contact['name'][0];
             const backgroundColor = contact['color'] ? `style="background-color: ${contact['color']};"` : '';
             document.getElementById('contacts_list_container').innerHTML += `
-                <div onclick="selectContact(${innerIndex})" class="contact_list_snippet_box" id="contactSnippetBox${innerIndex}">
+                <div onclick="selectContact(${index})" class="contact_list_snippet_box" id="contactSnippetBox${index}">
                     <div class="initials_circle_contact_list" ${backgroundColor}>
                         ${initials}
                     </div>
@@ -89,6 +87,7 @@ function initContactList() {
                     </div>
                 </div>
             `;
+            index++; // Zählervariable inkrementieren
         });
     }
 }
@@ -99,7 +98,11 @@ function initContactList() {
 
 
 
+
 function groupContactsByFirstLetter(contacts) {
+    // Sortiere die Kontakte alphabetisch nach dem Nachnamen
+    contacts.sort((a, b) => a.name.localeCompare(b.name));
+    
     const groupedContacts = new Map();
 
     for (const contact of contacts) {
@@ -119,6 +122,7 @@ function groupContactsByFirstLetter(contacts) {
 
     return sortedGroupedContacts;
 }
+
 
 function openAddContactCard() {
     document.getElementById('addContactScreen').classList.remove('d-none');
