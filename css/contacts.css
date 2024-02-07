@@ -76,6 +76,8 @@ align-items: center;
     margin-bottom: 2px;
 }
 
+
+
 .initials_circle_contact_list {
     width: 40px;
     height: 40px;
@@ -86,6 +88,9 @@ align-items: center;
     margin-right: 10px;
     color: white;
     font-size: 12px;
+    border: 2px;
+    border-style: solid;
+    border-color: white;
 }
 
 .initials_circle_show_contact {
@@ -643,6 +648,18 @@ padding: 10px 0px 10px 0px;
 }
 
 @media(min-width:800px) {
+
+    .contact_list_snippet_box_blue {
+        display: flex;
+        padding: 16px 10px;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 2px;
+        background-color: rgb(42,54,71);
+        overflow: hidden;
+        border-radius: 10px;
+        color: white;
+    }
 
     .move-to-screen {
         animation: push-from-right-to-screen;
