@@ -1,4 +1,4 @@
-async function init(){
+function init(){
     loadUsers();
 }
 
@@ -13,13 +13,12 @@ async function loadUsers(){
 async function login() {
     let loginEmail = document.getElementById('login-email').value;
     let loginPassword = document.getElementById('login-password').value;
-    let user = users.find(u => u.loginEmail == loginEmail.value && u.loginPassword == loginPassword.value);
+    let user = users.find(u => u.email == loginEmail.value && u.password == loginPassword.value);
     console.log('Benutzer', user);
     if (loginEmail == user.email && loginPassword == user.password) {
         location.href = './summary.html';
     } else {
-        console.log('Falsche Eingabe!');
-        return;
+        console.log('Falsche Eingabe')
+        return
     }
-
 }
