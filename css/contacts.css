@@ -591,6 +591,13 @@ padding: 10px 0px 10px 0px;
         right: 20px;
     }
 
+    .open_sidebar_button {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        z-index: 5;
+    }
+
     .contacts_list_box {
         padding-top: 80px;
         padding-bottom: 80px;
