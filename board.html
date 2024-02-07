@@ -40,42 +40,41 @@
         </div>
         <div class="desktop-complete-container">
 
-            <div class="desktop-complete-card-container">
-                <div class="headlines-container" id="todo">
+            <div class="desktop-complete-card">
+                <div class="headlines-container desktop-headlines-container" id="todo">
                     <h6>To do</h6>
                     <a class="button-add-task-todo" href="add_task.html" onclick="newTask()">
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
-
                 </div>
-
-                <div>
-                    <div class="no-tasks">
-                        <span>No tasks To do</span>
+                <div class="drag-area desktop-drag-area">
+                    <div>
+                        <div class="no-tasks desktop-no-tasks">
+                            <span>No tasks To do</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-
-
-            <div>
-                <div class="headlines-container" id="inprogress">
+            <div class="desktop-complete-card">
+                <div class="headlines-container desktop-headlines-container" id="inprogress">
                     <h6>In progress</h6>
                     <a class="button-add-task-todo" href="add_task.html" onclick="newTask()">
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
                 </div>
-                <div class="all-cards desktop-all-cards">
-                    <div class="card-section">
+                <div class="drag-area desktop-drag-area">
+
+                    <a href="#" class="card-section desktop-card-section" onclick="showPopup()">
                         <div class="card">
-                            <div class="card-category">User Story</div>
-                            <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
-                            <div class="card-discription">Build start page with recipe recommendation</div>
+                            <div class="card-category-technical-task">Technical Task</div>
+                            <div class="card-headline">HTML Base Template Creation</div>
+                            <div class="card-discription">Creat reusable HTML base templates ...</div>
                             <div class="progress-container">
                                 <div class="progress-bar">
                                     <div class="progress-fill-half"></div>
                                 </div>
-                                <div class="progress-text">0/2 Subtasks</div>
+                                <div class="progress-text">1/2 Subtasks</div>
                             </div>
                             <div class="user-priority-container">
                                 <div class="user-container">
@@ -93,11 +92,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="card-section">
+                    <a href="#" class="card-section desktop-card-section" onclick="showPopup()">
                         <div class="card">
-                            <div class="card-category">User Story</div>
+                            <div class="card-category-user-story">User Story</div>
                             <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
                             <div class="card-discription">Build start page with recipe recommendation</div>
                             <div class="progress-container">
@@ -108,39 +107,12 @@
                             </div>
                             <div class="user-priority-container">
                                 <div class="user-container">
-                                    <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
-                                    <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
-                                    <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
-                                </div>
-                                <div class="priority-symbols">
-                                    <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
-                                        onclick="changeImage('symbolUrgent')">
-                                    <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
-                                        onclick="changeImage('symbolMedium')">
-                                    <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
-                                        onclick="changeImage('symbolLow')">
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <a href="#" class="card-section" onclick="showPopup()">
-                        <div class="card">
-                            <div class="card-category">User Story</div>
-                            <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
-                            <div class="card-discription">Build start page with recipe recommendation</div>
-                            <div class="progress-container">
-                                <div class="progress-bar">
-                                    <div class="progress-fill-half"></div>
-                                </div>
-                                <div class="progress-text">0/2 Subtasks</div>
-                            </div>
-                            <div class="user-priority-container">
-                                <div class="user-container">
-                                    <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
-                                    <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
-                                    <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
+                                    <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP
+                                    </div>
+                                    <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS
+                                    </div>
+                                    <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW
+                                    </div>
                                 </div>
                                 <div class="priority-symbols">
                                     <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
@@ -159,263 +131,92 @@
 
 
 
-            <div>
-                <div class="headlines-container" id="await_feedback">
+            <div class="desktop-complete-card">
+                <div class="headlines-container desktop-headlines-container" id="await_feedback">
                     <h6>Await feedback</h6>
                     <a class="button-add-task-todo" href="add_task.html" onclick="newTask()">
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
                 </div>
-                <div class="all-cards desktop-all-cards">
-                    <div class="card-section">
-                        <div class="card">
-                            <div class="card-category">User Story</div>
-                            <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
-                            <div class="card-discription">Build start page with recipe recommendation</div>
-                            <div class="progress-container">
-                                <div class="progress-bar">
-                                    <div class="progress-fill-full"></div>
-                                </div>
-                                <div class="progress-text">0/2 Subtasks</div>
-                            </div>
-                            <div class="user-priority-container">
-                                <div class="user-container">
-                                    <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
-                                    <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
-                                    <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
-                                </div>
-                                <div class="priority-symbols">
-                                    <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
-                                        onclick="changeImage('symbolUrgent')">
-                                    <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
-                                        onclick="changeImage('symbolMedium')">
-                                    <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
-                                        onclick="changeImage('symbolLow')">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="drag-area desktop-drag-area">
 
-                    <div class="card-section">
-                        <div class="card">
-                            <div class="card-category">User Story</div>
-                            <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
-                            <div class="card-discription">Build start page with recipe recommendation</div>
-                            <div class="progress-container">
-                                <div class="progress-bar">
-                                    <div class="progress-fill-full"></div>
-                                </div>
-                                <div class="progress-text">0/2 Subtasks</div>
-                            </div>
-                            <div class="user-priority-container">
-                                <div class="user-container">
-                                    <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
-                                    <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
-                                    <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
-                                </div>
-                                <div class="priority-symbols">
-                                    <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
-                                        onclick="changeImage('symbolUrgent')">
-                                    <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
-                                        onclick="changeImage('symbolMedium')">
-                                    <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
-                                        onclick="changeImage('symbolLow')">
-                                </div>
-                            </div>
-                        </div>
+                </div>
+            </div>
 
-                    </div>
-                    <div class="card-section">
-                        <div class="card">
-                            <div class="card-category">User Story</div>
-                            <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
-                            <div class="card-discription">Build start page with recipe recommendation</div>
-                            <div class="progress-container">
-                                <div class="progress-bar">
-                                    <div class="progress-fill-full"></div>
-                                </div>
-                                <div class="progress-text">0/2 Subtasks</div>
-                            </div>
-                            <div class="user-priority-container">
-                                <div class="user-container">
-                                    <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
-                                    <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
-                                    <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
-                                </div>
-                                <div class="priority-symbols">
-                                    <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
-                                        onclick="changeImage('symbolUrgent')">
-                                    <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
-                                        onclick="changeImage('symbolMedium')">
-                                    <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
-                                        onclick="changeImage('symbolLow')">
-                                </div>
-                            </div>
-                        </div>
+            <div class="desktop-complete-card">
+                <div class="headlines-container desktop-headlines-container" id="done">
+                    <h6>Done</h6>
+                </div>
+                <div class="drag-area desktop-drag-area">
 
-                    </div>
                 </div>
             </div>
 
             <div>
-                <div class="headlines-container-done" id="done">
-                    <h6>Done</h6>
-                </div>
-                <div class="all-cards desktop-all-cards">
-                    <div class="card-section">
-                        <div class="card">
-                            <div class="card-category">User Story</div>
-                            <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
-                            <div class="card-discription">Build start page with recipe recommendation</div>
-                            <div class="progress-container">
-                                <div class="progress-bar">
-                                    <div class="progress-fill-full"></div>
-                                </div>
-                                <div class="progress-text">0/2 Subtasks</div>
-                            </div>
-                            <div class="user-priority-container">
-                                <div class="user-container">
-                                    <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
-                                    <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
-                                    <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
-                                </div>
-                                <div class="priority-symbols">
-                                    <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
-                                        onclick="changeImage('symbolUrgent')">
-                                    <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
-                                        onclick="changeImage('symbolMedium')">
-                                    <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
-                                        onclick="changeImage('symbolLow')">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div id="incomePopup" class="income-popup d-none" onclick="closeShowPopup()">
 
-                    <div class="card-section">
-                        <div class="card">
-                            <div class="card-category">User Story</div>
-                            <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
-                            <div class="card-discription">Build start page with recipe recommendation</div>
-                            <div class="progress-container">
-                                <div class="progress-bar">
-                                    <div class="progress-fill-full"></div>
+                    <div class="complete_board_popup" onclick="doNotClose(event)">
+                        <div class="board_popup">
+                            <div class="flex_container_head">
+                                <div class="task_popup">
+                                    <p>User Story</p>
                                 </div>
-                                <div class="progress-text">0/2 Subtasks</div>
-                            </div>
-                            <div class="user-priority-container">
-                                <div class="user-container">
-                                    <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
-                                    <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
-                                    <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
-                                </div>
-                                <div class="priority-symbols">
-                                    <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
-                                        onclick="changeImage('symbolUrgent')">
-                                    <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
-                                        onclick="changeImage('symbolMedium')">
-                                    <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
-                                        onclick="changeImage('symbolLow')">
+                                <div class="close_icon_box">
+                                    <img class="img_popup" style="cursor: pointer;" onclick="closePopup()"
+                                        src="./assets/img/close_icon.svg" alt="close Button">
                                 </div>
                             </div>
-                        </div>
-
-                    </div>
-                    <div class="card-section">
-                        <div class="card">
-                            <div class="card-category">User Story</div>
-                            <div class="card-headline">Kochwelt Page & Recipe Recommender</div>
-                            <div class="card-discription">Build start page with recipe recommendation</div>
-                            <div class="progress-container">
-                                <div class="progress-bar">
-                                    <div class="progress-fill-full"></div>
+                            <div class="header_popup">
+                                <h2>Kochwelt Page & Recipe Recommender</h2>
+                            </div>
+                            <div class="p-element">
+                                <p>Build start page with recipe recommendation.</p>
+                            </div>
+                            <div class="due_date_popup">
+                                <p style="color: #42526E;">Due Date:</p>
+                                <p id="variable_date">05/05/2024</p>
+                            </div>
+                            <div class="priority_popup">
+                                <p style="color: #42526E;">Priority:</p>
+                                <p id="variable_priority">Medium <img src="/assets/img/prio-medium.svg" alt=""></p>
+                            </div>
+                            <div class="assigned-popup">
+                                <p style="color: #42526E;">Assigned To:</p>
+                                <div class="user_popup_container">
+                                    <div class="initials_circle" style="background-color: turquoise;">EM</div>
+                                    <div>Emmanuel Mauer</div>
                                 </div>
-                                <div class="progress-text">0/2 Subtasks</div>
-                            </div>
-                            <div class="user-priority-container">
-                                <div class="user-container">
-                                    <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
-                                    <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
-                                    <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
+                                <div class="user_popup_container">
+                                    <div class="initials_circle" style="background-color: rgb(17, 36, 121);">EM</div>
+                                    <div>Marcel Bauer</div>
                                 </div>
-                                <div class="priority-symbols">
-                                    <img id="symbol1" src="/assets/img/prio-urgent.svg" alt="Symbol 1"
-                                        onclick="changeImage('symbolUrgent')">
-                                    <img id="symbol2" src="/assets/img/prio-medium.svg" alt="Symbol 2"
-                                        onclick="changeImage('symbolMedium')">
-                                    <img id="symbol3" src="/assets/img/prio-low.svg" alt="Symbol 3"
-                                        onclick="changeImage('symbolLow')">
+                                <div class="user_popup_container">
+                                    <div class="initials_circle" style="background-color: rgb(209, 95, 50);">EM</div>
+                                    <div>Anton Mayer</div>
                                 </div>
-                            </div>
-                        </div>
+                                <p class="subtask_container" style="color: #42526E;">Subtasks</p>
+                                <div class="user_popup_item" onclick="toggleSubtask(this)">
+                                    <input type="checkbox" class="subtask_checkbox">
+                                    <div>Implement Recipe Recommendation</div>
+                                </div>
+                                <div class="user_popup_item" onclick="toggleSubtask(this)">
+                                    <input type="checkbox" class="subtask_checkbox">
+                                    <div>Start Page Layout</div>
+                                </div>
 
-                    </div>
-                </div>
-            </div>
+                                <div class="edit-delete" id="edit">
+                                    <a class="button-delete-edit" href="#" onclick="deleteTask()">
+                                        <img class="edit-delete-img" src="/assets/img/delete_icon.svg"
+                                            alt="Bild plus Button" />
+                                        <div class="text-container">Delete</div>
+                                    </a>
 
-
-            <div id="incomePopup" class="income-popup d-none" onclick="hideAddCardToBottomFromScreen()">
-
-                <div class="complete_board_popup" onclick="doNotClose(event)">
-                    <div class="board_popup">
-                        <div class="flex_container_head">
-                            <div class="task_popup">
-                                <p>User Story</p>
-                            </div>
-                            <div class="close_icon_box">
-                                <img class="img_popup" style="cursor: pointer;" onclick="closePopup()"
-                                    src="./assets/img/close_icon.svg" alt="close Button">
-                            </div>
-                        </div>
-                        <div class="header_popup">
-                            <h2>Kochwelt Page & Recipe Recommender</h2>
-                        </div>
-                        <div class="p-element">
-                            <p>Build start page with recipe recommendation.</p>
-                        </div>
-                        <div class="due_date_popup">
-                            <p style="color: #42526E;">Due Date:</p>
-                            <p id="variable_date">05/05/2024</p>
-                        </div>
-                        <div class="priority_popup">
-                            <p style="color: #42526E;">Priority:</p>
-                            <p id="variable_priority">Medium <img src="/assets/img/prio-medium.svg" alt=""></p>
-                        </div>
-                        <div class="assigned-popup">
-                            <p style="color: #42526E;">Assigned To:</p>
-                            <div class="user_popup_container">
-                                <div class="initials_circle" style="background-color: turquoise;">EM</div>
-                                <div>Emmanuel Mauer</div>
-                            </div>
-                            <div class="user_popup_container">
-                                <div class="initials_circle" style="background-color: rgb(17, 36, 121);">EM</div>
-                                <div>Marcel Bauer</div>
-                            </div>
-                            <div class="user_popup_container">
-                                <div class="initials_circle" style="background-color: rgb(209, 95, 50);">EM</div>
-                                <div>Anton Mayer</div>
-                            </div>
-                            <p class="subtask_container" style="color: #42526E;">Subtasks</p>
-                            <div class="user_popup_item" onclick="toggleSubtask(this)">
-                                <input type="checkbox" class="subtask_checkbox">
-                                <div>Implement Recipe Recommendation</div>
-                            </div>
-                            <div class="user_popup_item" onclick="toggleSubtask(this)">
-                                <input type="checkbox" class="subtask_checkbox">
-                                <div>Start Page Layout</div>
-                            </div>
-
-                            <div class="edit-delete" id="edit">
-                                <a class="button-delete-edit" href="#" onclick="deleteTask()">
-                                    <img class="edit-delete-img" src="/assets/img/delete_icon.svg"
-                                        alt="Bild plus Button" />
-                                    <div class="text-container">Delete</div>
-                                </a>
-
-                                <a class="button-delete-edit" href="#" onclick="saveAddedContact()">
-                                    <img class="edit-delete-img" src="/assets/img/edit_icon.svg"
-                                        alt="Bild plus Button" />
-                                    <div class="text-container">Edit</div>
-                                </a>
+                                    <a class="button-delete-edit" href="#" onclick="saveAddedContact()">
+                                        <img class="edit-delete-img" src="/assets/img/edit_icon.svg"
+                                            alt="Bild plus Button" />
+                                        <div class="text-container">Edit</div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
