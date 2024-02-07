@@ -14,7 +14,9 @@ async function login() {
     let loginEmail = document.getElementById('login-email').value;
     let loginPassword = document.getElementById('login-password').value;
     let user = users.find(u => u.email == loginEmail.value && u.password == loginPassword.value);
+
     console.log('Benutzer', user);
+    
     if (loginEmail == user.email && loginPassword == user.password) {
         location.href = './summary.html';
     } else {
