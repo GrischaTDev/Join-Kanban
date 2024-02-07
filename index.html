@@ -6,9 +6,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/fonts.css">
+    <script src="./script.js" defer></script>
+    <script src="./js/login.js"></script> 
+    <script src="./js/register.js"></script>
+    <script src="./js/storage.js" defer></script>
     <title>Join - Login</title>
 </head>
-<body>
+<body onload="init()">
     <div class="loadAnimation"></div>
 
     <svg class="logo" width="64" height="79" viewBox="0 0 64 79" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,29 +26,30 @@
         </g>
     </svg>
         
-    <div class="formBox">
+    <div class="form-box">
         <div class="titel">
             <h1>Log in</h1>
             <img class="titel-border" src="./assets/img/login-border.svg" alt="">
         </div>
-        <form class="inputBox">
-            <div class="inputField">
-                <input class="input-field" type="email" required placeholder="Email">
+        <form class="input-box" onsubmit="login(); return false;" autocomplete="on">
+            <div class="input-field">
+                <input id="login-email" type="email" required placeholder="Email">
                 <img src="./assets/img/mail_icon.svg" alt="">
             </div>
-            <div class="inputField">
-                <input type="password" required placeholder="Password">
+            <div class="input-field">
+                <input id="login-password" type="password" required placeholder="Password">
                 <img src="./assets/img/lock_icon.svg" alt="">
             </div>
             <div class="checkbox">
                 <img src="./assets/img/checkbox.svg">
                 <div>Remember me</div>
             </div>
+            <div class="buttonBox">
+                <a href=""><button class="log-in-button">Log in</button></a>
+                <button class="guestlog-in-button">Guest Log in</button>
+            </div>
         </form>
-        <div class="buttonBox">
-            <a href="./summary.html"><button class="logInButton">Log in</button></a>
-            <button class="guestLogInButton">Guest Log in</button>
-        </div>
+
     </div>
 
     <div class="signUp">

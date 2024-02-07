@@ -48,6 +48,11 @@ p {
     z-index: 5;
 }
 
+.d-flex {
+display: flex;
+align-items: center;
+}
+
 .contacts_name {
     font-size: 18px;
 }
@@ -71,7 +76,7 @@ p {
     margin-bottom: 2px;
 }
 
-.initials_circle {
+.initials_circle_contact_list {
     width: 40px;
     height: 40px;
     display: flex;
@@ -83,12 +88,21 @@ p {
     font-size: 12px;
 }
 
+.initials_circle_show_contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 10px;
+    color: white;
+}
+
 .contacts_list_box {
     height: 100%;
     display: flex;
     flex-direction: column-reverse;
     position: relative;
-    /* padding-bottom: 170px; */
+
     box-sizing: border-box;
 }
 
@@ -109,6 +123,18 @@ p {
     justify-content: center;
     border-radius: 50%;
     margin-right: 10px;
+}
+
+.contact_email a {
+    text-decoration: none;
+color:rgb(0,124,238) !important;
+padding: 10px 0px 10px 0px;
+}
+
+.contact_phone a {
+    text-decoration: none;
+color: black;
+padding: 10px 0px 10px 0px;
 }
 
 .add_contacts_button {
@@ -345,6 +371,7 @@ p {
     width: 100%;
     display: flex;
     margin-top: 48px;
+    margin-bottom: 20px;
 }
 
 .showContactHeadline {
@@ -564,8 +591,16 @@ p {
         right: 20px;
     }
 
+    .open_sidebar_button {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        z-index: 5;
+    }
+
     .contacts_list_box {
         padding-top: 80px;
+        padding-bottom: 80px;
         width: 100%;
     }
 
@@ -577,6 +612,8 @@ p {
         background-color: white;
         position: fixed;
     }
+
+    
 
     .popup_logo {
         display: none;
@@ -741,9 +778,15 @@ p {
         animation: push-from-right-to-screen 250ms ease forwards !important;
     }
 
+    .initials_circle_show_contact {
+        
+        font-size: 40px;
+        margin-right: 32px;
+    }
+
 }
 
-@media(min-width:1001px) {
+@media(min-width:1000px) {
 
     #edit_delete_desktop_icons {
         flex-direction: row;
@@ -765,6 +808,11 @@ p {
         display: none;
     }
 
+    .initials_circle_show_contact {
+        width: 80px;
+        height: 80px;
+    }
+
 }
 
 @media(max-width:1000px) {
@@ -782,5 +830,15 @@ p {
     #blue_line_vertical_show_contacts_container_desktop {
         display: none;
     }
+
+    .initials_circle_show_contact {
+    width: 60px;
+    height: 60px;
+    
+        
+        font-size: 22px;
+        margin-right: 20px;
+    }
+
 
 }
