@@ -161,12 +161,12 @@ function doNotClose(event) {
 }
 
 function selectContact(index) {
-    console.log("Clicked index:", index);
-    var contactsListContainer = document.getElementById('contacts_list_container');
-    var showContactContainer = document.getElementById('showContactContainer');
-    var showContactHeaderBox = document.getElementById('showContactHeaderBox');
-    var showContactFooterBox = document.getElementById('showContactFooterBox');
-    var addContactsButtonBox = document.getElementById('add_contacts_button_box');
+    let contactsListContainer = document.getElementById('contacts_list_container');
+    let showContactContainer = document.getElementById('showContactContainer');
+    let showContactHeaderBox = document.getElementById('showContactHeaderBox');
+    let showContactFooterBox = document.getElementById('showContactFooterBox');
+    let addContactsButtonBox = document.getElementById('add_contacts_button_box');
+    let editContactButtonBox = document.getElementById('open_sidebar_button');
 
     if (contactsListContainer) {
         contactsListContainer.classList.remove('z_index3');
@@ -187,6 +187,10 @@ function selectContact(index) {
 
     if (addContactsButtonBox) {
         addContactsButtonBox.classList.remove('z_index4');
+    }
+
+    if(editContactButtonBox) {
+        editContactButtonBox.classList.add('z_index6');
     }
 
     renderContactDetails(contact_list[index]);
@@ -215,11 +219,10 @@ function renderContactDetails(contact) {
 </div>
 
 <div id="showContactFooterBox"">
-        <div class=" d-flex" id="footer_name_box">
-    <div class="initials_circle_show_contact" ${backgroundColor}>${initials}</div>
-    <div>
-        <h2 style="font-weight: bold;" id="showContactName">${name}</h2>
-        <div id="edit_delete_desktop_icons" style="display: flex;">
+    <div class=" d-flex" id="footer_name_box">
+        <div class="initials_circle_show_contact" ${backgroundColor}>${initials}</div>
+        <div><h2 style="font-weight: bold;" id="showContactName">${name}</h2>
+            <div id="edit_delete_desktop_icons" style="display: flex; cursor:pointer;">
             <div class="fill_icon" onclick="openEditContactCard()" class="edit_delete_buttons">
                 <svg width="96" height="40" viewBox="0 0 96 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <mask id="mask0_71395_18214" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="8" y="8"
@@ -275,6 +278,11 @@ function renderContactDetails(contact) {
 <div id="phone_box" class="contact_phone">
     <a href="phone:${phone}">${phone}</a>
 </div>
+<div class="open_sidebar_button" id="open_sidebar_button">
+                <div onclick="openEditDeleteContactPopup(), doNotClose(event)" class="add_contacts_button"><img
+                        src="./assets/img/three_points_icon.svg" alt="">
+                </div>
+            </div>
 </div>
 </div>
     `;
@@ -320,8 +328,9 @@ function closeContactCreatedConfirmation() {
 
 function saveAddedContact() {
     closeAddContactCard();
-    initContactList();
     showContactCreatedConfirmation();
+    initContactList();
+    
 }
 
 function saveEditedContact() {
