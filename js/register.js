@@ -1,6 +1,18 @@
 let users = [];
 let checkBoxAktiv = false;
 
+async function init(){
+  loadUsers();
+}
+
+async function loadUsers(){
+  try {
+      users = JSON.parse(await getItem('users'));
+  } catch(e){
+      console.error('Loading error:', e);
+  }
+}
+
 async function addUser() {
   let registerButton = document.getElementById('register-button');
   registerButton.disabled = true;
