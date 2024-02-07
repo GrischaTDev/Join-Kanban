@@ -21,18 +21,20 @@ async function addUser() {
   let registerPassword = document.getElementById('register-password').value;
   let registerConfirmPassword = document.getElementById('register-confirm-password').value;
   
-  users.push({
-    name: registerName,
-    email: registerEmail,
-    password: registerPassword,
-    confirmPassword: registerConfirmPassword,
-  });
+
   
   if (!checkBoxAktiv) {
     console.log('Nicht akzeptiert');
     registerButton.disabled = false;
     return;
   }  else if (registerPassword === registerConfirmPassword) {
+    users.push({
+      name: registerName,
+      email: registerEmail,
+      password: registerPassword,
+      confirmPassword: registerConfirmPassword,
+    });
+    
     await setItem('users', JSON.stringify(users));
     successfullyMessage();
     resetForm(registerName, registerEmail, registerPassword, registerConfirmPassword, registerButton);

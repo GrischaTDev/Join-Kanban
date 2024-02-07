@@ -161,6 +161,19 @@ function doNotClose(event) {
 }
 
 function selectContact(index) {
+    // Alle Kontakt-Snippet-Boxen erhalten die Klasse 'contact_list_snippet_box'
+    const allContactSnippetBoxes = document.querySelectorAll('.contact_list_snippet_box');
+    allContactSnippetBoxes.forEach(box => {
+        box.classList.remove('contact_list_snippet_box_blue'); // Entferne die Klasse von allen Boxen
+    });
+
+    // Die ausgewählte Kontakt-Snippet-Box erhält die Klasse 'contact_list_snippet_box_blue'
+    const selectedContactSnippetBox = document.getElementById(`contactSnippetBox${index}`);
+    if (selectedContactSnippetBox) {
+        selectedContactSnippetBox.classList.add('contact_list_snippet_box_blue');
+    }
+
+    // Der Rest deines Codes für die Anzeige des ausgewählten Kontakts und die Z-Index-Anpassungen...
     let contactsListContainer = document.getElementById('contacts_list_container');
     let showContactContainer = document.getElementById('showContactContainer');
     let showContactHeaderBox = document.getElementById('showContactHeaderBox');
@@ -195,6 +208,7 @@ function selectContact(index) {
 
     renderContactDetails(contact_list[index]);
 }
+
 
 function renderContactDetails(contact) {
     let backgroundColor = contact['color'] ? `style="background-color: ${contact['color']};"` : '';
@@ -295,7 +309,12 @@ function closeShowContact() {
     document.getElementById('showContactFooterBox').classList.remove('z_index5');
     document.getElementById('showContactFooterBox').classList.add('d-none');
     document.getElementById('add_contacts_button_box').classList.add('z_index4');
+    const allContactSnippetBoxes = document.querySelectorAll('.contact_list_snippet_box');
+    allContactSnippetBoxes.forEach(box => {
+        box.classList.remove('contact_list_snippet_box_blue');
+    });
 }
+
 
 function openEditDeleteContactPopup() {
     document.getElementById('edit_delete_contact_popup_screen').classList.remove('d-none');
