@@ -18,9 +18,15 @@ async function login() {
     console.log('Benutzer', user);
     
     if (loginEmail == user.email && loginPassword == user.password) {
+        resetLoginForm(loginEmail, loginPassword);
         location.href = './summary.html';
     } else {
         console.log('Falsche Eingabe')
         return
     }
 }
+
+function resetLoginForm(loginEmail, loginPassword) {
+    loginEmail = '';
+    loginPassword = '';
+  }

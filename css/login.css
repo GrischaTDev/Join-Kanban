@@ -20,31 +20,31 @@ body {
     left: 18%;
     transform: translate(-50%, -50%);
     z-index: 101;
-  }
+}
 
-  .arrow-left {
+.arrow-left {
     margin-left: -300px;
     margin-bottom: -90px;
     cursor: pointer;
-  }
+}
 
-  .checkbox-sign-up {
+.checkbox-sign-up {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
-  }
+}
 
-  .checkbox-sign-up a {
+.checkbox-sign-up a {
     text-decoration: none;
     color: var(--Ligth-blue);
-  }
+}
 
-  .checkbox-sign-up a:hover {
+.checkbox-sign-up a:hover {
     text-decoration: underline;
-  }
+}
 
-  .msgBox {
+.msgBox {
     height: 100vh;
     width: 100%;
     background-color: #c5c5c5a6;
@@ -52,14 +52,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .msgBox span{
+.msgBox span {
     color: white;
     padding: 14px;
     border-radius: 10px;
     background-color: var(--dark-blue);
-  }
+}
 
 .dont-match {
     margin-top: -25px;
@@ -67,7 +67,14 @@ body {
     width: 100%;
     font-size: 14px;
     color: red;
-  }
+}
+
+.dont-accept {
+    margin-top: -25px;
+    font-size: 14px;
+    color: red;
+}
+
 /*************************/
 
 .loadAnimation {
@@ -81,9 +88,9 @@ body {
     animation: change-background 1s ease forwards;
     animation-delay: 0.5s;
     z-index: 100;
-  }
-  
-  .logo {
+}
+
+.logo {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -91,37 +98,39 @@ body {
     animation: move-to-top-left 1s ease forwards;
     animation-delay: 0.5s;
     z-index: 101;
-  }
-  
-  .logo-white {
+}
+
+.logo-white {
     fill: #fff;
     animation: move-to-top-left 1s ease forwards;
     animation-delay: 1s;
-  }
+}
 
-  @keyframes move-to-top-left {
+@keyframes move-to-top-left {
     from {
-      top: 50%;
-      left: 50%;
-      fill: #fff;
+        top: 50%;
+        left: 50%;
+        fill: #fff;
     }
-    to {
-      top: 9%;
-      left: 18%;
-      fill: #2A3647;
-    }
-  }
 
-  @keyframes change-background {
-    from {
-      opacity: 1;
-      z-index: 50;
-    }
     to {
-      opacity: 0;
-      z-index: -1;
+        top: 9%;
+        left: 18%;
+        fill: #2A3647;
     }
-  }
+}
+
+@keyframes change-background {
+    from {
+        opacity: 1;
+        z-index: 50;
+    }
+
+    to {
+        opacity: 0;
+        z-index: -1;
+    }
+}
 
 .form-box {
     background-color: white;
@@ -308,7 +317,7 @@ input:focus-visible {
         top: 150px;
         left: 130px;
         width: 100px;
-        height: 122px; 
+        height: 122px;
     }
 
     .logo {
@@ -325,27 +334,29 @@ input:focus-visible {
     .logo-white {
         fill: var(--dark-blue);
     }
-    
+
     /* Logo postion after animation!!  */
-      @keyframes move-to-top-left {
+    @keyframes move-to-top-left {
         from {
-          top: 50%;
-          left: 50%;
-          height: 334px;
-          width: 274px;
+            top: 50%;
+            left: 50%;
+            height: 334px;
+            width: 274px;
         }
+
         to {
-          top: 150px;
-          left: 130px;
-          fill: #2A3647;
-          width: 100px;
-          height: 122px;
+            top: 150px;
+            left: 130px;
+            fill: #2A3647;
+            width: 100px;
+            height: 122px;
         }
     }
 
     .titel-border {
         width: 120px;
     }
+
     .form-box {
         width: 384px;
         padding: 48px 115px;
@@ -377,7 +388,7 @@ input:focus-visible {
     }
 
     .log-in-button {
-       width: 110px; 
+        width: 110px;
     }
 
     .signUp {
@@ -406,12 +417,12 @@ input:focus-visible {
         position: absolute;
         transform: translate(-50%, -50%);
         z-index: 101;
-      }
-    
-      .arrow-left {
+    }
+
+    .arrow-left {
         margin-left: -450px;
         margin-bottom: -90px;
-      }
+    }
 }
 
 @media screen and (min-width: 1600px) {
@@ -435,27 +446,29 @@ input:focus-visible {
     .logo-white {
         fill: var(--dark-blue);
     }
-    
+
     /* Logo postion after animation!!  */
-      @keyframes move-to-top-left {
+    @keyframes move-to-top-left {
         from {
-          top: 50%;
-          left: 50%;
-          height: 334px;
-          width: 274px;
+            top: 50%;
+            left: 50%;
+            height: 334px;
+            width: 274px;
         }
+
         to {
-          top: 150px;
-          left: 130px;
-          fill: #2A3647;
-          width: 100px;
-          height: 122px;
+            top: 150px;
+            left: 130px;
+            fill: #2A3647;
+            width: 100px;
+            height: 122px;
         }
     }
 
     .titel-border {
         width: 120px;
     }
+
     .form-box {
         width: 652px;
         padding: 48px 115px;
@@ -487,7 +500,7 @@ input:focus-visible {
     }
 
     .log-in-button {
-       width: 110px; 
+        width: 110px;
     }
 
     .signUp {
@@ -515,5 +528,5 @@ input:focus-visible {
     .arrow-left {
         margin-left: -650px;
         margin-bottom: -90px;
-      }
-  }
+    }
+}
