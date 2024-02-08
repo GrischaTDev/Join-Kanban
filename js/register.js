@@ -1,7 +1,7 @@
 let users = [];
 let checkBoxAktiv = false;
 
-async function init(){
+function init(){
   loadUsers();
 }
 
@@ -21,8 +21,6 @@ async function addUser() {
   let registerPassword = document.getElementById('register-password').value;
   let registerConfirmPassword = document.getElementById('register-confirm-password').value;
   
-
-  
   if (!checkBoxAktiv) {
     console.log('Nicht akzeptiert');
     registerButton.disabled = false;
@@ -34,7 +32,7 @@ async function addUser() {
       password: registerPassword,
       confirmPassword: registerConfirmPassword,
     });
-    
+
     await setItem('users', JSON.stringify(users));
     successfullyMessage();
     resetForm(registerName, registerEmail, registerPassword, registerConfirmPassword, registerButton);
