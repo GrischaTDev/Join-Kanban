@@ -93,12 +93,6 @@ function initContactList() {
 }
 
 
-
-
-
-
-
-
 function groupContactsByFirstLetter(contacts) {
     // Sortiere die Kontakte alphabetisch nach dem Nachnamen
     contacts.sort((a, b) => a.name.localeCompare(b.name));
