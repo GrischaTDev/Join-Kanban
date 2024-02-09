@@ -38,11 +38,11 @@
                 <img src="./assets/img/mail_icon.svg" alt="">
             </div>
             <div class="input-field">
-                <input onkeydown="changePasswordIcon('register-password', 'password-icon')" id="register-password" type="password" required placeholder="Password">
+                <input oninput="changePasswordIcon('register-password', 'password-icon')" id="register-password" type="password" required placeholder="Password">
                 <img id="password-icon" onclick="showPassword('register-password', 'password-icon')" src="./assets/img/lock_icon.svg" alt="">
             </div>
             <div class="input-field">
-                <input onkeydown="changePasswordIcon('register-confirm-password', 'confirm-password-icon')" id="register-confirm-password" type="password" required placeholder="Confirm Password">
+                <input oninput="changePasswordIcon('register-confirm-password', 'confirm-password-icon')" id="register-confirm-password" type="password" required placeholder="Confirm Password">
                 <img id="confirm-password-icon" onclick="showPassword('register-confirm-password', 'confirm-password-icon')" src="./assets/img/lock_icon.svg" alt="">
             </div>
             <div class="dont-match">

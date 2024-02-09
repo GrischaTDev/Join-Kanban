@@ -126,16 +126,14 @@ function changePasswordIcon(input, showIcon) {
   const inputField = document.getElementById(input);
   const icon = document.getElementById(showIcon);
 
-  inputField.addEventListener('input', () => {
-    if (inputField.value === '') {
-      icon.src = './assets/img/lock_icon.svg';
-    } else {
-      icon.src = './assets/img/visibility_off.svg';
-    } if (inputField.type === "text") {
-      icon.src = './assets/img/visibility.svg';
-    } if (inputField.value === '') {
-      icon.src = './assets/img/lock_icon.svg';
-      inputField.type = "password";
-    }
-  });
+  if (inputField.value === '') {
+    icon.src = './assets/img/lock_icon.svg';
+  } else {
+    icon.src = './assets/img/visibility_off.svg';
+  } if (inputField.type === "text") {
+    icon.src = './assets/img/visibility.svg';
+  } if (inputField.value === '') {
+    icon.src = './assets/img/lock_icon.svg';
+    inputField.type = "password";
+  }
 }
