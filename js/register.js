@@ -63,12 +63,11 @@ function checkPrivacyConsent(registerButton) {
   registerButton.disabled = false;
 }
 
-async function userPush(registerName, registerEmail, registerPassword, registerConfirmPassword) {
+async function userPush(registerName, registerEmail, registerPassword) {
   users.push({
     name: registerName,
     email: registerEmail,
     password: registerPassword,
-    confirmPassword: registerConfirmPassword,
   });
   await setItem('users', JSON.stringify(users));
 }
