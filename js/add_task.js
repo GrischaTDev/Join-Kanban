@@ -28,6 +28,8 @@ function addToInformations(){
         "titel": titel.value,
         "description": description.value,
     };
+    
+   debugger
 
     informations.push(information);
     console.log(informations);
