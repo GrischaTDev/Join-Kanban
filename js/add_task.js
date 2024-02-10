@@ -33,6 +33,75 @@ function openUserList() {
 }
 
 
+// alles in Json und array speichern und umwandeln//
+let allTasks = [];
+
+function addTask(){
+    let titel = document.getElementById('titel').value;
+    let description = document.getElementById('description').value;
+    let category = document.getElementById('category').value;
+    let userSelect = document.getElementById('userSelect').innerText.trim(); // Nutzername aus dem Text des ausgewählten Elements extrahieren
+    let subtask = document.getElementById('subtask').value;
+    let urgend = document.getElementById('urgent').classList.contains('active');
+    let medium = document.getElementById('medium').classList.contains('active');
+    let low = document.getElementById('low').classList.contains('active');
+
+    let task = {
+        'titel': titel,
+        'description': description,
+        'createdAt': new Date().getTime(),
+        'category': category,
+        'userSelect': userSelect,
+        'subtask': subtask,
+        'priority': {
+            'urgent': urgend,
+            'medium': medium,
+            'low': low
+        }
+    }
+
+    allTasks.push(task);
+
+    let allTasksAsString = JSON.stringify(allTasks);
+    localStorage.setItem('allTask', allTasksAsString);
+}
+
+function loadAllTasks() {
+    let allTasksAsString = localStorage.getItem('allTask');
+    allTasks = JSON.parse(allTasksAsString);
+
+
+}
+
+function togglePriority(priority) {
+    var button = document.getElementById(priority);
+    
+    if (button.classList.contains('active')) {
+        // Wenn der aktuelle Button bereits ausgewählt ist, dann abwählen
+        button.classList.remove('active');
+        button.style.backgroundColor = 'white';
+        button.style.color = ''; 
+        button.querySelector('img').style.filter = ''; 
+    } else {
+        // Andernfalls den aktuellen Button auswählen und den vorherigen abwählen
+        var prevSelectedButton = document.querySelector('.priority-button.active');
+        if (prevSelectedButton) {
+            prevSelectedButton.classList.remove('active');
+            prevSelectedButton.style.backgroundColor = 'white';
+            prevSelectedButton.style.color = ''; 
+            prevSelectedButton.querySelector('img').style.filter = ''; 
+        }
+        
+        button.classList.add('active');
+        var computedStyle = getComputedStyle(button);
+        button.style.backgroundColor = computedStyle.backgroundColor;
+        button.style.color = 'white'; 
+        button.querySelector('img').style.filter = 'brightness(0) invert(100%)'; 
+    }
+}
+
+
+
 // contacts.forEach((contact) => {
 //     const initials = contact['given_name'][0] + contact['name'][0];
 //     const backgroundColor = contact['color'] ? `style="background-color: ${contact['color']};"` : '';
@@ -55,14 +124,6 @@ function openUserList() {
 // });
 
 
-<<<<<<< HEAD
-    let information = {
-        "titel": titel.value,
-        "description": description.value,
-    };
-    
-   debugger
-=======
 // /**
 //  * Shows the Popup from the Side
 //  */
@@ -71,7 +132,6 @@ function openUserList() {
 //     document.getElementById('incomePopup').classList.remove('d-none');
 //     document.getElementById('incomePopup').classList.add('income-popup');
 // }
->>>>>>> 6e458437f7cd62131298bc41981b6a4b46ac0ebb
 
 // function closePopup() {
 //     console.log('Closing popup');
@@ -79,28 +139,9 @@ function openUserList() {
 //     document.getElementById('incomePopup').classList.remove('income-popup');
 // }
 
-// /**
-//  * save all Data to a Array for the Board-Card
-//  */
-
-
-// let informations = [];
-
-// function addToInformations(){
-//     let titel = document.getElementById('titel');
-//     let description = document.getElementById('description');
-
-//     let information = {
-//         "titel": titel.value,
-//         "description": description.value,
-//     };
-
-//     informations.push(information);
-//     console.log(informations);
-//     titel.value = '';
-//     description.value = '';
-
-// }
+//**
+//* Popup-end 
+//
 
 // function openContactList() {
 //     document.getElementById('userSelect').innerHTML = '';

@@ -321,6 +321,10 @@ textarea {
     margin-bottom: 0;
     position: relative;
   }
+  .priority-button.active {
+    pointer-events: none; /* Deaktiviert das Klicken auf den Button */
+    opacity: 0.5; /* Ändert die Opazität, um anzuzeigen, dass der Button deaktiviert ist */
+}
 
   .form-button {
     display: flex;
