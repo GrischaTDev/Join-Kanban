@@ -1,65 +1,87 @@
 let users = [];
-let checkBoxAktiv = false;
+let checkBox = false;
 
-async function init(){
+function init() {
   loadUsers();
 }
 
-async function loadUsers(){
+
+async function loadUsers() {
   try {
-      users = JSON.parse(await getItem('users'));
-  } catch(e){
-      console.error('Loading error:', e);
+    users = JSON.parse(await getItem('users'));
+  } catch (e) {
+    console.error('Loading error:', e);
   }
 }
 
-async function addUser() {
+
+function addUser() {
   let registerButton = document.getElementById('register-button');
   registerButton.disabled = true;
   let registerName = document.getElementById('register-name').value;
   let registerEmail = document.getElementById('register-email').value;
   let registerPassword = document.getElementById('register-password').value;
   let registerConfirmPassword = document.getElementById('register-confirm-password').value;
-  
 
-  
-  if (!checkBoxAktiv) {
-    console.log('Nicht akzeptiert');
-    registerButton.disabled = false;
-    return;
-  }  else if (registerPassword === registerConfirmPassword) {
-    users.push({
-      name: registerName,
-      email: registerEmail,
-      password: registerPassword,
-      confirmPassword: registerConfirmPassword,
-    });
-    
-    await setItem('users', JSON.stringify(users));
-    successfullyMessage();
-    resetForm(registerName, registerEmail, registerPassword, registerConfirmPassword, registerButton);
-
-    console.log('User data:', users);
-  } else {
-    let passwordDontMatch = document.getElementById('password-dont-match');
-    let passwordDontMatchBorder = document.getElementById('register-confirm-password');
-    passwordDontMatch.classList.remove('d-none');
-    passwordDontMatchBorder.classList.add('input-invalid');
-    registerButton.disabled = false;
-    console.log('Paswörter stimmen nicht überein');
+  if (registerPassword !== registerConfirmPassword) {
+    checkPassword(registerButton);
+    return
   }
+
+  if (!checkBox) {
+    checkPrivacyConsent(registerButton);
+    return;
+  }
+
+  let dontPrivacyAccept = document.getElementById('dont-accept');
+  dontPrivacyAccept.classList.add('d-none');
+
+  userPush(registerName, registerEmail, registerPassword, registerConfirmPassword);
+  successfullyMessage();
+  resetForm(registerName, registerEmail, registerPassword, registerConfirmPassword, registerButton);
+}
+
+
+function checkPassword(registerButton) {
+  let passwordDontMatch = document.getElementById('password-dont-match');
+  let passwordDontMatchBorder = document.getElementById('register-confirm-password');
+  let dontPrivacyAccept = document.getElementById('dont-accept');
+  dontPrivacyAccept.classList.add('d-none');
+  passwordDontMatch.classList.remove('d-none');
+  passwordDontMatchBorder.classList.add('input-invalid');
+  registerButton.disabled = false;
+}
+
+
+function checkPrivacyConsent(registerButton) {
+  let dontPrivacyAccept = document.getElementById('dont-accept');
+  dontPrivacyAccept.classList.remove('d-none');
+  let passwordDontMatch = document.getElementById('password-dont-match');
+  let passwordDontMatchBorder = document.getElementById('register-confirm-password');
+  passwordDontMatch.classList.add('d-none');
+  passwordDontMatchBorder.classList.remove('input-invalid');
+  registerButton.disabled = false;
+}
+
+async function userPush(registerName, registerEmail, registerPassword) {
+  users.push({
+    name: registerName,
+    email: registerEmail,
+    password: registerPassword,
+  });
+  await setItem('users', JSON.stringify(users));
 }
 
 
 function privacyCheck() {
   let checkBoxImage = document.getElementById('checkbox');
 
-  if (!checkBoxAktiv) {
+  if (!checkBox) {
     checkBoxImage.src = './assets/img/checkbox_active.svg';
-    checkBoxAktiv = true;
+    checkBox = true;
   } else {
     checkBoxImage.src = './assets/img/checkbox.svg';
-    checkBoxAktiv = false;
+    checkBox = false;
   }
 }
 
@@ -73,7 +95,8 @@ async function successfullyMessage() {
   }, 1500);
 }
 
-function resetForm(registerName, registerEmail, registerPassword, registerConfirmPassword,registerButton) {
+
+function resetForm(registerName, registerEmail, registerPassword, registerConfirmPassword, registerButton) {
   registerName = '';
   registerEmail = '';
   registerPassword = '';
@@ -82,9 +105,9 @@ function resetForm(registerName, registerEmail, registerPassword, registerConfir
 }
 
 
-function showPassword(inputField, icon) {
-  inputField = document.getElementById(inputField);
-  icon = document.getElementById(icon);
+function showPassword(input, showIcon) {
+  let inputField = document.getElementById(input);
+  let icon = document.getElementById(showIcon);
 
   if (inputField.value === '') {
     return
@@ -98,35 +121,18 @@ function showPassword(inputField, icon) {
 }
 
 
-let showInputPassword = document.getElementById("register-password");
-let showInputPassword2 = document.getElementById("register-confirm-password");
-const inputField = document.getElementById('register-password');
-const inputField2 = document.getElementById('register-confirm-password');
-const icon = document.getElementById('password-icon');
-const icon2 = document.getElementById('confirm-password-icon');
+function changePasswordIcon(input, showIcon) {
+  const inputField = document.getElementById(input);
+  const icon = document.getElementById(showIcon);
 
-inputField.addEventListener('input', () => {
   if (inputField.value === '') {
     icon.src = './assets/img/lock_icon.svg';
   } else {
     icon.src = './assets/img/visibility_off.svg';
-  } if (showInputPassword.type === "text") {
+  } if (inputField.type === "text") {
     icon.src = './assets/img/visibility.svg';
   } if (inputField.value === '') {
     icon.src = './assets/img/lock_icon.svg';
-    showInputPassword.type = "password";
+    inputField.type = "password";
   }
-});
-
-inputField2.addEventListener('input', () => {
-  if (inputField2.value === '') {
-    icon2.src = './assets/img/lock_icon.svg';
-  } else {
-    icon2.src = './assets/img/visibility_off.svg';
-  } if (showInputPassword2.type === "text") {
-    icon2.src = './assets/img/visibility.svg';
-  } if (inputField2.value === '') {
-    icon2.src = './assets/img/lock_icon.svg';
-    showInputPassword2.type = "password";
-  }
-});
+}

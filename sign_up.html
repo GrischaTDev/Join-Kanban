@@ -38,11 +38,11 @@
                 <img src="./assets/img/mail_icon.svg" alt="">
             </div>
             <div class="input-field">
-                <input id="register-password" type="password" required placeholder="Password">
+                <input oninput="changePasswordIcon('register-password', 'password-icon')" id="register-password" type="password" required placeholder="Password">
                 <img id="password-icon" onclick="showPassword('register-password', 'password-icon')" src="./assets/img/lock_icon.svg" alt="">
             </div>
             <div class="input-field">
-                <input id="register-confirm-password" type="password" required placeholder="Confirm Password">
+                <input oninput="changePasswordIcon('register-confirm-password', 'confirm-password-icon')" id="register-confirm-password" type="password" required placeholder="Confirm Password">
                 <img id="confirm-password-icon" onclick="showPassword('register-confirm-password', 'confirm-password-icon')" src="./assets/img/lock_icon.svg" alt="">
             </div>
             <div class="dont-match">
@@ -51,6 +51,9 @@
             <div class="checkbox-sign-up">
                 <img id="checkbox" onclick="privacyCheck()" src="./assets/img/checkbox.svg">
                 <div>I accept the <a href="./">Privacy policy</a></div>
+            </div>
+            <div class="dont-accept">
+                <span id="dont-accept" class="d-none">Please accept the Privacy policy.</span>
             </div>
             <div class="button-box">
                 <a href=""><button id="register-button" class="log-in-button">Sign up</button></a>

@@ -13,14 +13,20 @@ async function loadUsers(){
 async function login() {
     let loginEmail = document.getElementById('login-email').value;
     let loginPassword = document.getElementById('login-password').value;
-    let user = users.find(u => u.email == loginEmail.value && u.password == loginPassword.value);
+    let user = users.find(u => u.email == loginEmail && u.password == loginPassword);
 
     console.log('Benutzer', user);
     
     if (loginEmail == user.email && loginPassword == user.password) {
+        resetLoginForm(loginEmail, loginPassword);
         location.href = './summary.html';
     } else {
         console.log('Falsche Eingabe')
         return
     }
 }
+
+function resetLoginForm(loginEmail, loginPassword) {
+    loginEmail = '';
+    loginPassword = '';
+  }
