@@ -66,6 +66,7 @@ align-items: center;
 .contacts_list {
     overflow-y: auto;
     background-color: white;
+    padding: 24px;
 }
 
 .contact_list_snippet_box {
@@ -687,8 +688,9 @@ padding: 10px 0px 10px 0px;
     .contacts_list_box {
         min-width: 285px;
         width: 556px;
-        padding: 20px;
+        padding-top: 16px;
         flex-direction: column;
+        background-color: white;
         box-shadow: 4px, 5px, 6px, 5px rgba(0, 0, 0, 1.0);
     }
 

@@ -158,6 +158,20 @@ let contact_list = [
         "e-mail": "wolf@gmail.com",
         "color": "rgb(255,70,70)",
         "phone": "+49 8888 888 88 8"
+    },
+    {
+        "name": "Stork",
+        "given_name": "Marcel",
+        "e-mail": "bauer@gmail.com",
+        "color": "rgb(70,47,138)",
+        "phone": "+49 7777 777 77 7"
+    },
+    {
+        "name": "Tänzer",
+        "given_name": "Tatjana",
+        "e-mail": "wolf@gmail.com",
+        "color": "rgb(255,70,70)",
+        "phone": "+49 8888 888 88 8"
     }
 ]
 
