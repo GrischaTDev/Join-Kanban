@@ -801,6 +801,10 @@ padding: 10px 0px 10px 0px;
         margin-right: 32px;
     }
 
+    .edit_delete_contact_popup {
+        display: none;
+    }
+
 }
 
 @media(min-width:1000px) {

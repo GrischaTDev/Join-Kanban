@@ -1,5 +1,6 @@
-const contact_list = [
+let contact_list = [
     {
+        "id": "1",
         "name": "Schulz",
         "given_name": "Anja",
         "e-mail": "schulz@hotmail.com",
@@ -7,6 +8,7 @@ const contact_list = [
         "phone": "+49 1111 111 11 1"
     },
     {
+        "id": "2",
         "name": "Mayer",
         "given_name": "Anton",
         "e-mail": "antom@gmail.com",
@@ -14,6 +16,7 @@ const contact_list = [
         "phone": "+49 2222 222 22 2"
     },
     {
+        "id": "3",
         "name": "Ziegler",
         "given_name": "Benedict",
         "e-mail": "benedict@gmail.com",
@@ -21,6 +24,7 @@ const contact_list = [
         "phone": "+49 3333 333 33 3"
     },
     {
+        "id": "4",
         "name": "Eisenberg",
         "given_name": "David",
         "e-mail": "davidberg@gmail.com",
@@ -28,6 +32,7 @@ const contact_list = [
         "phone": "+49 4444 444 44 4"
     },
     {
+        "id": "5",
         "name": "Mauer",
         "given_name": "Emmanuel",
         "e-mail": "emmanuelMa@gmail.com",
@@ -35,6 +40,7 @@ const contact_list = [
         "phone": "+49 5555 555 55 5"
     },
     {
+        "id": "6",
         "name": "Fischer",
         "given_name": "Eva",
         "e-mail": "eva@gmail.com",
@@ -42,6 +48,7 @@ const contact_list = [
         "phone": "+49 6666 666 66 6"
     },
     {
+        "id": "7",
         "name": "Bauer",
         "given_name": "Marcel",
         "e-mail": "bauer@gmail.com",
@@ -49,6 +56,103 @@ const contact_list = [
         "phone": "+49 7777 777 77 7"
     },
     {
+        "id": "8",
+        "name": "Schmidt",
+        "given_name": "Timo",
+        "e-mail": "schmidtim@gmail.com",
+        "color": "rgb(128,128,186)",
+        "phone": "+49 4578 895 65 3"
+    },
+    {
+        "id": "9",
+        "name": "Peters",
+        "given_name": "Samuel",
+        "e-mail": "petersam@gmail.com",
+        "color": "rgb(247,247,1)",
+        "phone": "+49 7896 542 65 9"
+    },
+    {
+        "id": "10",
+        "name": "Becker",
+        "given_name": "Vincent",
+        "e-mail": "vibe@gmail.com",
+        "color": "rgb(235,74,143)",
+        "phone": "+49 7589 654 12 5"
+    },
+    {
+        "id": "11",
+        "name": "Braun",
+        "given_name": "Martin",
+        "e-mail": "mabra@gmail.com",
+        "color": "rgb(122,196,227)",
+        "phone": "+49 8527 419 63 2"
+    },
+    {
+        "id": "12",
+        "name": "Friesen",
+        "given_name": "Angelika",
+        "e-mail": "angi94@gmail.com",
+        "color": "rgb(2,109,186)",
+        "phone": "+49 3698 521 47 8"
+    },
+    {
+        "id": "13",
+        "name": "Lang",
+        "given_name": "Susanne",
+        "e-mail": "sula82@gmail.com",
+        "color": "rgb(237,27,38)",
+        "phone": "+49 1346 792 58 0"
+    },
+    {
+        "id": "14",
+        "name": "Klein",
+        "given_name": "Holger",
+        "e-mail": "hoklein@gmail.com",
+        "color": "rgb(46,161,108)",
+        "phone": "+49 9876 543 21 0"
+    },
+    {
+        "id": "15",
+        "name": "Giesbrecht",
+        "given_name": "Manfred",
+        "e-mail": "magies@gmail.com",
+        "color": "rgb(158,201,100)",
+        "phone": "+49 4598 984 98 5"
+    },
+    {
+        "id": "16",
+        "name": "Günther",
+        "given_name": "Lina",
+        "e-mail": "ligün@gmail.com",
+        "color": "rgb(240,142,30)",
+        "phone": "+49 1458 955 69 5"
+    },
+    {
+        "id": "17",
+        "name": "Albrecht",
+        "given_name": "Margret",
+        "e-mail": "marget@gmail.com",
+        "color": "rgb(131,87,166)",
+        "phone": "+49 1234 567 89 0"
+    },
+    {
+        "id": "18",
+        "name": "Kaiser",
+        "given_name": "Emil",
+        "e-mail": "emi@gmx.com",
+        "color": "rgb(42,54,71)",
+        "phone": "+49 1212 121 21 2"
+    },
+    {
+        "id": "19",
+        "name": "Regehr",
+        "given_name": "Paul",
+        "e-mail": "paureg@hotmail.com",
+        "color": "rgb(41,171,226)",
+        "phone": "+49 9999 999 99 9"
+    },
+    {
+        "id": "20",
         "name": "Wolf",
         "given_name": "Tatjana",
         "e-mail": "wolf@gmail.com",
@@ -58,7 +162,7 @@ const contact_list = [
 ]
 
 function initContactList() {
-    let index = 0; // Zählervariable für die Gesamtkontakte
+    let index = 0;
     document.getElementById('contacts_list_container').innerHTML = '';
     const groupedContacts = groupContactsByFirstLetter(contact_list);
 
@@ -71,7 +175,8 @@ function initContactList() {
 
         contacts.forEach((contact) => {
             const initials = contact['given_name'][0] + contact['name'][0];
-            const backgroundColor = contact['color'] ? `style="background-color: ${contact['color']};"` : '';
+            const backgroundColor = contact['color'] ? `style="background-color: ${contact['color']};"` : 'style="background-color: rgb(209,209,209);"';
+
             document.getElementById('contacts_list_container').innerHTML += `
                 <div onclick="selectContact(${index})" class="contact_list_snippet_box" id="contactSnippetBox${index}">
                     <div class="initials_circle_contact_list" ${backgroundColor}>
@@ -134,10 +239,24 @@ function closeAddContactCard() {
     document.getElementById('addContactScreen').classList.add('d-none');
 }
 
-function openEditContactCard() {
-    document.getElementById('editContactScreen').classList.remove('d-none');
-    document.getElementById('edit_contact_card').classList.add('move-to-screen');
+function openEditContactCard(index) {
+    const contactData = contact_list[index];
+
+    if (contactData) {
+        // Zeige das Popup an und fülle die Eingabefelder mit den Daten des ausgewählten Kontakts
+        document.getElementById('editContactScreen').classList.remove('d-none');
+        document.getElementById('edit_contact_card').classList.add('move-to-screen');
+
+        document.getElementById('edit_contact_fname').value = contactData['given_name'];
+        document.getElementById('edit_contact_lname').value = contactData['name'];
+        document.getElementById('edit_contact_email').value = contactData['e-mail'];
+        document.getElementById('edit_contact_phone').value = contactData['phone'];
+    } else {
+        console.error("Kontaktdaten nicht gefunden für Index:", index);
+    }
 }
+
+
 
 function hideEditCardFromScreen() {
     document.getElementById('edit_contact_card').classList.add('hide-from-screen');
@@ -155,57 +274,75 @@ function doNotClose(event) {
 }
 
 function selectContact(index) {
-    // Alle Kontakt-Snippet-Boxen erhalten die Klasse 'contact_list_snippet_box'
-    const allContactSnippetBoxes = document.querySelectorAll('.contact_list_snippet_box');
-    allContactSnippetBoxes.forEach(box => {
-        box.classList.remove('contact_list_snippet_box_blue'); // Entferne die Klasse von allen Boxen
-    });
+    console.log("Selected index:", index); // Überprüfe den ausgewählten Index
+    const selectedContact = contact_list[index];
+    console.log("Selected contact:", selectedContact); // Überprüfe den ausgewählten Kontakt
 
-    // Die ausgewählte Kontakt-Snippet-Box erhält die Klasse 'contact_list_snippet_box_blue'
-    const selectedContactSnippetBox = document.getElementById(`contactSnippetBox${index}`);
-    if (selectedContactSnippetBox) {
-        selectedContactSnippetBox.classList.add('contact_list_snippet_box_blue');
+    if (selectedContact) { // Überprüfe, ob der ausgewählte Kontakt definiert ist
+        // Alle Kontakt-Snippet-Boxen erhalten die Klasse 'contact_list_snippet_box'
+        const allContactSnippetBoxes = document.querySelectorAll('.contact_list_snippet_box');
+        allContactSnippetBoxes.forEach(box => {
+            box.classList.remove('contact_list_snippet_box_blue'); // Entferne die Klasse von allen Boxen
+        });
+
+        // Die ausgewählte Kontakt-Snippet-Box erhält die Klasse 'contact_list_snippet_box_blue'
+        const selectedContactSnippetBox = document.getElementById(`contactSnippetBox${index}`);
+        console.log("Selected contact snippet box:", selectedContactSnippetBox); // Überprüfe, ob das Element gefunden wurde
+        if (selectedContactSnippetBox) {
+            selectedContactSnippetBox.classList.add('contact_list_snippet_box_blue');
+        }
+
+        // Der Rest deines Codes für die Anzeige des ausgewählten Kontakts und die Z-Index-Anpassungen...
+        let contactsListContainer = document.getElementById('contacts_list_container');
+        let showContactContainer = document.getElementById('showContactContainer');
+        let showContactHeaderBox = document.getElementById('showContactHeaderBox');
+        let showContactFooterBox = document.getElementById('showContactFooterBox');
+        let addContactsButtonBox = document.getElementById('add_contacts_button_box');
+        let editContactButtonBox = document.getElementById('open_sidebar_button');
+
+        if (contactsListContainer) {
+            contactsListContainer.classList.remove('z_index3');
+        }
+
+        if (showContactContainer) {
+            showContactContainer.classList.add('z_index5');
+        }
+
+        if (showContactHeaderBox) {
+            showContactHeaderBox.classList.add('z_index5');
+        }
+
+        if (showContactFooterBox) {
+            showContactFooterBox.classList.remove('d-none');
+            showContactFooterBox.classList.add('z_index5');
+        }
+
+        if (addContactsButtonBox) {
+            addContactsButtonBox.classList.remove('z_index4');
+        }
+
+        if(editContactButtonBox) {
+            editContactButtonBox.classList.add('z_index6');
+        }
+
+        renderContactDetails(selectedContact);
+    } else {
+        console.error("Selected contact is undefined.");
     }
-
-    // Der Rest deines Codes für die Anzeige des ausgewählten Kontakts und die Z-Index-Anpassungen...
-    let contactsListContainer = document.getElementById('contacts_list_container');
-    let showContactContainer = document.getElementById('showContactContainer');
-    let showContactHeaderBox = document.getElementById('showContactHeaderBox');
-    let showContactFooterBox = document.getElementById('showContactFooterBox');
-    let addContactsButtonBox = document.getElementById('add_contacts_button_box');
-    let editContactButtonBox = document.getElementById('open_sidebar_button');
-
-    if (contactsListContainer) {
-        contactsListContainer.classList.remove('z_index3');
-    }
-
-    if (showContactContainer) {
-        showContactContainer.classList.add('z_index5');
-    }
-
-    if (showContactHeaderBox) {
-        showContactHeaderBox.classList.add('z_index5');
-    }
-
-    if (showContactFooterBox) {
-        showContactFooterBox.classList.remove('d-none');
-        showContactFooterBox.classList.add('z_index5');
-    }
-
-    if (addContactsButtonBox) {
-        addContactsButtonBox.classList.remove('z_index4');
-    }
-
-    if(editContactButtonBox) {
-        editContactButtonBox.classList.add('z_index6');
-    }
-
-    renderContactDetails(contact_list[index]);
 }
 
 
-function renderContactDetails(contact) {
-    let backgroundColor = contact['color'] ? `style="background-color: ${contact['color']};"` : '';
+
+
+
+function renderContactDetails(contact, index) {
+    let backgroundColor = ''; // Standardhintergrundfarbe
+    if (contact && contact['color']) {
+        backgroundColor = `style="background-color: ${contact['color']};"`;
+    } else {
+        backgroundColor = 'style="background-color: rgb(209,209,209);"'; // Standardfarbe, wenn 'color' nicht definiert ist
+    }
+
     let initials = contact['given_name'][0] + contact['name'][0];
     let name = contact['given_name'] + ' ' + contact['name'];
     let e_mail = contact['e-mail'];
@@ -231,7 +368,7 @@ function renderContactDetails(contact) {
         <div class="initials_circle_show_contact" ${backgroundColor}>${initials}</div>
         <div><h2 style="font-weight: bold;" id="showContactName">${name}</h2>
             <div id="edit_delete_desktop_icons" style="display: flex; cursor:pointer;">
-            <div class="fill_icon" onclick="openEditContactCard()" class="edit_delete_buttons">
+            <div class="fill_icon" onclick="openEditContactCard(${index})" class="edit_delete_buttons">
                 <svg width="96" height="40" viewBox="0 0 96 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <mask id="mask0_71395_18214" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="8" y="8"
                         width="24" height="24">
@@ -294,6 +431,8 @@ function renderContactDetails(contact) {
 </div>
 </div>
     `;
+
+    renderContactDetails(contact_list[index]);
 }
 
 function closeShowContact() {
@@ -340,16 +479,80 @@ function closeContactCreatedConfirmation() {
 }
 
 function saveAddedContact() {
+    let first_name = document.getElementById('add_contact_fname').value;
+    let last_name = document.getElementById('add_contact_lname').value;
+    let email = document.getElementById('add_contact_email').value;
+    let phone = document.getElementById('add_contact_phone').value;
+
+    let newContact = {
+        'id': generateUniqueId(),
+        'name': last_name,
+        'given_name': first_name,
+        'e-mail': email,
+        'color': generateRandomColor(),
+        'phone': phone
+    };
+
+    contact_list.push(newContact);
+    localStorage.setItem('contact_list', JSON.stringify(contact_list));
+
     closeAddContactCard();
     showContactCreatedConfirmation();
+    loadContactList();
     initContactList();
     
 }
 
-function saveEditedContact() {
-    closeEditContactCard()
-    closeShowContact();
-    closeEditDeleteContactPopup();
-    initContactList();
-    showContactCreatedConfirmation();
+function loadContactList() {
+    let contactListAsString = localStorage.getItem('contact_list');
+    contact_list = JSON.parse(contactListAsString);
+    console.log('Loaded all Contacts');
 }
+
+function generateUniqueId() {
+    // Hier könntest du eine eindeutige ID-Generierung implementieren
+    // Zum Beispiel könntest du die Länge der Kontaktliste nehmen und eine neue ID basierend darauf generieren.
+    return contact_list.length + 1;
+}
+
+function generateRandomColor() {
+    // Hier könntest du eine zufällige Farbe generieren, zum Beispiel im RGB-Farbraum
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    return `rgb(${r},${g},${b})`;
+}
+
+
+function saveEditedContact() {
+    // Indizes der Eingabefelder für die Kontaktdaten
+    const firstNameInput = document.getElementById('edit_contact_fname');
+    const lastNameInput = document.getElementById('edit_contact_lname');
+    const emailInput = document.getElementById('edit_contact_email');
+    const phoneInput = document.getElementById('edit_contact_phone');
+
+    // Indizes des ausgewählten Kontakts
+    const selectedIndex = parseInt(document.getElementById('edit_contact_card').getAttribute('data-selected-index'));
+    // Neue Werte der Eingabefelder
+    const newFirstName = firstNameInput.value;
+    const newLastName = lastNameInput.value;
+    const newEmail = emailInput.value;
+    const newPhone = phoneInput.value;
+
+    // Überprüfen, ob ein gültiger Index ausgewählt wurde
+    if (selectedIndex >= 0 && selectedIndex < contact_list.length) {
+        // Den ausgewählten Kontakt aktualisieren
+        contact_list[selectedIndex].given_name = newFirstName;
+        contact_list[selectedIndex].name = newLastName;
+        contact_list[selectedIndex]['e-mail'] = newEmail;
+        contact_list[selectedIndex].phone = newPhone;
+    }
+
+    // Schließe das Bearbeitungspopup und aktualisiere die Kontaktliste
+    closeEditContactCard();
+    initContactList();
+    showContactCreatedConfirmation(); // Bestätigungsnachricht anzeigen
+}
+
+
+

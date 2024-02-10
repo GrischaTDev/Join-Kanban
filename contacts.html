@@ -15,7 +15,7 @@
 
 </head>
 
-<body onload="loadMenu(), initContactList()">
+<body onload="loadMenu(), loadContactList(), initContactList()">
     <div w3-include-html="assets/templates/header.html"></div>
     <div w3-include-html="assets/templates/desktop_menu.html"></div>
 
@@ -94,7 +94,7 @@
                     </div>
                     <div class="add_contact_card_footer">
                         <img class="profile_picture" src="./assets/img/profile_picture.svg" alt="profile picture">
-                        <div class="inputfields">
+                        <form class="inputfields">
                             <div onclick="hideAddContactCardFromScreen()" class="popup_close_icon">
                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -110,16 +110,21 @@
                                 </svg>
 
                             </div>
+
                             <div class="inputfield_box">
-                                <input class="inputfield" type="text" required placeholder="Name">
+                                <input id="add_contact_fname" class="inputfield" type="text" required placeholder="First Name" required>
                                 <img class="input_icon" src="./assets/img/profile_mini_icon.svg" alt="profile icon">
                             </div>
                             <div class="inputfield_box">
-                                <input class="inputfield" type="email" required placeholder="Email">
+                                <input id="add_contact_lname" class="inputfield" type="text" required placeholder="Last Name" required>
+                                <img class="input_icon" src="./assets/img/profile_mini_icon.svg" alt="profile icon">
+                            </div>
+                            <div class="inputfield_box">
+                                <input id="add_contact_email" class="inputfield" type="email" required placeholder="Email" required>
                                 <img class="input_icon" src="./assets/img/mail_icon.svg" alt="email icon">
                             </div>
                             <div class="inputfield_box">
-                                <input class="inputfield" type="tel" required placeholder="Phone">
+                                <input id="add_contact_phone" class="inputfield" type="tel" required placeholder="Phone" required>
                                 <img class="input_icon" src="./assets/img/phone_icon.svg" alt="phone icon">
                             </div>
                             <div class="save_contact_box">
@@ -127,7 +132,7 @@
                                     contact</button>
                                 <img class="input_icon" src="./assets/img/check.svg" alt="check">
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -172,7 +177,7 @@
                         <div>
                             <img class="profile_picture" src="./assets/img/profile_picture.svg" alt="profile picture">
                         </div>
-                        <div class="edit_contact_card_footer_desktop">
+                        <form class="edit_contact_card_footer_desktop">
                             <div onclick="hideEditCardFromScreen()" class="popup_close_icon">
                                 <svg onclick="hideEditCardFromScreen()" width="32" height="32" viewBox="0 0 32 32"
                                     fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -189,15 +194,19 @@
 
                             </div>
                             <div class="inputfield_box">
-                                <input class="inputfield" type="text" required placeholder="Name">
+                                <input id="edit_contact_fname" class="inputfield" type="text" required placeholder="First Name">
                                 <img class="input_icon" src="./assets/img/profile_mini_icon.svg" alt="profile icon">
                             </div>
                             <div class="inputfield_box">
-                                <input class="inputfield" type="email" required placeholder="Email">
+                                <input id="edit_contact_lname" class="inputfield" type="text" required placeholder="Last Name">
+                                <img class="input_icon" src="./assets/img/profile_mini_icon.svg" alt="profile icon">
+                            </div>
+                            <div class="inputfield_box">
+                                <input id="edit_contact_email" class="inputfield" type="email" required placeholder="Email">
                                 <img class="input_icon" src="./assets/img/mail_icon.svg" alt="email icon">
                             </div>
                             <div class="inputfield_box">
-                                <input class="inputfield" type="tel" required placeholder="Phone">
+                                <input id="edit_contact_phone" class="inputfield" type="tel" required placeholder="Phone">
                                 <img class="input_icon" src="./assets/img/phone_icon.svg" alt="phone icon">
                             </div>
                             <div class="save_contact_box">
@@ -205,7 +214,7 @@
                                 <button onclick="saveEditedContact()" class="submit_save_contact_button">Save </button>
                                 <img style="margin-left: -25px;" src="./assets/img/check.svg" alt="check">
                             </div>
-                        </div>
+                        </form>
 
                     </div>
                 </div>
@@ -214,10 +223,10 @@
 
 
 
-            <div onclick="moveEditDeleteContactPopupFromScreenToRight()" id="edit_delete_contact_popup_screen"
+            <div onclick="moveEditDeleteContactPopupFromScreenToRight(index)" id="edit_delete_contact_popup_screen"
                 class="edit_delete_contact_popup_screen d-none">
                 <div class="edit_delete_contact_popup" id="edit_delete_contact_popup">
-                    <div class="fill_icon" onclick="openEditContactCard()" class="edit_delete_buttons">
+                    <div class="fill_icon" onclick="openEditContactCard(index)" class="edit_delete_buttons">
                         <svg width="96" height="40" viewBox="0 0 96 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="mask0_71395_18214" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="8" y="8"
                                 width="24" height="24">
