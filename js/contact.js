@@ -536,11 +536,19 @@ function saveAddedContact() {
 }
 
 function loadContactList() {
+    // Zuerst die Kontaktliste im LocalStorage speichern, falls sie noch nicht vorhanden ist
+    if (!localStorage.getItem('contact_list')) {
+        localStorage.setItem('contact_list', JSON.stringify(contact_list));
+        console.log('Contact list saved to LocalStorage');
+    }
+
+    // Die Kontaktliste aus dem LocalStorage laden und initialisieren
     let contactListAsString = localStorage.getItem('contact_list');
     contact_list = JSON.parse(contactListAsString);
     console.log('Loaded all Contacts');
     initContactList();
 }
+
 
 function generateUniqueId() {
     // Hier könntest du eine eindeutige ID-Generierung implementieren
