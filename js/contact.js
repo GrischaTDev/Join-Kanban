@@ -159,7 +159,8 @@ let contact_list = [
         "color": "rgb(255,70,70)",
         "phone": "+49 8888 888 88 8"
     },
-    {
+    {   
+        "id": "21",
         "name": "Stork",
         "given_name": "Marcel",
         "e-mail": "bauer@gmail.com",
@@ -167,6 +168,7 @@ let contact_list = [
         "phone": "+49 7777 777 77 7"
     },
     {
+        "id": "22",
         "name": "Tänzer",
         "given_name": "Tatjana",
         "e-mail": "wolf@gmail.com",
@@ -174,6 +176,8 @@ let contact_list = [
         "phone": "+49 8888 888 88 8"
     }
 ]
+
+let selectedIndex = 0;
 
 function initContactList() {
     let index = 0;
@@ -213,13 +217,16 @@ function initContactList() {
 
 
 function groupContactsByFirstLetter(contacts) {
-    // Sortiere die Kontakte alphabetisch nach dem Nachnamen
+    if (!contacts || !Array.isArray(contacts)) {
+        return new Map();
+    }
+
     contacts.sort((a, b) => a.name.localeCompare(b.name));
-    
+
     const groupedContacts = new Map();
 
     for (const contact of contacts) {
-        const firstLetter = contact['name'][0].toUpperCase();
+        const firstLetter = contact.name[0].toUpperCase();
         if (!groupedContacts.has(firstLetter)) {
             groupedContacts.set(firstLetter, []);
         }
@@ -231,10 +238,11 @@ function groupContactsByFirstLetter(contacts) {
     const filteredGroupedContacts = new Map([...groupedContacts.entries()].filter(([letter, contacts]) => contacts.length > 0));
 
     // Sortiere nach Anfangsbuchstaben
-    const sortedGroupedContacts = new Map([...filteredGroupedContacts.entries()].sort());
+    const sortedGroupedContacts = new Map([...filteredGroupedContacts.entries()].sort((a, b) => a[0].localeCompare(b[0])));
 
     return sortedGroupedContacts;
 }
+
 
 
 function openAddContactCard() {
@@ -335,11 +343,11 @@ function selectContact(index) {
             addContactsButtonBox.classList.remove('z_index4');
         }
 
-        if(editContactButtonBox) {
+        if (editContactButtonBox) {
             editContactButtonBox.classList.add('z_index6');
         }
 
-        renderContactDetails(selectedContact);
+        renderContactDetails(selectedContact, index);
     } else {
         console.error("Selected contact is undefined.");
     }
@@ -398,7 +406,7 @@ function renderContactDetails(contact, index) {
                         fill="#2A3647" />
                 </svg>
             </div>
-            <div class="fill_icon" onclick="closeShowContact()" class="edit_delete_buttons">
+            <div class="fill_icon" onclick="deleteSelectedContact(${index})" class="edit_delete_buttons">
                 <svg width="96" height="40" viewBox="0 0 96 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <mask id="mask0_71395_18225" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="7" y="8"
                         width="25" height="24">
@@ -446,8 +454,19 @@ function renderContactDetails(contact, index) {
 </div>
     `;
 
-    renderContactDetails(contact_list[index]);
 }
+
+function deleteSelectedContact(index) {
+    const contacts = JSON.parse(localStorage.getItem('contact_list'));
+    contacts.splice(index, 1);
+    localStorage.setItem('contact_list', JSON.stringify(contacts));
+
+    loadContactList();
+    closeShowContact();
+}
+
+
+
 
 function closeShowContact() {
     document.getElementById('contacts_list_container').classList.add('z_index3');
@@ -513,14 +532,14 @@ function saveAddedContact() {
     closeAddContactCard();
     showContactCreatedConfirmation();
     loadContactList();
-    initContactList();
-    
+
 }
 
 function loadContactList() {
     let contactListAsString = localStorage.getItem('contact_list');
     contact_list = JSON.parse(contactListAsString);
     console.log('Loaded all Contacts');
+    initContactList();
 }
 
 function generateUniqueId() {
@@ -547,6 +566,7 @@ function saveEditedContact() {
 
     // Indizes des ausgewählten Kontakts
     const selectedIndex = parseInt(document.getElementById('edit_contact_card').getAttribute('data-selected-index'));
+
     // Neue Werte der Eingabefelder
     const newFirstName = firstNameInput.value;
     const newLastName = lastNameInput.value;
@@ -560,12 +580,32 @@ function saveEditedContact() {
         contact_list[selectedIndex].name = newLastName;
         contact_list[selectedIndex]['e-mail'] = newEmail;
         contact_list[selectedIndex].phone = newPhone;
+
+        // Aktualisieren des Kontakts im Local Storage
+        updateContactInLocalStorage(contact_list[selectedIndex]);
     }
 
     // Schließe das Bearbeitungspopup und aktualisiere die Kontaktliste
     closeEditContactCard();
-    initContactList();
     showContactCreatedConfirmation(); // Bestätigungsnachricht anzeigen
+    loadContactList();
+}
+
+// Funktion zum Aktualisieren eines Kontakts im Local Storage
+function updateContactInLocalStorage(updatedContact) {
+    // Hole die Kontaktliste aus dem Local Storage
+    const contacts = JSON.parse(localStorage.getItem('contacts'));
+
+    // Suche nach dem zu aktualisierenden Kontakt in der Kontaktliste
+    const index = contacts.findIndex(contact => contact.id === updatedContact.id);
+
+    // Wenn der Kontakt gefunden wurde, aktualisiere ihn
+    if (index !== -1) {
+        contacts[index] = updatedContact;
+
+        // Speichere die aktualisierte Kontaktliste im Local Storage
+        localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
 }
 
 
