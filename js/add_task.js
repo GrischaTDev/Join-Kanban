@@ -19,14 +19,17 @@ function openUserList() {
     userSelect.innerHTML = '';
 
     userSelect.classList.remove('d-none');
-    userSelect.classList.remove('d-none');
 
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
+        let initialLetters = user['name'][0];
         userSelect.innerHTML += /* html */ `
             <div class="userColumn">
-                <span>DE</span>
-                <div>${user.name}</div>
+                <div class="user-name">
+                    <span class="letter-icon">${initialLetters}</span>
+                    <div>${user.name}</div>
+                </div>
+                <img src="./assets/img/checkbox.svg" alt="">
             </div>
         `;
     }
@@ -58,7 +61,7 @@ function addTask(){
             'medium': medium,
             'low': low
         }
-    }
+    };
 
     allTasks.push(task);
 
@@ -69,8 +72,6 @@ function addTask(){
 function loadAllTasks() {
     let allTasksAsString = localStorage.getItem('allTask');
     allTasks = JSON.parse(allTasksAsString);
-
-
 }
 
 function togglePriority(priority) {
