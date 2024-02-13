@@ -106,6 +106,14 @@ function load() {
 
 
 // alles in Json und array speichern und umwandeln//
+
+function loadAllTasks() {
+    let allTasksAsString = localStorage.getItem('allTask');
+    if (allTasksAsString) {
+        allTasks = JSON.parse(allTasksAsString);
+    }
+}
+
 let allTasks = [];
 
 function addTask(){
@@ -121,7 +129,7 @@ function addTask(){
     let task = {
         'titel': titel,
         'description': description,
-        'createdAt': new Date().getTime(),
+        'dueDate': dueDate,
         'category': category,
         'userSelect': userSelect,
         'subtask': subtask,
@@ -138,10 +146,7 @@ function addTask(){
     localStorage.setItem('allTask', allTasksAsString);
 }
 
-function loadAllTasks() {
-    let allTasksAsString = localStorage.getItem('allTask');
-    allTasks = JSON.parse(allTasksAsString);
-}
+
 
 function togglePriority(priority) {
     var button = document.getElementById(priority);
