@@ -4,6 +4,7 @@ let selectedUser = [];
 function init() {
     loadUsers();
     load();
+    renderUserList();
 }
 
 
@@ -32,7 +33,7 @@ function openUserList() {
         const user = users[i];
         let initialLetters = user['name'][0];
         userSelect.innerHTML += /* html */ `
-            <div class="userColumn" onclick="addUser(${i})">
+            <div id="currentUser${i}" class="userColumn" onclick="addUser(${i})">
                 <div class="user-name">
                     <span class="letter-icon">${initialLetters}</span>
                     <div>${user.name}</div>
@@ -76,8 +77,15 @@ function renderUserList() {
 
 
 function addUser(i) {
+    let userColumn = document.getElementById(`currentUser${i}`);
     let user = users[i].name[0];
-    selectedUser.push(user)
+    if (!selectedUser.includes(user)) {
+        userColumn.classList.add('user-select-active');
+        selectedUser.push(user)
+    } else {
+        userColumn.classList.remove('user-select-active');
+        selectedUser.splice(user)
+    }
 
     renderUserList();
     save();

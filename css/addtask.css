@@ -218,6 +218,11 @@ textarea {
   border-radius: 6px;
 }
 
+.user-select-active {
+  color: white;
+  background-color: #2a3647;
+}
+
 .user-name {
   display: flex;
   align-items: center;
