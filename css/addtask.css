@@ -223,6 +223,10 @@ textarea {
   background-color: #2a3647;
 }
 
+.user-select-active:hover {
+  background-color: #161e29;
+}
+
 .user-name {
   display: flex;
   align-items: center;
