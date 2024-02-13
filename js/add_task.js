@@ -2,6 +2,7 @@ let users = [];
 
 function init() {
     loadUsers();
+    
 }
 
 async function loadUsers() {
@@ -37,12 +38,21 @@ function openUserList() {
 
 
 // alles in Json und array speichern und umwandeln//
+
+function loadAllTasks() {
+    let allTasksAsString = localStorage.getItem('allTask');
+    if (allTasksAsString) {
+        allTasks = JSON.parse(allTasksAsString);
+    }
+}
+
 let allTasks = [];
 
 function addTask(){
     let titel = document.getElementById('titel').value;
     let description = document.getElementById('description').value;
     let category = document.getElementById('category').value;
+    let dueDate = document.getElementById('dueDate').value;
     let userSelect = document.getElementById('userSelect').innerText.trim(); // Nutzername aus dem Text des ausgewählten Elements extrahieren
     let subtask = document.getElementById('subtask').value;
     let urgend = document.getElementById('urgent').classList.contains('active');
@@ -52,7 +62,7 @@ function addTask(){
     let task = {
         'titel': titel,
         'description': description,
-        'createdAt': new Date().getTime(),
+        'dueDate': dueDate,
         'category': category,
         'userSelect': userSelect,
         'subtask': subtask,
@@ -69,10 +79,7 @@ function addTask(){
     localStorage.setItem('allTask', allTasksAsString);
 }
 
-function loadAllTasks() {
-    let allTasksAsString = localStorage.getItem('allTask');
-    allTasks = JSON.parse(allTasksAsString);
-}
+
 
 function togglePriority(priority) {
     var button = document.getElementById(priority);
