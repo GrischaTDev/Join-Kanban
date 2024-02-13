@@ -1,9 +1,12 @@
 let users = [];
+let selectedUser = [];
 
 function init() {
     loadUsers();
-    
+    load();
+    renderUserList();
 }
+
 
 async function loadUsers() {
     try {
@@ -14,18 +17,23 @@ async function loadUsers() {
 }
 
 function openUserList() {
-    let userSelect = document.getElementById('userSelect');
+    let userSelect = document.getElementById('user-select');
     let inputIcon = document.getElementById('input-icon');
-    inputIcon.src = './assets/img/arrow_drop_down_2.svg';
     userSelect.innerHTML = '';
-
-    userSelect.classList.remove('d-none');
+    if (userSelect.classList.contains('d-none')) {
+        userSelect.classList.remove('d-none');
+        inputIcon.src = './assets/img/arrow_drop_down_2.svg';
+    } else {
+        userSelect.classList.add('d-none');
+        inputIcon.src = './assets/img/arrow_drop_down_1.svg';
+    }
+    
 
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
         let initialLetters = user['name'][0];
         userSelect.innerHTML += /* html */ `
-            <div class="userColumn">
+            <div id="currentUser${i}" class="userColumn" onclick="addUser(${i})">
                 <div class="user-name">
                     <span class="letter-icon">${initialLetters}</span>
                     <div>${user.name}</div>
@@ -35,6 +43,66 @@ function openUserList() {
         `;
     }
 }
+
+
+/**
+ * Close openUserList Popup when click outside
+ */
+window.addEventListener('mouseup',function(event){
+    let userSelect = document.getElementById('user-select');
+    let inputIcon = document.getElementById('input-icon');
+    if(event.target != userSelect && event.target.parentNode != userSelect){
+        userSelect.classList.add('d-none');
+        inputIcon.src = './assets/img/arrow_drop_down_1.svg';
+    }
+});
+
+/**
+ * 
+ */
+function renderUserList() {
+    document.getElementById('selected-user').innerHTML = '';
+
+    for (let i = 0; i < selectedUser.length; i++) {
+        const userList = selectedUser[i];
+
+        document.getElementById('selected-user').innerHTML += /* html */`
+        <div class="user-icon">${userList}</div>
+        `;
+    }
+}
+
+/////////////////////////////////////////////////////////////////
+
+
+
+function addUser(i) {
+    let userColumn = document.getElementById(`currentUser${i}`);
+    let user = users[i].name[0];
+    if (!selectedUser.includes(user)) {
+        userColumn.classList.add('user-select-active');
+        selectedUser.push(user)
+    } else {
+        userColumn.classList.remove('user-select-active');
+        selectedUser.splice(user)
+    }
+
+    renderUserList();
+    save();
+}
+
+function save() {
+    let saveUser = JSON.stringify(selectedUser);
+    localStorage.setItem('selectedUser', saveUser)
+}
+
+function load() {
+    let loadUser = localStorage.getItem('selectedUser');
+    if (loadUser) {
+        selectedUser = JSON.parse(loadUser);
+    }
+}
+//////////////////////////////////////////////////////////////////////
 
 
 // alles in Json und array speichern und umwandeln//
@@ -52,8 +120,7 @@ function addTask(){
     let titel = document.getElementById('titel').value;
     let description = document.getElementById('description').value;
     let category = document.getElementById('category').value;
-    let dueDate = document.getElementById('dueDate').value;
-    let userSelect = document.getElementById('userSelect').innerText.trim(); // Nutzername aus dem Text des ausgewählten Elements extrahieren
+    let userSelect = document.getElementById('user-select').innerText.trim(); // Nutzername aus dem Text des ausgewählten Elements extrahieren
     let subtask = document.getElementById('subtask').value;
     let urgend = document.getElementById('urgent').classList.contains('active');
     let medium = document.getElementById('medium').classList.contains('active');

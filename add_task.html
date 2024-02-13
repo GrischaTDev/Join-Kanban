@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="/css/addtask.css">
     <link rel="stylesheet" href="css/mobile_menu_header.css">
     <link rel="stylesheet" href="css/desktop_menu.css">
-    <script src="script.js"></script>
-    <script src="/js/board.js"></script>
-    <script src="./js/add_task.js"></script>
-    <script src="js/storage.js"></script>
+    <script src="script.js" defer></script>
+    <script src="/js/board.js" defer></script>
+    <script src="./js/add_task.js" defer></script>
+    <script src="js/storage.js" defer></script>
 </head>
 
 <body onload="loadMenu(), loadAllTasks(), init()">
@@ -85,7 +85,8 @@
                             <img onclick="openUserList()" id="input-icon" class="input-arrow"
                                 src="./assets/img/arrow_drop_down_1.svg" alt="">
                         </div>
-                        <div id="userSelect" class="d-none"></div>
+                        <div id="user-select" class="d-none"></div>
+                        <div id="selected-user"></div>
                     </div>
 
                     <div class="add-task-title">

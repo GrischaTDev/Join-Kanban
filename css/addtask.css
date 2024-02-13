@@ -194,7 +194,7 @@ textarea {
   align-items: center;
 }
 
-#userSelect {
+#user-select {
   background-color: white;
   border-radius: 10px;
   display: flex;
@@ -216,6 +216,11 @@ textarea {
 .userColumn:hover {
   background-color: rgb(233, 233, 233);
   border-radius: 6px;
+}
+
+.user-select-active {
+  color: white;
+  background-color: #2a3647;
 }
 
 .user-name {
@@ -248,7 +253,22 @@ textarea {
   border-radius: 50%;
 }
 
+#selected-user {
+  display: flex;
+  gap: 12px;
+}
 
+.user-icon {
+  color: white;
+  height: 20px;
+  width: 20px;
+  padding: 8px;
+  border-radius: 50%;
+  background-color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 

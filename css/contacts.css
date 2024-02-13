@@ -206,7 +206,7 @@ padding: 10px 0px 10px 0px;
 
 .edit_contact_card-bg {
     background-color: rgba(0, 0, 0, 0.2);
-    z-index: 999;
+    z-index: 51;
     position: fixed;
     left: 0;
     right: 0;
@@ -226,7 +226,7 @@ padding: 10px 0px 10px 0px;
     flex-direction: column;
     overflow: hidden;
     transition: all 220ms ease-in-out !important;
-
+    animation: move-to-screen 300ms ease-in-out;
 }
 
 .edit_contact_card_header {
@@ -400,17 +400,19 @@ padding: 10px 0px 10px 0px;
 }
 
 .edit_delete_contact_popup_screen {
-    z-index: 6;
+    z-index: 2;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     position: fixed;
+    
+
 }
 
 .edit_delete_contact_popup {
     background-color: white;
-    z-index: 7;
+    z-index: 5 ;
     bottom: 90px;
     right: 20px;
     display: flex;
@@ -420,7 +422,7 @@ padding: 10px 0px 10px 0px;
     border-radius: 20px 20px 0px 20px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     overflow: hidden;
-
+   animation: move-from-right-to-screen 250ms ease forwards;
 }
 
 .edit_delete_buttons {
@@ -429,6 +431,7 @@ padding: 10px 0px 10px 0px;
     display: flex;
     align-items: center;
     column-gap: 8px;
+    z-index: 6 !important;
 }
 
 .edit_delete_buttons:hover {
@@ -618,7 +621,6 @@ padding: 10px 0px 10px 0px;
         background-color: white;
         position: fixed;
     }
-
     
 
     .popup_logo {
@@ -805,6 +807,10 @@ padding: 10px 0px 10px 0px;
 
     .edit_delete_contact_popup {
         display: none;
+    }
+
+    .edit_delete_contact_popup_screen {
+        display: none !important;
     }
 
 }

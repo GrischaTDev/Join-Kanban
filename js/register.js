@@ -64,7 +64,9 @@ function checkPrivacyConsent(registerButton) {
 }
 
 async function userPush(registerName, registerEmail, registerPassword) {
+  let userId = users.length;
   users.push({
+    id: userId,
     name: registerName,
     email: registerEmail,
     password: registerPassword,
