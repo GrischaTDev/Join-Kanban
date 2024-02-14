@@ -60,7 +60,8 @@ function openUserList() {
 /**
  * 
  */
-function renderUserList() {
+
+function renderUserList(i) {
     document.getElementById('selected-user').innerHTML = '';
 
     for (let i = 0; i < selectedUser.length; i++) {
@@ -72,9 +73,6 @@ function renderUserList() {
     }
 }
 
-/////////////////////////////////////////////////////////////////
-
-
 
 function addUser(i) {
     let userColumn = document.getElementById(`currentUser${i}`);
@@ -84,17 +82,19 @@ function addUser(i) {
         selectedUser.push(user)
     } else {
         userColumn.classList.remove('user-select-active');
-        selectedUser.splice(user, 1);
+        selectedUser.splice(i, 1);
     }
 
-    renderUserList();
+    renderUserList(i);
     save();
 }
+
 
 function save() {
     let saveUser = JSON.stringify(selectedUser);
     localStorage.setItem('selectedUser', saveUser)
 }
+
 
 function load() {
     let loadUser = localStorage.getItem('selectedUser');
