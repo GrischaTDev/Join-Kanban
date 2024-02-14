@@ -107,8 +107,8 @@ textarea {
   font-family: 'Inter', sans-serif;
 }
 
-/*-title-END-*/
-/*-priority-section-*/
+/*************** title-END            **************/
+/*************** priority-section    ***************/
 .priority-buttons {
   display: flex;
   justify-content: space-between;
@@ -156,8 +156,8 @@ textarea {
   filter: brightness(0) invert(1);
 }
 
-/*-priority-section-END-*/
-/* due-a-date-section*/
+/***************-priority-section-END     ***************/
+/*************** due-a-date-section       ***************/
 .input-task-date {
   display: flex;
   font-size: 16px;
@@ -183,10 +183,8 @@ textarea {
   font-size: 16px;
 }
 
-/*category-selection-END*/
-
-
-/* Assigned to*/
+/***************category-selection-END    ***************/
+/*************** Assigned to              ***************/
 
 .assigned-input {
   display: flex;
@@ -270,9 +268,80 @@ textarea {
   justify-content: center;
 }
 
+/*************** Subtask               **************/
+
+.input-sub-field {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid rgb(209, 209, 209);
+  font-size: 16px;
+  background-color: white;
+  
+}
+.suffix {
+  cursor: pointer;
+}
+.input-subtask {
+  width: 100%;
+  all: unset;
+}
+.subtask-container{
+  margin-bottom: -17px;
+  margin-top: -10px;
+}
 
 
-/*Create-task-button*/
+.actions {
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.todo-item .actions {
+  display: none;
+}
+#mylist{
+
+}
+#mylist li:hover .actions {
+  display: flex;
+}
+
+.todo-item {
+  
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+#mylist li::before {
+  content: "•";
+  transform: translateY(-20%);
+  margin-top: 8px;
+  padding-left: 10px;
+  margin-right: 10px;
+}
+#mylist li:hover {
+  width: 100%;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+}
+
+ul {
+  margin-left: -40px;
+}
+
+
+/************** Subtask-End              ***************/
+
+
+/*************** Create-task-button      ***************/
 .create-task-container {
   background-color: #F6F7F8;
   width: 100%;
@@ -307,7 +376,7 @@ textarea {
   
 }
 
-/* Responsiv for laptop */
+/*************** Responsiv for laptop     ***************/
 @media screen and (min-width: 800px) {
   .content {
     margin: 160px 0 0 310px;
@@ -365,8 +434,8 @@ textarea {
     position: absolute;
   }
   .priority-button.active {
-    pointer-events: none; /* Deaktiviert das Klicken auf den Button */
-    opacity: 0.5; /* Ändert die Opazität, um anzuzeigen, dass der Button deaktiviert ist */
+    pointer-events: none; 
+    opacity: 0.5; 
 }
 
   .form-button {
