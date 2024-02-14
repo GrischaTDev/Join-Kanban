@@ -33,8 +33,16 @@
             <div class="contacts_list z_index3" id="contacts_list_container"></div>
 
             <div class="confirmation_container d-none" id="confirmation_container">
-                <div class="contact_created_confirmation d-none" id="contact_created_confirmation">
+                <div class="contact_created_confirmation move-to-and-hide-from-screen"
+                    id="contact_created_confirmation">
                     <p>Contact sucessfully saved</p>
+                </div>
+            </div>
+
+            <div id="delete_confirmation_container" class="delete_confirmation_container d-none">
+                <div id="contact_deleted_confirmation"
+                    class="contact_deleted_confirmation move-to-and-hide-from-screen">
+                    <p>Contact succesfully deleted</p>
                 </div>
             </div>
 
@@ -128,8 +136,8 @@
                                 <img class="input_icon" src="./assets/img/phone_icon.svg" alt="phone icon">
                             </div>
                             <div class="save_contact_box">
-                                <button onclick="saveAddedContact()" class="submit_create_contact_button">Create
-                                    contact</button>
+                                <button onclick="saveAddedContact(); return false;"
+                                    class="submit_create_contact_button">Create contact</button>
                                 <img class="input_icon" src="./assets/img/check.svg" alt="check">
                             </div>
                         </form>
