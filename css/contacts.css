@@ -523,7 +523,6 @@ p {
 }
 
 
-
 .add_new_contact_text {
     color: white;
     font-weight: bold;
@@ -613,7 +612,8 @@ p {
     }
 
     .move-to-and-hide-from-screen {
-        animation-name: push-from-bottom-to-screen-and-back 3000ms ease forwards;
+        animation-name: push-from-bottom-to-screen-and-back;
+        animation-duration: 1500ms;
         animation-direction: normal;
     }
 

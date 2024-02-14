@@ -129,6 +129,7 @@ textarea {
   padding: 5px;
   background-color: white;
   transition: background-color 0.3s;
+  cursor: pointer;
 }
 
 .priority-button:hover {
@@ -154,6 +155,11 @@ textarea {
 #medium:hover img,
 #low:hover img {
   filter: brightness(0) invert(1);
+}
+
+.priority-button.active {
+  background-color: #ffa200 !important; /* Gelber Hintergrund, wenn aktiv */
+  color: white; /* Weiße Textfarbe, wenn aktiv */
 }
 
 /*-priority-section-END-*/
