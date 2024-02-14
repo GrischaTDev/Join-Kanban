@@ -157,11 +157,6 @@ textarea {
   filter: brightness(0) invert(1);
 }
 
-.priority-button.active {
-  background-color: #ffa200 !important; /* Gelber Hintergrund, wenn aktiv */
-  color: white; /* Weiße Textfarbe, wenn aktiv */
-}
-
 /*-priority-section-END-*/
 /* due-a-date-section*/
 .input-task-date {
@@ -313,9 +308,7 @@ textarea {
 }
 
 
-@media screen and (max-width: 800px) {
-  
-}
+@media screen and (max-width: 800px) {}
 
 /* Responsiv for laptop */
 @media screen and (min-width: 800px) {
@@ -374,10 +367,13 @@ textarea {
     margin-bottom: 0;
     position: absolute;
   }
+
   .priority-button.active {
-    pointer-events: none; /* Deaktiviert das Klicken auf den Button */
-    opacity: 0.5; /* Ändert die Opazität, um anzuzeigen, dass der Button deaktiviert ist */
-}
+    pointer-events: none;
+    /* Deaktiviert das Klicken auf den Button */
+    opacity: 0.5;
+    /* Ändert die Opazität, um anzuzeigen, dass der Button deaktiviert ist */
+  }
 
   .form-button {
     display: flex;
