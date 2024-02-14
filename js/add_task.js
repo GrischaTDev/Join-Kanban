@@ -45,17 +45,17 @@ function openUserList() {
 }
 
 
-/**
- * Close openUserList Popup when click outside
- */
-window.addEventListener('mouseup',function(event){
-    let userSelect = document.getElementById('user-select');
-    let inputIcon = document.getElementById('input-icon');
-    if(event.target != userSelect && event.target.parentNode != userSelect){
-        userSelect.classList.add('d-none');
-        inputIcon.src = './assets/img/arrow_drop_down_1.svg';
-    }
-});
+// /**
+//  * Close openUserList Popup when click outside
+//  */
+// window.addEventListener('mouseup',function(event){
+//     let userSelect = document.getElementById('user-select');
+//     let inputIcon = document.getElementById('input-icon');
+//     if(event.target != userSelect && event.target.parentNode != userSelect){
+//         userSelect.classList.add('d-none');
+//         inputIcon.src = './assets/img/arrow_drop_down_1.svg';
+//     }
+// });
 
 /**
  * 
@@ -64,7 +64,7 @@ function renderUserList() {
     document.getElementById('selected-user').innerHTML = '';
 
     for (let i = 0; i < selectedUser.length; i++) {
-        const userList = selectedUser[i];
+        const userList = selectedUser[i]['name'][0];
 
         document.getElementById('selected-user').innerHTML += /* html */`
         <div class="user-icon">${userList}</div>
@@ -78,13 +78,13 @@ function renderUserList() {
 
 function addUser(i) {
     let userColumn = document.getElementById(`currentUser${i}`);
-    let user = users[i].name[0];
+    let user = users[i];
     if (!selectedUser.includes(user)) {
         userColumn.classList.add('user-select-active');
         selectedUser.push(user)
     } else {
         userColumn.classList.remove('user-select-active');
-        selectedUser.splice(user)
+        selectedUser.splice(user, 1);
     }
 
     renderUserList();
@@ -106,6 +106,14 @@ function load() {
 
 
 // alles in Json und array speichern und umwandeln//
+
+function loadAllTasks() {
+    let allTasksAsString = localStorage.getItem('allTask');
+    if (allTasksAsString) {
+        allTasks = JSON.parse(allTasksAsString);
+    }
+}
+
 let allTasks = [];
 
 function addTask(){
@@ -121,7 +129,7 @@ function addTask(){
     let task = {
         'titel': titel,
         'description': description,
-        'createdAt': new Date().getTime(),
+        'dueDate': dueDate,
         'category': category,
         'userSelect': userSelect,
         'subtask': subtask,
@@ -138,10 +146,7 @@ function addTask(){
     localStorage.setItem('allTask', allTasksAsString);
 }
 
-function loadAllTasks() {
-    let allTasksAsString = localStorage.getItem('allTask');
-    allTasks = JSON.parse(allTasksAsString);
-}
+
 
 function togglePriority(priority) {
     var button = document.getElementById(priority);
