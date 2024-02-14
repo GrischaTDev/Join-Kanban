@@ -49,8 +49,8 @@ p {
 }
 
 .d-flex {
-display: flex;
-align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .contacts_name {
@@ -133,14 +133,14 @@ align-items: center;
 
 .contact_email a {
     text-decoration: none;
-color:rgb(0,124,238) !important;
-padding: 10px 0px 10px 0px;
+    color: rgb(0, 124, 238) !important;
+    padding: 10px 0px 10px 0px;
 }
 
 .contact_phone a {
     text-decoration: none;
-color: black;
-padding: 10px 0px 10px 0px;
+    color: black;
+    padding: 10px 0px 10px 0px;
 }
 
 .add_contacts_button {
@@ -180,7 +180,7 @@ padding: 10px 0px 10px 0px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: all 220ms ease-in-out !important;
+
     min-width: 280px;
 }
 
@@ -225,8 +225,8 @@ padding: 10px 0px 10px 0px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: all 220ms ease-in-out !important;
-    animation: move-to-screen 300ms ease-in-out;
+    transition: all 220ms ease-in-out;
+
 }
 
 .edit_contact_card_header {
@@ -391,6 +391,21 @@ padding: 10px 0px 10px 0px;
     gap: 16px;
 }
 
+.initials_circle_edit_contact {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 10px;
+    color: white;
+    font-size: 40px;
+    border: 2px;
+    border-style: solid;
+    border-color: white;
+}
+
 .show_profile_name {
     display: flex;
     align-items: center;
@@ -406,13 +421,13 @@ padding: 10px 0px 10px 0px;
     bottom: 0;
     left: 0;
     position: fixed;
-    
+
 
 }
 
 .edit_delete_contact_popup {
     background-color: white;
-    z-index: 5 ;
+    z-index: 5;
     bottom: 90px;
     right: 20px;
     display: flex;
@@ -422,7 +437,7 @@ padding: 10px 0px 10px 0px;
     border-radius: 20px 20px 0px 20px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     overflow: hidden;
-   animation: move-from-right-to-screen 250ms ease forwards;
+    animation: move-from-right-to-screen 250ms ease forwards;
 }
 
 .edit_delete_buttons {
@@ -440,27 +455,8 @@ padding: 10px 0px 10px 0px;
     cursor: pointer !important;
 }
 
-.contact_created_confirmation {
-    width: 326 px;
-    height: 74 px;
-    position: fixed;
-    color: white;
-    display: flex;
-    z-index: 9;
-    border-radius: 20px;
-    background: #2A3647;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
-    font-size: 20px;
-    padding: 10px;
-    font-weight: 400;
-
-}
-
-
-
-
-
 .confirmation_container {
+    z-index: 3;
     display: flex;
     height: 100vh;
     width: 100vw;
@@ -468,6 +464,23 @@ padding: 10px 0px 10px 0px;
     align-items: center;
     justify-content: center;
 }
+
+.contact_created_confirmation {
+    width: 326 px;
+    height: 60 px;
+    position: fixed;
+    color: white;
+    border-radius: 20px;
+    background: #2A3647;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+    font-size: 20px;
+    padding: 10px;
+    font-weight: 400;
+    bottom: 100px;
+}
+
+
+
 
 .fill_icon:hover path {
     fill: #29ABE2;
@@ -503,6 +516,8 @@ padding: 10px 0px 10px 0px;
 .add_new_contact_text {
     text-align: center;
 }
+
+
 
 
 
@@ -576,7 +591,7 @@ padding: 10px 0px 10px 0px;
     }
 
     .move-to-and-hide-from-screen {
-        animation-name: push-from-bottom-to-screen-and-back 2000ms ease forwards;
+        animation-name: push-from-bottom-to-screen-and-back 3000ms ease forwards;
         animation-direction: normal;
     }
 
@@ -586,7 +601,7 @@ padding: 10px 0px 10px 0px;
     }
 
     .add_contact_card_header {
-        gap: 20%;
+        gap: 15%;
     }
 
     .edit_contact_card {
@@ -621,7 +636,7 @@ padding: 10px 0px 10px 0px;
         background-color: white;
         position: fixed;
     }
-    
+
 
     .popup_logo {
         display: none;
@@ -631,9 +646,15 @@ padding: 10px 0px 10px 0px;
         display: none !important;
     }
 
+    .edit_contact_card_header {
+        display: flex;
+        justify-content: flex-start;
+        gap: 25%;
+    }
+
     .add_contact_card_footer {
         height: 60%;
-        margin-top: -100px;
+        margin-top: -20%;
     }
 
     .edit_contact_card_footer {
@@ -658,7 +679,7 @@ padding: 10px 0px 10px 0px;
         align-items: center;
         cursor: pointer;
         margin-bottom: 2px;
-        background-color: rgb(42,54,71);
+        background-color: rgb(42, 54, 71);
         overflow: hidden;
         border-radius: 10px;
         color: white;
@@ -673,12 +694,13 @@ padding: 10px 0px 10px 0px;
     .hide-from-screen {
         animation: push-from-right-to-screen;
         animation-duration: 250ms;
-        animation-direction:reverse !important;
+        animation-direction: reverse !important;
     }
 
     .move-to-and-hide-from-screen {
         animation: push-from-right-to-screen-and-back;
-
+        animation-duration: 1000ms;
+        animation-direction: normal;
     }
 
 
@@ -796,22 +818,27 @@ padding: 10px 0px 10px 0px;
     }
 
     .showContactFooterBox {
-        animation: push-from-right-to-screen 250ms ease forwards !important;
+        animation: push-from-right-to-screen !important;
+        animation-duration: 250ms;
+        animation-direction: normal;
+        opacity: 0;
+        /* Startzustand: nicht sichtbar */
+    }
+
+    .showContactFooterBox.show {
+        opacity: 1;
+        /* Einblenden mit Animation */
     }
 
     .initials_circle_show_contact {
-        
+
         font-size: 40px;
         margin-right: 32px;
     }
 
-    .edit_delete_contact_popup {
-        display: none;
-    }
+    .edit_delete_contact_popup {}
 
-    .edit_delete_contact_popup_screen {
-        display: none !important;
-    }
+    .edit_delete_contact_popup_screen {}
 
 }
 
@@ -861,10 +888,10 @@ padding: 10px 0px 10px 0px;
     }
 
     .initials_circle_show_contact {
-    width: 60px;
-    height: 60px;
-    
-        
+        width: 60px;
+        height: 60px;
+
+
         font-size: 22px;
         margin-right: 20px;
     }
