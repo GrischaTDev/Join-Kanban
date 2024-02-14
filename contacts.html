@@ -31,20 +31,24 @@
             </div>
 
             <div class="contacts_list z_index3" id="contacts_list_container"></div>
-            <div class="confirmation_container d-none" id="contact_created_confirmation">
-                <div class="contact_created_confirmation">
-                    <p>Contact succesfully created</p>
+
+            <div class="confirmation_container d-none" id="confirmation_container">
+                <div class="contact_created_confirmation move-to-and-hide-from-screen"
+                    id="contact_created_confirmation">
+                    <p>Contact sucessfully saved</p>
+                </div>
+            </div>
+
+            <div id="delete_confirmation_container" class="delete_confirmation_container d-none">
+                <div id="contact_deleted_confirmation"
+                    class="contact_deleted_confirmation move-to-and-hide-from-screen">
+                    <p>Contact succesfully deleted</p>
                 </div>
             </div>
 
         </div>
 
         <div onclick="closeEditDeleteContactPopup()" id="showContactContainer" class="showContactContainer z_index2">
-
-
-
-
-
         </div>
 
 
@@ -112,24 +116,28 @@
                             </div>
 
                             <div class="inputfield_box">
-                                <input id="add_contact_fname" class="inputfield" type="text" required placeholder="First Name" required>
+                                <input id="add_contact_fname" class="inputfield" type="text" required
+                                    placeholder="First Name" required>
                                 <img class="input_icon" src="./assets/img/profile_mini_icon.svg" alt="profile icon">
                             </div>
                             <div class="inputfield_box">
-                                <input id="add_contact_lname" class="inputfield" type="text" required placeholder="Last Name" required>
+                                <input id="add_contact_lname" class="inputfield" type="text" required
+                                    placeholder="Last Name" required>
                                 <img class="input_icon" src="./assets/img/profile_mini_icon.svg" alt="profile icon">
                             </div>
                             <div class="inputfield_box">
-                                <input id="add_contact_email" class="inputfield" type="email" required placeholder="Email" required>
+                                <input id="add_contact_email" class="inputfield" type="email" required
+                                    placeholder="Email" required>
                                 <img class="input_icon" src="./assets/img/mail_icon.svg" alt="email icon">
                             </div>
                             <div class="inputfield_box">
-                                <input id="add_contact_phone" class="inputfield" type="tel" required placeholder="Phone" required>
+                                <input id="add_contact_phone" class="inputfield" type="tel" required placeholder="Phone"
+                                    required>
                                 <img class="input_icon" src="./assets/img/phone_icon.svg" alt="phone icon">
                             </div>
                             <div class="save_contact_box">
-                                <button onclick="saveAddedContact()" class="submit_create_contact_button">Create
-                                    contact</button>
+                                <button onclick="saveAddedContact(); return false;"
+                                    class="submit_create_contact_button">Create contact</button>
                                 <img class="input_icon" src="./assets/img/check.svg" alt="check">
                             </div>
                         </form>
@@ -138,8 +146,8 @@
             </div>
 
 
-            <div id="editContactScreen" class="d-none edit_contact_card-bg " onclick="hideEditCardFromScreen()">
-                
+            <div id="editContactScreen" class="d-none edit_contact_card-bg" onclick="hideEditCardFromScreen()">
+
             </div>
 
 
@@ -147,7 +155,7 @@
 
             <div onclick="moveEditDeleteContactPopupFromScreenToRight()" id="edit_delete_contact_popup_screen"
                 class="edit_delete_contact_popup_screen d-none">
-                
+
             </div>
 
         </div>

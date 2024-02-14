@@ -129,6 +129,7 @@ textarea {
   padding: 5px;
   background-color: white;
   transition: background-color 0.3s;
+  cursor: pointer;
 }
 
 .priority-button:hover {
@@ -219,6 +220,10 @@ textarea {
 .user-select-active {
   color: white;
   background-color: #2a3647;
+}
+
+.user-select-active:hover {
+  background-color: #161e29;
 }
 
 .user-name {
@@ -372,11 +377,9 @@ ul {
 }
 
 
-@media screen and (max-width: 800px) {
-  
-}
+@media screen and (max-width: 800px) {}
 
-/*************** Responsiv for laptop     ***************/
+/* Responsiv for laptop */
 @media screen and (min-width: 800px) {
   .content {
     margin: 160px 0 0 310px;
@@ -433,10 +436,13 @@ ul {
     margin-bottom: 0;
     position: absolute;
   }
+
   .priority-button.active {
-    pointer-events: none; 
-    opacity: 0.5; 
-}
+    pointer-events: none;
+    /* Deaktiviert das Klicken auf den Button */
+    opacity: 0.5;
+    /* Ändert die Opazität, um anzuzeigen, dass der Button deaktiviert ist */
+  }
 
   .form-button {
     display: flex;

@@ -159,7 +159,7 @@ let contact_list = [
         "color": "rgb(255,70,70)",
         "phone": "+49 8888 888 88 8"
     },
-    {   
+    {
         "id": "21",
         "name": "Stork",
         "given_name": "Marcel",
@@ -250,35 +250,33 @@ function groupContactsByFirstLetter(contacts) {
 function openAddContactCard() {
     document.getElementById('addContactScreen').classList.remove('d-none');
     document.getElementById('add_contact_card').classList.add('move-to-screen');
+    setTimeout(removeAnimationsFromOpenAddContactCard, 300);
+}
+
+function removeAnimationsFromOpenAddContactCard() {
+    document.getElementById('add_contact_card').classList.remove('move-to-screen');
 }
 
 function hideAddContactCardFromScreen() {
     document.getElementById('add_contact_card').classList.add('hide-from-screen');
-    document.getElementById('addContactScreen').classList.remove('d-none');
     setTimeout(closeAddContactCard, 200);
 }
 
 function closeAddContactCard() {
-    document.getElementById('add_contact_card').classList.remove('hide-from-screen');
     document.getElementById('addContactScreen').classList.add('d-none');
+    document.getElementById('add_contact_card').classList.remove('hide-from-screen');
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-    // Hier kommt Ihre Initialisierungslogik oder der Aufruf Ihrer render-Funktion
-    loadContactList(); // Beispiel: Aufruf einer Funktion, die beim Laden der Seite ausgeführt werden soll
-});
 
 function openEditContactCard(contactId) {
     const contactData = contact_list.find(contact => contact.id === contactId);
-
-    console.log("Kontakt-Daten:", contactData); // Konsolenausgabe hinzufügen
     if (contactData) {
         // Zeige das Popup an
         document.getElementById('editContactScreen').classList.remove('d-none');
 
+
         // Rendern Sie das Popup und füllen Sie die Eingabefelder mit den Daten des ausgewählten Kontakts
         document.getElementById('editContactScreen').innerHTML = `
-            <div id="edit_contact_card" class="edit_contact_card" onclick="doNotClose(event)">
+            <div id="edit_contact_card" class="edit_contact_card move-to-screen" onclick="doNotClose(event)">
             <div class="edit_contact_card_header">
             <div class="close_icon_box">
                 <img style="cursor: pointer;" onclick="hideEditCardFromScreen()"
@@ -314,10 +312,12 @@ function openEditContactCard(contactId) {
         </div>
         <div class="edit_contact_card_footer">
             <div>
-                <img class="profile_picture" src="./assets/img/profile_picture.svg" alt="profile picture">
+            <div class="initials_circle_edit_contact" style="background-color: ${contactData.color};">
+            ${contactData.given_name[0]}${contactData.name[0]}
+        </div>
             </div>
             <form class="edit_contact_card_footer_desktop">
-                <div onclick="hideEditCardFromScreen()" class="popup_close_icon">
+                <div class="popup_close_icon">
                     <svg onclick="hideEditCardFromScreen()" width="32" height="32" viewBox="0 0 32 32"
                         fill="none" xmlns="http://www.w3.org/2000/svg">
                         <mask id="mask0_71720_5848" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4"
@@ -349,8 +349,8 @@ function openEditContactCard(contactId) {
                     <img class="input_icon" src="./assets/img/phone_icon.svg" alt="phone icon">
                 </div>
                 <div class="save_contact_box">
-                    <button onclick="deleteSelectedContact('${contactId}')" class="submit_delete_contact_button">Delete</button>
-                    <button onclick="saveEditedContact('${contactId}')" class="submit_save_contact_button">Save</button>
+                    <button onclick="deleteSelectedContact('${contactId}'); hideEditCardFromScreen(); return false;" class="submit_delete_contact_button">Delete</button>
+                    <button onclick="saveEditedContact('${contactId}'); return false;" class="submit_save_contact_button">Save</button>
                     <img style="margin-left: -25px;" src="./assets/img/check.svg" alt="check">
                 </div>
             </form>
@@ -371,10 +371,13 @@ function openEditContactCard(contactId) {
     } else {
         console.error("Kontaktdaten nicht gefunden für ID:", contactId);
 
-}
+    }
+    setTimeout(removeAnimationsFromOpenEditContactCard, 300);
 }
 
-
+function removeAnimationsFromOpenEditContactCard() {
+    document.getElementById('edit_contact_card').classList.remove('move-to-screen');
+}
 
 function hideEditCardFromScreen() {
     document.getElementById('edit_contact_card').classList.add('hide-from-screen');
@@ -392,7 +395,6 @@ function doNotClose(event) {
 }
 
 function selectContact(contactId) {
-    console.log("Selected contact ID:", contactId); // Überprüfe die ausgewählte Kontakt-ID
     // Finden Sie den ausgewählten Kontakt anhand seiner ID in der Kontaktliste
     const selectedContact = contact_list.find(contact => contact.id === contactId);
 
@@ -405,7 +407,6 @@ function selectContact(contactId) {
 
         // Die ausgewählte Kontakt-Snippet-Box erhält die Klasse 'contact_list_snippet_box_blue'
         const selectedContactSnippetBox = document.querySelector(`#contactSnippetBox${contactId}`);
-        console.log("Selected contact snippet box:", selectedContactSnippetBox); // Überprüfe, ob das Element gefunden wurde
         if (selectedContactSnippetBox) {
             selectedContactSnippetBox.classList.add('contact_list_snippet_box_blue');
         }
@@ -453,12 +454,11 @@ function selectContact(contactId) {
 
 
 
-
 function renderContactDetails(contact) {
     let backgroundColor = ''; // Standardhintergrundfarbe
-   
-        backgroundColor = `style="background-color: ${contact['color']};"`;
-    
+
+    backgroundColor = `style="background-color: ${contact['color']};"`;
+
 
     let initials = contact['given_name'][0] + contact['name'][0];
     let name = contact['given_name'] + ' ' + contact['name'];
@@ -480,7 +480,7 @@ function renderContactDetails(contact) {
     </div>
 </div>
 
-<div id="showContactFooterBox"">
+<div id="showContactFooterBox" class="showContactFooterBox">
     <div class=" d-flex" id="footer_name_box">
         <div class="initials_circle_show_contact" ${backgroundColor}>${initials}</div>
         <div><h2 style="font-weight: bold;" id="showContactName">${name}</h2>
@@ -548,12 +548,12 @@ function renderContactDetails(contact) {
 </div>
 </div>
     `;
-
+    document.getElementById('showContactFooterBox').classList.add('show');
 }
 
 function deleteSelectedContact(contactId) {
     const contacts = JSON.parse(localStorage.getItem('contact_list'));
-    
+
     // Index des ausgewählten Kontakts finden
     const selectedIndex = contacts.findIndex(contact => contact.id === contactId);
 
@@ -566,6 +566,7 @@ function deleteSelectedContact(contactId) {
     // Kontaktliste neu laden und Ansicht aktualisieren
     loadContactList();
     closeShowContact();
+    showContactDeletedConfirmation();
 }
 
 
@@ -588,12 +589,12 @@ function closeShowContact() {
 
 
 function openEditDeleteContactPopup(contactId) {
-    
+
     document.getElementById('edit_delete_contact_popup_screen').classList.remove('d-none');
     document.getElementById('edit_delete_contact_popup_screen').innerHTML = '';
     document.getElementById('edit_delete_contact_popup_screen').innerHTML = `
     <div class="edit_delete_contact_popup" id="edit_delete_contact_popup">
-                    <div class="fill_icon" onclick="openEditContactCard('${contactId}')" class="edit_delete_buttons">
+                    <div class="fill_icon" onclick="openEditContactCard('${contactId}'); return false;" class="edit_delete_buttons">
                         <svg width="96" height="40" viewBox="0 0 96 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="mask0_71395_18214" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="8" y="8"
                                 width="24" height="24">
@@ -610,7 +611,7 @@ function openEditDeleteContactPopup(contactId) {
                         </svg>
                     </div>
 
-                    <div class="fill_icon" onclick="deleteSelectedContact('${contactId}')" class="edit_delete_buttons">
+                    <div class="fill_icon" onclick="deleteSelectedContact('${contactId}'); return false;" class="edit_delete_buttons">
                         <svg width="96" height="40" viewBox="0 0 96 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="mask0_71395_18225" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="7" y="8"
                                 width="25" height="24">
@@ -628,7 +629,7 @@ function openEditDeleteContactPopup(contactId) {
                     </div>
                 </div>
     `;
-    
+
 }
 
 function moveEditDeleteContactPopupFromScreenToRight() {
@@ -647,8 +648,6 @@ function closeEditDeleteContactPopup() {
         popupElement.classList.remove('move-from-screen-to-right');
         // Hinzufügen der Klasse 'd-none' zum Bildschirm-Element
         screenElement.classList.add('d-none');
-    } else {
-        console.error("Popup-Element oder Bildschirm-Element nicht gefunden.");
     }
 }
 
@@ -657,38 +656,56 @@ function closeEditDeleteContactPopup() {
 
 function showContactCreatedConfirmation() {
     document.getElementById('confirmation_container').classList.remove('d-none');
-    document.getElementById('confirmation_container').classList.add('move-to-and-hide-from-screen');
-    setTimeout(closeContactCreatedConfirmation, 2000);
+    setTimeout(hideContactCreatedConfirmation, 1400);
+
+
 }
 
-function closeContactCreatedConfirmation() {
-    document.getElementById('contact_created_confirmation').classList.add('d-none');
+function hideContactCreatedConfirmation() {
+    document.getElementById('confirmation_container').classList.add('d-none');
+}
 
+function showContactDeletedConfirmation() {
+    document.getElementById('delete_confirmation_container').classList.remove('d-none');
+    setTimeout(hideContactDeletedConfirmation, 1400);
+}
+
+function hideContactDeletedConfirmation() {
+    document.getElementById('delete_confirmation_container').classList.add('d-none');
 }
 
 function saveAddedContact() {
-    let first_name = document.getElementById('add_contact_fname').value;
-    let last_name = document.getElementById('add_contact_lname').value;
-    let email = document.getElementById('add_contact_email').value;
-    let phone = document.getElementById('add_contact_phone').value;
+    let first_name = document.getElementById('add_contact_fname');
+    let last_name = document.getElementById('add_contact_lname');
+    let email = document.getElementById('add_contact_email');
+    let phone = document.getElementById('add_contact_phone');
 
-    let newContact = {
-        'id': generateUniqueId(),
-        'name': last_name,
-        'given_name': first_name,
-        'e-mail': email,
-        'color': generateRandomColor(),
-        'phone': phone
-    };
+    // Überprüfen Sie die Gültigkeit der Eingabefelder
+    if (first_name.checkValidity() && last_name.checkValidity() && email.checkValidity() && phone.checkValidity()) {
+        let newContact = {
+            'id': generateUniqueId(),
+            'name': last_name.value,
+            'given_name': first_name.value,
+            'e-mail': email.value,
+            'color': generateRandomColor(),
+            'phone': phone.value
+        };
 
-    contact_list.push(newContact);
-    localStorage.setItem('contact_list', JSON.stringify(contact_list));
+        contact_list.push(newContact);
+        localStorage.setItem('contact_list', JSON.stringify(contact_list));
+        showContactCreatedConfirmation();
 
-    closeAddContactCard();
-    showContactCreatedConfirmation();
-    loadContactList();
+        // Zurücksetzen der Inputfelder
+        first_name.value = '';
+        last_name.value = '';
+        email.value = '';
+        phone.value = '';
 
+        hideAddContactCardFromScreen();
+    }
 }
+
+
 
 
 
@@ -702,7 +719,6 @@ function loadContactList() {
     // Die Kontaktliste aus dem LocalStorage laden und initialisieren
     let contactListAsString = localStorage.getItem('contact_list');
     contact_list = JSON.parse(contactListAsString);
-    console.log('Loaded all Contacts');
     initContactList();
 }
 
@@ -758,14 +774,13 @@ function saveEditedContact(contactId) {
 
             // Aktualisierten Kontakt zur Kontaktliste hinzufügen
             contact_list.push(updatedContact);
-
             localStorage.setItem('contact_list', JSON.stringify(contact_list));
-
+            showContactCreatedConfirmation();
 
             // Bearbeitungspopup schließen und Kontaktliste aktualisieren
-            closeEditContactCard();
-            showContactCreatedConfirmation(); // Bestätigungsnachricht anzeigen
+            hideEditCardFromScreen();
             loadContactList();
+            document.getElementById('showContactFooterBox').innerHTML = '';
         } else {
             console.error("Kontakt-ID nicht gefunden:", contactId);
         }
