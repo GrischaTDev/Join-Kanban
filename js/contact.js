@@ -349,8 +349,8 @@ function openEditContactCard(contactId) {
                     <img class="input_icon" src="./assets/img/phone_icon.svg" alt="phone icon">
                 </div>
                 <div class="save_contact_box">
-                    <button onclick="deleteSelectedContact('${contactId}')" class="submit_delete_contact_button">Delete</button>
-                    <button onclick="saveEditedContact('${contactId}')" class="submit_save_contact_button">Save</button>
+                    <button onclick="deleteSelectedContact('${contactId}'); hideEditCardFromScreen(); return false;" class="submit_delete_contact_button">Delete</button>
+                    <button onclick="saveEditedContact('${contactId}'); return false;" class="submit_save_contact_button">Save</button>
                     <img style="margin-left: -25px;" src="./assets/img/check.svg" alt="check">
                 </div>
             </form>
@@ -566,6 +566,7 @@ function deleteSelectedContact(contactId) {
     // Kontaktliste neu laden und Ansicht aktualisieren
     loadContactList();
     closeShowContact();
+    showContactDeletedConfirmation();
 }
 
 
@@ -593,7 +594,7 @@ function openEditDeleteContactPopup(contactId) {
     document.getElementById('edit_delete_contact_popup_screen').innerHTML = '';
     document.getElementById('edit_delete_contact_popup_screen').innerHTML = `
     <div class="edit_delete_contact_popup" id="edit_delete_contact_popup">
-                    <div class="fill_icon" onclick="openEditContactCard('${contactId}')" class="edit_delete_buttons">
+                    <div class="fill_icon" onclick="openEditContactCard('${contactId}'); return false;" class="edit_delete_buttons">
                         <svg width="96" height="40" viewBox="0 0 96 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="mask0_71395_18214" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="8" y="8"
                                 width="24" height="24">
@@ -610,7 +611,7 @@ function openEditDeleteContactPopup(contactId) {
                         </svg>
                     </div>
 
-                    <div class="fill_icon" onclick="deleteSelectedContact('${contactId}')" class="edit_delete_buttons">
+                    <div class="fill_icon" onclick="deleteSelectedContact('${contactId}'); return false;" class="edit_delete_buttons">
                         <svg width="96" height="40" viewBox="0 0 96 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="mask0_71395_18225" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="7" y="8"
                                 width="25" height="24">
@@ -655,8 +656,22 @@ function closeEditDeleteContactPopup() {
 
 function showContactCreatedConfirmation() {
     document.getElementById('confirmation_container').classList.remove('d-none');
-    document.getElementById('contact_created_confirmation').classList.remove('d-none');
+    setTimeout(hideContactCreatedConfirmation, 1400);
 
+
+}
+
+function hideContactCreatedConfirmation() {
+    document.getElementById('confirmation_container').classList.add('d-none');
+}
+
+function showContactDeletedConfirmation() {
+    document.getElementById('delete_confirmation_container').classList.remove('d-none');
+    setTimeout(hideContactDeletedConfirmation, 1400);
+}
+
+function hideContactDeletedConfirmation() {
+    document.getElementById('delete_confirmation_container').classList.add('d-none');
 }
 
 function saveAddedContact() {
@@ -679,12 +694,17 @@ function saveAddedContact() {
         contact_list.push(newContact);
         localStorage.setItem('contact_list', JSON.stringify(contact_list));
         showContactCreatedConfirmation();
-        /*setTimeout(loadContactList, 3000);*/
-        /*hideAddContactCardFromScreen();*/
 
+        // Zurücksetzen der Inputfelder
+        first_name.value = '';
+        last_name.value = '';
+        email.value = '';
+        phone.value = '';
 
+        hideAddContactCardFromScreen();
     }
 }
+
 
 
 
@@ -754,14 +774,13 @@ function saveEditedContact(contactId) {
 
             // Aktualisierten Kontakt zur Kontaktliste hinzufügen
             contact_list.push(updatedContact);
-
             localStorage.setItem('contact_list', JSON.stringify(contact_list));
-
+            showContactCreatedConfirmation();
 
             // Bearbeitungspopup schließen und Kontaktliste aktualisieren
             hideEditCardFromScreen();
             loadContactList();
-            setTimeout(showContactCreatedConfirmation, 1000); // Bestätigungsnachricht anzeigen
+            document.getElementById('showContactFooterBox').innerHTML = '';
         } else {
             console.error("Kontakt-ID nicht gefunden:", contactId);
         }
