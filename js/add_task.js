@@ -79,17 +79,33 @@ function renderUserList(i) {
 function addUser(i) {
     let userColumn = document.getElementById(`currentUser${i}`);
     let user = users[i];
-    if (!selectedUser.includes(user)) {
+    let selectedUSerIndex = selectedUser.findIndex(u => u.id === i);
+    if (selectedUSerIndex === -1) {
         userColumn.classList.add('user-select-active');
         selectedUser.push(user)
     } else {
         userColumn.classList.remove('user-select-active');
-        selectedUser.splice(i, 1);
+        selectedUser.splice(selectedUSerIndex, 1);
     }
 
     renderUserList(i);
     save();
 }
+
+// function addUser(i) {
+//     let userColumn = document.getElementById(`currentUser${i}`);
+//     let user = users[i];
+//     if (!selectedUser.includes(user)) {
+//         userColumn.classList.add('user-select-active');
+//         selectedUser.push(user)
+//     } else {
+//         userColumn.classList.remove('user-select-active');
+//         selectedUser.splice(user.id, 1);
+//     }
+
+//     renderUserList(i);
+//     save();
+// }
 
 
 function save() {
