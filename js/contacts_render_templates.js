@@ -1,3 +1,9 @@
+/**
+ * This is an HTML letterbox available for every first letter from a contact
+ * 
+ * @param {string} letter - This is the letter from a available contact
+ * @returns this returns the letterbox
+ */
 function renderLetterbox(letter) {
     return /*html*/ `
     <div class="letter_box">
@@ -7,6 +13,13 @@ function renderLetterbox(letter) {
 }
 
 
+/**
+ * This is an HTML snippet box that displays each contact
+ * 
+ * @param {string} contact - This is the contact from the list that will be rendered
+ * @param {string} backgroundColor - This is the background color that each contact gets for their initials
+ * @returns this returns the ready snippetbox with backgroundcolor, initials, and names
+ */
 function renderSnippetBox(contact, backgroundColor) {
     const initials = contact['given_name'][0] + contact['name'][0];
     return /*html*/ `
@@ -27,6 +40,9 @@ function renderSnippetBox(contact, backgroundColor) {
 }
 
 
+/**
+ * This is a pop up that appears to edit or delete an existing contact from the contact list
+ */
 function renderEditContactCard(contactData, contactId) {
     return /*html*/ `
         <div id="edit_contact_card" class="edit_contact_card move-to-screen" onclick="doNotClose(event)">
@@ -112,6 +128,13 @@ function renderEditContactCard(contactData, contactId) {
     `;
 }
 
+
+/**
+ * This HTML box is rendered to display the contacts in detail on a card
+ * 
+ * @param {string} contact - this is the selected Contact to show in the card
+ * @returns this returns the contact card
+ */
 function generateContactDetailsHtml(contact) {
     let backgroundColor = `style="background-color: ${contact['color']};"`;
     let initials = contact['given_name'][0] + contact['name'][0];
@@ -202,6 +225,13 @@ function generateContactDetailsHtml(contact) {
     `;
 }
 
+
+/**
+ * This HTML box is a popup that is rendered to show the option to edit or delete the selected contact
+ * 
+ * @param {string} contactId - This shows the parameter which contact can be edited or deleted
+ * @returns this returns the HTML box 
+ */
 function renderEditDeleteContactPoup (contactId){
     return /*html*/ `
     <div class="edit_delete_contact_popup" id="edit_delete_contact_popup">

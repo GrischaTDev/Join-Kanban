@@ -1,3 +1,6 @@
+/**
+ * This array is the Contact list of pre-saved contacts.
+ */
 let contact_list = [
     {
         "id": "1",
