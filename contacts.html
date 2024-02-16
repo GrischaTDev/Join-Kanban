@@ -8,11 +8,12 @@
     <title>Contacts</title>
     <script src="./js/contact.js"></script>
     <script src="./script.js"></script>
+    <script src="./js/contact_list.js"></script>
+    <script src="./js/contacts_render_templates.js"></script>
     <link rel="stylesheet" href="./css/contacts.css">
     <link rel="stylesheet" href="./css/mobile_menu_header.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./css/desktop_menu.css">
-
 </head>
 
 <body onload="loadMenu(), loadContactList()">
@@ -48,17 +49,12 @@
 
         </div>
 
-        <div onclick="closeEditDeleteContactPopup()" id="showContactContainer" class="showContactContainer z_index2">
+        <div onclick="closeEditDeleteContactPopup()" id="showContactContainer" class="showContactContainer z_index1">
         </div>
 
-
         <div class="contacts_slogan_desktop">
-            <div class="showContactHeadline">
 
-
-            </div>
-
-
+            <div class="showContactHeadline"></div>
 
             <div id="addContactScreen" class="d-none add_contact_card-bg" onclick="hideAddContactCardFromScreen()">
                 <div id="add_contact_card" class="add_contact_card" onclick="doNotClose(event)">
@@ -88,7 +84,6 @@
                                             fill="white" />
                                     </g>
                                 </svg>
-
                             </div>
                             <h1>Add contact</h1>
                             <p style="text-align: center; color: white;">Tasks are better with a team!</p>
@@ -98,7 +93,7 @@
                     </div>
                     <div class="add_contact_card_footer">
                         <img class="profile_picture" src="./assets/img/profile_picture.svg" alt="profile picture">
-                        <form class="inputfields">
+                        <form class="inputfields" onsubmit="saveAddedContact(); return false;">
                             <div onclick="hideAddContactCardFromScreen()" class="popup_close_icon">
                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -112,9 +107,7 @@
                                             fill="#2A3647" />
                                     </g>
                                 </svg>
-
                             </div>
-
                             <div class="inputfield_box">
                                 <input id="add_contact_fname" class="inputfield" type="text" required
                                     placeholder="First Name" required>
@@ -136,8 +129,7 @@
                                 <img class="input_icon" src="./assets/img/phone_icon.svg" alt="phone icon">
                             </div>
                             <div class="save_contact_box">
-                                <button onclick="saveAddedContact(); return false;"
-                                    class="submit_create_contact_button">Create contact</button>
+                                <button type="submit" class="submit_create_contact_button">Create contact</button>
                                 <img class="input_icon" src="./assets/img/check.svg" alt="check">
                             </div>
                         </form>
@@ -146,22 +138,14 @@
             </div>
 
 
-            <div id="editContactScreen" class="d-none edit_contact_card-bg" onclick="hideEditCardFromScreen()">
-
-            </div>
-
-
-
+            <div id="editContactScreen" class="d-none edit_contact_card-bg" onclick="hideEditCardFromScreen()"></div>
 
             <div onclick="moveEditDeleteContactPopupFromScreenToRight()" id="edit_delete_contact_popup_screen"
                 class="edit_delete_contact_popup_screen d-none">
-
             </div>
-
         </div>
 
         <div w3-include-html="assets/templates/mobile_menu.html"></div>
 
 </body>
-
 </html>

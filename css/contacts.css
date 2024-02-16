@@ -64,6 +64,7 @@ p {
 }
 
 .contacts_list {
+   
     overflow-y: auto;
     background-color: white;
     padding: 24px;
@@ -76,8 +77,6 @@ p {
     cursor: pointer;
     margin-bottom: 2px;
 }
-
-
 
 .initials_circle_contact_list {
     width: 40px;
@@ -108,7 +107,6 @@ p {
     display: flex;
     flex-direction: column-reverse;
     position: relative;
-
     box-sizing: border-box;
 }
 
@@ -180,7 +178,6 @@ p {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-
     min-width: 280px;
 }
 
@@ -201,7 +198,6 @@ p {
     align-items: center;
     height: 100%;
     justify-content: space-evenly;
-
 }
 
 .edit_contact_card-bg {
@@ -226,7 +222,6 @@ p {
     flex-direction: column;
     overflow: hidden;
     transition: all 220ms ease-in-out;
-
 }
 
 .edit_contact_card_header {
@@ -246,7 +241,6 @@ p {
     align-items: center;
     height: 60%;
     justify-content: space-evenly;
-
 }
 
 .edit_contact_card_footer_desktop {
@@ -421,8 +415,6 @@ p {
     bottom: 0;
     left: 0;
     position: fixed;
-
-
 }
 
 .edit_delete_contact_popup {
@@ -447,12 +439,6 @@ p {
     align-items: center;
     column-gap: 8px;
     z-index: 6 !important;
-}
-
-.edit_delete_buttons:hover {
-    color: #29ABE2 !important;
-    fill: #29ABE2 !important;
-    cursor: pointer !important;
 }
 
 .confirmation_container {
@@ -503,7 +489,6 @@ p {
     bottom: 100px;
 }
 
-
 .fill_icon:hover path {
     fill: #29ABE2;
 }
@@ -522,7 +507,6 @@ p {
     display: flex;
 }
 
-
 .add_new_contact_text {
     color: white;
     font-weight: bold;
@@ -537,10 +521,6 @@ p {
 .add_new_contact_text {
     text-align: center;
 }
-
-
-
-
 
 @keyframes push-from-bottom-to-screen {
     from {
@@ -598,8 +578,6 @@ p {
     }
 }
 
-
-
 @media(max-width:800px) {
 
     .move-to-screen {
@@ -619,7 +597,6 @@ p {
 
     .add_contact_card {
         max-width: 480px;
-
     }
 
     .add_contact_card_header {
@@ -628,7 +605,6 @@ p {
 
     .edit_contact_card {
         max-width: 400px;
-
     }
 
     .add_contacts_button_box {
@@ -658,7 +634,6 @@ p {
         background-color: white;
         position: fixed;
     }
-
 
     .popup_logo {
         display: none;
@@ -694,7 +669,6 @@ p {
 }
 
 @media(min-width:800px) {
-
     .contact_list_snippet_box_blue {
         display: flex;
         padding: 16px 10px;
@@ -724,7 +698,6 @@ p {
         animation-duration: 1500ms;
         animation-direction: normal;
     }
-
 
     .add_contacts_button {
         border-radius: 10px;
@@ -840,32 +813,18 @@ p {
     }
 
     .showContactFooterBox {
-        animation: push-from-right-to-screen !important;
+        animation: push-from-right-to-screen;
         animation-duration: 250ms;
         animation-direction: normal;
-        opacity: 0;
-        /* Startzustand: nicht sichtbar */
-    }
-
-    .showContactFooterBox.show {
-        opacity: 1;
-        /* Einblenden mit Animation */
     }
 
     .initials_circle_show_contact {
-
         font-size: 40px;
         margin-right: 32px;
     }
-
-    .edit_delete_contact_popup {}
-
-    .edit_delete_contact_popup_screen {}
-
 }
 
 @media(min-width:1000px) {
-
     #edit_delete_desktop_icons {
         flex-direction: row;
     }
@@ -881,7 +840,6 @@ p {
         display: none;
     }
 
-
     br {
         display: none;
     }
@@ -890,16 +848,12 @@ p {
         width: 80px;
         height: 80px;
     }
-
 }
 
 @media(max-width:1000px) {
-
     #edit_delete_desktop_icons {
         flex-direction: column;
     }
-
-
 
     .blue_line_vertical {
         height: 44px;
@@ -912,11 +866,7 @@ p {
     .initials_circle_show_contact {
         width: 60px;
         height: 60px;
-
-
         font-size: 22px;
         margin-right: 20px;
     }
-
-
 }
