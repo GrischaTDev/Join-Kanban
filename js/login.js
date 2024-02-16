@@ -29,4 +29,15 @@ async function login() {
 function resetLoginForm(loginEmail, loginPassword) {
     loginEmail = '';
     loginPassword = '';
-  }
+}
+
+
+function guestLogIn() {
+    let loginEmail = document.getElementById('login-email').value;
+    let loginPassword = document.getElementById('login-password').value;
+
+    document.getElementById('login-email').value = 'test2';
+}
+
+
+
