@@ -8,7 +8,7 @@ function init() {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    document.getElementById("medium").click();
+  document.getElementById("medium").click();
 });
 
 async function loadUsers() {
@@ -20,30 +20,33 @@ async function loadUsers() {
 }
 
 function openUserList() {
-    let userSelect = document.getElementById('user-select');
-    let inputIcon = document.getElementById('input-icon');
-    userSelect.innerHTML = '';
-    if (userSelect.classList.contains('d-none')) {
-        userSelect.classList.remove('d-none');
-        inputIcon.src = './assets/img/arrow_drop_down_2.svg';
-    } else {
-        userSelect.classList.add('d-none');
-        inputIcon.src = './assets/img/arrow_drop_down_1.svg';
-    }
+  let userSelect = document.getElementById('user-select');
+  let inputIcon = document.getElementById('input-icon');
+  userSelect.innerHTML = '';
+  if (userSelect.classList.contains('d-none')) {
+    userSelect.classList.remove('d-none');
+    inputIcon.src = './assets/img/arrow_drop_down_2.svg';
+  } else {
+    userSelect.classList.add('d-none');
+    inputIcon.src = './assets/img/arrow_drop_down_1.svg';
+  }
 
 
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
+    const userColor = users[i]['color'];
     let initialLetters = user["name"][0];
     userSelect.innerHTML += /* html */ `
-            <div id="currentUser${i}" class="userColumn" onclick="addUser(${i})">
-                <div class="user-name">
-                    <span class="letter-icon">${initialLetters}</span>
-                    <div>${user.name}</div>
-                </div>
-                <img src="./assets/img/checkbox.svg" alt="">
-            </div>
-        `;
+    <div id="currentUser${i}" class="userColumn" onclick="addUser(${i})">
+      <div class="user-name">
+        <span class="letter-icon">${initialLetters}</span>
+        <div>${user.name}</div>
+      </div>
+      <img src="./assets/img/checkbox.svg" alt="">
+    </div>
+    `;
+    const color = document.getElementsByClassName('letter-icon');
+    color[i].style.backgroundColor = `${userColor}`;
   }
 }
 
@@ -64,34 +67,51 @@ function openUserList() {
  */
 
 function renderUserList(i) {
-    document.getElementById('selected-user').innerHTML = '';
+  document.getElementById('selected-user').innerHTML = '';
 
-    for (let i = 0; i < selectedUser.length; i++) {
-        const userList = selectedUser[i]['name'][0];
+  for (let i = 0; i < selectedUser.length; i++) {
+    const userList = selectedUser[i]['name'][0];
+    const userColor = selectedUser[i]['color'];
 
     document.getElementById("selected-user").innerHTML += /* html */ `
-        <div class="user-icon">${userList}</div>
-        `;
+    <div class="user-icon">${userList}</div>
+    `;
+    const color = document.getElementsByClassName('user-icon');
+    color[i].style.backgroundColor = `${userColor}`;
   }
 }
 
 
 function addUser(i) {
-    let userColumn = document.getElementById(`currentUser${i}`);
-    let user = users[i];
-    let selectedUSerIndex = selectedUser.findIndex(u => u.id === i);
-    if (selectedUSerIndex === -1) {
-        userColumn.classList.add('user-select-active');
-        selectedUser.push(user);
-    } else {
-        userColumn.classList.remove('user-select-active');
-        selectedUser.splice(selectedUSerIndex, 1);
-    }
+  let userColumn = document.getElementById(`currentUser${i}`);
+  let user = users[i];
+  let selectedUSerIndex = selectedUser.findIndex(u => u.id === i);
+  if (selectedUSerIndex === -1) {
+    userColumn.classList.add('user-select-active');
+    selectedUser.push(user)
+  } else {
+    userColumn.classList.remove('user-select-active');
+    selectedUser.splice(selectedUSerIndex, 1);
+  }
 
-    renderUserList(i);
-    save();
+  renderUserList(i);
+  save();
 }
 
+// function addUser(i) {
+//     let userColumn = document.getElementById(`currentUser${i}`);
+//     let user = users[i];
+//     if (!selectedUser.includes(user)) {
+//         userColumn.classList.add('user-select-active');
+//         selectedUser.push(user)
+//     } else {
+//         userColumn.classList.remove('user-select-active');
+//         selectedUser.splice(user.id, 1);
+//     }
+
+//     renderUserList(i);
+//     save();
+// }
 
 
 function save() {
@@ -122,14 +142,14 @@ function loadAllTasks() {
 let allTasks = [];
 
 function addTask() {
-    let titel = document.getElementById('titel').value;
-    let description = document.getElementById('description').value;
-    let category = document.getElementById('category').value;
-    let userSelect = document.getElementById('user-select').innerText.trim(); // Nutzername aus dem Text des ausgewählten Elements extrahieren
-    let subtask = document.getElementById('subtask').value;
-    let urgend = document.getElementById('urgent').classList.contains('active');
-    let medium = document.getElementById('medium').classList.contains('active');
-    let low = document.getElementById('low').classList.contains('active');
+  let titel = document.getElementById('titel').value;
+  let description = document.getElementById('description').value;
+  let category = document.getElementById('category').value;
+  let userSelect = document.getElementById('user-select').innerText.trim(); // Nutzername aus dem Text des ausgewählten Elements extrahieren
+  let subtask = document.getElementById('subtask').value;
+  let urgend = document.getElementById('urgent').classList.contains('active');
+  let medium = document.getElementById('medium').classList.contains('active');
+  let low = document.getElementById('low').classList.contains('active');
 
   let task = {
     titel: titel,
@@ -152,41 +172,41 @@ function addTask() {
 }
 
 function togglePriority(priority) {
-    var button = document.getElementById(priority);
+  var button = document.getElementById(priority);
 
-    if (button.classList.contains('active')) {
-        // Wenn der aktuelle Button bereits ausgewählt ist, dann abwählen
-        button.classList.remove('active');
-        button.style.backgroundColor = ''; // Zurücksetzen der Hintergrundfarbe
-        button.style.color = ''; 
-        button.querySelector('img').style.filter = ''; 
-        button.style.color = '';
-        button.querySelector('img').style.filter = '';
-    } else {
-        // Andernfalls den aktuellen Button auswählen und den vorherigen abwählen
-        var prevSelectedButton = document.querySelector('.priority-button.active');
-        if (prevSelectedButton) {
-            prevSelectedButton.classList.remove('active');
-            prevSelectedButton.style.backgroundColor = ''; // Zurücksetzen der Hintergrundfarbe
-            prevSelectedButton.style.color = ''; 
-            prevSelectedButton.querySelector('img').style.filter = ''; 
-            prevSelectedButton.style.color = '';
-            prevSelectedButton.querySelector('img').style.filter = '';
-        }
-
-        button.classList.add('active');
-        var computedStyle = getComputedStyle(button);
-        button.style.backgroundColor = computedStyle.backgroundColor;
-        button.style.color = 'white'; 
-        button.querySelector('img').style.filter = 'brightness(0) invert(100%)'; 
-        button.style.color = 'white';
-        button.querySelector('img').style.filter = 'brightness(0) invert(100%)';
-
-        // Hintergrundfarbe für den Medium-Button auf Gelb setzen
-        if (priority === 'medium') {
-            button.style.backgroundColor = '#ffa200';
-        }
+  if (button.classList.contains('active')) {
+    // Wenn der aktuelle Button bereits ausgewählt ist, dann abwählen
+    button.classList.remove('active');
+    button.style.backgroundColor = ''; // Zurücksetzen der Hintergrundfarbe
+    button.style.color = '';
+    button.querySelector('img').style.filter = '';
+    button.style.color = '';
+    button.querySelector('img').style.filter = '';
+  } else {
+    // Andernfalls den aktuellen Button auswählen und den vorherigen abwählen
+    var prevSelectedButton = document.querySelector('.priority-button.active');
+    if (prevSelectedButton) {
+      prevSelectedButton.classList.remove('active');
+      prevSelectedButton.style.backgroundColor = ''; // Zurücksetzen der Hintergrundfarbe
+      prevSelectedButton.style.color = '';
+      prevSelectedButton.querySelector('img').style.filter = '';
+      prevSelectedButton.style.color = '';
+      prevSelectedButton.querySelector('img').style.filter = '';
     }
+
+    button.classList.add('active');
+    var computedStyle = getComputedStyle(button);
+    button.style.backgroundColor = computedStyle.backgroundColor;
+    button.style.color = 'white';
+    button.querySelector('img').style.filter = 'brightness(0) invert(100%)';
+    button.style.color = 'white';
+    button.querySelector('img').style.filter = 'brightness(0) invert(100%)';
+
+    // Hintergrundfarbe für den Medium-Button auf Gelb setzen
+    if (priority === 'medium') {
+      button.style.backgroundColor = '#ffa200';
+    }
+  }
 }
 
 
