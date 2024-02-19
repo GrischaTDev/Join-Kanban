@@ -8,6 +8,8 @@ function init() {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
+  setMinimumDateForToday('dueDate');
+
   document.getElementById("medium").click();
 });
 
@@ -151,18 +153,25 @@ function addTask() {
   let medium = document.getElementById('medium').classList.contains('active');
   let low = document.getElementById('low').classList.contains('active');
 
+  // Rufen Sie die Funktion auf, um das Mindestdatum für das Eingabeelement 'dueDate' festzulegen
+  setMinimumDateForToday('dueDate');
+
+  let dueDate = document.getElementById('dueDate').value;
+
+  // Hier können Sie weitere Validierungen für das Datum hinzufügen, um sicherzustellen, dass es nicht in der Vergangenheit liegt
+
   let task = {
-    titel: titel,
-    description: description,
-    dueDate: dueDate,
-    category: category,
-    userSelect: userSelect,
-    subtask: subtask,
-    priority: {
-      urgent: urgend,
-      medium: medium,
-      low: low,
-    },
+      titel: titel,
+      description: description,
+      dueDate: dueDate,
+      category: category,
+      userSelect: userSelect,
+      subtask: subtask,
+      priority: {
+          urgent: urgend,
+          medium: medium,
+          low: low,
+      },
   };
 
   allTasks.push(task);
@@ -170,6 +179,7 @@ function addTask() {
   let allTasksAsString = JSON.stringify(allTasks);
   localStorage.setItem("allTask", allTasksAsString);
 }
+
 
 function togglePriority(priority) {
   var button = document.getElementById(priority);
@@ -297,3 +307,17 @@ function updateTodo(index, newValue) {
 }
 
 
+function setMinimumDateForToday(inputId) {
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  let month = currentDate.getMonth() + 1;
+  let day = currentDate.getDate();
+
+  // Ensure leading zeros if needed
+  month = month < 10 ? '0' + month : month;
+  day = day < 10 ? '0' + day : day;
+
+  // Set the minimum date for the input to today's date
+  const minDate = year + '-' + month + '-' + day;
+  document.getElementById(inputId).min = minDate;
+}

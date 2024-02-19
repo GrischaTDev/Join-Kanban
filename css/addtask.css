@@ -220,6 +220,7 @@ textarea {
 .user-select-active {
   color: white;
   background-color: #2a3647;
+  border-radius: 6px;
 }
 
 .user-select-active:hover {
