@@ -311,7 +311,8 @@ textarea {
 .todo-item .actions {
   display: none;
 }
-#mylist{
+
+#mylist {
 
 }
 #mylist li:hover .actions {

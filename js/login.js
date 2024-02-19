@@ -33,10 +33,11 @@ function resetLoginForm(loginEmail, loginPassword) {
 
 
 function guestLogIn() {
-    let loginEmail = document.getElementById('login-email').value;
-    let loginPassword = document.getElementById('login-password').value;
+    // let loginEmail = document.getElementById('login-email').value;
+    // let loginPassword = document.getElementById('login-password').value;
 
-    document.getElementById('login-email').value = 'test2';
+    document.getElementById('login-email').value = 'test-user@join.com';
+    document.getElementById('login-password').value = 'xt8mnVL6t8i4f4N';
 }
 
 

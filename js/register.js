@@ -70,6 +70,7 @@ async function userPush(registerName, registerEmail, registerPassword) {
     name: registerName,
     email: registerEmail,
     password: registerPassword,
+    color: generateRandomColor()
   });
   await setItem('users', JSON.stringify(users));
 }
