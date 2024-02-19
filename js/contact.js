@@ -181,7 +181,6 @@ function renderContactDetails(contact) {
     const phone = contact['phone'];
 
     document.getElementById('showContactContainer').innerHTML = generateContactDetailsHtml(contact);
-    document.getElementById('showContactFooterBox').classList.add('show');
 }
 
 /**
@@ -354,18 +353,6 @@ function loadContactList() {
  */
 function generateUniqueId() {
     let newId = (contact_list.length + 1).toString();
-}
-
-/**
- * This function is used to generate a random color for each new contact
- * 
- * @returns this returns the three color types together.
- */
-function generateRandomColor() {
-    let r = Math.floor(Math.random() * 256);
-    let g = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
-    return `rgb(${r},${g},${b})`;
 }
 
 /**

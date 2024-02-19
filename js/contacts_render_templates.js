@@ -156,7 +156,7 @@ function generateContactDetailsHtml(contact) {
 </div>
 
 <div id="showContactFooterBox" class="showContactFooterBox">
-    <div class=" d-flex" id="footer_name_box">
+    <div class="d-flex" id="footer_name_box">
         <div class="initials_circle_show_contact" ${backgroundColor}>${initials}</div>
         <div><h2 style="font-weight: bold;" id="showContactName">${name}</h2>
             <div id="edit_delete_desktop_icons" style="display: flex; cursor:pointer;">

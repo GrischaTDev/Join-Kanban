@@ -217,7 +217,7 @@ function renderHelp() {
                     Remember that using Join effectively requires consistent updates from you and your team to ensure
                     the board reflects the current state of your project.
 
-                    Have more questions about Join? Feel free to contact us at [Your Contact Email]. We're here to help
+                    Have more questions about Join? Feel free to contact us at <a href="mailto:helmut.martens87@gmail.com">helmut.martens87@gmail.com</a>. We're here to help
                     you!
                 </p>
             </div>
@@ -244,4 +244,11 @@ function closeLegalNoticeSidebar() {
 
 function goBack() {
     window.history.back();
+}
+
+function generateRandomColor() {
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    return `rgb(${r},${g},${b})`;
 }

@@ -382,6 +382,7 @@ p {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    animation: move-from-right-to-screen 250ms ease forwards !important;
 }
 
 .initials_circle_edit_contact {
@@ -811,11 +812,11 @@ p {
         cursor: pointer;
     }
 
-    .showContactFooterBox {
-        animation: push-from-right-to-screen;
-        animation-duration: 250ms;
-        animation-direction: normal;
-    }
+    /* .showContactFooterBox {
+        animation: push-from-right-to-screen !important;
+        animation-duration: 250ms !important;
+        animation-direction: normal !important;
+    } */
 
     .initials_circle_show_contact {
         font-size: 40px;
