@@ -377,11 +377,10 @@ function saveEditedContact(contactId) {
     const updatedContact = updateContact(contactId);
     contact_list.push(updatedContact);
     localStorage.setItem('contact_list', JSON.stringify(contact_list));
-    showContactCreatedConfirmation();
     hideEditCardFromScreen();
+    closeShowContact();
     loadContactList();
-    document.getElementById('showContactFooterBox').innerHTML = '';
-    document.getElementById('showContactContainer').classList.remove('z_index5');
+    showContactCreatedConfirmation();
 }
 
 /**

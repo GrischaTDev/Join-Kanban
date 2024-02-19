@@ -64,7 +64,6 @@ p {
 }
 
 .contacts_list {
-   
     overflow-y: auto;
     background-color: white;
     padding: 24px;
