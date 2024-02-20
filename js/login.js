@@ -1,3 +1,5 @@
+let loggedInUser = [];
+
 function init(){
     loadUsers();
 }
@@ -19,6 +21,7 @@ async function login() {
     
     if (loginEmail == user.email && loginPassword == user.password) {
         resetLoginForm(loginEmail, loginPassword);
+        userPushLogin(user);
         location.href = './summary.html';
     } else {
         console.log('Falsche Eingabe')
@@ -40,5 +43,12 @@ function guestLogIn() {
     document.getElementById('login-password').value = 'xt8mnVL6t8i4f4N';
 }
 
-
+async function userPushLogin(user) {
+    loggedInUser.push({
+      id: user.id,
+      name: user.name,
+      color: user.color
+    });
+    await setItem('loggedInUser', JSON.stringify(loggedInUser));
+  }
 

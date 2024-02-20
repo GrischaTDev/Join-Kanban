@@ -1,3 +1,18 @@
+function init(){
+    loadLoginUser();
+}
+
+async function loadLoginUser(){
+    try {
+        loggedInUser = JSON.parse(await getItem('loggedInUser'));
+        console.log('User geladen!')
+    } catch(e){
+        console.error('Loading error:', e);
+    }
+}
+
+
+
 
 async function loadMenu() {
     await includeHTML();
@@ -16,6 +31,8 @@ async function includeHTML() {
         }
     }
 }
+
+
 
 
 function openHelp() {
