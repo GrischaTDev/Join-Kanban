@@ -3,7 +3,7 @@
     <h4 class="desktop">Kanban Project Management Tool</h4>
     <div class="help-and-user-icons">
         <div onclick="openHelp()"><img class="help" src="./assets/img/help_icon.svg" alt=""></div>
-        <img onclick="openLegalNoticeSidebar()" class="user" src="./assets/img/user_profile.svg" alt="User Profile">
+        <div id="log-user" onclick="openLegalNoticeSidebar()" class="user"></div>
     </div>
 
     <div onclick="moveLegalNoticeSidebarFromScreenToRight()" id="legal_notice_sidebar_screen"
@@ -14,8 +14,7 @@
 
             <div class="legal_notice_button" onclick="openPrivacyPolicy()">Privacy Policy</div>
 
-            <a href="../index.html"><div class="legal_notice_button">Log out</div></a>
-
+            <a href="../index.html" onclick="logout()"><div class="legal_notice_button">Log out</div></a>
         </div>
     </div>
 </header>

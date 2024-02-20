@@ -37,7 +37,9 @@ function openUserList() {
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
     const userColor = users[i]['color'];
-    let initialLetters = user["name"][0];
+
+    let initialLetters = nameInitialLetters(user);
+    
     userSelect.innerHTML += /* html */ `
     <div id="currentUser${i}" class="userColumn" onclick="addUser(${i})">
       <div class="user-name">
@@ -50,6 +52,14 @@ function openUserList() {
     const color = document.getElementsByClassName('letter-icon');
     color[i].style.backgroundColor = `${userColor}`;
   }
+}
+
+function nameInitialLetters(user) {
+  const fullNameSplitt = user.name.split(" ");
+  const letters = fullNameSplitt.map(name => name[0]);
+  const initialLetters = letters.join("");
+  console.log(initialLetters);
+  return initialLetters;
 }
 
 // /**
@@ -72,11 +82,12 @@ function renderUserList(i) {
   document.getElementById('selected-user').innerHTML = '';
 
   for (let i = 0; i < selectedUser.length; i++) {
-    const userList = selectedUser[i]['name'][0];
+    const user = selectedUser[i];
+    let initialLetters = nameInitialLetters(user);
     const userColor = selectedUser[i]['color'];
 
     document.getElementById("selected-user").innerHTML += /* html */ `
-    <div class="user-icon">${userList}</div>
+    <div class="user-icon">${initialLetters}</div>
     `;
     const color = document.getElementsByClassName('user-icon');
     color[i].style.backgroundColor = `${userColor}`;

@@ -157,7 +157,11 @@ border-color: rgb(168,168,168, 0.5);*/
   }
 }
 
-@media(min-width:800px) {
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 42px;
+  }
+
   .help_container {
     padding-right: 308px;
   }
