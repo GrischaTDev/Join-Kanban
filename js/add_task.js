@@ -8,9 +8,9 @@ function init() {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
-  setMinimumDateForToday('dueDate');
+  //setMinimumDateForToday('dueDate');
 
-  document.getElementById("medium").click();
+ // document.getElementById("medium").click();
 });
 
 async function loadUsers() {
@@ -134,14 +134,29 @@ function load() {
  * alles in Json und array speichern und umwandeln
  */
 
+// function loadAllTasks() {
+//   let allTasksAsString = localStorage.getItem("allTask");
+//   if (allTasksAsString) {
+//     allTasks = JSON.parse(allTasksAsString);
+//   }
+// }
+
 function loadAllTasks() {
   let allTasksAsString = localStorage.getItem("allTask");
   if (allTasksAsString) {
-    allTasks = JSON.parse(allTasksAsString);
+      let allTasks = JSON.parse(allTasksAsString);
+      showAllTasks(allTasks);
   }
 }
 
-let allTasks = [];
+
+
+
+
+let allTasks = [
+
+  
+];
 
 function addTask() {
   let titel = document.getElementById('titel').value;
@@ -307,17 +322,17 @@ function updateTodo(index, newValue) {
 }
 
 
-function setMinimumDateForToday(inputId) {
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  let month = currentDate.getMonth() + 1;
-  let day = currentDate.getDate();
+// function setMinimumDateForToday(inputId) {
+//   const currentDate = new Date();
+//   const year = currentDate.getFullYear();
+//   let month = currentDate.getMonth() + 1;
+//   let day = currentDate.getDate();
 
-  // Ensure leading zeros if needed
-  month = month < 10 ? '0' + month : month;
-  day = day < 10 ? '0' + day : day;
+//   // Ensure leading zeros if needed
+//   month = month < 10 ? '0' + month : month;
+//   day = day < 10 ? '0' + day : day;
 
-  // Set the minimum date for the input to today's date
-  const minDate = year + '-' + month + '-' + day;
-  document.getElementById(inputId).min = minDate;
-}
+//   // Set the minimum date for the input to today's date
+//   const minDate = year + '-' + month + '-' + day;
+//   document.getElementById(inputId).min = minDate;
+// }
