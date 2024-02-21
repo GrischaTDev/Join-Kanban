@@ -1,32 +1,35 @@
-loggedInUser = [];
+// loggedInUser = [];
+userTest = [];
+
 
 async function init() {
-    await loadCurrentUser();
+    load();
     loadUserProfile();
     greatingUser();
     console.log('Init script geladen!');
 }
 
-async function loadCurrentUser() {
-    try {
-        loggedInUser = JSON.parse(await getItem('loggedInUser'));
-        console.log('User Profil geladen!');
-    } catch(e){
-        console.error('Loading error:', e);
+
+function load() {
+    let titel = localStorage.getItem('userTest');
+    if (titel) {
+        userTest = JSON.parse(titel);
     }
 }
 
-async function logout() {
-    loggedInUser.push({
-        id: user.id,
-        name: user.name,
-        color: user.color
-      });
-      await setItem('loggedInUser', JSON.stringify(loggedInUser));
-}
+
+// async function logout() {
+//     loggedInUser.push({
+//         id: user.id,
+//         name: user.name,
+//         color: user.color
+//       });
+//       await setItem('loggedInUser', JSON.stringify(loggedInUser));
+// }
+
 
 function greatingUser() {
-    let name = loggedInUser[0].name;
+    let name = userTest[0].name;
     let nameMobile = document.getElementById('user-greating-mobile');
     let nameDesktop = document.getElementById('user-greating-desktop');
     nameMobile.innerHTML = `<div>${name}</div>`;
@@ -34,7 +37,7 @@ function greatingUser() {
 }
 
 function loadUserProfile() {
-    let userName = loggedInUser[0].name;
+    let userName = userTest[0].name;
     let initialLetters = nameInitialLetters(userName);
     let userProfile = document.getElementById('log-user');
     userProfile.innerHTML = /* html */ `${initialLetters}`;
@@ -45,7 +48,7 @@ function nameInitialLetters(userName) {
     const letters = fullNameSplitt.map(name => name[0]);
     const initialLetters = letters.join("");
     return initialLetters;
-  }
+}
   
 
 
@@ -68,12 +71,9 @@ async function includeHTML() {
 }
 
 
-
-
 function openHelp() {
     window.location.href = "help.html?content=help";
 }
-
 
 
 function openLegalNotice() {

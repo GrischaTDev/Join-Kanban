@@ -1,4 +1,5 @@
-let loggedInUser = [];
+// let loggedInUser = [];
+let userTest = [];
 
 
 
@@ -21,7 +22,6 @@ async function loadUsersLogin(){
 // async function loadUserProfile() {
 //     try {
 //         loggedInUser = JSON.parse(await getItem('loggedInUser'));
-//         console.log('User Profil geladen!')
 //     } catch(e){
 //         console.error('Loading error:', e);
 //     }
@@ -59,7 +59,7 @@ function guestLogIn() {
 }
 
 async function userPushLogin(user) {
-    loggedInUser.push({
+    userTest.push({
       id: user.id,
       name: user.name,
       color: user.color
@@ -69,8 +69,8 @@ async function userPushLogin(user) {
   }
 
   function save() {
-    let loggedUSer = JSON.stringify(loggedInUser);
-    localStorage.setItem('Angemeldeter Benutzer', loggedUSer);
+    let loggedUSer = JSON.stringify(userTest);
+    localStorage.setItem('userTest', loggedUSer);dw
 }
 
 
