@@ -19,10 +19,21 @@ header {
 }
 
 .user {
+    color: #29ABE2;
+    font-weight: bold;
     width: 40px;
     height: 40px;
-    flex-shrink: 0;
+    border-radius: 50%;
+    border: 3px solid #2A3647;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user:hover {
+    color: white;
+    background-color: #2A3647;
 }
 
 /* MENU */

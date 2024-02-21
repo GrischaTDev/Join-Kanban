@@ -1,12 +1,13 @@
 let users = [];
 let checkBox = false;
 
-function init() {
-  loadUsers();
+function initRegister() {
+  loadUsersRegister();
+  console.log('Init register geladen!');
 }
 
 
-async function loadUsers() {
+async function loadUsersRegister() {  
   try {
     users = JSON.parse(await getItem('users'));
   } catch (e) {

@@ -1,17 +1,52 @@
-function init(){
-    loadLoginUser();
+loggedInUser = [];
+
+async function init() {
+    await loadCurrentUser();
+    loadUserProfile();
+    greatingUser();
+    console.log('Init script geladen!');
 }
 
-async function loadLoginUser(){
+async function loadCurrentUser() {
     try {
         loggedInUser = JSON.parse(await getItem('loggedInUser'));
-        console.log('User geladen!')
+        console.log('User Profil geladen!');
     } catch(e){
         console.error('Loading error:', e);
     }
 }
 
+async function logout() {
+    loggedInUser.push({
+        id: user.id,
+        name: user.name,
+        color: user.color
+      });
+      await setItem('loggedInUser', JSON.stringify(loggedInUser));
+}
 
+function greatingUser() {
+    let name = loggedInUser[0].name;
+    let nameMobile = document.getElementById('user-greating-mobile');
+    let nameDesktop = document.getElementById('user-greating-desktop');
+    nameMobile.innerHTML = `<div>${name}</div>`;
+    nameDesktop.innerHTML = `<div>${name}</div>`;
+}
+
+function loadUserProfile() {
+    let userName = loggedInUser[0].name;
+    let initialLetters = nameInitialLetters(userName);
+    let userProfile = document.getElementById('log-user');
+    userProfile.innerHTML = /* html */ `${initialLetters}`;
+}
+
+function nameInitialLetters(userName) {
+    const fullNameSplitt = userName.split(" ");
+    const letters = fullNameSplitt.map(name => name[0]);
+    const initialLetters = letters.join("");
+    return initialLetters;
+  }
+  
 
 
 async function loadMenu() {
