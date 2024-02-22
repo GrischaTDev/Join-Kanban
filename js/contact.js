@@ -340,7 +340,6 @@ function clearAddContactInputfields(first_name, last_name, email, phone) {
 function loadContactList() {
     if (!localStorage.getItem('contact_list')) {
         localStorage.setItem('contact_list', JSON.stringify(contact_list));
-        console.log('Contact list saved to LocalStorage');
     }
 
     let contactListAsString = localStorage.getItem('contact_list');

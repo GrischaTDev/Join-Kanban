@@ -470,7 +470,9 @@ span {
   justify-content: center;
   align-items: center;
 }
-
+.drag-area-highlight {
+  background-color: rgba (0, 0, 0, 0.1);
+}
 
 
 @media(min-width:800px) {

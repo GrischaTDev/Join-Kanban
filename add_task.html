@@ -16,7 +16,7 @@
     <script src="js/storage.js" defer></script>
 </head>
 
-<body onload="loadMenu(), loadAllTasks(), init()">
+<body onload="loadMenu(), init()">
     <div w3-include-html="assets/templates/header.html"></div>
     <div w3-include-html="assets/templates/desktop_menu.html"></div>
 
@@ -43,18 +43,19 @@
                     <div class="add-task-title">
                         <span>Prio</span>
                         <div class="priority-buttons">
-                            <button class="priority-button" id="urgent" onclick="togglePriority('urgent')">
+                            <button type="button" class="priority-button" id="urgent" onclick="togglePriority('urgent')">
                                 Urgent
                                 <img src="/assets/img/prio-urgent.svg" alt="Urgent Image">
                             </button>
-                            <button class="priority-button" id="medium" onclick="togglePriority('medium')">
+                            <button type="button" class="priority-button active" id="medium" onclick="togglePriority('medium')">
                                 Medium
                                 <img src="/assets/img/prio-medium.svg" alt="Medium Image">
                             </button>
-                            <button class="priority-button" id="low" onclick="togglePriority('low')">
+                            <button type="button" class="priority-button" id="low" onclick="togglePriority('low')">
                                 Low
                                 <img src="/assets/img/prio-low.svg" alt="Low Image">
                             </button>
+                            
                         </div>
                     </div>
                 </div>
