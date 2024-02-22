@@ -1,15 +1,19 @@
-// loggedInUser = [];
 userTest = [];
 
-
+/**
+ * Load functions on Summary page.
+ */
 async function init() {
+    await includeHTML();
     load();
     loadUserProfile();
     greatingUser();
     console.log('Init script geladen!');
 }
 
-
+/**
+ * Load localStorage userTest.
+ */
 function load() {
     let titel = localStorage.getItem('userTest');
     if (titel) {
@@ -18,15 +22,26 @@ function load() {
 }
 
 
-// async function logout() {
-//     loggedInUser.push({
-//         id: user.id,
-//         name: user.name,
-//         color: user.color
-//       });
-//       await setItem('loggedInUser', JSON.stringify(loggedInUser));
-// }
+function logout() {
+    userTest.splice(0, userTest.length);
+    window.location.href = './index.html';
+    save();
+}
+  
 
+async function includeHTML() {
+    let includeElements = document.querySelectorAll('[w3-include-html]');
+    for (let i = 0; i < includeElements.length; i++) {
+        const element = includeElements[i];
+        file = element.getAttribute("w3-include-html");
+        let resp = await fetch(file);
+        if (resp.ok) {
+            element.innerHTML = await resp.text();
+        } else {
+            element.innerHTML = 'Page not found';
+        }
+    }
+}
 
 function greatingUser() {
     let name = userTest[0].name;
@@ -48,26 +63,6 @@ function nameInitialLetters(userName) {
     const letters = fullNameSplitt.map(name => name[0]);
     const initialLetters = letters.join("");
     return initialLetters;
-}
-  
-
-
-async function loadMenu() {
-    await includeHTML();
-}
-
-async function includeHTML() {
-    let includeElements = document.querySelectorAll('[w3-include-html]');
-    for (let i = 0; i < includeElements.length; i++) {
-        const element = includeElements[i];
-        file = element.getAttribute("w3-include-html");
-        let resp = await fetch(file);
-        if (resp.ok) {
-            element.innerHTML = await resp.text();
-        } else {
-            element.innerHTML = 'Page not found';
-        }
-    }
 }
 
 

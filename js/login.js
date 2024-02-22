@@ -1,14 +1,10 @@
-// let loggedInUser = [];
 let userTest = [];
-
 
 
 function initLogin(){
     loadUsersLogin();
-    // loadUserProfile()
     console.log('Init login geladen!');
 }
-
 
 
 async function loadUsersLogin(){
@@ -19,13 +15,6 @@ async function loadUsersLogin(){
     }
 }
 
-// async function loadUserProfile() {
-//     try {
-//         loggedInUser = JSON.parse(await getItem('loggedInUser'));
-//     } catch(e){
-//         console.error('Loading error:', e);
-//     }
-// }
 
 async function login() {
     let loginEmail = document.getElementById('login-email').value;
@@ -44,6 +33,7 @@ async function login() {
     }
 }
 
+
 function resetLoginForm(loginEmail, loginPassword) {
     loginEmail = '';
     loginPassword = '';
@@ -51,12 +41,10 @@ function resetLoginForm(loginEmail, loginPassword) {
 
 
 function guestLogIn() {
-    // let loginEmail = document.getElementById('login-email').value;
-    // let loginPassword = document.getElementById('login-password').value;
-
     document.getElementById('login-email').value = 'test-user@join.com';
     document.getElementById('login-password').value = 'xt8mnVL6t8i4f4N';
 }
+
 
 async function userPushLogin(user) {
     userTest.push({
@@ -64,13 +52,13 @@ async function userPushLogin(user) {
       name: user.name,
       color: user.color
     });
-    // await setItem('loggedInUser', JSON.stringify(loggedInUser));
+
     save();
   }
 
   function save() {
     let loggedUSer = JSON.stringify(userTest);
-    localStorage.setItem('userTest', loggedUSer);dw
+    localStorage.setItem('userTest', loggedUSer);
 }
 
 
