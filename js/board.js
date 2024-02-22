@@ -1,3 +1,5 @@
+loggedInUser = [];
+
 let currentDraggedElement;
 document.addEventListener('DOMContentLoaded', function() {
     // Hier kannst du die Funktionen aufrufen, die nach dem Laden des DOM ausgeführt werden sollen

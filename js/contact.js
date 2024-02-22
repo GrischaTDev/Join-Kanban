@@ -1,4 +1,5 @@
 let selectedIndex = 0;
+loggedInUser = [];
 
 async function initContats() {
     await includeHTML();

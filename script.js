@@ -8,7 +8,6 @@ async function init() {
     load();
     loadUserProfile();
     greatingUser();
-    console.log('Init script geladen!');
 }
 
 /**
@@ -23,8 +22,6 @@ function load() {
             window.location.href = './index.html';
         }
     }
-
-
 }
 
 
