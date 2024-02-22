@@ -49,7 +49,7 @@
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
                 </div>
-                <div id="todo_container" class="drag-area desktop-drag-area" ondrop="moveTo('todo_container')" ondragover="allowDrop(event); highlight('todo_container')" >
+                <div id="todo_container" class="drag-area desktop-drag-area" ondrop="moveTo('todo_container')" ondragleave="removeHighlight('todo_container')" ondragover="allowDrop(event); highlight('todo_container')" >
                     <div>
                         <div class="no-tasks desktop-no-tasks">
                             <span>No tasks To do</span>
@@ -65,7 +65,7 @@
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
                 </div>
-                <div id="inprogress_container" class="drag-area desktop-drag-area" ondrop="moveTo('inprogress_container')" ondragover="allowDrop(event); highlight('inprogress_container')">
+                <div id="inprogress_container" class="drag-area desktop-drag-area" ondrop="moveTo('inprogress_container')" ondragleave="removeHighlight('inprogress_container')" ondragover="allowDrop(event); highlight('inprogress_container')">
 
                     <!-- <a href="#" class="card-section desktop-card-section" onclick="showPopup()">
                         <div class="card">
