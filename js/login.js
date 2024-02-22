@@ -1,16 +1,31 @@
-let loggedInUser = [];
+// let loggedInUser = [];
+let userTest = [];
 
-function init(){
-    loadUsers();
+
+
+function initLogin(){
+    loadUsersLogin();
+    // loadUserProfile()
+    console.log('Init login geladen!');
 }
 
-async function loadUsers(){
+
+
+async function loadUsersLogin(){
     try {
         users = JSON.parse(await getItem('users'));
     } catch(e){
         console.error('Loading error:', e);
     }
 }
+
+// async function loadUserProfile() {
+//     try {
+//         loggedInUser = JSON.parse(await getItem('loggedInUser'));
+//     } catch(e){
+//         console.error('Loading error:', e);
+//     }
+// }
 
 async function login() {
     let loginEmail = document.getElementById('login-email').value;
@@ -44,11 +59,20 @@ function guestLogIn() {
 }
 
 async function userPushLogin(user) {
-    loggedInUser.push({
+    userTest.push({
       id: user.id,
       name: user.name,
       color: user.color
     });
-    await setItem('loggedInUser', JSON.stringify(loggedInUser));
+    // await setItem('loggedInUser', JSON.stringify(loggedInUser));
+    save();
   }
+
+  function save() {
+    let loggedUSer = JSON.stringify(userTest);
+    localStorage.setItem('userTest', loggedUSer);dw
+}
+
+
+
 

@@ -1,17 +1,55 @@
-function init(){
-    loadLoginUser();
+// loggedInUser = [];
+userTest = [];
+
+
+async function init() {
+    load();
+    loadUserProfile();
+    greatingUser();
+    console.log('Init script geladen!');
 }
 
-async function loadLoginUser(){
-    try {
-        loggedInUser = JSON.parse(await getItem('loggedInUser'));
-        console.log('User geladen!')
-    } catch(e){
-        console.error('Loading error:', e);
+
+function load() {
+    let titel = localStorage.getItem('userTest');
+    if (titel) {
+        userTest = JSON.parse(titel);
     }
 }
 
 
+// async function logout() {
+//     loggedInUser.push({
+//         id: user.id,
+//         name: user.name,
+//         color: user.color
+//       });
+//       await setItem('loggedInUser', JSON.stringify(loggedInUser));
+// }
+
+
+function greatingUser() {
+    let name = userTest[0].name;
+    let nameMobile = document.getElementById('user-greating-mobile');
+    let nameDesktop = document.getElementById('user-greating-desktop');
+    nameMobile.innerHTML = `<div>${name}</div>`;
+    nameDesktop.innerHTML = `<div>${name}</div>`;
+}
+
+function loadUserProfile() {
+    let userName = userTest[0].name;
+    let initialLetters = nameInitialLetters(userName);
+    let userProfile = document.getElementById('log-user');
+    userProfile.innerHTML = /* html */ `${initialLetters}`;
+}
+
+function nameInitialLetters(userName) {
+    const fullNameSplitt = userName.split(" ");
+    const letters = fullNameSplitt.map(name => name[0]);
+    const initialLetters = letters.join("");
+    return initialLetters;
+}
+  
 
 
 async function loadMenu() {
@@ -33,12 +71,9 @@ async function includeHTML() {
 }
 
 
-
-
 function openHelp() {
     window.location.href = "help.html?content=help";
 }
-
 
 
 function openLegalNotice() {
