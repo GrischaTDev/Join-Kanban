@@ -1,5 +1,11 @@
 let selectedIndex = 0;
 
+async function initContats() {
+    await includeHTML();
+    load();
+    loadUserProfile();
+}
+
 /**
  * This function is used to initial the contact list.
  */

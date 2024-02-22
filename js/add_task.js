@@ -41,9 +41,12 @@ let selectedUser = [];
 
 
 
-function init() {
-  loadUsers();
+async function initAddTasks() {
+  await includeHTML();
   load();
+  loadUserProfile();
+  loadUsers();
+  loadAddTaskUser();
   renderUserList();
   
 }
@@ -72,7 +75,7 @@ function openUserList() {
     const user = users[i];
     const userColor = users[i]['color'];
 
-    let initialLetters = nameInitialLetters(user);
+    let initialLetters = nameInitialLettersAddTasks(user);
     
     userSelect.innerHTML += /* html */ `
     <div id="currentUser${i}" class="userColumn" onclick="addUser(${i})">
@@ -88,7 +91,8 @@ function openUserList() {
   }
 }
 
-function nameInitialLetters(user) {
+function nameInitialLettersAddTasks(user) {
+
   const fullNameSplitt = user.name.split(" ");
   const letters = fullNameSplitt.map(name => name[0]);
   const initialLetters = letters.join("");
@@ -133,7 +137,7 @@ function renderUserList() {
   selectedUserContainer.innerHTML = '';
 
   selectedUser.forEach(user => {
-    let initialLetters = nameInitialLetters(user);
+    let initialLetters = nameInitialLettersAddTasks(user);
     const userColor = user['color'];
 
     selectedUserContainer.innerHTML += /* html */ `
@@ -181,7 +185,7 @@ function save() {
 }
 
 
-function load() {
+function loadAddTaskUser() {
   let loadUser = localStorage.getItem("selectedUser");
   if (loadUser) {
     selectedUser = JSON.parse(loadUser);

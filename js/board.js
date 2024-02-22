@@ -4,7 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
     loadAllTasks(); // Aufruf der Funktion zum Laden der Aufgaben aus dem Local Storage
 });
 
-function initBoard() {
+
+async function initBoard() {
+    await includeHTML();
+    load();
+    loadUserProfile();
     loadAllTasks();
     showAllTasks(allTasks);
 }

@@ -1,13 +1,12 @@
-let userTest = [];
+let loggedInUser = [];
 
 
 function initLogin(){
-    loadUsersLogin();
-    console.log('Init login geladen!');
+    loadRegisteredUsers();
 }
 
 
-async function loadUsersLogin(){
+async function loadRegisteredUsers(){
     try {
         users = JSON.parse(await getItem('users'));
     } catch(e){
@@ -22,7 +21,6 @@ async function login() {
     let user = users.find(u => u.email == loginEmail && u.password == loginPassword);
 
     console.log('Benutzer', user);
-    
     if (loginEmail == user.email && loginPassword == user.password) {
         resetLoginForm(loginEmail, loginPassword);
         userPushLogin(user);
@@ -47,7 +45,7 @@ function guestLogIn() {
 
 
 async function userPushLogin(user) {
-    userTest.push({
+    loggedInUser.push({
       id: user.id,
       name: user.name,
       color: user.color
@@ -57,8 +55,8 @@ async function userPushLogin(user) {
   }
 
   function save() {
-    let loggedUSer = JSON.stringify(userTest);
-    localStorage.setItem('userTest', loggedUSer);
+    let loggedUSer = JSON.stringify(loggedInUser);
+    localStorage.setItem('loggedInUser', loggedUSer);
 }
 
 

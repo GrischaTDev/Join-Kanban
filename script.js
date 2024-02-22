@@ -1,4 +1,4 @@
-userTest = [];
+loggedInUser = [];
 
 /**
  * Load functions on Summary page.
@@ -12,18 +12,24 @@ async function init() {
 }
 
 /**
- * Load localStorage userTest.
+ * Load localStorage loggedInUser.
  */
 function load() {
-    let titel = localStorage.getItem('userTest');
-    if (titel) {
-        userTest = JSON.parse(titel);
+    let currentUserUser = localStorage.getItem('loggedInUser');
+    if (currentUserUser) {
+        loggedInUser = JSON.parse(currentUserUser);
+        if (loggedInUser.length === 0) {
+            alert('Sie müssen sich anmelden!');
+            window.location.href = './index.html';
+        }
     }
+
+
 }
 
 
 function logout() {
-    userTest.splice(0, userTest.length);
+    loggedInUser.splice(0, loggedInUser.length);
     window.location.href = './index.html';
     save();
 }
@@ -44,7 +50,7 @@ async function includeHTML() {
 }
 
 function greatingUser() {
-    let name = userTest[0].name;
+    let name = loggedInUser[0].name;
     let nameMobile = document.getElementById('user-greating-mobile');
     let nameDesktop = document.getElementById('user-greating-desktop');
     nameMobile.innerHTML = `<div>${name}</div>`;
@@ -52,7 +58,7 @@ function greatingUser() {
 }
 
 function loadUserProfile() {
-    let userName = userTest[0].name;
+    let userName = loggedInUser[0].name;
     let initialLetters = nameInitialLetters(userName);
     let userProfile = document.getElementById('log-user');
     userProfile.innerHTML = /* html */ `${initialLetters}`;

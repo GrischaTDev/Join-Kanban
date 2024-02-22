@@ -6,17 +6,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
-    <script src="./js/contact.js"></script>
-    <script src="./script.js"></script>
-    <script src="./js/contact_list.js"></script>
-    <script src="./js/contacts_render_templates.js"></script>
     <link rel="stylesheet" href="./css/contacts.css">
     <link rel="stylesheet" href="./css/mobile_menu_header.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./css/desktop_menu.css">
+
+    <script src="./js/contact.js"></script>
+    <script src="./script.js"></script>
+    <script src="./js/contact_list.js"></script>
+    <script src="./js/contacts_render_templates.js"></script>
 </head>
 
-<body onload="loadMenu(), loadContactList()">
+<body onload="initContats(), loadContactList()">
     <div w3-include-html="assets/templates/header.html"></div>
     <div w3-include-html="assets/templates/desktop_menu.html"></div>
 
