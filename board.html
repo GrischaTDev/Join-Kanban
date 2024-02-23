@@ -52,7 +52,7 @@
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
                 </div>
-                <div id="todo_container" class="drag-area desktop-drag-area" ondrop="moveTo('todo_container')" ondragleave="removeHighlight('todo_container')" ondragover="allowDrop(event); highlight('todo_container')" >
+                <div id="todo_container" class="drag-area desktop-drag-area" ondrop="moveTo('todo_container', event)" ondragleave="removeHighlight('todo_container')" ondragover="allowDrop(event); highlight('todo_container')" >
                     <div>
                         <div class="no-tasks desktop-no-tasks">
                             <span>No tasks To do</span>
@@ -68,7 +68,7 @@
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
                 </div>
-                <div id="inprogress_container" class="drag-area desktop-drag-area" ondrop="moveTo('inprogress_container')" ondragleave="removeHighlight('inprogress_container')" ondragover="allowDrop(event); highlight('inprogress_container')">
+                <div id="inprogress_container" class="drag-area desktop-drag-area" ondrop="moveTo('inprogress_container', event)" ondragleave="removeHighlight('inprogress_container')" ondragover="allowDrop(event); highlight('inprogress_container')">
 
                     <!-- <a href="#" class="card-section desktop-card-section" onclick="showPopup()">
                         <div class="card">
@@ -143,7 +143,7 @@
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
                 </div>
-                <div id="await_feedback_container" class="drag-area desktop-drag-area" ondrop="moveTo('await_feedback_container')" ondragover="allowDrop(event)">
+                <div id="await_feedback_container" class="drag-area desktop-drag-area" ondrop="moveTo('await_feedback_container', event)" ondragover="allowDrop(event)">
 
                 </div>
             </div>
@@ -152,7 +152,7 @@
                 <div class="headlines-container desktop-headlines-container" id="done">
                     <h6>Done</h6>
                 </div>
-                <div id="done_container" class="drag-area desktop-drag-area" ondrop="moveTo('done_container')" ondragover="allowDrop(event)">
+                <div id="done_container" class="drag-area desktop-drag-area" ondrop="moveTo('done_container', event)" ondragover="allowDrop(event)">
 
                 </div>
             </div>

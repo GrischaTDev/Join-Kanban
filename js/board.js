@@ -1,6 +1,7 @@
 loggedInUser = [];
 
 let currentDraggedElement;
+
 document.addEventListener('DOMContentLoaded', function() {
     // Hier kannst du die Funktionen aufrufen, die nach dem Laden des DOM ausgeführt werden sollen
     loadAllTasks(); // Aufruf der Funktion zum Laden der Aufgaben aus dem Local Storage
@@ -413,18 +414,20 @@ function showAllTasks(allTasks) {
 }
 
 
-function startDragging(id) {
-    currentDraggedElement = id;
+function startDragging(index) {
+    currentDraggedElement = index;
 }
+
 
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
 function moveTo(progressfield) {
-allTasks[currentDraggedElement]['progressfield'] = progressfield;
-showAllTasks(allTasks);
+    allTasks[currentDraggedElement - 1]['progressfield'] = progressfield; // Index um 1 reduzieren, da IDs bei 1 beginnen
+    showAllTasks(allTasks);
 }
+
 
 function highlight(id) {
     document.getElementById(id).classList.add('drag-area-highlight');
