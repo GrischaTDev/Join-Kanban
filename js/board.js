@@ -105,46 +105,46 @@ function closePopup() {
 
 // Das ist die erste showAllTasks Version (mit den initials user) funktioniert zwar, hat aber nicht alle neuerungen
 
-// function showAllTasks(allTasks) {
-//     console.log('Es wird jetzt versucht, die Tasks anzuzeigen');
-//     document.getElementById('todo_container').innerHTML = '';
-//     console.log('Es wird jetzt versucht, die Tasks mit forschleife zu zeigen');
-//     for (let i = 0; i < allTasks.length; i++) {
-//         let task = allTasks[i];
-//         let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
-//         let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
-//         let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
+function showAllTasks(allTasks) {
+    console.log('Es wird jetzt versucht, die Tasks anzuzeigen');
+    document.getElementById('todo_container').innerHTML = '';
+    console.log('Es wird jetzt versucht, die Tasks mit forschleife zu zeigen');
+    for (let i = 0; i < allTasks.length; i++) {
+        let task = allTasks[i];
+        let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
+        let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
+        let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
 
-//         document.getElementById('todo_container').innerHTML += `
-//             <a href="#" class="card-section desktop-card-section" onclick="showPopup()">
-//                 <div class="card">
-//                     <div class="card-category-${task.category}">${task.category}</div>
-//                     <div class="card-headline">${task.titel}</div>
-//                     <div class="card-discription">${task.description}</div>
-//                     <div class="progress-container">
-//                         <div class="progress-bar">
-//                             <div class="progress-fill-half"></div>
-//                         </div>
-//                         <div class="progress-text">1/2 Subtasks</div>
-//                     </div>
-//                     <div class="user-priority-container">
-//                         <div class="user-container">
-//                             <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
-//                             <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
-//                             <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
-//                         </div>
-//                         <div class="priority-symbols">
-//                             ${urgentSymbolHTML}
-//                             ${mediumSymbolHTML}
-//                             ${lowSymbolHTML}
-//                         </div>
-//                     </div>
-//                 </div>
-//             </a>
-//         `;
-//         // todoContainer.insertAdjacentHTML('beforeend', taskHTML);
-//     }
-// }
+        document.getElementById('todo_container').innerHTML += `
+            <a href="#" class="card-section desktop-card-section" onclick="showPopup()">
+                <div class="card">
+                    <div class="card-category-${task.category}">${task.category}</div>
+                    <div class="card-headline">${task.titel}</div>
+                    <div class="card-discription">${task.description}</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill-half"></div>
+                        </div>
+                        <div class="progress-text">1/2 Subtasks</div>
+                    </div>
+                    <div class="user-priority-container">
+                        <div class="user-container">
+                            <div class="initials-circle" style="background-color: rgb(252, 113, 255);">MP</div>
+                            <div class="initials-circle" style="background-color: rgb(113, 255, 134);">HS</div>
+                            <div class="initials-circle" style="background-color: rgb(120, 113, 255);">UW</div>
+                        </div>
+                        <div class="priority-symbols">
+                            ${urgentSymbolHTML}
+                            ${mediumSymbolHTML}
+                            ${lowSymbolHTML}
+                        </div>
+                    </div>
+                </div>
+            </a>
+        `;
+        // todoContainer.insertAdjacentHTML('beforeend', taskHTML);
+    }
+}
 
 
 
@@ -193,81 +193,81 @@ function closePopup() {
 
 // Das ist die neueste Version mit Drag and Drop (hat aber noch ein Problem, dass die Tasks aus dem array nicht problemlos angezeigt werden..)
 
-function showAllTasks(allTasks) {
-    let todo_container = allTasks.filter(t => t['progressfield'] == 'todo_container');
-    document.getElementById('todo_container').innerHTML = '';
-    for (let i = 0; i < todo_container.length; i++) {
-        let task = todo_container[i];
-        let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
-        let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
-        let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
+// function showAllTasks(allTasks) {
+//     let todo_container = allTasks.filter(t => t['progressfield'] == 'todo_container');
+//     document.getElementById('todo_container').innerHTML = '';
+//     for (let i = 0; i < todo_container.length; i++) {
+//         let task = todo_container[i];
+//         let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
+//         let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
+//         let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
 
-        let userInitialsHTML = selectedUser.map(user => `<div class="initials-circle" style="background-color: ${user.color};">${nameInitialLetters(user)}</div>`).join('');
+//         let userInitialsHTML = selectedUser.map(user => `<div class="initials-circle" style="background-color: ${user.color};">${nameInitialLetters(user)}</div>`).join('');
 
-        document.getElementById('todo_container').innerHTML += `
-            <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup()">
-                <div class="card">
-                    <div class="card-category-${task.category}">${task.category}</div>
-                    <div class="card-headline">${task.titel}</div>
-                    <div class="card-discription">${task.description}</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill-half"></div>
-                        </div>
-                        <div class="progress-text">1/2 Subtasks</div>
-                    </div>
-                    <div class="user-priority-container">
-                        <div class="user-container">
-                            ${userInitialsHTML}
-                        </div>
-                        <div class="priority-symbols">
-                            ${urgentSymbolHTML}
-                            ${mediumSymbolHTML}
-                            ${lowSymbolHTML}
-                        </div>
-                    </div>
-                </div>
-            </a>
-        `;
-    }
+//         document.getElementById('todo_container').innerHTML += `
+//             <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup()">
+//                 <div class="card">
+//                     <div class="card-category-${task.category}">${task.category}</div>
+//                     <div class="card-headline">${task.titel}</div>
+//                     <div class="card-discription">${task.description}</div>
+//                     <div class="progress-container">
+//                         <div class="progress-bar">
+//                             <div class="progress-fill-half"></div>
+//                         </div>
+//                         <div class="progress-text">1/2 Subtasks</div>
+//                     </div>
+//                     <div class="user-priority-container">
+//                         <div class="user-container">
+//                             ${userInitialsHTML}
+//                         </div>
+//                         <div class="priority-symbols">
+//                             ${urgentSymbolHTML}
+//                             ${mediumSymbolHTML}
+//                             ${lowSymbolHTML}
+//                         </div>
+//                     </div>
+//                 </div>
+//             </a>
+//         `;
+//     }
 
-    let inprogress_container = allTasks.filter(t => t['progressfield'] == 'inprogress_container');
-    document.getElementById('inprogress_container').innerHTML = '';
-    for (let i = 0; i < inprogress_container.length; i++) {
-        let task = inprogress_container[i];
-        let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
-        let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
-        let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
+//     let inprogress_container = allTasks.filter(t => t['progressfield'] == 'inprogress_container');
+//     document.getElementById('inprogress_container').innerHTML = '';
+//     for (let i = 0; i < inprogress_container.length; i++) {
+//         let task = inprogress_container[i];
+//         let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
+//         let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
+//         let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
 
-        let userInitialsHTML = selectedUser.map(user => `<div class="initials-circle" style="background-color: ${user.color};">${nameInitialLetters(user)}</div>`).join('');
+//         let userInitialsHTML = selectedUser.map(user => `<div class="initials-circle" style="background-color: ${user.color};">${nameInitialLetters(user)}</div>`).join('');
 
-        document.getElementById('inprogress_container').innerHTML += `
-            <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup()">
-                <div class="card">
-                    <div class="card-category-${task.category}">${task.category}</div>
-                    <div class="card-headline">${task.titel}</div>
-                    <div class="card-discription">${task.description}</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill-half"></div>
-                        </div>
-                        <div class="progress-text">1/2 Subtasks</div>
-                    </div>
-                    <div class="user-priority-container">
-                        <div class="user-container">
-                            ${userInitialsHTML}
-                        </div>
-                        <div class="priority-symbols">
-                            ${urgentSymbolHTML}
-                            ${mediumSymbolHTML}
-                            ${lowSymbolHTML}
-                        </div>
-                    </div>
-                </div>
-            </a>
-        `;
-    }
-}
+//         document.getElementById('inprogress_container').innerHTML += `
+//             <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup()">
+//                 <div class="card">
+//                     <div class="card-category-${task.category}">${task.category}</div>
+//                     <div class="card-headline">${task.titel}</div>
+//                     <div class="card-discription">${task.description}</div>
+//                     <div class="progress-container">
+//                         <div class="progress-bar">
+//                             <div class="progress-fill-half"></div>
+//                         </div>
+//                         <div class="progress-text">1/2 Subtasks</div>
+//                     </div>
+//                     <div class="user-priority-container">
+//                         <div class="user-container">
+//                             ${userInitialsHTML}
+//                         </div>
+//                         <div class="priority-symbols">
+//                             ${urgentSymbolHTML}
+//                             ${mediumSymbolHTML}
+//                             ${lowSymbolHTML}
+//                         </div>
+//                     </div>
+//                 </div>
+//             </a>
+//         `;
+//     }
+// }
 
 
 function startDragging(id) {
