@@ -101,7 +101,7 @@ menu {
     cursor: pointer;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
     .desktop-menu {
         display: none;
     }
@@ -110,7 +110,7 @@ menu {
     }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
     .mobile-menu {
         display: none;
     }
@@ -124,11 +124,10 @@ menu {
         top: 0;
         right: 0;
         left: 0;
-
     }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
     .mobile-menu {
         display: none;
     }
