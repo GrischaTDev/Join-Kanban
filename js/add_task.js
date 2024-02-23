@@ -27,6 +27,62 @@ let allTasks = [
     "titel": "HTML Base Template Creation",
     "userSelect": "GT",
     "progressfield": "inprogress_container"
+  },{
+    "id": 3,
+    "category": "technical-task",
+    "description": "Hi, ich bin nur zum Testen hier",
+    "dueDate": "",
+    "priority": {
+      "low": false,
+      "medium": true,
+      "urgent": false
+    },
+    "subtask": "Ich habe sogar einen subtask",
+    "titel": "Probetask",
+    "userSelect": "HM",
+    "progressfield": "todo_container"
+  },{
+    "id": 4,
+    "category": "user-story",
+    "description": "Hi, ich bin auch nur zum Testen hier",
+    "dueDate": "",
+    "priority": {
+      "low": false,
+      "medium": true,
+      "urgent": false
+    },
+    "subtask": "Ich habe auch einen subtask",
+    "titel": "Zweiter Probetask",
+    "userSelect": "MP",
+    "progressfield": "await_feedback_container"
+  },{
+    "id": 5,
+    "category": "user-story",
+    "description": "Hallo, ich bin nur zum gucken hier",
+    "dueDate": "",
+    "priority": {
+      "low": false,
+      "medium": false,
+      "urgent": true
+    },
+    "subtask": "Ich habe sogar einen subtask",
+    "titel": "Test-task",
+    "userSelect": "HM",
+    "progressfield": "todo_container"
+  },{
+    "id": 6,
+    "category": "technical-task",
+    "description": "Hallo, na?",
+    "dueDate": "",
+    "priority": {
+      "low": false,
+      "medium": true,
+      "urgent": false
+    },
+    "subtask": "Ich habe sogar keinen subtask",
+    "titel": "Task",
+    "userSelect": "AB",
+    "progressfield": "done_container"
   }
 ];
 
@@ -270,7 +326,7 @@ function addTask() {
   // Laden der vorhandenen Tasks aus dem Local Storage oder Initialisieren mit einem leeren Array
   let allTasks = JSON.parse(localStorage.getItem("allTask")) || [];
 
-  // Erstellen des Task-Objekts mit progressfield: "todo"
+  // Erstellen des Task-Objekts mit progressfield: "todo_container" und Subtasks
   let task = {
     id: allTasks.length > 0 ? allTasks[allTasks.length - 1].id + 1 : 0, // Setzen der ID
     titel: titel,
@@ -284,7 +340,8 @@ function addTask() {
       medium: medium,
       low: low,
     },
-    progressfield: "todo_container" // Hinzufügen des progressfield: "todo"
+    progressfield: "todo_container", // Hinzufügen des progressfield: "todo"
+    subtasks: todos // Hinzufügen der Subtasks
   };
 
   // Hinzufügen des neuen Tasks zum Array
@@ -303,10 +360,12 @@ function addTask() {
   document.getElementById('medium').classList.remove('active');
   document.getElementById('low').classList.remove('active');
   document.getElementById('dueDate').value = '';
+  todos = []; // Leeren der Subtasks
 
   // Neu laden der Seite, um den aktualisierten Task anzuzeigen
   location.reload();
 }
+
 
 
 

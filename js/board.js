@@ -11,7 +11,6 @@ async function initBoard() {
     await includeHTML();
     load();
     loadUserProfile();
-    loadAllTasks();
     showAllTasks(allTasks);
 }
 
@@ -312,6 +311,80 @@ function showAllTasks(allTasks) {
         let userInitialsHTML = selectedUser.map(user => `<div class="initials-circle" style="background-color: ${user.color};">${nameInitialLetters(user)}</div>`).join('');
 
         document.getElementById('inprogress_container').innerHTML += `
+            <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.Id})">
+                <div class="card">
+                    <div class="card-category-${task.category}">${task.category}</div>
+                    <div class="card-headline">${task.titel}</div>
+                    <div class="card-discription">${task.description}</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill-half"></div>
+                        </div>
+                        <div class="progress-text">1/2 Subtasks</div>
+                    </div>
+                    <div class="user-priority-container">
+                        <div class="user-container">
+                            ${userInitialsHTML}
+                        </div>
+                        <div class="priority-symbols">
+                            ${urgentSymbolHTML}
+                            ${mediumSymbolHTML}
+                            ${lowSymbolHTML}
+                        </div>
+                    </div>
+                </div>
+            </a>
+        `;
+    }
+
+    let await_feedback_container = allTasks.filter(t => t['progressfield'] == 'await_feedback_container');
+    document.getElementById('await_feedback_container').innerHTML = '';
+    for (let i = 0; i < await_feedback_container.length; i++) {
+        let task = await_feedback_container[i];
+        let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
+        let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
+        let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
+
+        let userInitialsHTML = selectedUser.map(user => `<div class="initials-circle" style="background-color: ${user.color};">${nameInitialLetters(user)}</div>`).join('');
+
+        document.getElementById('await_feedback_container').innerHTML += `
+            <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.Id})">
+                <div class="card">
+                    <div class="card-category-${task.category}">${task.category}</div>
+                    <div class="card-headline">${task.titel}</div>
+                    <div class="card-discription">${task.description}</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill-half"></div>
+                        </div>
+                        <div class="progress-text">1/2 Subtasks</div>
+                    </div>
+                    <div class="user-priority-container">
+                        <div class="user-container">
+                            ${userInitialsHTML}
+                        </div>
+                        <div class="priority-symbols">
+                            ${urgentSymbolHTML}
+                            ${mediumSymbolHTML}
+                            ${lowSymbolHTML}
+                        </div>
+                    </div>
+                </div>
+            </a>
+        `;
+    }
+
+    let done_container = allTasks.filter(t => t['progressfield'] == 'done_container');
+    document.getElementById('done_container').innerHTML = '';
+    for (let i = 0; i < done_container.length; i++) {
+        let task = done_container[i];
+        let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
+        let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
+        let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
+
+        let userInitialsHTML = selectedUser.map(user => `<div class="initials-circle" style="background-color: ${user.color};">${nameInitialLetters(user)}</div>`).join('');
+
+        document.getElementById('done_container').innerHTML += `
             <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.Id})">
                 <div class="card">
                     <div class="card-category-${task.category}">${task.category}</div>
