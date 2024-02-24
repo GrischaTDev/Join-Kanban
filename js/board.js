@@ -460,10 +460,27 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
+// alte version ohne speichern im local storage
+
+// function moveTo(progressfield) {
+//     allTasks[currentDraggedElement - 1]['progressfield'] = progressfield; // Index um 1 reduzieren, da IDs bei 1 beginnen
+//     showAllTasks(allTasks);
+// }
+
 function moveTo(progressfield) {
-    allTasks[currentDraggedElement - 1]['progressfield'] = progressfield; // Index um 1 reduzieren, da IDs bei 1 beginnen
+    // Index um 1 reduzieren, da IDs bei 1 beginnen
+    const taskIndex = currentDraggedElement - 1;
+    
+    // Aktualisiere den Fortschrittsstatus des gezogenen Elements
+    allTasks[taskIndex]['progressfield'] = progressfield;
+    
+    // Speichere den aktualisierten allTasks-Array im Local Storage
+    localStorage.setItem('allTasks', JSON.stringify(allTasks));
+    
+    // Aktualisiere die Anzeige aller Aufgaben
     showAllTasks(allTasks);
 }
+
 
 
 function highlight(id) {
