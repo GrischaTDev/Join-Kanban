@@ -3,87 +3,191 @@ let allTasks = [
     "id": 1,
     "category": "user-story",
     "description": "Build start page with recipe recommendation",
-    "dueDate": "",
+    "dueDate": "2024-03-03",
     "priority": {
       "low": true,
       "medium": false,
       "urgent": false
     },
-    "subtask": "",
+    "subtask": [{
+      "todo": "works"
+    },{
+      "todo": "other stuff"
+    }],
     "titel": "Kochwelt Page & Recipe Recommender",
-    "userSelect": "GT",
+    "userSelect": [{
+      "fname": "Klaus",
+      "lname": "Kruse",
+      "backgroundcolor": "#FF5733"
+    },{
+      "fname": "Berthold",
+      "lname": "Wiebe",
+      "backgroundcolor": "#33FF4F"
+    }],
     "progressfield": "inprogress_container"
   },{
     "id": 2,
     "category": "technical-task",
     "description": "Creat reusable HTML base templates",
-    "dueDate": "",
+    "dueDate": "2024-03-15",
     "priority": {
       "low": true,
       "medium": false,
       "urgent": false
     },
-    "subtask": "",
+    "subtask": [{
+      "todo": "a lot to do"
+    },{
+      "todo": "go ahead"
+    }],
     "titel": "HTML Base Template Creation",
-    "userSelect": "GT",
+    "userSelect": [{
+      "fname": "Frank",
+      "lname": "Bülling",
+      "backgroundcolor": "#FFDA33"
+    },{
+      "fname": "Johanna",
+      "lname": "Held",
+      "backgroundcolor": "#3633FF"
+    },{
+      "fname": "Viktor",
+      "lname": "Schmidt",
+      "backgroundcolor": "#33FF74"
+    }],
     "progressfield": "inprogress_container"
   },{
     "id": 3,
     "category": "technical-task",
     "description": "Hi, ich bin nur zum Testen hier",
-    "dueDate": "",
+    "dueDate": "2024-03-19",
     "priority": {
       "low": false,
       "medium": true,
       "urgent": false
     },
-    "subtask": "Ich habe sogar einen subtask",
+    "subtask": [{
+      "todo": "meetings"
+    },{
+      "todo": "work together"
+    },{
+      "todo": "have fun"
+    }],
     "titel": "Probetask",
-    "userSelect": "HM",
+    "userSelect": [{
+      "fname": "Stefan",
+      "lname": "Dietz",
+      "backgroundcolor": "#33FF7A"
+    },{
+      "fname": "Horst",
+      "lname": "Schleifenbaum",
+      "backgroundcolor": "#FFF033"
+    },{
+      "fname": "Detlef",
+      "lname": "Sierts",
+      "backgroundcolor": "#AFFF33"
+    }],
     "progressfield": "todo_container"
   },{
     "id": 4,
     "category": "user-story",
     "description": "Hi, ich bin auch nur zum Testen hier",
-    "dueDate": "",
+    "dueDate": "2024-03-10",
     "priority": {
       "low": false,
       "medium": true,
       "urgent": false
     },
-    "subtask": "Ich habe auch einen subtask",
+    "subtask": [{
+      "todo": "meetings"
+    },{
+      "todo": "work together"
+    },{
+      "todo": "have fun"
+    }],
     "titel": "Zweiter Probetask",
-    "userSelect": "MP",
+    "userSelect": [{
+      "fname": "Waldemar",
+      "lname": "Günther",
+      "backgroundcolor": "#B833FF"
+    },{
+      "fname": "Fabian",
+      "lname": "Zacharias",
+      "backgroundcolor": "#FF9F33"
+    },{
+      "fname": "Jessica",
+      "lname": "Engels",
+      "backgroundcolor": "#33A5FF"
+    }],
     "progressfield": "await_feedback_container"
   },{
     "id": 5,
     "category": "user-story",
     "description": "Hallo, ich bin nur zum gucken hier",
-    "dueDate": "",
+    "dueDate": "2024-05-05",
     "priority": {
       "low": false,
       "medium": false,
-      "urgent": true
+      "urgent": true,
     },
-    "subtask": "Ich habe sogar einen subtask",
+    "subtask": [{
+      "todo": "meetings"
+    },{
+      "todo": "work together"
+    },{
+      "todo": "have fun"
+    }],
     "titel": "Test-task",
-    "userSelect": "HM",
+    "userSelect": [{
+      "fname": "Johann",
+      "lname": "Nikolaus",
+      "backgroundcolor": "#FF3380"
+    },{
+      "fname": "Jürgen",
+      "lname": "Hass",
+      "backgroundcolor": "#8333FF"
+    },{
+      "fname": "Daniel",
+      "lname": "Schenk",
+      "backgroundcolor": "#E6FF33"
+    },{
+      "fname": "Ute",
+      "lname": "Schröder",
+      "backgroundcolor": "#CE33FF"
+    }],
     "progressfield": "todo_container"
   },{
     "id": 6,
     "category": "technical-task",
     "description": "Hallo, na?",
-    "dueDate": "",
+    "dueDate": "2024-03-06",
     "priority": {
       "low": false,
       "medium": true,
       "urgent": false
     },
-    "subtask": "Ich habe sogar keinen subtask",
+    "subtask": [{
+      "todo": "meetings"
+    },{
+      "todo": "work together"
+    },{
+      "todo": "have fun"
+    }],
     "titel": "Task",
-    "userSelect": "AB",
+    "userSelect": [{
+      "fname": "Tobias",
+      "lname": "Dück",
+      "backgroundcolor": "#3342FF"
+    },{
+      "fname": "Manuel",
+      "lname": "Siemens",
+      "backgroundcolor": "#FF33E9"
+    },{
+      "fname": "Andreas",
+      "lname": "Müller",
+      "backgroundcolor": "#33FF9F"
+    }],
     "progressfield": "done_container"
-  }
+}
 ];
 
 let users = [];
@@ -317,7 +421,7 @@ function loadAllTasks() {
 // }
 
 function saveTasksToLocalStorage(tasks) {
-  localStorage.setItem("allTask", JSON.stringify(tasks));
+  localStorage.setItem("allTasks", JSON.stringify(tasks));
 }
 //alte Version
 // function addTask() {

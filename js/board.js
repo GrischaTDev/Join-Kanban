@@ -119,9 +119,9 @@ function showPopup(taskId) {
         <div class="complete_board_popup" onclick="doNotClose(event)">
             <div class="board_popup">
                 <div class="flex_container_head">
-                <div class="task_popup ${task.category}">
-                <p>${task.category}</p>
-            </div>
+                    <div class="task_popup ${task.category}">
+                        <p>${task.category}</p>
+                    </div>
                     <div class="close_icon_box">
                         <img class="img_popup" style="cursor: pointer;" onclick="closePopup()"
                             src="./assets/img/close_icon.svg" alt="close Button">
@@ -170,6 +170,7 @@ function showPopup(taskId) {
         </div>
     `;
 }
+
 
 
 
