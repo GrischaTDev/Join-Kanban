@@ -269,11 +269,8 @@ textarea {
   justify-content: center;
 }
 
-/***************         Subtask           **************/
-.subtask-container{
-  margin-bottom: -17px;
-  margin-top: -10px;
-}
+/*************** Subtask **************/
+
 .input-sub-field {
   display: flex;
   justify-content: space-between;
@@ -300,6 +297,10 @@ textarea {
 .actions {
   justify-content: flex-end;
   width: 100%;
+}
+
+.todo-item .actions {
+  display: none;
 }
 
 #mylist li:hover .actions {
@@ -337,6 +338,33 @@ ul {
 
 
 /*************** Create-task-button      ***************/
+.button-clear {
+  font-size: 21px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2a3647;
+  width: 120px;
+  height: 56px;
+  border: 1px solid #2a3647;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button-clear:hover {
+  color: var(--Ligth-blue);
+  border: 1px solid var(--Ligth-blue);
+}
+
+.button-clear path {
+  fill: #2a3647;
+}
+
+.button-clear:hover path {
+  fill: var(--Ligth-blue);
+}
+
 .create-task-container {
   background-color: #F6F7F8;
   width: 100%;
@@ -345,8 +373,8 @@ ul {
   align-items: flex-start;
   justify-content: space-between;
   align-items: center;
-  height: 110px;
-  margin-bottom: 70px;
+  height: 90px;
+  margin-bottom: 75px;
   bottom: 0px;
   left: 0;
   padding: 0 16px;
@@ -364,29 +392,41 @@ ul {
   background-color: #2a3647;
   border-radius: 10px;
   text-decoration: none;
-}
-.button-clear{
-  display: none;
-}
-
-.add-task-form {
-  padding-bottom: 200px;
+  cursor: pointer;
+  border: none;
 }
 
-@media screen and (max-width: 800px) {}
+.button-create:hover {
+  background-color: var(--Ligth-blue);
+}
+
+
+@media screen and (max-width: 900px) {
+  .prio-desktop {
+    display: none;
+  }
+
+  .button-clear {
+    display: none;
+  }
+}
 
 /* Responsiv for laptop */
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .content {
-    margin: 130px 0 0 270px;
+    margin: 160px 0 0 310px;
     height: auto;
+  }
+
+  .form-width {
+    max-width: 1200px;
+    padding-right: 80px;
   }
 
   .add-task-form {
     display: flex;
     flex-direction: row;
     gap: 24px;
-    width: 90%;
   }
 
   .add-task-form-row {
@@ -426,9 +466,12 @@ ul {
   }
 
   .create-task-container {
-    padding-left: 310px;
-    margin-top: 100px;
-    margin-bottom: 0;
+    display: flex;
+    position: unset;
+    bottom: 0;
+    left: unset;
+    padding: unset;
+    margin-bottom: unset;
   }
 
   .priority-button.active {
@@ -438,56 +481,22 @@ ul {
     /* Ändert die Opazität, um anzuzeigen, dass der Button deaktiviert ist */
   }
 
+  .prio-mobile {
+    display: none;
+  }
+
   .form-button {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
   }
-
-  .button-clear {
-    font-size: 21px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #2a3647;
-    width: 120px;
-    height: 56px;
-    border: 1px solid #2a3647;
-    border-radius: 10px;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .button-clear:hover {
-    color: var(--Ligth-blue);
-    border: 1px solid var(--Ligth-blue);
-  }
-
-  .button-clear path {
-    fill: #2a3647;
-  }
 }
 
-.contact_list_snippet_box {
-  display: flex;
-  padding: 1px 1px;
-  align-items: center;
-  cursor: pointer;
-  margin-bottom: 2px;
-}
+/* Responsiv for desktop */
+@media screen and (min-width: 1600px) {
 
-.initials_circle_contact_list {
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  margin-right: 10px;
-  color: white;
-  font-size: 12px;
-  border: 2px;
-  border-style: solid;
-  border-color: white;
+  .content {
+      margin: 160px 0 0 331px;
+  }
 }

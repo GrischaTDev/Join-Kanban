@@ -81,20 +81,8 @@
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
     .desktop-menu {
         display: none;
-    }
-}
-
-@media screen and (min-width: 800px) {
-    .desktop-menu-logo {
-        width: 70px;
-    }
-}
-
-@media screen and (min-width: 1600px) {
-    .desktop-menu-logo {
-        width: 100px;
     }
 }
