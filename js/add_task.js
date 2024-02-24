@@ -499,6 +499,14 @@ function togglePriority(priority) {
 
 let todos = [];
 
+function loadTodos() {
+  const storedTodos = localStorage.getItem('todos');
+  if (storedTodos) {
+    todos = JSON.parse(storedTodos);
+    showTodos();
+  }
+}
+
 function showTodos() {
   const mylist = document.getElementById("mylist");
   mylist.innerHTML = "";
@@ -512,10 +520,10 @@ function showTodos() {
     li.innerHTML = `
             <div>
                 <span>${todo}</span>
-                <input class="edit-input d-none" value="${todo}" onchange="updateTodo(${i}, this.value)">
+                <input size="60" class="edit-input d-none" value="${todo}" onchange="updateTodo(${i}, this.value)">
                 </div>
             <div class="actions d-none">
-                <a href="#" onclick='editTodo(${i})'><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <a href="#/" onclick='editTodo(${i})'><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_129363_1220" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                 <rect width="24" height="24" fill="#D9D9D9"/>
                 </mask>
@@ -524,7 +532,7 @@ function showTodos() {
                 </g>
                 </svg>
                 </a>
-                <a href="#" onclick='deleteTodo(${i})'><svg width="20" height="19" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <a href="#/" onclick='deleteTodo(${i})'><svg width="20" height="19" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_129363_1225" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="24">
                 <rect x="0.5" width="24" height="24" fill="#D9D9D9"/>
                 </mask>
@@ -549,17 +557,21 @@ function showTodos() {
   }
 }
 
+
 function addTodo() {
   let todo = document.getElementById("subtask").value;
   todos.push(todo);
+  localStorage.setItem('todos', JSON.stringify(todos));
   showTodos();
   document.getElementById("subtask").value = "";
 }
 
 function deleteTodo(position) {
   todos.splice(position, 1);
+  localStorage.setItem('todos', JSON.stringify(todos));
   showTodos();
 }
+
 
 function editTodo(index) {
   let inputField = document.querySelector(
@@ -579,8 +591,11 @@ function editTodo(index) {
 
 function updateTodo(index, newValue) {
   todos[index] = newValue;
+  localStorage.setItem('todos', JSON.stringify(todos));
   showTodos();
 }
+
+
 
 
 function setMinimumDateForToday(inputId) {
