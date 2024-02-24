@@ -267,6 +267,13 @@ span {
   align-items: center;
 }
 
+.user-container-popup {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+
 .initials-circle {
   font-family: "Inter", sans-serif;
   font-size: 12px;
@@ -309,6 +316,14 @@ span {
   width: 32px;
   height: 32px;
   border-radius: 50%;
+}
+
+.user-details {
+  
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
 }
 
 /*-card-section-END*/
@@ -370,7 +385,7 @@ span {
   justify-content: center;
   align-items: center;
   height: 18px;
-  width: 105px;
+  width: 128px;
   background-color: #0038ff;
   color: white;
   padding: 4px;
@@ -511,8 +526,17 @@ span {
   .content {
     margin: 160px 0 0 310px;
   }
+
 }
 
+@media(max-width:1600px) {
+.add-task-text {
+  display: none;
+}
+.content{
+  margin-right: 24px;
+}
+}
 
 /* Responsiv for desktop */
 @media(min-width:1600px) {
@@ -622,9 +646,7 @@ span {
     height: 48px;
   }
 
-  .add-task-text {
-    display: none;
-  }
+ 
 }
 
 /*end of desktop*/

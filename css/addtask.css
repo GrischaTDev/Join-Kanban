@@ -419,6 +419,7 @@ ul {
 }
 
 
+
 @media screen and (max-width: 900px) {
   .prio-desktop {
     display: none;
@@ -431,10 +432,13 @@ ul {
   .button-clear {
     display: none;
   }
+ 
 }
 
 /* Responsiv for laptop */
 @media screen and (min-width: 900px) {
+
+  
   .content {
     margin: 160px 0 0 310px;
     height: auto;
