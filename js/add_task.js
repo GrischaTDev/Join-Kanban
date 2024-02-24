@@ -275,7 +275,6 @@ function loadAllTasks() {
 
 
 
-
 // function addTask() {
 //   let titel = document.getElementById('titel').value;
 //   let description = document.getElementById('description').value;
@@ -363,7 +362,9 @@ function addTask() {
   todos = []; // Leeren der Subtasks
 
   // Neu laden der Seite, um den aktualisierten Task anzuzeigen
+
   location.reload();
+  
 }
 
 
