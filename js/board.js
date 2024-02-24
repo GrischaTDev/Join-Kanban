@@ -30,143 +30,147 @@ async function initBoard() {
 // Dieses Popup ist die originale Version vom Max
 // Funktioniert! (Fehlen die Parameter)
 
-function showPopup() {
-  document.getElementById("incomePopup").classList.remove("d-none");
-  document.getElementById('incomePopup').innerHTML = `
+// function showPopup() {
+//   document.getElementById("incomePopup").classList.remove("d-none");
+//   document.getElementById('incomePopup').innerHTML = `
   
-  <div class="complete_board_popup" onclick="doNotClose(event)">
-                        <div class="board_popup">
-                            <div class="flex_container_head">
-                                <div class="task_popup">
-                                    <p>User Story</p>
-                                </div>
-                                <div class="close_icon_box">
-                                    <img class="img_popup" style="cursor: pointer;" onclick="closePopup()"
-                                        src="./assets/img/close_icon.svg" alt="close Button">
-                                </div>
-                            </div>
-                            <div class="header_popup">
-                                <h2>Kochwelt Page & Recipe Recommender</h2>
-                            </div>
-                            <div class="p-element">
-                                <p>Build start page with recipe recommendation.</p>
-                            </div>
-                            <div class="due_date_popup">
-                                <p style="color: #42526E;">Due Date:</p>
-                                <p id="variable_date">05/05/2024</p>
-                            </div>
-                            <div class="priority_popup">
-                                <p style="color: #42526E;">Priority:</p>
-                                <p id="variable_priority">Medium <img src="/assets/img/prio-medium.svg" alt=""></p>
-                            </div>
-                            <div class="assigned-popup">
-                                <p style="color: #42526E;">Assigned To:</p>
-                                <div class="user_popup_container">
-                                    <div class="initials_circle" style="background-color: turquoise;">EM</div>
-                                    <div>Emmanuel Mauer</div>
-                                </div>
-                                <div class="user_popup_container">
-                                    <div class="initials_circle" style="background-color: rgb(17, 36, 121);">EM</div>
-                                    <div>Marcel Bauer</div>
-                                </div>
-                                <div class="user_popup_container">
-                                    <div class="initials_circle" style="background-color: rgb(209, 95, 50);">EM</div>
-                                    <div>Anton Mayer</div>
-                                </div>
-                                <p class="subtask_container" style="color: #42526E;">Subtasks</p>
-                                <div class="user_popup_item" onclick="toggleSubtask(this)">
-                                    <input type="checkbox" class="subtask_checkbox">
-                                    <div>Implement Recipe Recommendation</div>
-                                </div>
-                                <div class="user_popup_item" onclick="toggleSubtask(this)">
-                                    <input type="checkbox" class="subtask_checkbox">
-                                    <div>Start Page Layout</div>
-                                </div>
+//   <div class="complete_board_popup" onclick="doNotClose(event)">
+//                         <div class="board_popup">
+//                             <div class="flex_container_head">
+//                                 <div class="task_popup">
+//                                     <p>User Story</p>
+//                                 </div>
+//                                 <div class="close_icon_box">
+//                                     <img class="img_popup" style="cursor: pointer;" onclick="closePopup()"
+//                                         src="./assets/img/close_icon.svg" alt="close Button">
+//                                 </div>
+//                             </div>
+//                             <div class="header_popup">
+//                                 <h2>Kochwelt Page & Recipe Recommender</h2>
+//                             </div>
+//                             <div class="p-element">
+//                                 <p>Build start page with recipe recommendation.</p>
+//                             </div>
+//                             <div class="due_date_popup">
+//                                 <p style="color: #42526E;">Due Date:</p>
+//                                 <p id="variable_date">05/05/2024</p>
+//                             </div>
+//                             <div class="priority_popup">
+//                                 <p style="color: #42526E;">Priority:</p>
+//                                 <p id="variable_priority">Medium <img src="/assets/img/prio-medium.svg" alt=""></p>
+//                             </div>
+//                             <div class="assigned-popup">
+//                                 <p style="color: #42526E;">Assigned To:</p>
+//                                 <div class="user_popup_container">
+//                                     <div class="initials_circle" style="background-color: turquoise;">EM</div>
+//                                     <div>Emmanuel Mauer</div>
+//                                 </div>
+//                                 <div class="user_popup_container">
+//                                     <div class="initials_circle" style="background-color: rgb(17, 36, 121);">EM</div>
+//                                     <div>Marcel Bauer</div>
+//                                 </div>
+//                                 <div class="user_popup_container">
+//                                     <div class="initials_circle" style="background-color: rgb(209, 95, 50);">EM</div>
+//                                     <div>Anton Mayer</div>
+//                                 </div>
+//                                 <p class="subtask_container" style="color: #42526E;">Subtasks</p>
+//                                 <div class="user_popup_item" onclick="toggleSubtask(this)">
+//                                     <input type="checkbox" class="subtask_checkbox">
+//                                     <div>Implement Recipe Recommendation</div>
+//                                 </div>
+//                                 <div class="user_popup_item" onclick="toggleSubtask(this)">
+//                                     <input type="checkbox" class="subtask_checkbox">
+//                                     <div>Start Page Layout</div>
+//                                 </div>
 
-                                <div class="edit-delete" id="edit">
-                                    <a class="button-delete-edit" href="#" onclick="deleteTask()">
-                                        <img class="edit-delete-img" src="/assets/img/delete_icon.svg"
-                                            alt="Bild plus Button" />
-                                        <div class="text-container">Delete</div>
-                                    </a>
+//                                 <div class="edit-delete" id="edit">
+//                                     <a class="button-delete-edit" href="#" onclick="deleteTask()">
+//                                         <img class="edit-delete-img" src="/assets/img/delete_icon.svg"
+//                                             alt="Bild plus Button" />
+//                                         <div class="text-container">Delete</div>
+//                                     </a>
 
-                                    <a class="button-delete-edit" href="#" onclick="saveAddedContact()">
-                                        <img class="edit-delete-img" src="/assets/img/edit_icon.svg"
-                                            alt="Bild plus Button" />
-                                        <div class="text-container">Edit</div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-  `;
-}
+//                                     <a class="button-delete-edit" href="#" onclick="saveAddedContact()">
+//                                         <img class="edit-delete-img" src="/assets/img/edit_icon.svg"
+//                                             alt="Bild plus Button" />
+//                                         <div class="text-container">Edit</div>
+//                                     </a>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//   `;
+// }
 
 // Diese Funktion soll das popup (mit den Parametern) sein, das die detaillierten Informationen von dem selected Task hat.
 // Funktioniert auch, muss aber noch angepasst werden
 
-// function showPopup(taskId) {
-//     let task = findTaskById(taskId);
-//     document.getElementById("incomePopup").classList.remove("d-none");
-//     document.getElementById('incomePopup').innerHTML = '';
-//     document.getElementById('incomePopup').innerHTML = `
-//         <div class="complete_board_popup" onclick="doNotClose(event)">
-//             <div class="board_popup">
-//                 <div class="flex_container_head">
-//                     <div class="task_popup">
-//                         <p>User Story</p>
-//                     </div>
-//                     <div class="close_icon_box">
-//                         <img class="img_popup" style="cursor: pointer;" onclick="closePopup()"
-//                             src="./assets/img/close_icon.svg" alt="close Button">
-//                     </div>
-//                 </div>
-//                 <div class="header_popup">
-//                     <h2>${task.category}</h2>
-//                 </div>
-//                 <div class="p-element">
-//                     <p>${task.description}</p>
-//                 </div>
-//                 <div class="due_date_popup">
-//                     <p style="color: #42526E;">Due Date:</p>
-//                     <p id="variable_date">${task.dueDate}</p>
-//                 </div>
-//                 <div class="priority_popup">
-//                     <p style="color: #42526E;">Priority:</p>
-//                     <p id="variable_priority">${task.priority}</p>
-//                 </div>
-//                 <div class="assigned-popup">
-//                     <p style="color: #42526E;">Assigned To:</p>
-//                     ${task.assigned ? task.assigned.map(user => `
-//                         <div class="user_popup_container">
-//                             <div class="initials-circle" style="background-color: ${user.color};">${user.initials}</div>
-//                             <div>${user.name}</div>
-//                         </div>
-//                     `).join('') : ''}
-//                     <p class="subtask_container" style="color: #42526E;">Subtasks</p>
-//                     ${task.subtasks ? task.subtasks.map(subtask => `
-//                         <div class="user_popup_item" onclick="toggleSubtask(this)">
-//                             <input type="checkbox" class="subtask_checkbox" ${subtask.completed ? 'checked' : ''}>
-//                             <div>${subtask.name}</div>
-//                         </div>
-//                     `).join('') : ''}
-//                     <div class="edit-delete" id="edit">
-//                         <a class="button-delete-edit" href="#" onclick="deleteTask()">
-//                             <img class="edit-delete-img" src="/assets/img/delete_icon.svg"
-//                                 alt="Bild plus Button" />
-//                             <div class="text-container">Delete</div>
-//                         </a>
-//                         <a class="button-delete-edit" href="#" onclick="saveAddedContact()">
-//                             <img class="edit-delete-img" src="/assets/img/edit_icon.svg"
-//                                 alt="Bild plus Button" />
-//                             <div class="text-container">Edit</div>
-//                         </a>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     `;
-// }
+function showPopup(taskId) {
+    let task = findTaskById(taskId);
+    let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
+    let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
+    let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
+
+    let userInitialsHTML = task.assigned ? task.assigned.map(user => `<div class="initials-circle" style="background-color: ${user.color};">${user.initials}</div>`).join('') : '';
+
+    document.getElementById("incomePopup").classList.remove("d-none");
+    document.getElementById('incomePopup').innerHTML = '';
+    document.getElementById('incomePopup').innerHTML = `
+        <div class="complete_board_popup" onclick="doNotClose(event)">
+            <div class="board_popup">
+                <div class="flex_container_head">
+                <div class="task_popup ${task.category}">
+                <p>${task.category}</p>
+            </div>
+                    <div class="close_icon_box">
+                        <img class="img_popup" style="cursor: pointer;" onclick="closePopup()"
+                            src="./assets/img/close_icon.svg" alt="close Button">
+                    </div>
+                </div>
+                <div class="header_popup">
+                    <h2>${task.titel}</h2>
+                </div>
+                <div class="p-element">
+                    <p>${task.description}</p>
+                </div>
+                <div class="due_date_popup">
+                    <p style="color: #42526E;">Due Date:</p>
+                    <p id="variable_date">${task.dueDate}</p>
+                </div>
+                <div class="priority_popup">
+                    <p style="color: #42526E;">Priority:</p>
+                    ${urgentSymbolHTML}
+                    ${mediumSymbolHTML}
+                    ${lowSymbolHTML}
+                </div>
+                <div class="assigned-popup">
+                    <p style="color: #42526E;">Assigned To:</p>
+                    ${userInitialsHTML}
+                    <p class="subtask_container" style="color: #42526E;">Subtasks</p>
+                    ${task.subtasks ? task.subtasks.map(subtask => `
+                        <div class="user_popup_item" onclick="toggleSubtask(this)">
+                            <input type="checkbox" class="subtask_checkbox" ${subtask.completed ? 'checked' : ''}>
+                            <div>${subtask.name}</div>
+                        </div>
+                    `).join('') : ''}
+                    <div class="edit-delete" id="edit">
+                        <a class="button-delete-edit" href="#" onclick="deleteTask()">
+                            <img class="edit-delete-img" src="/assets/img/delete_icon.svg"
+                                alt="Bild plus Button" />
+                            <div class="text-container">Delete</div>
+                        </a>
+                        <a class="button-delete-edit" href="#" onclick="saveAddedContact()">
+                            <img class="edit-delete-img" src="/assets/img/edit_icon.svg"
+                                alt="Bild plus Button" />
+                            <div class="text-container">Edit</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
 
 
 
