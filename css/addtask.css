@@ -161,10 +161,7 @@ textarea {
 /*************** due-a-date-section       ***************/
 .input-task-date {
   display: flex;
-  font-size: 16px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 10px;
+  flex-direction: column;
   border: 1px solid rgb(209, 209, 209);
   color: black;
 }
@@ -272,12 +269,15 @@ textarea {
   justify-content: center;
 }
 
-/*************** Subtask               **************/
-
+/***************         Subtask           **************/
+.subtask-container{
+  margin-bottom: -17px;
+  margin-top: -10px;
+}
 .input-sub-field {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 16px;
@@ -296,33 +296,20 @@ textarea {
   width: 100%;
   all: unset;
 }
-.subtask-container{
-  margin-bottom: -17px;
-  margin-top: -10px;
-}
-
 
 .actions {
   justify-content: flex-end;
   width: 100%;
 }
 
-.todo-item .actions {
-  display: none;
-}
-
-#mylist {
-
-}
 #mylist li:hover .actions {
   display: flex;
 }
 
 .todo-item {
-  
   display: flex;
   align-items: center;
-  width: 100%;
+  
 }
 #mylist li::before {
   content: "•";
@@ -340,6 +327,9 @@ textarea {
 
 ul {
   margin-left: -40px;
+}
+.edit-input{
+  width: 100%;
 }
 
 
@@ -375,7 +365,13 @@ ul {
   border-radius: 10px;
   text-decoration: none;
 }
+.button-clear{
+  display: none;
+}
 
+.add-task-form {
+  padding-bottom: 200px;
+}
 
 @media screen and (max-width: 800px) {}
 
