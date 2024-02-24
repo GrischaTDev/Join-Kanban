@@ -51,6 +51,8 @@
   border-radius: 10px;
   border: 1px solid rgb(209, 209, 209);
   font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: initial;
 }
 
 .add-task-border {
@@ -190,7 +192,18 @@ textarea {
   align-items: center;
 }
 
-#user-select {
+#user-select-mobile {
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: scroll;
+  height: 250px;
+  margin-top: -5px;
+}
+
+#user-select-desktop {
   background-color: white;
   border-radius: 10px;
   display: flex;
@@ -243,7 +256,7 @@ textarea {
 }
 
 .input-arrow {
-  position: fixed;
+  position: absolute;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -253,7 +266,12 @@ textarea {
   border-radius: 50%;
 }
 
-#selected-user {
+#selected-user-mobile {
+  display: flex;
+  gap: 12px;
+}
+
+#selected-user-desktop {
   display: flex;
   gap: 12px;
 }
@@ -406,6 +424,10 @@ ul {
     display: none;
   }
 
+  .assigned-desktop {
+    display: none;
+  }
+
   .button-clear {
     display: none;
   }
@@ -482,6 +504,10 @@ ul {
   }
 
   .prio-mobile {
+    display: none;
+  }
+
+  .assigned-mobile {
     display: none;
   }
 

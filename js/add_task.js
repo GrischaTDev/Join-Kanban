@@ -88,6 +88,7 @@ let allTasks = [
 
 let users = [];
 let selectedUser = [];
+let test3;
 
 
 
@@ -101,8 +102,6 @@ async function initAddTasks() {
   loadUserProfile();
   loadUsers();
   loadAddTaskUser();
-  renderUserList();
-  
 }
 async function loadUsers() {
   try {
@@ -112,8 +111,9 @@ async function loadUsers() {
   }
 }
 
-function openUserList() {
-  let userSelect = document.getElementById('user-select');
+function openUserList(test1, test2) {
+  test3 = test2;
+  let userSelect = document.getElementById(test1);
   let inputIcon = document.getElementById('input-icon');
   userSelect.innerHTML = '';
   if (userSelect.classList.contains('d-none')) {
@@ -137,7 +137,7 @@ function openUserList() {
         <span class="letter-icon">${initialLetters}</span>
         <div>${user.name}</div>
       </div>
-      <img src="./assets/img/checkbox.svg" alt="">
+      <img id="user-checkbox${i}" src="./assets/img/checkbox.svg" alt="">
     </div>
     `;
     const color = document.getElementsByClassName('letter-icon');
@@ -146,11 +146,9 @@ function openUserList() {
 }
 
 function nameInitialLettersAddTasks(user) {
-
   const fullNameSplitt = user.name.split(" ");
   const letters = fullNameSplitt.map(name => name[0]);
   const initialLetters = letters.join("");
-  console.log(initialLetters);
   return initialLetters;
 }
 
@@ -166,28 +164,8 @@ function nameInitialLettersAddTasks(user) {
 //     }
 // });
 
-/**
- *
- */
-
-// function renderUserList(i) {
-//   document.getElementById('selected-user').innerHTML = '';
-
-//   for (let i = 0; i < selectedUser.length; i++) {
-//     const user = selectedUser[i];
-//     let initialLetters = nameInitialLetters(user);
-//     const userColor = selectedUser[i]['color'];
-
-//     document.getElementById("selected-user").innerHTML += /* html */ `
-//     <div class="user-icon">${initialLetters}</div>
-//     `;
-//     const color = document.getElementsByClassName('user-icon');
-//     color[i].style.backgroundColor = `${userColor}`;
-//   }
-// }
-
 function renderUserList() {
-  let selectedUserContainer = document.getElementById('selected-user');
+  let selectedUserContainer = document.getElementById(test3);
   selectedUserContainer.innerHTML = '';
 
   selectedUser.forEach(user => {
@@ -205,32 +183,19 @@ function addUser(i) {
   let userColumn = document.getElementById(`currentUser${i}`);
   let user = users[i];
   let selectedUSerIndex = selectedUser.findIndex(u => u.id === i);
+  let checkBoxUser = document.getElementById(`user-checkbox${i}`);
   if (selectedUSerIndex === -1) {
     userColumn.classList.add('user-select-active');
     selectedUser.push(user)
+    checkBoxUser.src = './assets/img/checkbox_active_white.svg';
   } else {
     userColumn.classList.remove('user-select-active');
     selectedUser.splice(selectedUSerIndex, 1);
+    checkBoxUser.src = './assets/img/checkbox.svg';
   }
-
   renderUserList(i);
   save();
 }
-
-// function addUser(i) {
-//     let userColumn = document.getElementById(`currentUser${i}`);
-//     let user = users[i];
-//     if (!selectedUser.includes(user)) {
-//         userColumn.classList.add('user-select-active');
-//         selectedUser.push(user)
-//     } else {
-//         userColumn.classList.remove('user-select-active');
-//         selectedUser.splice(user.id, 1);
-//     }
-
-//     renderUserList(i);
-//     save();
-// }
 
 
 function save() {
@@ -489,7 +454,7 @@ function togglePriority(priority) {
     button.querySelector('img').style.filter = 'brightness(0) invert(100%)';
 
     // Hintergrundfarbe für den Medium-Button auf Gelb setzen
-    if (priority === 'medium') {
+    if (priority === 'medium' || 'medium-desktop') {
       button.style.backgroundColor = '#ffa200';
     }
   }
