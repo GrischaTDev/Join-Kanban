@@ -267,6 +267,13 @@ span {
   align-items: center;
 }
 
+.user-container-popup {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+
 .initials-circle {
   font-family: "Inter", sans-serif;
   font-size: 12px;
@@ -309,6 +316,14 @@ span {
   width: 32px;
   height: 32px;
   border-radius: 50%;
+}
+
+.user-details {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
 }
 
 /*-card-section-END*/
@@ -370,7 +385,7 @@ span {
   justify-content: center;
   align-items: center;
   height: 18px;
-  width: 105px;
+  width: 128px;
   background-color: #0038ff;
   color: white;
   padding: 4px;
