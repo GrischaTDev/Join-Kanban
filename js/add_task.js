@@ -24,7 +24,7 @@ let allTasks = [
       "lname": "Wiebe",
       "backgroundcolor": "#33FF4F"
     }],
-    "progressfield": "inprogress_container"
+    "progressfield": "await_feedback_container"
   },{
     "id": 2,
     "category": "technical-task",
@@ -54,11 +54,11 @@ let allTasks = [
       "lname": "Schmidt",
       "backgroundcolor": "#33FF74"
     }],
-    "progressfield": "inprogress_container"
+    "progressfield": "await_feedback_container"
   },{
     "id": 3,
     "category": "technical-task",
-    "description": "Hi, ich bin nur zum Testen hier",
+    "description": "Create contact form and imptint page...",
     "dueDate": "2024-03-19",
     "priority": {
       "low": false,
@@ -72,7 +72,7 @@ let allTasks = [
     },{
       "todo": "have fun"
     }],
-    "titel": "Probetask",
+    "titel": "Contact Form & Imprint",
     "userSelect": [{
       "fname": "Stefan",
       "lname": "Dietz",
@@ -86,11 +86,11 @@ let allTasks = [
       "lname": "Sierts",
       "backgroundcolor": "#AFFF33"
     }],
-    "progressfield": "todo_container"
+    "progressfield": "inprogress_container"
   },{
     "id": 4,
     "category": "user-story",
-    "description": "Hi, ich bin auch nur zum Testen hier",
+    "description": "Define CSS naming conventions and structure",
     "dueDate": "2024-03-10",
     "priority": {
       "low": false,
@@ -104,7 +104,7 @@ let allTasks = [
     },{
       "todo": "have fun"
     }],
-    "titel": "Zweiter Probetask",
+    "titel": "Define Architecture Planning",
     "userSelect": [{
       "fname": "Waldemar",
       "lname": "Günther",
@@ -118,76 +118,8 @@ let allTasks = [
       "lname": "Engels",
       "backgroundcolor": "#33A5FF"
     }],
-    "progressfield": "await_feedback_container"
-  },{
-    "id": 5,
-    "category": "user-story",
-    "description": "Hallo, ich bin nur zum gucken hier",
-    "dueDate": "2024-05-05",
-    "priority": {
-      "low": false,
-      "medium": false,
-      "urgent": true,
-    },
-    "subtask": [{
-      "todo": "meetings"
-    },{
-      "todo": "work together"
-    },{
-      "todo": "have fun"
-    }],
-    "titel": "Test-task",
-    "userSelect": [{
-      "fname": "Johann",
-      "lname": "Nikolaus",
-      "backgroundcolor": "#FF3380"
-    },{
-      "fname": "Jürgen",
-      "lname": "Hass",
-      "backgroundcolor": "#8333FF"
-    },{
-      "fname": "Daniel",
-      "lname": "Schenk",
-      "backgroundcolor": "#E6FF33"
-    },{
-      "fname": "Ute",
-      "lname": "Schröder",
-      "backgroundcolor": "#CE33FF"
-    }],
-    "progressfield": "todo_container"
-  },{
-    "id": 6,
-    "category": "technical-task",
-    "description": "Hallo, na?",
-    "dueDate": "2024-03-06",
-    "priority": {
-      "low": false,
-      "medium": true,
-      "urgent": false
-    },
-    "subtask": [{
-      "todo": "meetings"
-    },{
-      "todo": "work together"
-    },{
-      "todo": "have fun"
-    }],
-    "titel": "Task",
-    "userSelect": [{
-      "fname": "Tobias",
-      "lname": "Dück",
-      "backgroundcolor": "#3342FF"
-    },{
-      "fname": "Manuel",
-      "lname": "Siemens",
-      "backgroundcolor": "#FF33E9"
-    },{
-      "fname": "Andreas",
-      "lname": "Müller",
-      "backgroundcolor": "#33FF9F"
-    }],
     "progressfield": "done_container"
-}
+  }
 ];
 
 let users = [];
