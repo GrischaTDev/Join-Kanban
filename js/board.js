@@ -2,28 +2,28 @@ loggedInUser = [];
 
 let currentDraggedElement;
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Hier kannst du die Funktionen aufrufen, die nach dem Laden des DOM ausgeführt werden sollen
-    loadAllTasks(); // Aufruf der Funktion zum Laden der Aufgaben aus dem Local Storage
+document.addEventListener("DOMContentLoaded", function () {
+  // Hier kannst du die Funktionen aufrufen, die nach dem Laden des DOM ausgeführt werden sollen
+  loadAllTasks(); // Aufruf der Funktion zum Laden der Aufgaben aus dem Local Storage
 });
 
 async function initBoard() {
-    // Überprüfen, ob der Local Storage leer ist
-    if (!localStorage.getItem('allTasks')) {
-        // Wenn der Local Storage leer ist, speichern Sie die Aufgaben aus dem Array
-        saveTasksToLocalStorage(allTasks);
-    } else {
-        // Wenn der Local Storage nicht leer ist, laden Sie die Aufgaben aus dem Local Storage
-        allTasks = JSON.parse(localStorage.getItem('allTasks'));
-        // Aktualisieren Sie das Array im Local Storage, um sicherzustellen, dass es immer synchronisiert ist
-        saveTasksToLocalStorage(allTasks);
-    }
+  // Überprüfen, ob der Local Storage leer ist
+  if (!localStorage.getItem("allTasks")) {
+    // Wenn der Local Storage leer ist, speichern Sie die Aufgaben aus dem Array
+    saveTasksToLocalStorage(allTasks);
+  } else {
+    // Wenn der Local Storage nicht leer ist, laden Sie die Aufgaben aus dem Local Storage
+    allTasks = JSON.parse(localStorage.getItem("allTasks"));
+    // Aktualisieren Sie das Array im Local Storage, um sicherzustellen, dass es immer synchronisiert ist
+    saveTasksToLocalStorage(allTasks);
+  }
 
-    // Führen Sie die übrigen Initialisierungsschritte durch
-    await includeHTML();
-    load();
-    loadUserProfile();
-    showAllTasks(allTasks); // Rufen Sie showAllTasks mit dem allTasks-Array auf
+  // Führen Sie die übrigen Initialisierungsschritte durch
+  await includeHTML();
+  load();
+  loadUserProfile();
+  showAllTasks(allTasks); // Rufen Sie showAllTasks mit dem allTasks-Array auf
 }
 
 // Dieses Popup ist die originale Version vom Max
@@ -32,7 +32,7 @@ async function initBoard() {
 // function showPopup() {
 //   document.getElementById("incomePopup").classList.remove("d-none");
 //   document.getElementById('incomePopup').innerHTML = `
-  
+
 //   <div class="complete_board_popup" onclick="doNotClose(event)">
 //                         <div class="board_popup">
 //                             <div class="flex_container_head">
@@ -105,10 +105,16 @@ async function initBoard() {
 // Funktioniert auch, muss aber noch angepasst werden
 
 function showPopup(taskId) {
-    let task = findTaskById(taskId);
-    let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
-    let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
-    let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
+  let task = findTaskById(taskId);
+  let urgentSymbolHTML = task.priority.urgent
+    ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">`
+    : "";
+  let mediumSymbolHTML = task.priority.medium
+    ? `<img src="/assets/img/prio-medium.svg" alt="Medium">`
+    : "";
+  let lowSymbolHTML = task.priority.low
+    ? `<img src="/assets/img/prio-low.svg" alt="Low">`
+    : "";
 
     // Benutzerinitialen und Hintergrundfarben anzeigen
     let userNamesHTML = task.userSelect.map(user => `
@@ -117,9 +123,9 @@ function showPopup(taskId) {
             <div class="user-full-name">${user.fname} ${user.lname}</div>
         </div>`).join('');
 
-    document.getElementById("incomePopup").classList.remove("d-none");
-    document.getElementById('incomePopup').innerHTML = '';
-    document.getElementById('incomePopup').innerHTML = `
+  document.getElementById("incomePopup").classList.remove("d-none");
+  document.getElementById("incomePopup").innerHTML = "";
+  document.getElementById("incomePopup").innerHTML = `
         <div class="complete_board_popup" onclick="doNotClose(event)">
             <div class="complete_board_popup ${task.category}" onclick="doNotClose(event)">
             <div class="board_popup">
@@ -184,22 +190,14 @@ function showPopup(taskId) {
 
 
 function findTaskById(taskId) {
-    // Durchlaufe die Liste der Tasks und suche nach der Task-ID
-    for (let i = 0; i < allTasks.length; i++) {
-        if (allTasks[i].id === taskId) {
-            // Wenn die Task-ID gefunden wurde, gib den entsprechenden Task zurück
-            return allTasks[i];
-        }
+  for (let i = 0; i < allTasks.length; i++) {
+    if (allTasks[i].id === taskId) {
+      return allTasks[i];
     }
-    // Wenn die Task-ID nicht gefunden wurde, gib null zurück oder handle den Fall entsprechend
-    return null;
+  }
+
+  return null;
 }
-
-
-
-
-
-
 
 function closePopup() {
   document.getElementById("incomePopup").classList.add("d-none");
@@ -258,13 +256,10 @@ function closePopup() {
 //     }
 // }
 
-
-
-
 // Das ist die zweite showallTasks version (Die hat schon fast alle neuerungen, aber kein drag and drop)
 
 // function showAllTasks(allTasks) {
-    
+
 //     document.getElementById('todo_container').innerHTML = '';
 //     for (let i = 0; i < allTasks.length; i++) {
 //         let task = allTasks[i];
@@ -489,12 +484,11 @@ function showAllTasks(allTasks) {
 
 
 function startDragging(index) {
-    currentDraggedElement = index;
+  currentDraggedElement = index;
 }
 
-
 function allowDrop(ev) {
-    ev.preventDefault();
+  ev.preventDefault();
 }
 
 // alte version ohne speichern im local storage
@@ -505,29 +499,26 @@ function allowDrop(ev) {
 // }
 
 function moveTo(progressfield) {
-    // Index um 1 reduzieren, da IDs bei 1 beginnen
-    const taskIndex = currentDraggedElement - 1;
-    
-    // Aktualisiere den Fortschrittsstatus des gezogenen Elements
-    allTasks[taskIndex]['progressfield'] = progressfield;
-    
-    // Speichere den aktualisierten allTasks-Array im Local Storage
-    localStorage.setItem('allTasks', JSON.stringify(allTasks));
-    
-    // Aktualisiere die Anzeige aller Aufgaben
-    showAllTasks(allTasks);
+  // Index um 1 reduzieren, da IDs bei 1 beginnen
+  const taskIndex = currentDraggedElement - 1;
+
+  // Aktualisiere den Fortschrittsstatus des gezogenen Elements
+  allTasks[taskIndex]["progressfield"] = progressfield;
+
+  // Speichere den aktualisierten allTasks-Array im Local Storage
+  localStorage.setItem("allTasks", JSON.stringify(allTasks));
+
+  // Aktualisiere die Anzeige aller Aufgaben
+  showAllTasks(allTasks);
 }
 
-
-
 function highlight(id) {
-    document.getElementById(id).classList.add('drag-area-highlight');
+  document.getElementById(id).classList.add("drag-area-highlight");
 }
 
 function removeHighlight(id) {
-    document.getElementById(id).classList.remove('drag-area-highlight');
+  document.getElementById(id).classList.remove("drag-area-highlight");
 }
-
 
 // function moveTo(progressfield) {
 //     allTasks[currentDraggedElement]['progressfield'] = progressfield;
@@ -536,4 +527,3 @@ function removeHighlight(id) {
 //     // Neu laden der Seite, um den aktualisierten Task anzuzeigen
 //     location.reload();
 // }
-
