@@ -9,11 +9,9 @@ let allTasks = [
       "medium": false,
       "urgent": false
     },
-    "subtask": [{
-      "todo": "works"
-    },{
-      "todo": "other stuff"
-    }],
+    "subtask": [  "works",
+                  "other stuff"
+                ],
     "titel": "Kochwelt Page & Recipe Recommender",
     "userSelect": [{
       "fname": "Klaus",
@@ -35,11 +33,9 @@ let allTasks = [
       "medium": false,
       "urgent": false
     },
-    "subtask": [{
-      "todo": "a lot to do"
-    },{
-      "todo": "go ahead"
-    }],
+    "subtask": [ "a lot to do",
+                 "go ahead"
+                ],
     "titel": "HTML Base Template Creation",
     "userSelect": [{
       "fname": "Frank",
@@ -58,20 +54,17 @@ let allTasks = [
   },{
     "id": 3,
     "category": "technical-task",
-    "description": "Create contact form and imptint page...",
+    "description": "Create contact form and imprint page...",
     "dueDate": "2024-03-19",
     "priority": {
       "low": false,
       "medium": true,
       "urgent": false
     },
-    "subtask": [{
-      "todo": "meetings"
-    },{
-      "todo": "work together"
-    },{
-      "todo": "have fun"
-    }],
+    "subtask": [ "meetings",
+                 "work together",
+                 "have fun"
+                ],
     "titel": "Contact Form & Imprint",
     "userSelect": [{
       "fname": "Stefan",
@@ -97,13 +90,10 @@ let allTasks = [
       "medium": true,
       "urgent": false
     },
-    "subtask": [{
-      "todo": "meetings"
-    },{
-      "todo": "work together"
-    },{
-      "todo": "have fun"
-    }],
+    "subtask": [ "meetings",
+                 "work together",
+                 "have fun"
+                ],
     "titel": "Define Architecture Planning",
     "userSelect": [{
       "fname": "Waldemar",
@@ -270,7 +260,7 @@ function loadAddTaskUser() {
 // }
 
 function loadAllTasks() {
-  let allTasksAsString = localStorage.getItem("allTask");
+  let allTasksAsString = localStorage.getItem("allTasks");
   if (allTasksAsString) {
       let allTasks = JSON.parse(allTasksAsString);
       showAllTasks(allTasks);
@@ -383,8 +373,6 @@ function addTask() {
   let titel = document.getElementById('titel').value;
   let description = document.getElementById('description').value;
   let category = document.getElementById('category').value;
-  let userSelect = document.getElementById('user-select').innerText.trim();
-  let subtask = document.getElementById('subtask').value;
   let urgent = document.getElementById('urgent').classList.contains('active');
   let medium = document.getElementById('medium').classList.contains('active');
   let low = document.getElementById('low').classList.contains('active');
@@ -393,6 +381,18 @@ function addTask() {
   // Laden der vorhandenen Tasks aus dem Local Storage oder Initialisieren mit einem leeren Array
   let allTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
 
+  // Erhalten des ausgewählten Benutzers aus dem selectedUser-Array
+  // Annahme: Dies ist dein ausgewählter Benutzer-Array
+  let userSelectData = selectedUser.map(user => ({
+    fname: user.name.split(' ')[0], // Extrahieren des Vornamens aus dem Namen des Benutzers
+    lname: user.name.split(' ')[1], // Extrahieren des Nachnamens aus dem Namen des Benutzers
+    backgroundcolor: user.color // Verwendung der Hintergrundfarbe des Benutzers
+  }));
+
+  // Hinzufügen der Todos aus dem todos-Array als Subtasks
+   // Annahme: Dein Todos-Array
+  let subtasks = todos.map(todo => todo); // Kopieren der Todos als Subtasks
+
   // Erstellen des Task-Objekts mit progressfield: "todo_container" und Subtasks
   let task = {
     id: allTasks.length > 0 ? allTasks[allTasks.length - 1].id + 1 : 0, // Setzen der ID
@@ -400,15 +400,14 @@ function addTask() {
     description: description,
     dueDate: dueDate,
     category: category,
-    userSelect: userSelect,
-    subtask: subtask,
+    userSelect: userSelectData, // Hinzufügen der ausgewählten Benutzerdaten
+    subtask: subtasks, // Hinzufügen der Todos als Subtasks
     priority: {
       urgent: urgent,
       medium: medium,
       low: low,
     },
     progressfield: "todo_container", // Hinzufügen des progressfield: "todo"
-    subtasks: [] // Leeres Array für Subtasks, da du keine Subtasks in deinem Formular erfassen zu scheinst
   };
 
   // Hinzufügen des neuen Tasks zum Array
@@ -424,13 +423,15 @@ function addTask() {
   document.getElementById('titel').value = '';
   document.getElementById('description').value = '';
   document.getElementById('category').value = '';
-  document.getElementById('user-select').innerText = '';
   document.getElementById('subtask').value = '';
   document.getElementById('urgent').classList.remove('active');
   document.getElementById('medium').classList.remove('active');
   document.getElementById('low').classList.remove('active');
   document.getElementById('dueDate').value = '';
+  initAddTasks();
 }
+
+
 
 function saveTasksToLocalStorage(tasks) {
   localStorage.setItem("allTasks", JSON.stringify(tasks));

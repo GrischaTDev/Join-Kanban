@@ -105,27 +105,31 @@ async function initBoard() {
 // Funktioniert auch, muss aber noch angepasst werden
 
 function showPopup(taskId) {
-  let task = findTaskById(taskId);
-  let urgentSymbolHTML = task.priority.urgent
-    ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">`
-    : "";
-  let mediumSymbolHTML = task.priority.medium
-    ? `<img src="/assets/img/prio-medium.svg" alt="Medium">`
-    : "";
-  let lowSymbolHTML = task.priority.low
-    ? `<img src="/assets/img/prio-low.svg" alt="Low">`
-    : "";
-
+    let task = findTaskById(taskId);
+    let urgentSymbolHTML = task.priority.urgent
+      ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">`
+      : "";
+    let mediumSymbolHTML = task.priority.medium
+      ? `<img src="/assets/img/prio-medium.svg" alt="Medium">`
+      : "";
+    let lowSymbolHTML = task.priority.low
+      ? `<img src="/assets/img/prio-low.svg" alt="Low">`
+      : "";
+  
     // Benutzerinitialen und Hintergrundfarben anzeigen
     let userNamesHTML = task.userSelect.map(user => `
         <div class="user-details">
             <div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
             <div class="user-full-name">${user.fname} ${user.lname}</div>
         </div>`).join('');
-
-  document.getElementById("incomePopup").classList.remove("d-none");
-  document.getElementById("incomePopup").innerHTML = "";
-  document.getElementById("incomePopup").innerHTML = `
+  
+    // Subtasks anzeigen
+    let subtasksHTML = task.subtask ? task.subtask.map(subtask => `
+        <div>${subtask}</div>
+    `).join('') : '';
+  
+    document.getElementById("incomePopup").classList.remove("d-none");
+    document.getElementById("incomePopup").innerHTML = `
         <div class="complete_board_popup" onclick="doNotClose(event)">
             <div class="complete_board_popup ${task.category}" onclick="doNotClose(event)">
             <div class="board_popup">
@@ -155,34 +159,33 @@ function showPopup(taskId) {
                     ${lowSymbolHTML}
                 </div>
                 <div class="assigned-popup">
-    <p style="color: #42526E;">Assigned To:</p>
-    <div class="user-container-popup">
-        ${userNamesHTML} <!-- Hier werden Initialen und Vor- und Nachnamen angezeigt -->
-    </div>
-    <p class="subtask_container" style="color: #42526E;">Subtasks</p>
-    ${task.subtask ? task.subtask.map(subtask => `
-        <div class="user_popup_item" onclick="toggleSubtask(this)">
-            <input type="checkbox" class="subtask_checkbox" ${subtask.completed ? 'checked' : ''}>
-            <div>${subtask.todo}</div>
+        <p style="color: #42526E;">Assigned To:</p>
+        <div class="user-container-popup">
+            ${userNamesHTML} <!-- Hier werden Initialen und Vor- und Nachnamen angezeigt -->
         </div>
-    `).join('') : ''}
-    <div class="edit-delete" id="edit">
-        <a class="button-delete-edit" href="#" onclick="deleteTask()">
-            <img class="edit-delete-img" src="/assets/img/delete_icon.svg"
-                alt="Bild plus Button" />
-            <div class="text-container">Delete</div>
-        </a>
-        <a class="button-delete-edit" href="#" onclick="saveAddedContact()">
-            <img class="edit-delete-img" src="/assets/img/edit_icon.svg"
-                alt="Bild plus Button" />
-            <div class="text-container">Edit</div>
-                        </a>
-                    </div>
-                </div>
+        <p class="subtask_container" style="color: #42526E;">Subtasks</p>
+        <div class="subtask-list">
+            ${subtasksHTML} <!-- Hier werden die Subtasks mit Checkboxen angezeigt -->
+        </div>
+        <div class="edit-delete" id="edit">
+            <a class="button-delete-edit" href="#" onclick="deleteTask()">
+                <img class="edit-delete-img" src="/assets/img/delete_icon.svg"
+                    alt="Bild plus Button" />
+                <div class="text-container">Delete</div>
+            </a>
+            <a class="button-delete-edit" href="#" onclick="saveAddedContact()">
+                <img class="edit-delete-img" src="/assets/img/edit_icon.svg"
+                    alt="Bild plus Button" />
+                <div class="text-container">Edit</div>
+            </a>
+        </div>
+    </div>
             </div>
         </div>
     `;
-}
+  }
+  
+  
 
 
 
