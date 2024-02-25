@@ -519,6 +519,62 @@ function showTaskOnPage(task) {
 }
 
 
+// function addTask() {
+//   // Erfassen der Eingabedaten
+//   let titel = document.getElementById('titel').value;
+//   let description = document.getElementById('description').value;
+//   let category = document.getElementById('category').value;
+//   let userSelect = selectedUser; // Benutzer aus der Auswahl
+//   let subtasks = document.getElementById('subtask').value.split(',').map(todo => ({ todo: todo.trim() })); // Subtasks aus Textfeld
+
+//   // Priorität aus den Klassen der Buttons erhalten
+//   let urgent = document.getElementById('urgent').classList.contains('active');
+//   let medium = document.getElementById('medium').classList.contains('active');
+//   let low = document.getElementById('low').classList.contains('active');
+
+//   // Laden der vorhandenen Tasks aus dem Local Storage oder Initialisieren mit einem leeren Array
+//   let allTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
+
+//   // Erstellen des Task-Objekts mit progressfield: "todo_container" und Subtasks
+//   let task = {
+//     id: allTasks.length > 0 ? allTasks[allTasks.length - 1].id + 1 : 1, // Setzen der ID
+//     titel: titel,
+//     description: description,
+//     dueDate: dueDate,
+//     category: category,
+//     userSelect: userSelect,
+//     subtask: subtasks,
+//     priority: {
+//       urgent: urgent,
+//       medium: medium,
+//       low: low,
+//     },
+//     progressfield: "todo_container", // Hinzufügen des progressfield: "todo"
+//   };
+
+//   // Hinzufügen des neuen Tasks zum Array
+//   allTasks.push(task);
+
+//   // Speichern des aktualisierten Arrays im Local Storage
+//   saveTasksToLocalStorage(allTasks);
+
+//   // Hinzufügen des neu erstellten Tasks zur Anzeige auf der Seite
+//   showTaskOnPage(task);
+
+//   // Leeren der Eingabefelder
+//   document.getElementById('titel').value = '';
+//   document.getElementById('description').value = '';
+//   document.getElementById('category').value = '';
+//   document.getElementById('user-select').innerText = '';
+//   document.getElementById('subtask').value = '';
+//   document.getElementById('urgent').classList.remove('active');
+//   document.getElementById('medium').classList.remove('active');
+//   document.getElementById('low').classList.remove('active');
+//   document.getElementById('dueDate').value = '';
+// }
+
+
+
 
 
 

@@ -319,7 +319,7 @@ span {
 }
 
 .user-details {
-  
+    padding: 5px;
     display: flex;
     align-items: center;
     gap: 20px;
