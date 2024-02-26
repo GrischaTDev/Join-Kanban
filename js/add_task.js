@@ -9,9 +9,10 @@ let allTasks = [
       "medium": false,
       "urgent": false
     },
-    "subtask": [  "works",
-                  "other stuff"
-                ],
+    "subtask": [
+      { "name": "works", "status": false },
+      { "name": "other stuff", "status": false }
+    ],
     "titel": "Kochwelt Page & Recipe Recommender",
     "userSelect": [{
       "fname": "Klaus",
@@ -23,19 +24,21 @@ let allTasks = [
       "backgroundcolor": "#33FF4F"
     }],
     "progressfield": "await_feedback_container"
-  },{
+  },
+  {
     "id": 2,
     "category": "technical-task",
-    "description": "Creat reusable HTML base templates",
+    "description": "Create reusable HTML base templates",
     "dueDate": "2024-03-15",
     "priority": {
       "low": true,
       "medium": false,
       "urgent": false
     },
-    "subtask": [ "a lot to do",
-                 "go ahead"
-                ],
+    "subtask": [
+      { "name": "a lot to do", "status": false },
+      { "name": "go ahead", "status": false }
+    ],
     "titel": "HTML Base Template Creation",
     "userSelect": [{
       "fname": "Frank",
@@ -51,7 +54,8 @@ let allTasks = [
       "backgroundcolor": "#33FF74"
     }],
     "progressfield": "await_feedback_container"
-  },{
+  },
+  {
     "id": 3,
     "category": "technical-task",
     "description": "Create contact form and imprint page...",
@@ -61,10 +65,11 @@ let allTasks = [
       "medium": true,
       "urgent": false
     },
-    "subtask": [ "meetings",
-                 "work together",
-                 "have fun"
-                ],
+    "subtask": [
+      { "name": "meetings", "status": false },
+      { "name": "work together", "status": false },
+      { "name": "have fun", "status": false }
+    ],
     "titel": "Contact Form & Imprint",
     "userSelect": [{
       "fname": "Stefan",
@@ -80,7 +85,8 @@ let allTasks = [
       "backgroundcolor": "#AFFF33"
     }],
     "progressfield": "inprogress_container"
-  },{
+  },
+  {
     "id": 4,
     "category": "user-story",
     "description": "Define CSS naming conventions and structure",
@@ -90,10 +96,11 @@ let allTasks = [
       "medium": true,
       "urgent": false
     },
-    "subtask": [ "meetings",
-                 "work together",
-                 "have fun"
-                ],
+    "subtask": [
+      { "name": "meetings", "status": false },
+      { "name": "work together", "status": false },
+      { "name": "have fun", "status": false }
+    ],
     "titel": "Define Architecture Planning",
     "userSelect": [{
       "fname": "Waldemar",
@@ -111,6 +118,8 @@ let allTasks = [
     "progressfield": "done_container"
   }
 ];
+
+
 
 let users = [];
 let selectedUser = [];
@@ -390,8 +399,8 @@ function addTask() {
   }));
 
   // Hinzufügen der Todos aus dem todos-Array als Subtasks
-   // Annahme: Dein Todos-Array
-  let subtasks = todos.map(todo => todo); // Kopieren der Todos als Subtasks
+  // Annahme: Dein Todos-Array
+  let subtasks = todos.map(todo => ({ name: todo, status: false })); // Todos als Subtasks mit 'false' hinzufügen
 
   // Erstellen des Task-Objekts mit progressfield: "todo_container" und Subtasks
   let task = {
@@ -428,8 +437,11 @@ function addTask() {
   document.getElementById('medium').classList.remove('active');
   document.getElementById('low').classList.remove('active');
   document.getElementById('dueDate').value = '';
-  initAddTasks();
+  // Standort neu laden, falls notwendig
+  // location.reload(); // Diese Anweisung scheint nicht notwendig zu sein und kann eventuell entfernt werden
 }
+
+
 
 
 

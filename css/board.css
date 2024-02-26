@@ -379,7 +379,7 @@ span {
   filter: invert(100%);
 }
 
-.task_popup {
+.task_popup_user-story {
   border-radius: 8px;
   display: flex;
   justify-content: center;
@@ -387,6 +387,19 @@ span {
   height: 18px;
   width: 128px;
   background-color: #0038ff;
+  color: white;
+  padding: 4px;
+}
+
+.task_popup_technical-task {
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18px;
+  width: 128px;
+  background-color: #1FD7C1;
+  ;
   color: white;
   padding: 4px;
 }
