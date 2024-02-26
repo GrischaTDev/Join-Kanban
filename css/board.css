@@ -212,6 +212,11 @@ span {
   padding-bottom: 24px;
 }
 
+.progress {
+  display: flex;
+  justify-content: space-between;
+}
+
 /*-progress-bar-inside-CARD*/
 .progress-container {
   padding: 0px 8px 2px 0px;
@@ -258,6 +263,7 @@ span {
   align-items: center;
   justify-content: space-between;
   color: #000000;
+  width: 80px;
 }
 
 /*progress-bar-inside-CARD-end*/

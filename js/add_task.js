@@ -37,7 +37,7 @@ let allTasks = [
     },
     "subtask": [
       { "name": "a lot to do", "status": false },
-      { "name": "go ahead", "status": false }
+      { "name": "go ahead", "status": true }
     ],
     "titel": "HTML Base Template Creation",
     "userSelect": [{
@@ -66,8 +66,8 @@ let allTasks = [
       "urgent": false
     },
     "subtask": [
-      { "name": "meetings", "status": false },
-      { "name": "work together", "status": false },
+      { "name": "meetings", "status": true },
+      { "name": "work together", "status": true },
       { "name": "have fun", "status": false }
     ],
     "titel": "Contact Form & Imprint",
@@ -98,7 +98,7 @@ let allTasks = [
     },
     "subtask": [
       { "name": "meetings", "status": false },
-      { "name": "work together", "status": false },
+      { "name": "work together", "status": true },
       { "name": "have fun", "status": false }
     ],
     "titel": "Define Architecture Planning",

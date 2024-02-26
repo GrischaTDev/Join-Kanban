@@ -274,8 +274,8 @@ function showAllTasks(allTasks) {
               <div class="card-discription">${task.description}</div>
               <div class="progress">
                 <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
               </div>
-              <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
               <div class="user-priority-container">
                 <div class="user-container">
                   ${userInitialsHTML}
@@ -316,9 +316,9 @@ for (let i = 0; i < inprogress_container.length; i++) {
     <div class="card-headline">${task.titel}</div>
     <div class="card-discription">${task.description}</div>
     <div class="progress">
-      <div class="progress-bar w-${progressPercentage}" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
+    <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
     <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+  </div>
     <div class="user-priority-container">
                     <div class="user-container">
                         ${userInitialsHTML}
@@ -358,9 +358,9 @@ for (let i = 0; i < await_feedback_container.length; i++) {
     <div class="card-headline">${task.titel}</div>
     <div class="card-discription">${task.description}</div>
     <div class="progress">
-      <div class="progress-bar w-${progressPercentage}" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-    <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+                <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+              </div>
     <div class="user-priority-container">
                     <div class="user-container">
                         ${userInitialsHTML}
@@ -400,9 +400,9 @@ for (let i = 0; i < done_container.length; i++) {
     <div class="card-headline">${task.titel}</div>
     <div class="card-discription">${task.description}</div>
     <div class="progress">
-      <div class="progress-bar w-${progressPercentage}" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-    <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+                <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+              </div>
     <div class="user-priority-container">
                     <div class="user-container">
                         ${userInitialsHTML}
@@ -467,3 +467,15 @@ function removeHighlight(id) {
 //     // Neu laden der Seite, um den aktualisierten Task anzuzeigen
 //     location.reload();
 // }
+
+
+function findTask() {
+  let searchInput = document.getElementById('search').value.toLowerCase();
+  let filteredTasks = allTasks.filter(task =>
+      task.titel.toLowerCase().includes(searchInput) ||
+      task.description.toLowerCase().includes(searchInput) ||
+      task.category.toLowerCase().includes(searchInput)
+  );
+
+  showAllTasks(filteredTasks);
+}
