@@ -241,55 +241,65 @@ function closePopup() {
 
 
 function showAllTasks(allTasks) {
-    let todo_container = allTasks.filter(t => t['progressfield'] == 'todo_container');
-    document.getElementById('todo_container').innerHTML = '';
-  
-    if (todo_container.length === 0) {
-      document.getElementById('todo_container').innerHTML = `
-        <div>
-          <div class="no-tasks desktop-no-tasks">
-            <span>No tasks to do</span>
-          </div>
-        </div>`;
-    } else {
-      for (let i = 0; i < todo_container.length; i++) {
-        let task = todo_container[i];
-        let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
-        let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
-        let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
-  
-        let userInitialsHTML = task.userSelect.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
-  
-        let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
-        let totalSubtasks = task.subtask ? task.subtask.length : 0;
+  let todo_container = allTasks.filter(t => t['progressfield'] == 'todo_container');
+  document.getElementById('todo_container').innerHTML = '';
 
-        // Calculate the progress percentage
-        let progressPercentage = totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0;
-  
-        document.getElementById('todo_container').innerHTML += `
-          <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
-            <div class="card">
-              <div class="card-category-${task.category}">${task.category}</div>
-              <div class="card-headline">${task.titel}</div>
-              <div class="card-discription">${task.description}</div>
-              <div class="progress">
+  if (todo_container.length === 0) {
+    document.getElementById('todo_container').innerHTML = `
+      <div>
+        <div class="no-tasks desktop-no-tasks">
+          <span>No tasks to do</span>
+        </div>
+      </div>`;
+  } else {
+    for (let i = 0; i < todo_container.length; i++) {
+      let task = todo_container[i];
+      let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
+      let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
+      let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
+
+      let userInitialsHTML = task.userSelect.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
+
+      let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
+      let totalSubtasks = task.subtask ? task.subtask.length : 0;
+
+      // Calculate the progress percentage
+      let progressPercentage = totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0;
+
+      document.getElementById('todo_container').innerHTML += `
+        <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
+          <div class="card">
+            <div class="card-category-${task.category}">${task.category}</div>
+            <div class="card-headline">${task.titel}</div>
+            <div class="card-discription">${task.description}</div>
+            <div class="progress-container">
+              <div class="progress" style="flex: 1;">
                 <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
-                <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
               </div>
-              <div class="user-priority-container">
-                <div class="user-container">
-                  ${userInitialsHTML}
-                </div>
-                <div class="priority-symbols">
-                  ${urgentSymbolHTML}
-                  ${mediumSymbolHTML}
-                  ${lowSymbolHTML}
-                </div>
+              <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+            </div>
+            <div class="user-priority-container">
+              <div class="user-container">
+                ${userInitialsHTML}
+              </div>
+              <div class="priority-symbols">
+                ${urgentSymbolHTML}
+                ${mediumSymbolHTML}
+                ${lowSymbolHTML}
               </div>
             </div>
-          </a>`;
-      }
+            
+          </div>
+        </a>`;
     }
+  }
+
+
+
+
+
+
+
 
 
     let inprogress_container = allTasks.filter(t => t['progressfield'] == 'inprogress_container');

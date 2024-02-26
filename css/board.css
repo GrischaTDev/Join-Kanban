@@ -147,6 +147,9 @@ span {
   width: 100%;
 }
 
+.form-check-input {
+  cursor: pointer;
+}
 .card-section {
   margin-right: 16px;
   text-decoration: none;
@@ -215,6 +218,7 @@ span {
 .progress {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 /*-progress-bar-inside-CARD*/
@@ -261,9 +265,9 @@ span {
   font-size: 12px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   color: #000000;
-  width: 80px;
+  width: 70px;
 }
 
 /*progress-bar-inside-CARD-end*/
