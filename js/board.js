@@ -174,7 +174,7 @@ function showPopup(taskId) {
             ${subtasksHTML} <!-- Hier werden die Subtasks mit Checkboxen angezeigt -->
         </div>
         <div class="edit-delete" id="edit">
-            <a class="button-delete-edit" href="#" onclick="deleteTask()">
+            <a class="button-delete-edit" href="#" onclick="deleteTask(${task.id})">
                 <img class="edit-delete-img" src="/assets/img/delete_icon.svg"
                     alt="Bild plus Button" />
                 <div class="text-container">Delete</div>
@@ -293,7 +293,7 @@ function showAllTasks(allTasks) {
         </a>`;
     }
   }
-  
+
     let inprogress_container = allTasks.filter(t => t['progressfield'] == 'inprogress_container');
 document.getElementById('inprogress_container').innerHTML = '';
 for (let i = 0; i < inprogress_container.length; i++) {
@@ -486,4 +486,27 @@ function findTask() {
   );
 
   showAllTasks(filteredTasks);
+}
+
+function deleteTask(taskId) {
+  let allTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
+  
+  // Finden des Index des Tasks im Array anhand der ID
+  let taskIndex = allTasks.findIndex(task => task.id === taskId);
+  
+  if (taskIndex !== -1) {
+      // Löschen des Tasks aus dem Array
+      allTasks.splice(taskIndex, 1);
+      
+      // Aktualisieren des Local Storage
+      saveTasksToLocalStorage(allTasks);
+      
+      // Aktualisieren der Anzeige
+      loadAllTasks();
+      
+      // Schließen des Popups
+      closePopup();
+  } else {
+      console.log("Task not found");
+  }
 }

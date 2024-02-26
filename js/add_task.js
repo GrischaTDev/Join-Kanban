@@ -317,6 +317,7 @@ function loadAllTasks() {
 //   localStorage.setItem("allTask", JSON.stringify(tasks));
 // }
 
+
 function saveTasksToLocalStorage(tasks) {
   localStorage.setItem("allTasks", JSON.stringify(tasks));
 }
@@ -446,9 +447,7 @@ function addTask() {
 
 
 
-function saveTasksToLocalStorage(tasks) {
-  localStorage.setItem("allTasks", JSON.stringify(tasks));
-}
+
 
 // Funktion zum Anzeigen eines Tasks auf der Seite hinzugefügt
 function showTaskOnPage(task) {
