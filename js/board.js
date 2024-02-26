@@ -293,15 +293,7 @@ function showAllTasks(allTasks) {
         </a>`;
     }
   }
-
-
-
-
-
-
-
-
-
+  
     let inprogress_container = allTasks.filter(t => t['progressfield'] == 'inprogress_container');
 document.getElementById('inprogress_container').innerHTML = '';
 for (let i = 0; i < inprogress_container.length; i++) {
@@ -325,10 +317,12 @@ for (let i = 0; i < inprogress_container.length; i++) {
     <div class="card-category-${task.category}">${task.category}</div>
     <div class="card-headline">${task.titel}</div>
     <div class="card-discription">${task.description}</div>
-    <div class="progress">
-    <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
-    <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
-  </div>
+    <div class="progress-container">
+              <div class="progress" style="flex: 1;">
+                <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+            </div>
     <div class="user-priority-container">
                     <div class="user-container">
                         ${userInitialsHTML}
@@ -367,10 +361,12 @@ for (let i = 0; i < await_feedback_container.length; i++) {
     <div class="card-category-${task.category}">${task.category}</div>
     <div class="card-headline">${task.titel}</div>
     <div class="card-discription">${task.description}</div>
-    <div class="progress">
+    <div class="progress-container">
+              <div class="progress" style="flex: 1;">
                 <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
-                <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
               </div>
+              <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+            </div>
     <div class="user-priority-container">
                     <div class="user-container">
                         ${userInitialsHTML}
@@ -409,10 +405,12 @@ for (let i = 0; i < done_container.length; i++) {
     <div class="card-category-${task.category}">${task.category}</div>
     <div class="card-headline">${task.titel}</div>
     <div class="card-discription">${task.description}</div>
-    <div class="progress">
+    <div class="progress-container">
+              <div class="progress" style="flex: 1;">
                 <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
-                <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
               </div>
+              <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+            </div>
     <div class="user-priority-container">
                     <div class="user-container">
                         ${userInitialsHTML}
