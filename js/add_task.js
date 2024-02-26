@@ -137,6 +137,7 @@ async function initAddTasks() {
   loadUserProfile();
   loadUsers();
   loadAddTaskUser();
+  setMinimumDateForToday('dueDate');
 }
 async function loadUsers() {
   try {
