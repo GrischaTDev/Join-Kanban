@@ -97,9 +97,9 @@ let allTasks = [
       "urgent": false
     },
     "subtask": [
-      { "name": "meetings", "status": false },
+      { "name": "meetings", "status": true },
       { "name": "work together", "status": true },
-      { "name": "have fun", "status": false }
+      { "name": "have fun", "status": true }
     ],
     "titel": "Define Architecture Planning",
     "userSelect": [{

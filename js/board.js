@@ -137,7 +137,7 @@ function showPopup(taskId) {
     document.getElementById("incomePopup").classList.remove("d-none");
     document.getElementById("incomePopup").innerHTML = `
         <div class="complete_board_popup" onclick="doNotClose(event)">
-            <div class="complete_board_popup" onclick="doNotClose(event)">
+            <div onclick="doNotClose(event)">
             <div class="board_popup">
                 <div class="flex_container_head">
                     <div class="task_popup_${task.category}">
@@ -509,4 +509,10 @@ function deleteTask(taskId) {
   } else {
       console.log("Task not found");
   }
+}
+
+
+
+function doNotClose(event) {
+  event.stopPropagation();
 }
