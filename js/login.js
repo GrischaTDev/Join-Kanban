@@ -39,12 +39,6 @@ function resetLoginForm(loginEmail, loginPassword) {
 }
 
 
-function guestLogIn() {
-    document.getElementById('login-email').value = 'test-user@join.com';
-    document.getElementById('login-password').value = 'xt8mnVL6t8i4f4N';
-}
-
-
 async function userPushLogin(user) {
     loggedInUser.push({
       id: user.id,
@@ -71,6 +65,18 @@ function rememberMe() {
       checkBoxImage.src = './assets/img/checkbox.svg';
       checkBoxLogin = false;
     }
+}
+
+function guestLogIn() {
+    document.getElementById('login-email').value = 'test-user@join.com';
+    document.getElementById('login-password').value = 'xt8mnVL6t8i4f4N';
+    loggedInUser.push({
+        id: 99,
+        name: 'Guest',
+        color: 'rgb(222,222,69)'
+        });
+    location.href = './summary.html';
+    save();
 }
 
 
