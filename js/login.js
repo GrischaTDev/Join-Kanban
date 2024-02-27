@@ -1,4 +1,5 @@
 let loggedInUser = [];
+let checkBoxLogin = false;
 
 
 function initLogin(){
@@ -59,6 +60,18 @@ async function userPushLogin(user) {
     localStorage.setItem('loggedInUser', loggedUSer);
 }
 
+
+function rememberMe() {
+    let checkBoxImage = document.getElementById('remember-me');
+
+    if (!checkBoxLogin) {
+      checkBoxImage.src = './assets/img/checkbox_active.svg';
+      checkBoxLogin = true;
+    } else {
+      checkBoxImage.src = './assets/img/checkbox.svg';
+      checkBoxLogin = false;
+    }
+}
 
 
 

@@ -559,7 +559,7 @@ function togglePriority(priority) {
     button.querySelector('img').style.filter = 'brightness(0) invert(100%)';
 
     // Hintergrundfarbe für den Medium-Button auf Gelb setzen
-    if (priority === 'medium' || 'medium-desktop') {
+    if (priority === 'medium') {
       button.style.backgroundColor = '#ffa200';
     }
   }

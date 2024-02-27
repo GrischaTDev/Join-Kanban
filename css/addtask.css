@@ -149,6 +149,16 @@ textarea {
   color: white;
 }
 
+#medium-desktop:hover {
+  background-color: #ffa200;
+  color: white;
+}
+
+#low-desktop:hover {
+  background-color: #03c509fc;
+  color: white;
+}
+
 .priority-button img {
   margin-left: 8px;
 }
