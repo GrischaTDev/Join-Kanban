@@ -107,8 +107,12 @@ function openAddNewTaskPopup(){
   document.getElementById('add-task-popup-container').innerHTML = '';
   document.getElementById('add-task-popup-container').innerHTML += `
   <div class="addTask_popup" onclick="doNotClose(event)">
-                <div class="header-container">
+                <div class="add-task-header-container">
                     <h1>Add Task</h1>
+                    <div class="close_addTask_icon_box">
+                        <img class="img_popup" style="cursor: pointer;" onclick="closeaddTaskPopup()"
+                            src="./assets/img/close_icon.svg" alt="close Button">
+                    </div>
                 </div>
         
                 <form class="form-width" onsubmit="addTask()">

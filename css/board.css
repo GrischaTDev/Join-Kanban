@@ -450,6 +450,14 @@ span {
   color: rgb(255, 246, 246);
 }
 
+.close_addTask_icon_box {
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: rgb(255, 246, 246);
+}
+
 .subtask_container {
   height: 19px;
   margin-bottom: 0px;
@@ -561,6 +569,14 @@ span {
     justify-content: center;
     max-width: 800px;
 
+}
+
+.add-task-header-container {
+  display: flex;
+    align-items: center;
+    background-color: #F6F7F8;
+    margin-bottom: 38px;
+    justify-content: space-between;
 }
 
 /* .header-container {
