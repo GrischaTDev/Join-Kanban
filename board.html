@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/mobile_menu_header.css">
     <link rel="stylesheet" href="/css/board.css">
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/addtask.css">
 
     <script src="./js/board.js"></script>
     <script src="script.js"></script>
@@ -31,7 +32,7 @@
         <div class="task-topic desktop-task-topic">
             <h1 class="desktop-h1">Board</h1>
             <div class="desktop-position-add-task-button">
-                <a class="button-add-task desktop-button-add-task" href="add_task.html" onclick="newTask()">
+                <a class="button-add-task desktop-button-add-task" onclick="openAddNewTaskPopup()">
                     <span class="add-task-text">Add Task</span>
                     <img class="plus-button desktop-plus-button" src="/assets/img/plus_button_black.svg"
                         alt="Bild plus Button" />
@@ -52,7 +53,7 @@
             <div class="desktop-complete-card">
                 <div class="headlines-container desktop-headlines-container" id="todo">
                     <h6>To do</h6>
-                    <a class="button-add-task-todo" href="add_task.html" onclick="newTask()">
+                    <a class="button-add-task-todo" onclick="openAddNewTaskPopup()">
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
                 </div>
@@ -68,7 +69,7 @@
             <div class="desktop-complete-card">
                 <div class="headlines-container desktop-headlines-container" id="inprogress">
                     <h6>In progress</h6>
-                    <a class="button-add-task-todo" href="add_task.html" onclick="newTask()">
+                    <a class="button-add-task-todo" onclick="openAddNewTaskPopup()">
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
                 </div>
@@ -143,7 +144,7 @@
             <div class="desktop-complete-card">
                 <div class="headlines-container desktop-headlines-container" id="await_feedback">
                     <h6>Await feedback</h6>
-                    <a class="button-add-task-todo" href="add_task.html" onclick="newTask()">
+                    <a class="button-add-task-todo" onclick="openAddNewTaskPopup()">
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
                 </div>
@@ -162,14 +163,16 @@
             </div>
 
             <div>
-                <div id="incomePopup" class="popup-bg d-none" onclick="closePopup()">
+                <div id="incomePopup" class="popup-bg d-none" onclick="closeIncomePopup()">
 
-                    
                 </div>
             </div>
         </div>
     </div>
     
+    <div id="add-task-popup-container" class="popup-bg d-none" onclick="closeaddTaskPopup()">
+
+    </div>
     
     <div w3-include-html="/assets/templates/mobile_menu.html"></div>
     
