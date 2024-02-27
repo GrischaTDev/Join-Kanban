@@ -521,49 +521,59 @@ function showTaskOnPage(task) {
 
 
 
-
-
-
-
-
-
 function togglePriority(priority) {
-  var button = document.getElementById(priority);
 
-  if (button.classList.contains('active')) {
-    // Wenn der aktuelle Button bereits ausgewählt ist, dann abwählen
-    button.classList.remove('active');
-    button.style.backgroundColor = ''; // Zurücksetzen der Hintergrundfarbe
-    button.style.color = '';
-    button.querySelector('img').style.filter = '';
-    button.style.color = '';
-    button.querySelector('img').style.filter = '';
+  let prioButton = document.getElementById(priority);
+  if (prioButton.classList.contains('active-medium' || 'active-low')) {
+    prioButton.classList.remove('active-medium');
+    console.log('Ja');
   } else {
-    // Andernfalls den aktuellen Button auswählen und den vorherigen abwählen
-    var prevSelectedButton = document.querySelector('.priority-button.active');
-    if (prevSelectedButton) {
-      prevSelectedButton.classList.remove('active');
-      prevSelectedButton.style.backgroundColor = ''; // Zurücksetzen der Hintergrundfarbe
-      prevSelectedButton.style.color = '';
-      prevSelectedButton.querySelector('img').style.filter = '';
-      prevSelectedButton.style.color = '';
-      prevSelectedButton.querySelector('img').style.filter = '';
-    }
-
-    button.classList.add('active');
-    var computedStyle = getComputedStyle(button);
-    button.style.backgroundColor = computedStyle.backgroundColor;
-    button.style.color = 'white';
-    button.querySelector('img').style.filter = 'brightness(0) invert(100%)';
-    button.style.color = 'white';
-    button.querySelector('img').style.filter = 'brightness(0) invert(100%)';
-
-    // Hintergrundfarbe für den Medium-Button auf Gelb setzen
-    if (priority === 'medium') {
-      button.style.backgroundColor = '#ffa200';
-    }
+    prioButton.classList.add('active-low');
+    console.log('Nein')
   }
 }
+
+
+
+
+
+// function togglePriority(priority) {
+//   var button = document.getElementById(priority);
+
+//   if (button.classList.contains('active')) {
+//     // Wenn der aktuelle Button bereits ausgewählt ist, dann abwählen
+//     button.classList.remove('active');
+//     button.style.backgroundColor = ''; // Zurücksetzen der Hintergrundfarbe
+//     button.style.color = '';
+//     button.querySelector('img').style.filter = '';
+//     button.style.color = '';
+//     button.querySelector('img').style.filter = '';
+//   } else {
+//     // Andernfalls den aktuellen Button auswählen und den vorherigen abwählen
+//     var prevSelectedButton = document.querySelector('.priority-button.active');
+//     if (prevSelectedButton) {
+//       prevSelectedButton.classList.remove('active');
+//       prevSelectedButton.style.backgroundColor = ''; // Zurücksetzen der Hintergrundfarbe
+//       prevSelectedButton.style.color = '';
+//       prevSelectedButton.querySelector('img').style.filter = '';
+//       prevSelectedButton.style.color = '';
+//       prevSelectedButton.querySelector('img').style.filter = '';
+//     }
+
+//     button.classList.add('active');
+//     var computedStyle = getComputedStyle(button);
+//     button.style.backgroundColor = computedStyle.backgroundColor;
+//     button.style.color = 'white';
+//     button.querySelector('img').style.filter = 'brightness(0) invert(100%)';
+//     button.style.color = 'white';
+//     button.querySelector('img').style.filter = 'brightness(0) invert(100%)';
+
+//     // Hintergrundfarbe für den Medium-Button auf Gelb setzen
+//     if (priority === 'medium') {
+//       button.style.backgroundColor = '#ffa200';
+//     }
+//   }
+// }
 
 
 

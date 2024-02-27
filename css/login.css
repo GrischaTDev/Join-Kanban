@@ -166,19 +166,19 @@ body {
 
 .input-field {
     display: flex;
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
-    cursor: pointer;
+    width: 100%;
 }
 
 .input-field img {
     position: absolute;
-    margin: 0 0 0 320px;
+    margin-right: 10px;
+    cursor: pointer;
 }
 
 input {
+    width: 100%;
     font-size: 20px;
     display: flex;
     padding: 12px 21px;
@@ -363,7 +363,7 @@ input:focus-visible {
 
     .form-box {
         width: 30%;
-        padding: 40px 100px;
+        padding: 60px 140px;
     }
 
     .input-box {
@@ -471,10 +471,7 @@ input:focus-visible {
     }
 
     .form-box {
-        width: 652px;
-        padding: 48px 115px;
-        margin: 0;
-        gap: 32px;
+        max-width: 400px;
     }
 
     .input-box {
@@ -524,10 +521,5 @@ input:focus-visible {
     .legal-topics a:hover {
         color: var(--Ligth-blue);
         font-weight: 700;
-    }
-
-    .arrow-left {
-        margin-left: -650px;
-        margin-bottom: -90px;
     }
 }

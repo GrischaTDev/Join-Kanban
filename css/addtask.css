@@ -111,6 +111,21 @@ textarea {
 
 /*************** title-END            **************/
 /*************** priority-section    ***************/
+.active-urgent {
+  color: white;
+  background-color: #ff3c00 !important;
+}
+
+.active-medium {
+  color: white;
+  background-color: #ffa801 !important;
+}
+
+.active-low {
+  color: white;
+  background-color: #7ae228 !important;
+}
+
 .priority-buttons {
   display: flex;
   justify-content: space-between;
@@ -163,11 +178,11 @@ textarea {
   margin-left: 8px;
 }
 
-.priority-button:hover img,
+/* .priority-button:hover img,
 #medium:hover img,
 #low:hover img {
   filter: brightness(0) invert(1);
-}
+} */
 
 /***************-priority-section-END     ***************/
 /*************** due-a-date-section       ***************/
@@ -373,7 +388,7 @@ ul {
   align-items: center;
   color: #2a3647;
   width: 120px;
-  height: 56px;
+  height: 48px;
   border: 1px solid #2a3647;
   border-radius: 10px;
   text-decoration: none;
@@ -415,8 +430,8 @@ ul {
   justify-content: center;
   align-items: center;
   color: white;
-  width: 183px;
-  height: 56px;
+  width: 170px;
+  height: 48px;
   background-color: #2a3647;
   border-radius: 10px;
   text-decoration: none;
