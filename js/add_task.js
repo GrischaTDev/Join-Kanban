@@ -53,17 +53,17 @@ let allTasks = [
       "lname": "Schmidt",
       "backgroundcolor": "#33FF74"
     }],
-    "progressfield": "await_feedback_container"
+    "progressfield": "todo_container"
   },
   {
     "id": 3,
     "category": "technical-task",
     "description": "Create contact form and imprint page...",
-    "dueDate": "2024-03-19",
+    "dueDate": "2024-03-01",
     "priority": {
       "low": false,
-      "medium": true,
-      "urgent": false
+      "medium": false,
+      "urgent": true
     },
     "subtask": [
       { "name": "meetings", "status": true },
@@ -93,8 +93,8 @@ let allTasks = [
     "dueDate": "2024-03-10",
     "priority": {
       "low": false,
-      "medium": true,
-      "urgent": false
+      "medium": false,
+      "urgent": true
     },
     "subtask": [
       { "name": "meetings", "status": true },
@@ -269,14 +269,23 @@ function loadAddTaskUser() {
 //   }
 // }
 
+// function loadAllTasks() {
+//   let allTasksAsString = localStorage.getItem("allTasks");
+//   if (allTasksAsString) {
+//       let allTasks = JSON.parse(allTasksAsString);
+//       showAllTasks(allTasks);
+
+//       // Initialisieren der Zusammenfassung nach dem Laden aller Tasks
+//       initSummary(allTasks);
+//   }
+// }
+
 function loadAllTasks() {
   let allTasksAsString = localStorage.getItem("allTasks");
   if (allTasksAsString) {
-      let allTasks = JSON.parse(allTasksAsString);
-      showAllTasks(allTasks);
+      allTasks = JSON.parse(allTasksAsString); // Aktualisieren des allTasks-Arrays mit den Daten aus dem Local Storage
   }
 }
-
 
 
 
@@ -441,6 +450,8 @@ function addTask() {
   document.getElementById('dueDate').value = '';
   // Standort neu laden, falls notwendig
   // location.reload(); // Diese Anweisung scheint nicht notwendig zu sein und kann eventuell entfernt werden
+
+  initSummary(allTasks);
 }
 
 
