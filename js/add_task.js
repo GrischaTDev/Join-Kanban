@@ -5,8 +5,8 @@ let allTasks = [
     "description": "Build start page with recipe recommendation",
     "dueDate": "2024-03-03",
     "priority": {
-      "low": true,
-      "medium": false,
+      "low": false,
+      "medium": true,
       "urgent": false
     },
     "subtask": [
@@ -23,7 +23,7 @@ let allTasks = [
       "lname": "Wiebe",
       "backgroundcolor": "#33FF4F"
     }],
-    "progressfield": "await_feedback_container"
+    "progressfield": "inprogress_container"
   },
   {
     "id": 2,
@@ -53,7 +53,7 @@ let allTasks = [
       "lname": "Schmidt",
       "backgroundcolor": "#33FF74"
     }],
-    "progressfield": "todo_container"
+    "progressfield": "await_feedback_container"
   },
   {
     "id": 3,
@@ -62,8 +62,8 @@ let allTasks = [
     "dueDate": "2024-03-01",
     "priority": {
       "low": false,
-      "medium": false,
-      "urgent": true
+      "medium": true,
+      "urgent": false
     },
     "subtask": [
       { "name": "meetings", "status": true },
@@ -84,7 +84,7 @@ let allTasks = [
       "lname": "Sierts",
       "backgroundcolor": "#AFFF33"
     }],
-    "progressfield": "inprogress_container"
+    "progressfield": "await_feedback_container"
   },
   {
     "id": 4,
