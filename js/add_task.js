@@ -123,7 +123,7 @@ let allTasks = [
 
 let users = [];
 let selectedUser = [];
-let test3;
+let selectedUserList;
 
 
 
@@ -147,9 +147,9 @@ async function loadUsers() {
   }
 }
 
-function openUserList(test1, test2) {
-  test3 = test2;
-  let userSelect = document.getElementById(test1);
+function openUserList(userList, selectedUserContainer) {
+  selectedUserList = selectedUserContainer;
+  let userSelect = document.getElementById(userList);
   let inputIcon = document.getElementById('input-icon');
   userSelect.innerHTML = '';
   if (userSelect.classList.contains('d-none')) {
@@ -159,7 +159,6 @@ function openUserList(test1, test2) {
     userSelect.classList.add('d-none');
     inputIcon.src = './assets/img/arrow_drop_down_1.svg';
   }
-
 
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
@@ -188,20 +187,9 @@ function nameInitialLettersAddTasks(user) {
   return initialLetters;
 }
 
-// /**
-//  * Close openUserList Popup when click outside
-//  */
-// window.addEventListener('mouseup',function(event){
-//     let userSelect = document.getElementById('user-select');
-//     let inputIcon = document.getElementById('input-icon');
-//     if(event.target != userSelect && event.target.parentNode != userSelect){
-//         userSelect.classList.add('d-none');
-//         inputIcon.src = './assets/img/arrow_drop_down_1.svg';
-//     }
-// });
 
 function renderUserList() {
-  let selectedUserContainer = document.getElementById(test3);
+  let selectedUserContainer = document.getElementById(selectedUserList);
   selectedUserContainer.innerHTML = '';
 
   selectedUser.forEach(user => {
@@ -533,59 +521,26 @@ function showTaskOnPage(task) {
 
 
 function togglePriority(priority) {
-
+  let urgentButton = document.getElementById('urgent');
+  let mediumButton = document.getElementById('medium');
+  let lowButton = document.getElementById('low'); 
+                      
   let prioButton = document.getElementById(priority);
-  if (prioButton.classList.contains('active-medium' || 'active-low')) {
-    prioButton.classList.remove('active-medium');
-    console.log('Ja');
-  } else {
-    prioButton.classList.add('active-low');
-    console.log('Nein')
+  if (prioButton == urgentButton) {
+    mediumButton.classList.remove('active-medium');
+    lowButton.classList.remove('active-low');
+    urgentButton.classList.add('active-urgent');
+
+  } if (prioButton == mediumButton) {
+    urgentButton.classList.remove('active-urgent');
+    lowButton.classList.remove('active-low');
+    mediumButton.classList.add('active-medium');
+  } if (prioButton == lowButton) {
+    urgentButton.classList.remove('active-urgent');
+    mediumButton.classList.remove('active-medium');
+    lowButton.classList.add('active-low');
   }
 }
-
-
-
-
-
-// function togglePriority(priority) {
-//   var button = document.getElementById(priority);
-
-//   if (button.classList.contains('active')) {
-//     // Wenn der aktuelle Button bereits ausgewählt ist, dann abwählen
-//     button.classList.remove('active');
-//     button.style.backgroundColor = ''; // Zurücksetzen der Hintergrundfarbe
-//     button.style.color = '';
-//     button.querySelector('img').style.filter = '';
-//     button.style.color = '';
-//     button.querySelector('img').style.filter = '';
-//   } else {
-//     // Andernfalls den aktuellen Button auswählen und den vorherigen abwählen
-//     var prevSelectedButton = document.querySelector('.priority-button.active');
-//     if (prevSelectedButton) {
-//       prevSelectedButton.classList.remove('active');
-//       prevSelectedButton.style.backgroundColor = ''; // Zurücksetzen der Hintergrundfarbe
-//       prevSelectedButton.style.color = '';
-//       prevSelectedButton.querySelector('img').style.filter = '';
-//       prevSelectedButton.style.color = '';
-//       prevSelectedButton.querySelector('img').style.filter = '';
-//     }
-
-//     button.classList.add('active');
-//     var computedStyle = getComputedStyle(button);
-//     button.style.backgroundColor = computedStyle.backgroundColor;
-//     button.style.color = 'white';
-//     button.querySelector('img').style.filter = 'brightness(0) invert(100%)';
-//     button.style.color = 'white';
-//     button.querySelector('img').style.filter = 'brightness(0) invert(100%)';
-
-//     // Hintergrundfarbe für den Medium-Button auf Gelb setzen
-//     if (priority === 'medium') {
-//       button.style.backgroundColor = '#ffa200';
-//     }
-//   }
-// }
-
 
 
 let todos = [];

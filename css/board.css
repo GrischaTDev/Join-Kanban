@@ -665,6 +665,7 @@ span {
 @media(min-width:1600px) {
   .content {
     margin: 160px 0 0 310px;
+    max-width: 1400px;
   }
 
   .desktop-h1 {
