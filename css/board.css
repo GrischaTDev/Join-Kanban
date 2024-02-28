@@ -1,7 +1,5 @@
-.content {
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-bottom: 150px;
+.content-board {
+  margin: 160px 15px 0px 310px;
 }
 
 h2 {
@@ -633,9 +631,7 @@ span {
 } */
 
 @media(min-width:900px) {
-  .content {
-    margin: 160px 0 0 310px;
-  }
+  
 
   .addTask_popup {
     max-height: 700px;
@@ -649,21 +645,25 @@ span {
     padding: 50px;
     margin-top: 50px;
   }
+  .content-board {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 150px;
+  }
 }
+
+
 
 @media(max-width:1600px) {
 .add-task-text {
   display: none;
 }
 
-.content{
-  margin-right: 24px;
-}
 }
 
 /* Responsiv for desktop */
 @media(min-width:1600px) {
-  .content {
+  .content-board {
     margin: 160px 0 0 310px;
   }
 

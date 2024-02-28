@@ -26,80 +26,7 @@ async function initBoard() {
   showAllTasks(allTasks); // Rufen Sie showAllTasks mit dem allTasks-Array auf
 }
 
-// Dieses Popup ist die originale Version vom Max
-// Funktioniert! (Fehlen die Parameter)
 
-// function showPopup() {
-//   document.getElementById("incomePopup").classList.remove("d-none");
-//   document.getElementById('incomePopup').innerHTML = `
-
-//   <div class="complete_board_popup" onclick="doNotClose(event)">
-//                         <div class="board_popup">
-//                             <div class="flex_container_head">
-//                                 <div class="task_popup">
-//                                     <p>User Story</p>
-//                                 </div>
-//                                 <div class="close_icon_box">
-//                                     <img class="img_popup" style="cursor: pointer;" onclick="closePopup()"
-//                                         src="./assets/img/close_icon.svg" alt="close Button">
-//                                 </div>
-//                             </div>
-//                             <div class="header_popup">
-//                                 <h2>Kochwelt Page & Recipe Recommender</h2>
-//                             </div>
-//                             <div class="p-element">
-//                                 <p>Build start page with recipe recommendation.</p>
-//                             </div>
-//                             <div class="due_date_popup">
-//                                 <p style="color: #42526E;">Due Date:</p>
-//                                 <p id="variable_date">05/05/2024</p>
-//                             </div>
-//                             <div class="priority_popup">
-//                                 <p style="color: #42526E;">Priority:</p>
-//                                 <p id="variable_priority">Medium <img src="/assets/img/prio-medium.svg" alt=""></p>
-//                             </div>
-//                             <div class="assigned-popup">
-//                                 <p style="color: #42526E;">Assigned To:</p>
-//                                 <div class="user_popup_container">
-//                                     <div class="initials_circle" style="background-color: turquoise;">EM</div>
-//                                     <div>Emmanuel Mauer</div>
-//                                 </div>
-//                                 <div class="user_popup_container">
-//                                     <div class="initials_circle" style="background-color: rgb(17, 36, 121);">EM</div>
-//                                     <div>Marcel Bauer</div>
-//                                 </div>
-//                                 <div class="user_popup_container">
-//                                     <div class="initials_circle" style="background-color: rgb(209, 95, 50);">EM</div>
-//                                     <div>Anton Mayer</div>
-//                                 </div>
-//                                 <p class="subtask_container" style="color: #42526E;">Subtasks</p>
-//                                 <div class="user_popup_item" onclick="toggleSubtask(this)">
-//                                     <input type="checkbox" class="subtask_checkbox">
-//                                     <div>Implement Recipe Recommendation</div>
-//                                 </div>
-//                                 <div class="user_popup_item" onclick="toggleSubtask(this)">
-//                                     <input type="checkbox" class="subtask_checkbox">
-//                                     <div>Start Page Layout</div>
-//                                 </div>
-
-//                                 <div class="edit-delete" id="edit">
-//                                     <a class="button-delete-edit" href="#" onclick="deleteTask()">
-//                                         <img class="edit-delete-img" src="/assets/img/delete_icon.svg"
-//                                             alt="Bild plus Button" />
-//                                         <div class="text-container">Delete</div>
-//                                     </a>
-
-//                                     <a class="button-delete-edit" href="#" onclick="saveAddedContact()">
-//                                         <img class="edit-delete-img" src="/assets/img/edit_icon.svg"
-//                                             alt="Bild plus Button" />
-//                                         <div class="text-container">Edit</div>
-//                                     </a>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                     </div>
-//   `;
-// }
 
 
 function openAddNewTaskPopup() {
@@ -659,14 +586,6 @@ function highlight(id) {
 function removeHighlight(id) {
   document.getElementById(id).classList.remove("drag-area-highlight");
 }
-
-// function moveTo(progressfield) {
-//     allTasks[currentDraggedElement]['progressfield'] = progressfield;
-//     // Speichern des aktualisierten Arrays im Local Storage
-//     saveTasksToLocalStorage(allTasks);
-//     // Neu laden der Seite, um den aktualisierten Task anzuzeigen
-//     location.reload();
-// }
 
 
 function findTask() {
