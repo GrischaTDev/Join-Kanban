@@ -102,10 +102,10 @@ async function initBoard() {
 // }
 
 
-function openAddNewTaskPopup(){
-  document.getElementById('add-task-popup-container').classList.remove('d-none');
-  document.getElementById('add-task-popup-container').innerHTML = '';
-  document.getElementById('add-task-popup-container').innerHTML += `
+function openAddNewTaskPopup() {
+    document.getElementById('add-task-popup-container').classList.remove('d-none');
+    document.getElementById('add-task-popup-container').innerHTML = '';
+    document.getElementById('add-task-popup-container').innerHTML += `
   <div class="addTask_popup" onclick="doNotClose(event)">
                 <div class="add-task-header-container">
                     <h1>Add Task</h1>
@@ -132,13 +132,13 @@ function openAddNewTaskPopup(){
                             <div class="add-task-title assigned-desktop">
                                 <span>Assigned to</span>
                                 <div class="assigned-input">
-                                    <input onclick="openUserList('user-select-desktop', 'selected-user-desktop')" class="input-task-select" type="text"
-                                        placeholder="Select contacts to assign">
-                                    <img onclick="openUserList('user-select-desktop')" id="input-icon" class="input-arrow"
+                                <input onclick="openUserListPopup('user-select-desktop-popup', 'selected-user-desktop-popup')" class="input-task-select" type="text" placeholder="Select contacts to assign">
+
+                                    <img onclick="openUserListPopup('user-select-desktop-popup', 'selected-user-desktop-popup')" id="input-icon-popup" class="input-arrow"
                                         src="./assets/img/arrow_drop_down_1.svg" alt="">
                                 </div>
-                                <div id="user-select-desktop" class="d-none"></div>
-                                <div id="selected-user-desktop"></div>
+                                <div id="user-select-desktop-popup" class="d-none"></div>
+                                <div id="selected-user-desktop-popup"></div>
                             </div>
         
                             <div class="add-task-title prio-mobile">
@@ -256,6 +256,41 @@ function openAddNewTaskPopup(){
         </div>
   `;
 }
+
+function openUserListPopup(userSelectPopupId, inputIconId) {
+    let userSelectPopup = document.getElementById(userSelectPopupId);
+    let inputIcon = document.getElementById(inputIconId);
+
+    userSelectPopup.innerHTML = '';
+
+    if (userSelectPopup.classList.contains('d-none')) {
+        userSelectPopup.classList.remove('d-none');
+        inputIcon.src = './assets/img/arrow_drop_down_2.svg';
+    } else {
+        userSelectPopup.classList.add('d-none');
+        inputIcon.src = './assets/img/arrow_drop_down_1.svg';
+    }
+
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        const userColor = users[i]['color'];
+
+        let initialLetters = nameInitialLettersAddTasks(user);
+
+        userSelectPopup.innerHTML += /* html */ `
+            <div id="currentUserPopup${i}" class="userColumn" onclick="addUserPopup(${i})">
+                <div class="user-name">
+                    <span class="letter-icon">${initialLetters}</span>
+                    <div>${user.name}</div>
+                </div>
+                <img id="user-checkboxPopup${i}" src="./assets/img/checkbox.svg" alt="">
+            </div>
+        `;
+        const color = document.getElementsByClassName('letter-icon');
+        color[i].style.backgroundColor = `${userColor}`;
+    }
+}
+
 
 
 function closeaddTaskPopup() {

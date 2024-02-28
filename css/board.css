@@ -559,7 +559,7 @@ span {
 }
 
 .addTask_popup {
-  height: 57%;
+  height: 78%;
     width: 67%;
     background-color: white;
     border-radius: 24px;
@@ -568,7 +568,6 @@ span {
     flex-direction: column;
     justify-content: center;
     max-width: 800px;
-
 }
 
 .add-task-header-container {
@@ -639,7 +638,7 @@ span {
   }
 
   .addTask_popup {
-    max-height: 550px;
+    max-height: 700px;
   }
 }
 
