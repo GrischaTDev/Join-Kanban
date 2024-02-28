@@ -13,22 +13,21 @@ function initSummary(allTasks) {
         allTasks = JSON.parse(tasksFromLocalStorage);
     }
 
-    let counts = {
-        todo: 0,
-        done: 0,
-        urgent: 0,
-        inProgress: 0,
-        awaitFeedback: 0,
-        allTasks: allTasks.length
-    };
+    let todo = [];
+    let done = [];
+    let urgent = [];
+    let inProgress = [];
+    let awaitFeedback = [];
+    let allTasksCount = allTasks.length;
+
     let earliestUrgentDueDate = null;
 
     allTasks.forEach(task => {
-        if (task.progressfield === 'todo_container') counts.todo++;
-        else if (task.progressfield === 'done_container') counts.done++;
+        if (task.progressfield === 'todo_container') todo.push(task);
+        else if (task.progressfield === 'done_container') done.push(task);
 
         if (task.priority.urgent) {
-            counts.urgent++;
+            urgent.push(task);
             if (task.dueDate) {
                 let dueDate = new Date(task.dueDate);
                 if (!earliestUrgentDueDate || dueDate < earliestUrgentDueDate) {
@@ -37,8 +36,8 @@ function initSummary(allTasks) {
             }
         }
 
-        if (task.progressfield === 'inprogress_container') counts.inProgress++;
-        else if (task.progressfield === 'await_feedback_container') counts.awaitFeedback++;
+        if (task.progressfield === 'inprogress_container') inProgress.push(task);
+        else if (task.progressfield === 'await_feedback_container') awaitFeedback.push(task);
     });
 
     let upcomingDeadline = earliestUrgentDueDate ? earliestUrgentDueDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : '';
@@ -70,7 +69,7 @@ function initSummary(allTasks) {
                         </g>
                     </svg>
                     <div class="number-and-name">
-                        <span>${counts.todo}</span>
+                        <span>${todo.length}</span>
                         <h5>To-do</h5>
                     </div>
                 </a>
@@ -82,7 +81,7 @@ function initSummary(allTasks) {
                         </g>
                     </svg>                                
                     <div class="number-and-name">
-                        <span>${counts.done}</span>
+                        <span>${done.length}</span>
                         <h5>Done</h5>
                     </div>
                 </a>
@@ -92,7 +91,7 @@ function initSummary(allTasks) {
                 <div class="urgent-number">
                     <img src="assets/img/urgent_icon.svg">
                     <div class="number-and-name">
-                        <span>${counts.urgent}</span>
+                        <span>${urgent.length}</span>
                         <h5>Urgent</h5>
                     </div>
                 </div>
@@ -105,15 +104,15 @@ function initSummary(allTasks) {
 
             <div class="summary-box-row-3">
                 <a href="./board.html" class="anchor-style box-row-3">
-                    <span class="number-and-name">${allTasks.length}</span>
+                    <span class="number-and-name">${allTasksCount}</span>
                     <h5>Tasks in<br> Board</h5>
                 </a>
                 <a href="./board.html" class="anchor-style box-row-3">
-                    <span class="number-and-name">${counts.inProgress}</span>
+                    <span class="number-and-name">${inProgress.length}</span>
                     <h5>Tasks in<br> Progress</h5>
                 </a>
                 <a href="./board.html" class="anchor-style box-row-3">
-                    <span class="number-and-name">${counts.awaitFeedback}</span>
+                    <span class="number-and-name">${awaitFeedback.length}</span>
                     <h5>Awaiting<br> Feedback</h5>
                 </a>
             </div>
