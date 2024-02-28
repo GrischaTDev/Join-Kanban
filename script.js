@@ -46,6 +46,7 @@ async function includeHTML() {
     }
 }
 
+
 function greatingUser() {
     let name = loggedInUser[0].name;
     let nameMobile = document.getElementById('user-greating-mobile');

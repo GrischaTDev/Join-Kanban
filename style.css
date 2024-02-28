@@ -18,6 +18,10 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+.active-menu {
+  background-color: orange;
+}
+
 .d-none {
   display: none !important; 
 }
