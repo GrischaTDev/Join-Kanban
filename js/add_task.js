@@ -127,9 +127,6 @@ let selectedUserList;
 
 
 
-// Hinzufügen des vorgegebenen Tasks zum Array, wenn kein Task vorhanden ist
-
-
 
 async function initAddTasks() {
   await includeHTML();
