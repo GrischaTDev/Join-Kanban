@@ -19,7 +19,9 @@ body {
 }
 
 .active-menu {
-  background-color: orange;
+  color: white !important;
+  background-color: #091931;
+  pointer-events: none;
 }
 
 .d-none {

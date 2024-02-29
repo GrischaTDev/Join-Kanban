@@ -5,6 +5,7 @@ loggedInUser = [];
  */
 async function init() {
     await includeHTML();
+    activeMenu();
     load();
     loadUserProfile();
     greatingUser();
@@ -46,6 +47,26 @@ async function includeHTML() {
     }
 }
 
+
+/**
+ * Function load active menu tab
+ * 
+ * @param menuItems
+ */
+function activeMenu() {
+    const menuItems = document.querySelectorAll('.menu-item');
+    const currentPath = window.location.pathname.substring(1); // Entfernt führenden Schrägstrich
+  
+    menuItems.forEach(item => {
+      const href = item.getAttribute('href');
+      if (href === currentPath) {
+        item.classList.add('active-menu');
+      } else {
+        item.classList.remove('active-menu');
+      }
+    });
+}
+  
 
 function greatingUser() {
     let name = loggedInUser[0].name;

@@ -130,6 +130,7 @@ let selectedUserList;
 
 async function initAddTasks() {
   await includeHTML();
+  activeMenu();
   load();
   loadUserProfile();
   loadUsers();

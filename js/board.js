@@ -25,6 +25,7 @@ async function initBoard() {
 
   // Führen Sie die übrigen Initialisierungsschritte durch
   await includeHTML();
+  activeMenu();
   load();
   loadUserProfile();
   showAllTasks(allTasks); // Rufen Sie showAllTasks mit dem allTasks-Array auf
