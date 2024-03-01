@@ -1,5 +1,6 @@
 /*-add-task-container-*/
 
+
 .content {
   margin: 130px 16px 30px 16px;
   height: 100vh;
@@ -9,6 +10,7 @@
   margin-top: 40px;
   box-sizing: border-box;
 }
+
 
 /*-topic*/
 
@@ -22,6 +24,7 @@
 .task-topic {
   margin-bottom: 30px;
 }
+
 
 /**********************************/
 .add-task-form {
@@ -220,7 +223,6 @@ textarea {
   overflow: scroll;
   height: 250px;
   margin-top: -5px;
-  display:none;
 }
 
 .userColumn {
@@ -250,6 +252,7 @@ textarea {
   display: flex;
   align-items: center;
   gap: 14px;
+
 }
 
 .letter-icon {
@@ -300,6 +303,7 @@ textarea {
 .input-sub-field {
   display: flex;
   justify-content: space-between;
+  
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 16px;
@@ -309,12 +313,11 @@ textarea {
   border: 1px solid rgb(209, 209, 209);
   font-size: 16px;
   background-color: white;
+  
 }
-
 .suffix {
   cursor: pointer;
 }
-
 .input-subtask {
   width: 100%;
   all: unset;
@@ -336,8 +339,8 @@ textarea {
 .todo-item {
   display: flex;
   align-items: center;
+  
 }
-
 #mylist li::before {
   content: "•";
   transform: translateY(-20%);
@@ -345,7 +348,6 @@ textarea {
   padding-left: 10px;
   margin-right: 10px;
 }
-
 #mylist li:hover {
   width: 100%;
   background-color: #f0f0f0;
@@ -356,12 +358,13 @@ textarea {
 ul {
   margin-left: -40px;
 }
-
 .edit-input{
   width: 100%;
 }
 
+
 /************** Subtask-End              ***************/
+
 
 /*************** Create-task-button      ***************/
 .button-clear {
@@ -426,6 +429,8 @@ ul {
   background-color: var(--Ligth-blue);
 }
 
+
+
 @media screen and (max-width: 900px) {
   .button-clear {
     display: none;
@@ -435,6 +440,7 @@ ul {
 /* Responsiv for laptop */
 @media screen and (min-width: 900px) {
 
+  
   .content {
     margin: 160px 0 0 310px;
     height: auto;
