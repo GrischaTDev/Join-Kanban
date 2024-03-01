@@ -119,9 +119,14 @@ let allTasks = [
   }
 ];
 
+
+
 let users = [];
 let selectedUser = [];
 let selectedUserList;
+
+
+
 
 async function initAddTasks() {
   await includeHTML();
@@ -171,7 +176,6 @@ function openUserList(userList, selectedUserContainer) {
     const color = document.getElementsByClassName('letter-icon');
     color[i].style.backgroundColor = `${userColor}`;
   }
-  console.log('openUserlist wurde ausgeführt');
 }
 
 function isUSerSelected(i) {
