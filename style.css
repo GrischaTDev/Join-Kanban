@@ -24,6 +24,11 @@ body {
   pointer-events: none;
 }
 
+.active-menu .active-svg-menu path {
+  fill: #FFF !important;
+
+}
+
 .d-none {
   display: none !important; 
 }

@@ -164,18 +164,22 @@ function openUserList(userList, selectedUserContainer) {
 
     let initialLetters = nameInitialLettersAddTasks(user);
     
-    userSelect.innerHTML += /* html */ `
-    <div id="currentUser${i}" class="userColumn" onclick="addUser(${i})">
+    userSelect.innerHTML += `
+    <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-select-active': ''}" onclick="toggleAddUser(${i})">
       <div class="user-name">
         <span class="letter-icon">${initialLetters}</span>
         <div>${user.name}</div>
       </div>
-      <img id="user-checkbox${i}" src="./assets/img/checkbox.svg" alt="">
+      <img id="user-checkbox${i}" src="${isUSerSelected(i) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
     </div>
     `;
     const color = document.getElementsByClassName('letter-icon');
     color[i].style.backgroundColor = `${userColor}`;
   }
+}
+
+function isUSerSelected(i) {
+  return selectedUser.some(su => su.id === i )
 }
 
 function nameInitialLettersAddTasks(user) {
@@ -201,7 +205,7 @@ function renderUserList() {
 }
 
 
-function addUser(i) {
+function toggleAddUser(i) {
   let userColumn = document.getElementById(`currentUser${i}`);
   let user = users[i];
   let selectedUSerIndex = selectedUser.findIndex(u => u.id === i);
@@ -431,7 +435,7 @@ function addTask() {
   document.getElementById('category').value = '';
   document.getElementById('subtask').value = '';
   document.getElementById('urgent').classList.remove('active');
-  document.getElementById('medium').classList.remove('active');
+  document.getElementById('medium').classList.add('active');
   document.getElementById('low').classList.remove('active');
   document.getElementById('dueDate').value = '';
   // Standort neu laden, falls notwendig
@@ -440,7 +444,19 @@ function addTask() {
   initSummary(allTasks);
 }
 
-
+function clearInputFields() {
+  document.getElementById('titel').value = '';
+  document.getElementById('description').value = '';
+  document.getElementById('category').value = '';
+  document.getElementById('subtask').value = '';
+  document.getElementById('urgent').classList.remove('active-urgent');
+  document.getElementById('medium').classList.add('active-medium');
+  document.getElementById('low').classList.remove('active-low');
+  document.getElementById('dueDate').value = '';
+  document.getElementById('mylist').innerHTML = '';
+  document.getElementById('selected-user').innerHTML = '';
+  selectedUser.length = 0;
+}
 
 
 

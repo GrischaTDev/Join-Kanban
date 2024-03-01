@@ -25,7 +25,6 @@
     <div w3-include-html="assets/templates/desktop_menu.html"></div>
 
     <div class="content">
-
         <div class="header-container">
             <h1>Add Task</h1>
         </div>
@@ -92,7 +91,6 @@
                         </select>
                     </div>
 
-                    
                     <div>
                         <span class="subtask-container">Subtask</span>
                         <div class="input-sub-field">
@@ -111,28 +109,22 @@
                         </div>
                         <ul id="mylist"></ul>
                     </div>
-
                 </div>
             </div>
+
             <div class="create-task-container">
                 <span>
                     <span class="red-asterisk">*</span>This field is required
                 </span>
                 <div class="form-button">
-                    <button href="#" class="button-clear">Clear <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <mask id="mask0_71720_5848" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4"
-                                width="24" height="24">
-                                <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
-                            </mask>
-                            <g mask="url(#mask0_71720_5848)">
-                                <path
-                                    d="M15.9998 17.4L11.0998 22.3C10.9165 22.4834 10.6831 22.575 10.3998 22.575C10.1165 22.575 9.88314 22.4834 9.6998 22.3C9.51647 22.1167 9.4248 21.8834 9.4248 21.6C9.4248 21.3167 9.51647 21.0834 9.6998 20.9L14.5998 16L9.6998 11.1C9.51647 10.9167 9.4248 10.6834 9.4248 10.4C9.4248 10.1167 9.51647 9.88338 9.6998 9.70005C9.88314 9.51672 10.1165 9.42505 10.3998 9.42505C10.6831 9.42505 10.9165 9.51672 11.0998 9.70005L15.9998 14.6L20.8998 9.70005C21.0831 9.51672 21.3165 9.42505 21.5998 9.42505C21.8831 9.42505 22.1165 9.51672 22.2998 9.70005C22.4831 9.88338 22.5748 10.1167 22.5748 10.4C22.5748 10.6834 22.4831 10.9167 22.2998 11.1L17.3998 16L22.2998 20.9C22.4831 21.0834 22.5748 21.3167 22.5748 21.6C22.5748 21.8834 22.4831 22.1167 22.2998 22.3C22.1165 22.4834 21.8831 22.575 21.5998 22.575C21.3165 22.575 21.0831 22.4834 20.8998 22.3L15.9998 17.4Z"
-                                    fill="white" />
-                            </g>
-                        </svg>
+                    <div class="button-clear" onclick="clearInputFields()">
+                        <span>Clear</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none"><mask id="a" width="24" height="24" x="4" y="4" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#D9D9D9" d="M4 4h24v24H4z"/></mask><g mask="url(#a)"><path fill="#fff" d="m16 17.4-4.9 4.9a.948.948 0 0 1-.7.275.948.948 0 0 1-.7-.275.948.948 0 0 1-.275-.7c0-.283.091-.517.275-.7l4.9-4.9-4.9-4.9a.948.948 0 0 1-.275-.7c0-.283.091-.517.275-.7a.948.948 0 0 1 .7-.275c.283 0 .516.092.7.275l4.9 4.9 4.9-4.9a.948.948 0 0 1 .7-.275c.283 0 .516.092.7.275a.948.948 0 0 1 .275.7.948.948 0 0 1-.275.7L17.4 16l4.9 4.9a.949.949 0 0 1 .275.7.948.948 0 0 1-.275.7.948.948 0 0 1-.7.275.948.948 0 0 1-.7-.275L16 17.4Z"/></g></svg>
+                    </div>
+                    <button class="button-create">
+                        <span>Create Task</span> 
+                        <img src="/assets/img/check.svg" alt="">
                     </button>
-                    <button class="button-create">Create Task <img src="/assets/img/check.svg" alt=""></button>
                 </div>
             </div>
         </form>
