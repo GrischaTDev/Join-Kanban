@@ -3,6 +3,7 @@ loggedInUser = [];
 
 async function initContats() {
     await includeHTML();
+    loadContactList();
     activeMenu();
     load();
     loadUserProfile();

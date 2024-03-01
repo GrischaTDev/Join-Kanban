@@ -2,9 +2,13 @@ loggedInUser = [];
 
 let currentDraggedElement;
 
-  
-
 async function initBoard() {
+    await includeHTML();
+  loadAllTasks();
+  activeMenu();
+  load();
+  loadUserProfile();
+  showAllTasks(allTasks);
   // Überprüfen, ob der Local Storage leer ist
   if (!localStorage.getItem("allTasks")) {
     // Wenn der Local Storage leer ist, speichern Sie die Aufgaben aus dem Array
@@ -15,14 +19,6 @@ async function initBoard() {
     // Aktualisieren Sie das Array im Local Storage, um sicherzustellen, dass es immer synchronisiert ist
     saveTasksToLocalStorage(allTasks);
   }
-
-  // Führen Sie die übrigen Initialisierungsschritte durch
-  await includeHTML();
-  loadAllTasks();
-  activeMenu();
-  load();
-  loadUserProfile();
-  showAllTasks(allTasks); // Rufen Sie showAllTasks mit dem allTasks-Array auf
 }
 
 
