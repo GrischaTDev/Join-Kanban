@@ -205,6 +205,17 @@ textarea {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  overflow: scroll;
+  height: 250px;
+  margin-top: -5px;
+}
+
+#user-select {
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
   gap: 5px;
   overflow: scroll;
   height: 250px;
@@ -225,13 +236,13 @@ textarea {
   border-radius: 6px;
 }
 
-.user-list-active {
+.user-select-active {
   color: white;
   background-color: #2a3647;
   border-radius: 6px;
 }
 
-.user-list-active:hover {
+.user-select-active:hover {
   background-color: #161e29;
 }
 
