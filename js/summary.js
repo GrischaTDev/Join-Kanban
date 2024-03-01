@@ -1,6 +1,11 @@
-function initSummary() {
-    init();
-    loadAllTasks();
+window.onload = function() {
+    loadAllTasks(); // Laden aller Tasks aus dem Local Storage
+    initSummary(allTasks); // Initialisieren der Zusammenfassung basierend auf dem geladenen allTasks-Array
+    // Weitere Initialisierungen oder Aktionen nach dem Laden der Seite können hier durchgeführt werden
+};
+
+
+function initSummary(allTasks) {
     let tasksFromLocalStorage = localStorage.getItem("allTasks");
     if (!tasksFromLocalStorage) {
         saveTasksToLocalStorage(allTasks);
