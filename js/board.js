@@ -2,13 +2,6 @@ loggedInUser = [];
 
 let currentDraggedElement;
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Hier kannst du die Funktionen aufrufen, die nach dem Laden des DOM ausgeführt werden sollen
-    loadAllTasks(); // Aufruf der Funktion zum Laden der Aufgaben aus dem Local Storage
-    
-    // Aufruf der Funktion openUserList mit den entsprechenden Parametern
-    openUserList('user-select', 'selected-user');
-  });
   
 
 async function initBoard() {
@@ -25,6 +18,7 @@ async function initBoard() {
 
   // Führen Sie die übrigen Initialisierungsschritte durch
   await includeHTML();
+  loadAllTasks();
   activeMenu();
   load();
   loadUserProfile();
@@ -34,7 +28,7 @@ async function initBoard() {
 
 
 
-function openAddNewTaskPopup(userSelectId, selectedUserId) {
+function openAddNewTaskPopup(userListId, selectedUserId) {
     document.getElementById('add-task-popup-container').classList.remove('d-none');
     document.getElementById('add-task-popup-container').innerHTML = '';
     document.getElementById('add-task-popup-container').innerHTML += `
@@ -62,9 +56,9 @@ function openAddNewTaskPopup(userSelectId, selectedUserId) {
                 <div class="add-task-title">
                     <span>Assigned to</span>
                     <div class="assigned-input">
-                        <input onclick="openUserList('${userSelectId}', '${selectedUserId}')" class="input-task-select" type="text"
+                        <input onclick="openUserList('${userListId}', '${selectedUserId}')" class="input-task-select" type="text"
                             placeholder="Select contacts to assign">
-                        <img onclick="openUserList('${userSelectId}', '${selectedUserId}')" id="input-icon" class="input-arrow"
+                        <img onclick="openUserList('${userListId}', '${selectedUserId}')" id="input-icon" class="input-arrow"
                             src="./assets/img/arrow_drop_down_1.svg" alt="">
                     </div>
                     <div id="user-select" class="d-none"></div>
@@ -158,17 +152,17 @@ function openAddNewTaskPopup(userSelectId, selectedUserId) {
 
 
 
-// function openUserListPopup(userSelectPopupId, inputIconId) {
-//     let userSelectPopup = document.getElementById(userSelectPopupId);
+// function openUserListPopup(userListPopupId, inputIconId) {
+//     let userListPopup = document.getElementById(userListPopupId);
 //     let inputIcon = document.getElementById(inputIconId);
 
-//     userSelectPopup.innerHTML = '';
+//     userListPopup.innerHTML = '';
 
-//     if (userSelectPopup.classList.contains('d-none')) {
-//         userSelectPopup.classList.remove('d-none');
+//     if (userListPopup.classList.contains('d-none')) {
+//         userListPopup.classList.remove('d-none');
 //         inputIcon.src = './assets/img/arrow_drop_down_2.svg';
 //     } else {
-//         userSelectPopup.classList.add('d-none');
+//         userListPopup.classList.add('d-none');
 //         inputIcon.src = './assets/img/arrow_drop_down_1.svg';
 //     }
 
@@ -178,7 +172,7 @@ function openAddNewTaskPopup(userSelectId, selectedUserId) {
 
 //         let initialLetters = nameInitialLettersAddTasks(user);
 
-//         userSelectPopup.innerHTML += /* html */ `
+//         userListPopup.innerHTML += /* html */ `
 //             <div id="currentUserPopup${i}" class="userColumn" onclick="addUserPopup(${i})">
 //                 <div class="user-name">
 //                     <span class="letter-icon">${initialLetters}</span>
@@ -212,7 +206,7 @@ function showPopup(taskId) {
         : "";
 
     // Benutzerinitialen und Hintergrundfarben anzeigen
-    let userNamesHTML = task.userSelect.map(user => `
+    let userNamesHTML = task.userList.map(user => `
         <div class="user-details">
             <div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
             <div class="user-full-name">${user.fname} ${user.lname}</div>
@@ -351,7 +345,7 @@ function showAllTasks(allTasks) {
       let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
       let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
 
-      let userInitialsHTML = task.userSelect.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
+      let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
 
       let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
       let totalSubtasks = task.subtask ? task.subtask.length : 0;
@@ -395,7 +389,7 @@ for (let i = 0; i < inprogress_container.length; i++) {
     let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
     let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
 
-    let userInitialsHTML = task.userSelect.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
+    let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
 
     let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
     let totalSubtasks = task.subtask ? task.subtask.length : 0;
@@ -439,7 +433,7 @@ for (let i = 0; i < await_feedback_container.length; i++) {
     let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
     let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
 
-    let userInitialsHTML = task.userSelect.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
+    let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
 
     let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
     let totalSubtasks = task.subtask ? task.subtask.length : 0;
@@ -483,7 +477,7 @@ for (let i = 0; i < done_container.length; i++) {
     let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
     let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
 
-    let userInitialsHTML = task.userSelect.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
+    let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
 
     let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
     let totalSubtasks = task.subtask ? task.subtask.length : 0;
