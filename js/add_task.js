@@ -14,7 +14,7 @@ let allTasks = [
       { "name": "other stuff", "status": false }
     ],
     "titel": "Kochwelt Page & Recipe Recommender",
-    "userSelect": [{
+    "userList": [{
       "fname": "Klaus",
       "lname": "Kruse",
       "backgroundcolor": "#FF5733"
@@ -40,7 +40,7 @@ let allTasks = [
       { "name": "go ahead", "status": true }
     ],
     "titel": "HTML Base Template Creation",
-    "userSelect": [{
+    "userList": [{
       "fname": "Frank",
       "lname": "Bülling",
       "backgroundcolor": "#FFDA33"
@@ -71,7 +71,7 @@ let allTasks = [
       { "name": "have fun", "status": false }
     ],
     "titel": "Contact Form & Imprint",
-    "userSelect": [{
+    "userList": [{
       "fname": "Stefan",
       "lname": "Dietz",
       "backgroundcolor": "#33FF7A"
@@ -102,7 +102,7 @@ let allTasks = [
       { "name": "have fun", "status": true }
     ],
     "titel": "Define Architecture Planning",
-    "userSelect": [{
+    "userList": [{
       "fname": "Waldemar",
       "lname": "Günther",
       "backgroundcolor": "#B833FF"
@@ -119,9 +119,11 @@ let allTasks = [
   }
 ];
 
+
 let users = [];
 let selectedUser = [];
 let selectedUserList;
+
 
 async function initAddTasks() {
   await includeHTML();
@@ -140,16 +142,50 @@ async function loadUsers() {
   }
 }
 
-function openUserList(userList, selectedUserContainer) {
-  selectedUserList = selectedUserContainer;
-  let userSelect = document.getElementById(userList);
+function filterUser() {
+  let search = document.getElementById('search-user').value;
+  search = search.toLowerCase();
+
+  selectedUserList = document.getElementById('selected-user');;
+  let userList = document.getElementById('user-list');
+  userList.innerHTML = '';
+  if (userList.classList.contains('d-none')) {
+    userList.classList.remove('d-none');
+  }
+
+  for (let i = 0; i < users.length; i++) {
+    const user = users[i];
+    const userColor = users[i]['color'];
+    let initialLetters = nameInitialLettersAddTasks(user);
+    
+    if (user.name.toLowerCase().includes(search)) {
+      userList.innerHTML += `
+      <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active': ''}" onclick="toggleAddUser(${i})">
+        <div class="user-name">
+          <span class="letter-icon">${initialLetters}</span>
+          <div>${user.name}</div>
+        </div>
+        <img id="user-checkbox${i}" src="${isUSerSelected(i) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
+      </div>
+      `;
+      const color = document.getElementsByClassName('letter-icon');
+      color[i].style.backgroundColor = `${userColor}`;
+    }
+  }
+
+  console.log('Bin da!', search);
+}
+
+function openUserList() {
+  selectedUserList = document.getElementById('selected-user');;
+  let userList = document.getElementById('user-list');
   let inputIcon = document.getElementById('input-icon');
-  userSelect.innerHTML = '';
-  if (userSelect.classList.contains('d-none')) {
-    userSelect.classList.remove('d-none');
+  userList.innerHTML = '';
+  if (userList.classList.contains('d-none')) {
+    userList.classList.remove('d-none');
     inputIcon.src = './assets/img/arrow_drop_down_2.svg';
   } else {
-    userSelect.classList.add('d-none');
+    userList.classList.add('d-none');
     inputIcon.src = './assets/img/arrow_drop_down_1.svg';
   }
 
@@ -159,8 +195,8 @@ function openUserList(userList, selectedUserContainer) {
 
     let initialLetters = nameInitialLettersAddTasks(user);
     
-    userSelect.innerHTML += `
-    <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-select-active': ''}" onclick="toggleAddUser(${i})">
+    userList.innerHTML += `
+    <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active': ''}" onclick="toggleAddUser(${i})">
       <div class="user-name">
         <span class="letter-icon">${initialLetters}</span>
         <div>${user.name}</div>
@@ -187,14 +223,13 @@ function nameInitialLettersAddTasks(user) {
 
 
 function renderUserList() {
-  let selectedUserContainer = document.getElementById(selectedUserList);
-  selectedUserContainer.innerHTML = '';
+  selectedUserList.innerHTML = '';
 
   selectedUser.forEach(user => {
     let initialLetters = nameInitialLettersAddTasks(user);
     const userColor = user['color'];
 
-    selectedUserContainer.innerHTML += /* html */ `
+    selectedUserList.innerHTML += /* html */ `
       <div class="user-icon" style="background-color: ${userColor};">${initialLetters}</div>
     `;
   });
@@ -207,11 +242,11 @@ function toggleAddUser(i) {
   let selectedUSerIndex = selectedUser.findIndex(u => u.id === i);
   let checkBoxUser = document.getElementById(`user-checkbox${i}`);
   if (selectedUSerIndex === -1) {
-    userColumn.classList.add('user-select-active');
+    userColumn.classList.add('user-list-active');
     selectedUser.push(user)
     checkBoxUser.src = './assets/img/checkbox_active_white.svg';
   } else {
-    userColumn.classList.remove('user-select-active');
+    userColumn.classList.remove('user-list-active');
     selectedUser.splice(selectedUSerIndex, 1);
     checkBoxUser.src = './assets/img/checkbox.svg';
   }
@@ -280,7 +315,7 @@ function loadAllTasks() {
 //   let description = document.getElementById('description').value;
 //   let category = document.getElementById('category').value;
 //   let dueDate = document.getElementById('dueDate').value;
-//   let userSelect = selectedUser.map(user => user.name);
+//   let userList = selectedUser.map(user => user.name);
 //   let subtask = document.getElementById('subtask').value;
 //   let urgent = document.getElementById('urgent').classList.contains('active');
 //   let medium = document.getElementById('medium').classList.contains('active');
@@ -291,7 +326,7 @@ function loadAllTasks() {
 //     description: description,
 //     dueDate: dueDate,
 //     category: category,
-//     userSelect: userSelect,
+//     userList: userList,
 //     subtask: subtask,
 //     priority: {
 //       urgent: urgent,
@@ -322,7 +357,7 @@ function saveTasksToLocalStorage(tasks) {
 //   let titel = document.getElementById('titel').value;
 //   let description = document.getElementById('description').value;
 //   let category = document.getElementById('category').value;
-//   let userSelect = document.getElementById('user-select').innerText.trim();
+//   let userList = document.getElementById('user-list').innerText.trim();
 //   let subtask = document.getElementById('subtask').value;
 //   let urgent = document.getElementById('urgent').classList.contains('active');
 //   let medium = document.getElementById('medium').classList.contains('active');
@@ -339,7 +374,7 @@ function saveTasksToLocalStorage(tasks) {
 //     description: description,
 //     dueDate: dueDate,
 //     category: category,
-//     userSelect: userSelect,
+//     userList: userList,
 //     subtask: subtask,
 //     priority: {
 //       urgent: urgent,
@@ -360,7 +395,7 @@ function saveTasksToLocalStorage(tasks) {
 //   document.getElementById('titel').value = '';
 //   document.getElementById('description').value = '';
 //   document.getElementById('category').value = '';
-//   document.getElementById('user-select').innerText = '';
+//   document.getElementById('user-list').innerText = '';
 //   document.getElementById('subtask').value = '';
 //   document.getElementById('urgent').classList.remove('active');
 //   document.getElementById('medium').classList.remove('active');
@@ -389,7 +424,7 @@ function addTask() {
 
   // Erhalten des ausgewählten Benutzers aus dem selectedUser-Array
   // Annahme: Dies ist dein ausgewählter Benutzer-Array
-  let userSelectData = selectedUser.map(user => ({
+  let userListData = selectedUser.map(user => ({
     fname: user.name.split(' ')[0], // Extrahieren des Vornamens aus dem Namen des Benutzers
     lname: user.name.split(' ')[1], // Extrahieren des Nachnamens aus dem Namen des Benutzers
     backgroundcolor: user.color // Verwendung der Hintergrundfarbe des Benutzers
@@ -406,7 +441,7 @@ function addTask() {
     description: description,
     dueDate: dueDate,
     category: category,
-    userSelect: userSelectData, // Hinzufügen der ausgewählten Benutzerdaten
+    userList: userListData, // Hinzufügen der ausgewählten Benutzerdaten
     subtask: subtasks, // Hinzufügen der Todos als Subtasks
     priority: {
       urgent: urgent,
@@ -478,7 +513,7 @@ function showTaskOnPage(task) {
 //   let titel = document.getElementById('titel').value;
 //   let description = document.getElementById('description').value;
 //   let category = document.getElementById('category').value;
-//   let userSelect = selectedUser; // Benutzer aus der Auswahl
+//   let userList = selectedUser; // Benutzer aus der Auswahl
 //   let subtasks = document.getElementById('subtask').value.split(',').map(todo => ({ todo: todo.trim() })); // Subtasks aus Textfeld
 
 //   // Priorität aus den Klassen der Buttons erhalten
@@ -496,7 +531,7 @@ function showTaskOnPage(task) {
 //     description: description,
 //     dueDate: dueDate,
 //     category: category,
-//     userSelect: userSelect,
+//     userList: userList,
 //     subtask: subtasks,
 //     priority: {
 //       urgent: urgent,
@@ -519,7 +554,7 @@ function showTaskOnPage(task) {
 //   document.getElementById('titel').value = '';
 //   document.getElementById('description').value = '';
 //   document.getElementById('category').value = '';
-//   document.getElementById('user-select').innerText = '';
+//   document.getElementById('user-list').innerText = '';
 //   document.getElementById('subtask').value = '';
 //   document.getElementById('urgent').classList.remove('active');
 //   document.getElementById('medium').classList.remove('active');
