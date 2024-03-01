@@ -207,6 +207,7 @@ function openUserList() {
     const color = document.getElementsByClassName('letter-icon');
     color[i].style.backgroundColor = `${userColor}`;
   }
+  console.log('openUserlist wurde ausgeführt');
 }
 
 function isUSerSelected(i) {
