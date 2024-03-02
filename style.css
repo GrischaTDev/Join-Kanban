@@ -96,6 +96,10 @@ h6 {
   cursor: pointer;
 }
 
+.text-color-blue {
+  color: var(--Ligth-blue);
+}
+
 .text-container {
   margin-top: 30px;
   margin-bottom: 80px;
@@ -165,5 +169,6 @@ border-color: rgb(168,168,168, 0.5);*/
 
   .text-container {
     margin: 160px 60px 0 310px;
+    max-width: 1600px;
   }
 }
