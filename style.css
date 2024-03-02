@@ -96,8 +96,9 @@ h6 {
   cursor: pointer;
 }
 
-.text_templates {
+.text-container {
   margin-top: 30px;
+  margin-bottom: 80px;
   padding: 16px;
 }
 
@@ -162,7 +163,7 @@ border-color: rgb(168,168,168, 0.5);*/
     padding-right: 308px;
   }
 
-  .text_templates {
+  .text-container {
     margin: 160px 60px 0 310px;
   }
 }

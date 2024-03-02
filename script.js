@@ -11,6 +11,13 @@ async function init() {
     greatingUser();
 }
 
+async function initHelp() {
+    await includeHTML();
+    activeMenu();
+    load();
+    loadUserProfile();
+}
+
 /**
  * Load localStorage loggedInUser.
  */
@@ -92,40 +99,19 @@ function nameInitialLetters(userName) {
 
 
 
-
-// function openLegalNotice() {
-//     window.location.href = "help.html?content=legal_notice";
-// }
-
-// function openPrivacyPolicy() {
-//     window.location.href = "help.html?content=privacy_policy";
-// }
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     const urlParams = new URLSearchParams(window.location.search);
-//     const content = urlParams.get('content');
-
-//     if (content === 'legal_notice') {
-//         renderLegalNotice();
-//     } else if (content === 'privacy_policy') {
-//         renderPrivacyPolicy();
-//     }
-// });
-
-
 function openLegalNoticeSidebar() {
     document.getElementById('legal_notice_sidebar_screen').classList.remove('d-none');
-    document.getElementById('legal_notice_sidebar').classList.add('move-from-right-to-screen');
+    document.getElementById('user-profile-menu').classList.add('move-from-right-to-screen');
 }
 
 function moveLegalNoticeSidebarFromScreenToRight() {
-    document.getElementById('legal_notice_sidebar').classList.add('move-from-screen-to-right');
+    document.getElementById('user-profile-menu').classList.add('move-from-screen-to-right');
     document.getElementById('legal_notice_sidebar_screen').classList.remove('d-none');
     setTimeout(closeLegalNoticeSidebar, 500);
 }
 
 function closeLegalNoticeSidebar() {
-    document.getElementById('legal_notice_sidebar').classList.remove('move-from-screen-to-right');
+    document.getElementById('user-profile-menu').classList.remove('move-from-screen-to-right');
     document.getElementById('legal_notice_sidebar_screen').classList.add('d-none');
 }
 

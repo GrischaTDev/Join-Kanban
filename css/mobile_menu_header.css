@@ -82,16 +82,18 @@ menu {
     left: 0;
 }
 
-.legal_notice_sidebar {
+.user-profile-menu {
     padding: 10px;
     background-color: #2A3647;
     border-radius: 20px 0px 20px 20px;
     position: fixed;
     right: 9px;
-    top: 84px;
+    top: 86px;
+    display: flex;
+    flex-direction: column;
 }
 
-.legal_notice_sidebar a {
+.user-profile-menu a {
     text-decoration: none;
 }
 
@@ -103,7 +105,7 @@ menu {
     animation: move-from-screen-to-right 250ms ease forwards;
 }
 
-.legal_notice_button {
+.user-profile-menu-button {
     padding: 10px;
     color: rgb(205, 205, 205);
     cursor: pointer;
@@ -173,8 +175,13 @@ menu {
         height: 40px;
     }
 
-    .legal_notice_sidebar {
-        top: 96px;
+    .user-profile-menu {
+        top: 103px;
+    }
+
+    .user-profile-menu a:hover {
+        border-radius: 6px;
+        background-color: #2A3D59;
     }
 
 }
