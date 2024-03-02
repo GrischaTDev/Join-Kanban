@@ -193,7 +193,7 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #1FD7C1;
+  background: #1fd7c1;
   border-radius: 8px;
 }
 
@@ -284,7 +284,6 @@ span {
   flex-direction: column;
 }
 
-
 .initials-circle {
   font-family: "Inter", sans-serif;
   font-size: 12px;
@@ -330,16 +329,14 @@ span {
 }
 
 .user-details {
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 /*-card-section-END*/
 /*-popup-*/
-
 
 @keyframes moveFromRightToScreen {
   from {
@@ -399,8 +396,7 @@ span {
   align-items: center;
   height: 18px;
   width: 128px;
-  background-color: #1FD7C1;
-  ;
+  background-color: #1fd7c1;
   color: white;
   padding: 4px;
 }
@@ -769,8 +765,6 @@ span {
     width: 300px;
     height: 48px;
   }
-
- 
 }
 
 /*end of desktop*/

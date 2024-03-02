@@ -190,16 +190,16 @@ function closeaddTaskPopup() {
 
 // Update the showPopup function to include an onchange event listener for the checkboxes
 function showPopup(taskId) {
-    let task = findTaskById(taskId);
-    let urgentSymbolHTML = task.priority.urgent
-        ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">`
-        : "";
-    let mediumSymbolHTML = task.priority.medium
-        ? `<img src="/assets/img/prio-medium.svg" alt="Medium">`
-        : "";
-    let lowSymbolHTML = task.priority.low
-        ? `<img src="/assets/img/prio-low.svg" alt="Low">`
-        : "";
+  let task = findTaskById(taskId);
+  let urgentSymbolHTML = task.priority.urgent
+      ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">`
+      : "";
+  let mediumSymbolHTML = task.priority.medium
+      ? `<img src="/assets/img/prio-medium.svg" alt="Medium">`
+      : "";
+  let lowSymbolHTML = task.priority.low
+      ? `<img src="/assets/img/prio-low.svg" alt="Low">`
+      : "";
 
     // Benutzerinitialen und Hintergrundfarben anzeigen
     let userNamesHTML = task.userList.map(user => `
@@ -208,13 +208,13 @@ function showPopup(taskId) {
             <div class="user-full-name">${user.fname} ${user.lname}</div>
         </div>`).join('');
 
-    // Subtasks anzeigen
-    let subtasksHTML = task.subtask ? task.subtask.map(subtask => `
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="subtask_${subtask.name}" ${subtask.status ? 'checked' : ''} onchange="updateSubtaskStatus(${taskId}, '${subtask.name}', this.checked)">
-            <label class="form-check-label" for="subtask_${subtask.name}">${subtask.name}</label>
-        </div>
-    `).join('') : '';
+  // Subtasks anzeigen
+  let subtasksHTML = task.subtask ? task.subtask.map(subtask => `
+  <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="subtask_${subtask.name}" ${subtask.status ? 'checked' : ''} onchange="updateSubtaskStatus(${taskId}, '${subtask.name}', this.checked)">
+      <label class="form-check-label" for="subtask_${subtask.name}">${subtask.name}</label>
+  </div>
+`).join('') : '';
 
     document.getElementById("incomePopup").classList.remove("d-none");
     document.getElementById("incomePopup").innerHTML = `
@@ -274,21 +274,143 @@ function showPopup(taskId) {
 }
 
 
-function updateSubtaskStatus(taskId, subtaskName, status) {
-    // Find the task by ID
-    let task = findTaskById(taskId);
-    if (task) {
-        // Find the subtask by name
-        let subtask = task.subtask.find(sub => sub.name === subtaskName);
-        if (subtask) {
-            // Update the subtask status
-            subtask.status = status;
 
-            // Update the task progress based on the subtasks
-            let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
-            let totalSubtasks = task.subtask ? task.subtask.length : 0;
-            let progressPercentage = Math.round((completedSubtasks / totalSubtasks) * 100);
-            task.progress = progressPercentage;
+function editTask() {
+  
+
+  let additionalInputsHTML = `
+  <form class="form-width" onsubmit="addTask()">
+  <div class="add-task-form" >
+          <div class="add-task-title">
+              <span>Title<span class="red-asterisk"></span></span>
+              <input  type="text"  required placeholder="Enter a title" id="titel">
+          </div>
+
+          <div class="add-task-title">
+              <span>Description</span>
+              <textarea  type="text" required minlength="5" placeholder="Enter a description"
+                  id="description"></textarea>
+          </div>
+          <div class="add-task-title prio-mobile">
+              <span>Prio</span>
+              <div class="priority-buttons">
+                  <button  type="button" class="priority-button" id="urgent" onclick="togglePriority('urgent')">
+                      Urgent
+                      <img src="/assets/img/prio-urgent.svg" alt="Urgent Image">
+                  </button>
+                  <button  type="button" class="priority-button active" id="medium" onclick="togglePriority('medium')">
+                      Medium
+                      <img src="/assets/img/prio-medium.svg" alt="Medium Image">
+                  </button>
+                  <button  type="button" class="priority-button" id="low" onclick="togglePriority('low')">
+                      Low
+                      <img src="/assets/img/prio-low.svg" alt="Low Image">
+                  </button>  
+              </div>
+          </div>
+    
+          <div class="add-task-title">
+              <span>Due a date<span class="red-asterisk"></span></span>
+              <input class="input-task-date" type="date" id="dueDate" required>
+          </div>
+
+          <div class="add-task-title">
+              <span>Category<span class="red-asterisk"></span></span>
+              <select class="input-task-select" id="category" aria-placeholder="Select task category">
+                  <option value="" disabled selected>Select a Category</option>
+                  <option value="technical-task">Technical Task</option>
+                  <option value="user-story">User Story</option>
+              </select>
+          </div>
+          <div class="add-task-title assigned-mobile">
+              <span>Assigned to</span>
+              <div class="assigned-input">
+                  <input onclick="openUserList('user-select-mobile', 'selected-user-mobile')" class="input-task-select" type="text"
+                      placeholder="Select contacts to assign">
+                  <img onclick="openUserList('user-select-mobile')" id="input-icon" class="input-arrow"
+                      src="./assets/img/arrow_drop_down_1.svg" alt="">
+              </div>
+              <div id="user-select-mobile" class="d-none"></div>
+              <div id="selected-user-mobile"></div>
+          </div>
+          <div>
+              <span class="subtask-container">Subtask</span>
+              <div class="input-sub-field">
+                  <input class="input-subtask" id="subtask" />
+                  <div onclick="addTodo();" id="addButton"><span class="suffix"><i><svg width="12" height="12"
+                      viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g id="Capa 1">
+                          <g id="Group 11">
+                              <path id="Vector 13" d="M11 1V21" stroke="black" stroke-width="2"
+                                  stroke-linecap="round" />
+                              <path id="Vector 14" d="M21 11L1.00048 11.138" stroke="black"
+                                  stroke-width="2" stroke-linecap="round" />
+                          </g>
+                      </g>
+                  </svg></i></span></div>
+              </div>
+              <ul id="mylist"></ul>
+            </div>
+            <div class="ok-button">
+            <button class="button-create">OK<img src="/assets/img/check.svg" alt=""></button>
+            </div>
+          <div
+    </div>
+      
+  </div>
+  <div class="form-button">
+      
+ 
+</div>
+</form>
+  `;
+
+  let incomePopup = document.getElementById("incomePopup");
+
+  incomePopup.innerHTML = additionalInputsHTML;
+
+  incomePopup.classList.remove("d-none");
+
+  incomePopup.addEventListener('mousedown', function(event) {
+    event.stopPropagation(); 
+  });
+
+  let addTaskForm = document.querySelector('.add-task-form');
+  addTaskForm.addEventListener('click', function(event) {
+    event.stopPropagation(); 
+  });
+}
+
+
+
+
+function saveEditedTask() {
+  // Get the edited task name from input field
+  let editedTaskName = document.getElementById("editInput").value;
+  // Further actions to save the edited task
+}
+
+
+
+
+
+
+
+
+
+
+function updateSubtaskStatus(taskId, subtaskName, status) {
+  // Find the task by ID
+  let task = findTaskById(taskId);
+  if (task) {
+      let subtask = task.subtask.find(sub => sub.name === subtaskName);
+      if (subtask && subtask.status !== status) { 
+          // Update the subtask status
+          subtask.status = status;
+          let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
+          let totalSubtasks = task.subtask ? task.subtask.length : 0;
+          let progressPercentage = Math.round((completedSubtasks / totalSubtasks) * 100);
+          task.progress = progressPercentage;
 
             // Save the updated task object to local storage
             saveTasksToLocalStorage(allTasks);
@@ -297,8 +419,6 @@ function updateSubtaskStatus(taskId, subtaskName, status) {
         }
     }
 }
-
-  
 
 
 function findTaskById(taskId) {

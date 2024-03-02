@@ -290,33 +290,6 @@ function loadAddTaskUser() {
  * alles in Json und array speichern und umwandeln
  */
 
-// function loadAllTasks() {
-//   let allTasksAsString = localStorage.getItem("allTask");
-//   if (allTasksAsString) {
-//     allTasks = JSON.parse(allTasksAsString);
-//   }
-// }
-
-
-//alte version
-// function loadAllTasks() {
-//   let allTasksAsString = localStorage.getItem("allTask");
-//   if (allTasksAsString) {
-//       let allTasks = JSON.parse(allTasksAsString);
-//       showAllTasks(allTasks);
-//   }
-// }
-
-// function loadAllTasks() {
-//   let allTasksAsString = localStorage.getItem("allTasks");
-//   if (allTasksAsString) {
-//       let allTasks = JSON.parse(allTasksAsString);
-//       showAllTasks(allTasks);
-
-//       // Initialisieren der Zusammenfassung nach dem Laden aller Tasks
-//       initSummary(allTasks);
-//   }
-// }
 
 function loadAllTasks() {
   let allTasksAsString = localStorage.getItem("allTasks");
@@ -327,104 +300,12 @@ function loadAllTasks() {
 
 
 
-// function addTask() {
-//   let titel = document.getElementById('titel').value;
-//   let description = document.getElementById('description').value;
-//   let category = document.getElementById('category').value;
-//   let dueDate = document.getElementById('dueDate').value;
-//   let userList = selectedUser.map(user => user.name);
-//   let subtask = document.getElementById('subtask').value;
-//   let urgent = document.getElementById('urgent').classList.contains('active');
-//   let medium = document.getElementById('medium').classList.contains('active');
-//   let low = document.getElementById('low').classList.contains('active');
-
-//   let task = {
-//     titel: titel,
-//     description: description,
-//     dueDate: dueDate,
-//     category: category,
-//     userList: userList,
-//     subtask: subtask,
-//     priority: {
-//       urgent: urgent,
-//       medium: medium,
-//       low: low,
-//     },
-//   };
-
-//   allTasks.push(task);
-
-//   let allTasksAsString = JSON.stringify(allTasks);
-//   localStorage.setItem("allTask", allTasksAsString);
-//   init();
-// }
-
-//alte version
-// function saveTasksToLocalStorage(tasks) {
-//   localStorage.setItem("allTask", JSON.stringify(tasks));
-// }
 
 
 function saveTasksToLocalStorage(tasks) {
   localStorage.setItem("allTasks", JSON.stringify(tasks));
 }
-//alte Version
-// function addTask() {
-//   // Erfassen der Eingabedaten
-//   let titel = document.getElementById('titel').value;
-//   let description = document.getElementById('description').value;
-//   let category = document.getElementById('category').value;
-//   let userList = document.getElementById('user-list').innerText.trim();
-//   let subtask = document.getElementById('subtask').value;
-//   let urgent = document.getElementById('urgent').classList.contains('active');
-//   let medium = document.getElementById('medium').classList.contains('active');
-//   let low = document.getElementById('low').classList.contains('active');
-//   let dueDate = document.getElementById('dueDate').value;
 
-//   // Laden der vorhandenen Tasks aus dem Local Storage oder Initialisieren mit einem leeren Array
-//   let allTasks = JSON.parse(localStorage.getItem("allTask")) || [];
-
-//   // Erstellen des Task-Objekts mit progressfield: "todo_container" und Subtasks
-//   let task = {
-//     id: allTasks.length > 0 ? allTasks[allTasks.length - 1].id + 1 : 0, // Setzen der ID
-//     titel: titel,
-//     description: description,
-//     dueDate: dueDate,
-//     category: category,
-//     userList: userList,
-//     subtask: subtask,
-//     priority: {
-//       urgent: urgent,
-//       medium: medium,
-//       low: low,
-//     },
-//     progressfield: "todo_container", // Hinzufügen des progressfield: "todo"
-//     subtasks: todos // Hinzufügen der Subtasks
-//   };
-
-//   // Hinzufügen des neuen Tasks zum Array
-//   allTasks.push(task);
-
-//   // Speichern des aktualisierten Arrays im Local Storage
-//   saveTasksToLocalStorage(allTasks);
-
-//   // Leeren der Eingabefelder
-//   document.getElementById('titel').value = '';
-//   document.getElementById('description').value = '';
-//   document.getElementById('category').value = '';
-//   document.getElementById('user-list').innerText = '';
-//   document.getElementById('subtask').value = '';
-//   document.getElementById('urgent').classList.remove('active');
-//   document.getElementById('medium').classList.remove('active');
-//   document.getElementById('low').classList.remove('active');
-//   document.getElementById('dueDate').value = '';
-//   todos = []; // Leeren der Subtasks
-
-//   // Neu laden der Seite, um den aktualisierten Task anzuzeigen
-
-//   location.reload();
-  
-// }
 
 function addTask() {
   // Erfassen der Eingabedaten
@@ -524,61 +405,6 @@ function showTaskOnPage(task) {
   taskElement.textContent = task.titel; // Annahme: Der Titel des Tasks soll angezeigt werden
   container.appendChild(taskElement);
 }
-
-
-// function addTask() {
-//   // Erfassen der Eingabedaten
-//   let titel = document.getElementById('titel').value;
-//   let description = document.getElementById('description').value;
-//   let category = document.getElementById('category').value;
-//   let userList = selectedUser; // Benutzer aus der Auswahl
-//   let subtasks = document.getElementById('subtask').value.split(',').map(todo => ({ todo: todo.trim() })); // Subtasks aus Textfeld
-
-//   // Priorität aus den Klassen der Buttons erhalten
-//   let urgent = document.getElementById('urgent').classList.contains('active');
-//   let medium = document.getElementById('medium').classList.contains('active');
-//   let low = document.getElementById('low').classList.contains('active');
-
-//   // Laden der vorhandenen Tasks aus dem Local Storage oder Initialisieren mit einem leeren Array
-//   let allTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
-
-//   // Erstellen des Task-Objekts mit progressfield: "todo_container" und Subtasks
-//   let task = {
-//     id: allTasks.length > 0 ? allTasks[allTasks.length - 1].id + 1 : 1, // Setzen der ID
-//     titel: titel,
-//     description: description,
-//     dueDate: dueDate,
-//     category: category,
-//     userList: userList,
-//     subtask: subtasks,
-//     priority: {
-//       urgent: urgent,
-//       medium: medium,
-//       low: low,
-//     },
-//     progressfield: "todo_container", // Hinzufügen des progressfield: "todo"
-//   };
-
-//   // Hinzufügen des neuen Tasks zum Array
-//   allTasks.push(task);
-
-//   // Speichern des aktualisierten Arrays im Local Storage
-//   saveTasksToLocalStorage(allTasks);
-
-//   // Hinzufügen des neu erstellten Tasks zur Anzeige auf der Seite
-//   showTaskOnPage(task);
-
-//   // Leeren der Eingabefelder
-//   document.getElementById('titel').value = '';
-//   document.getElementById('description').value = '';
-//   document.getElementById('category').value = '';
-//   document.getElementById('user-list').innerText = '';
-//   document.getElementById('subtask').value = '';
-//   document.getElementById('urgent').classList.remove('active');
-//   document.getElementById('medium').classList.remove('active');
-//   document.getElementById('low').classList.remove('active');
-//   document.getElementById('dueDate').value = '';
-// }
 
 
 
