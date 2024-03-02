@@ -682,3 +682,29 @@ function setMinimumDateForToday(inputId) {
   const minDate = year + '-' + month + '-' + day;
   document.getElementById(inputId).min = minDate;
 }
+
+function clearForm() {
+  // Clear Title input
+  document.getElementById('titel').value = '';
+  document.getElementById('description').value = '';
+  document.getElementById('user-select-desktop').innerHTML = '';
+  document.getElementById('selected-user-desktop').innerHTML = '';
+  document.getElementById('user-select-mobile').innerHTML = '';
+  document.getElementById('selected-user-mobile').innerHTML = '';
+  document.getElementById('urgent').classList.remove('active');
+  document.getElementById('medium').classList.add('active');
+  document.getElementById('low').classList.remove('active');
+  document.getElementById('urgent-desktop').classList.remove('active');
+  document.getElementById('medium-desktop').classList.add('active');
+  document.getElementById('low-desktop').classList.remove('active');
+  document.getElementById('dueDate').value = '';
+  document.getElementById('category').selectedIndex = 0;
+  document.getElementById('subtask').value = '';
+  document.getElementById('mylist').innerHTML = '';
+}
+
+
+document.querySelector('.button-clear').addEventListener('click', function(event) {
+  event.preventDefault(); 
+  clearForm(); 
+});
