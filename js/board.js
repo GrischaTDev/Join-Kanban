@@ -147,43 +147,6 @@ function openAddNewTaskPopup(userListId, selectedUserId) {
 }
 
 
-
-// function openUserListPopup(userListPopupId, inputIconId) {
-//     let userListPopup = document.getElementById(userListPopupId);
-//     let inputIcon = document.getElementById(inputIconId);
-
-//     userListPopup.innerHTML = '';
-
-//     if (userListPopup.classList.contains('d-none')) {
-//         userListPopup.classList.remove('d-none');
-//         inputIcon.src = './assets/img/arrow_drop_down_2.svg';
-//     } else {
-//         userListPopup.classList.add('d-none');
-//         inputIcon.src = './assets/img/arrow_drop_down_1.svg';
-//     }
-
-//     for (let i = 0; i < users.length; i++) {
-//         const user = users[i];
-//         const userColor = users[i]['color'];
-
-//         let initialLetters = nameInitialLettersAddTasks(user);
-
-//         userListPopup.innerHTML += /* html */ `
-//             <div id="currentUserPopup${i}" class="userColumn" onclick="addUserPopup(${i})">
-//                 <div class="user-name">
-//                     <span class="letter-icon">${initialLetters}</span>
-//                     <div>${user.name}</div>
-//                 </div>
-//                 <img id="user-checkboxPopup${i}" src="./assets/img/checkbox.svg" alt="">
-//             </div>
-//         `;
-//         const color = document.getElementsByClassName('letter-icon');
-//         color[i].style.backgroundColor = `${userColor}`;
-//     }
-// }
-
-
-
 function closeaddTaskPopup() {
   document.getElementById("add-task-popup-container").classList.add("d-none");
 }
@@ -261,7 +224,7 @@ function showPopup(taskId) {
                     alt="Bild plus Button" />
                 <div class="text-container">Delete</div>
             </a>
-            <a class="button-delete-edit" href="#" onclick="saveAddedContact()">
+            <a class="button-delete-edit" href="#" onclick="editPopup()">
                 <img class="edit-delete-img" src="/assets/img/edit_icon.svg"
                     alt="Bild plus Button" />
                 <div class="text-container">Edit</div>
@@ -273,14 +236,35 @@ function showPopup(taskId) {
     `;
 }
 
-
-
-function editTask() {
+function closeIncomePopup() {
+    document.getElementById("incomePopup").classList.add("d-none");
+  }
   
 
-  let additionalInputsHTML = `
-  <form class="form-width" onsubmit="addTask()">
-  <div class="add-task-form" >
+
+
+
+
+
+
+
+function editPopup(taskId) {
+    // Verberge das showPopup
+    document.getElementById("incomePopup").classList.add("d-none");
+
+    // Zeige das editPopup
+    document.getElementById('edit_popup').classList.remove('d-none');
+    document.getElementById('edit_popup').innerHTML = '';
+
+    // Füge das Formular für die Bearbeitung hinzu
+    document.getElementById('edit_popup').innerHTML += `
+        <!-- Hier dein Formular für die Bearbeitung -->
+    `;
+
+    // Füge den OK-Button hinzu
+    document.getElementById('edit_popup').innerHTML +=  `
+  <form class="form-container" onsubmit="saveEdit()">
+  <div class="task-edit-form" >
           <div class="add-task-title">
               <span>Title<span class="red-asterisk"></span></span>
               <input  type="text"  required placeholder="Enter a title" id="titel">
@@ -352,7 +336,7 @@ function editTask() {
               <ul id="mylist"></ul>
             </div>
             <div class="ok-button">
-            <button class="button-create">OK<img src="/assets/img/check.svg" alt=""></button>
+            <button id="saveEditButton" class="button-create" onclick="SaveEditClick()">OK<img src="/assets/img/check.svg" alt=""></button>
             </div>
           <div
     </div>
@@ -365,36 +349,75 @@ function editTask() {
 </form>
   `;
 
-  let incomePopup = document.getElementById("incomePopup");
-
-  incomePopup.innerHTML = additionalInputsHTML;
-
-  incomePopup.classList.remove("d-none");
-
-  incomePopup.addEventListener('mousedown', function(event) {
-    event.stopPropagation(); 
-  });
-
-  let addTaskForm = document.querySelector('.add-task-form');
-  addTaskForm.addEventListener('click', function(event) {
-    event.stopPropagation(); 
-  });
 }
 
 
+function fillPopupFields(taskId) {
+    let task = findTaskById(taskId);
 
+    // Fülle die Eingabefelder mit den Daten der Aufgabe
+    document.getElementById("titel").value = task.titel;
+    document.getElementById("description").value = task.description;
+    document.getElementById("dueDate").value = task.dueDate;
+    document.getElementById("category").value = task.category;
 
-function saveEditedTask() {
-  // Get the edited task name from input field
-  let editedTaskName = document.getElementById("editInput").value;
-  // Further actions to save the edited task
+    // Fülle die Prioritätssymbole entsprechend der Aufgabe
+    document.getElementById("urgent").classList.toggle("active", task.priority.urgent);
+    document.getElementById("medium").classList.toggle("active", task.priority.medium);
+    document.getElementById("low").classList.toggle("active", task.priority.low);
+
+    // Fülle weitere Daten der Aufgabe ein, falls vorhanden
 }
 
+// function saveEdit(taskId) {
+//     // Daten aus den Eingabefeldern abrufen
+//     var titel = document.getElementById('titel').value;
+//     var description = document.getElementById('description').value;
+//     var dueDate = document.getElementById('dueDate').value;
+//     var category = document.getElementById('category').value;
+//     // Weitere Daten nach Bedarf abrufen
+
+//     // Speichere die Daten oder führe andere Aktionen durch, z. B. das Aktualisieren der Aufgabe
+//     // Hier kannst du die Logik implementieren, um die Änderungen zu speichern
+
+//     // Beispiel: Aktualisierung der Aufgabe mit den neuen Daten
+//     var task = findTaskById(taskId); // Annahme: Funktion findTaskById() gibt die Aufgabe mit der angegebenen ID zurück
+//     task.titel = titel;
+//     task.description = description;
+//     task.dueDate = dueDate;
+//     task.category = category;
+//     // Weitere Aktualisierungen je nach Bedarf
+
+//     // Schließe das editPopup
+//     document.getElementById("edit_popup").classList.add("d-none");
+
+//     // Zeige das incomePopup wieder an
+//     document.getElementById("incomePopup").classList.remove("d-none");
+
+//     // Optional: Aktualisiere das showPopup mit den aktualisierten Daten
+//     showPopup(taskId);
+// }
 
 
 
+function closeEditPopup(taskId) {
+    // Schließe das editPopup
+    document.getElementById("edit_popup").classList.add("d-none");
 
+    // Zeige das showPopup wieder an
+    showPopup(taskId);
+}
 
+document.addEventListener("click", function(event) {
+    let editPopup = document.getElementById("edit_popup");
+    let editPopupContainer = editPopup.querySelector(".form-container");
+
+    // Überprüfen, ob das geklickte Element sich innerhalb des edit_popup befindet
+    if (!editPopupContainer.contains(event.target) && editPopup !== event.target) {
+        // Klick erfolgte außerhalb des edit_popup, schließe das Popup
+        closeEditPopup();
+    }
+});
 
 
 
@@ -431,9 +454,6 @@ function findTaskById(taskId) {
   return null;
 }
 
-function closeIncomePopup() {
-  document.getElementById("incomePopup").classList.add("d-none");
-}
 
 
 

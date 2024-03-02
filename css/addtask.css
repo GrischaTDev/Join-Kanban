@@ -297,7 +297,6 @@ textarea {
 .input-sub-field {
   display: flex;
   justify-content: space-between;
-  
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 16px;
@@ -498,9 +497,7 @@ ul {
 
   .priority-button.active {
     pointer-events: none;
-    /* Deaktiviert das Klicken auf den Button */
     opacity: 0.9;
-    /* Ändert die Opazität, um anzuzeigen, dass der Button deaktiviert ist */
   }
 
   .form-button {
