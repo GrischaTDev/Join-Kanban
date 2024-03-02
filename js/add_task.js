@@ -262,13 +262,22 @@ function toggleAddUser(i) {
 }
 
 
-window.onclick = function() {
-  const userList = document.getElementById('user-list');
-  const inputIcon = document.getElementById('input-icon');
-  if (!userList.classList.contains('d-none')) {
-    userList.classList.add('d-none');
-    inputIcon.src = './assets/img/arrow_drop_down_1.svg';
-  }
+/**
+ * Close assigned to popup when click outside from popup.
+ * 
+ * @param userList ID from popup container
+ */
+if (window.location.href.includes('add_task.html')) {
+  document.getElementById('container').addEventListener('click', function(event) {
+    const userList = document.getElementById('user-list');
+    const inputIcon = document.getElementById('input-icon');
+    const isClickInside = userList.contains(event.target);
+  
+    if (!isClickInside) { // Klick war außerhalb der Benutzerliste
+      userList.classList.add('d-none'); 
+      inputIcon.src = './assets/img/arrow_drop_down_1.svg';
+    }
+  });
 }
 
 
