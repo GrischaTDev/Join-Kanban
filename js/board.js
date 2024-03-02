@@ -292,10 +292,6 @@ function updateSubtaskStatus(taskId, subtaskName, status) {
 
             // Save the updated task object to local storage
             saveTasksToLocalStorage(allTasks);
-
-            // Update the popup display to reflect the changes
-            showPopup(taskId);
-
             // Update the progress bar in the showAllTasks function
             showAllTasks(allTasks);
         }
