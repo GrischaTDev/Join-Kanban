@@ -18,6 +18,17 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+.active-menu {
+  color: white !important;
+  background-color: #091931;
+  pointer-events: none;
+}
+
+.active-menu .active-svg-menu path {
+  fill: #FFF !important;
+
+}
+
 .d-none {
   display: none !important; 
 }

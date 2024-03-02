@@ -5,8 +5,8 @@ let allTasks = [
     "description": "Build start page with recipe recommendation",
     "dueDate": "2024-03-03",
     "priority": {
-      "low": true,
-      "medium": false,
+      "low": false,
+      "medium": true,
       "urgent": false
     },
     "subtask": [
@@ -14,7 +14,7 @@ let allTasks = [
       { "name": "other stuff", "status": false }
     ],
     "titel": "Kochwelt Page & Recipe Recommender",
-    "userSelect": [{
+    "userList": [{
       "fname": "Klaus",
       "lname": "Kruse",
       "backgroundcolor": "#FF5733"
@@ -23,7 +23,7 @@ let allTasks = [
       "lname": "Wiebe",
       "backgroundcolor": "#33FF4F"
     }],
-    "progressfield": "await_feedback_container"
+    "progressfield": "inprogress_container"
   },
   {
     "id": 2,
@@ -40,7 +40,7 @@ let allTasks = [
       { "name": "go ahead", "status": true }
     ],
     "titel": "HTML Base Template Creation",
-    "userSelect": [{
+    "userList": [{
       "fname": "Frank",
       "lname": "Bülling",
       "backgroundcolor": "#FFDA33"
@@ -59,7 +59,7 @@ let allTasks = [
     "id": 3,
     "category": "technical-task",
     "description": "Create contact form and imprint page...",
-    "dueDate": "2024-03-19",
+    "dueDate": "2024-03-01",
     "priority": {
       "low": false,
       "medium": true,
@@ -71,7 +71,7 @@ let allTasks = [
       { "name": "have fun", "status": false }
     ],
     "titel": "Contact Form & Imprint",
-    "userSelect": [{
+    "userList": [{
       "fname": "Stefan",
       "lname": "Dietz",
       "backgroundcolor": "#33FF7A"
@@ -84,7 +84,7 @@ let allTasks = [
       "lname": "Sierts",
       "backgroundcolor": "#AFFF33"
     }],
-    "progressfield": "inprogress_container"
+    "progressfield": "await_feedback_container"
   },
   {
     "id": 4,
@@ -93,8 +93,8 @@ let allTasks = [
     "dueDate": "2024-03-10",
     "priority": {
       "low": false,
-      "medium": true,
-      "urgent": false
+      "medium": false,
+      "urgent": true
     },
     "subtask": [
       { "name": "meetings", "status": true },
@@ -102,7 +102,7 @@ let allTasks = [
       { "name": "have fun", "status": true }
     ],
     "titel": "Define Architecture Planning",
-    "userSelect": [{
+    "userList": [{
       "fname": "Waldemar",
       "lname": "Günther",
       "backgroundcolor": "#B833FF"
@@ -120,19 +120,14 @@ let allTasks = [
 ];
 
 
-
 let users = [];
 let selectedUser = [];
-let test3;
-
-
-
-// Hinzufügen des vorgegebenen Tasks zum Array, wenn kein Task vorhanden ist
-
+let selectedUserList;
 
 
 async function initAddTasks() {
   await includeHTML();
+  activeMenu();
   load();
   loadUserProfile();
   loadUsers();
@@ -147,19 +142,52 @@ async function loadUsers() {
   }
 }
 
-function openUserList(test1, test2) {
-  test3 = test2;
-  let userSelect = document.getElementById(test1);
-  let inputIcon = document.getElementById('input-icon');
-  userSelect.innerHTML = '';
-  if (userSelect.classList.contains('d-none')) {
-    userSelect.classList.remove('d-none');
-    inputIcon.src = './assets/img/arrow_drop_down_2.svg';
-  } else {
-    userSelect.classList.add('d-none');
-    inputIcon.src = './assets/img/arrow_drop_down_1.svg';
+function filterUser() {
+  let search = document.getElementById('search-user').value;
+  search = search.toLowerCase();
+
+  selectedUserList = document.getElementById('selected-user');;
+  let userList = document.getElementById('user-list');
+  userList.innerHTML = '';
+  if (userList.classList.contains('d-none')) {
+    userList.classList.remove('d-none');
   }
 
+  for (let i = 0; i < users.length; i++) {
+    const user = users[i];
+    const userColor = users[i]['color'];
+    let initialLetters = nameInitialLettersAddTasks(user);
+    
+    if (user.name.toLowerCase().includes(search)) {
+      userList.innerHTML += `
+      <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active': ''}" onclick="toggleAddUser(${i})">
+        <div class="user-name">
+          <span class="letter-icon">${initialLetters}</span>
+          <div>${user.name}</div>
+        </div>
+        <img id="user-checkbox${i}" src="${isUSerSelected(i) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
+      </div>
+      `;
+      const color = document.getElementsByClassName('letter-icon');
+      color[i].style.backgroundColor = `${userColor}`;
+    }
+  }
+
+  console.log('Bin da!', search);
+}
+
+function openUserList() {
+  selectedUserList = document.getElementById('selected-user');;
+  let userList = document.getElementById('user-list');
+  let inputIcon = document.getElementById('input-icon');
+  userList.innerHTML = '';
+  if (userList.classList.contains('d-none')) {
+    userList.classList.remove('d-none');
+    inputIcon.src = './assets/img/arrow_drop_down_2.svg';
+  } else {
+    userList.classList.add('d-none');
+    inputIcon.src = './assets/img/arrow_drop_down_1.svg';
+  }
 
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
@@ -167,18 +195,22 @@ function openUserList(test1, test2) {
 
     let initialLetters = nameInitialLettersAddTasks(user);
     
-    userSelect.innerHTML += /* html */ `
-    <div id="currentUser${i}" class="userColumn" onclick="addUser(${i})">
+    userList.innerHTML += `
+    <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active': ''}" onclick="toggleAddUser(${i})">
       <div class="user-name">
         <span class="letter-icon">${initialLetters}</span>
         <div>${user.name}</div>
       </div>
-      <img id="user-checkbox${i}" src="./assets/img/checkbox.svg" alt="">
+      <img id="user-checkbox${i}" src="${isUSerSelected(i) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
     </div>
     `;
     const color = document.getElementsByClassName('letter-icon');
     color[i].style.backgroundColor = `${userColor}`;
   }
+}
+
+function isUSerSelected(i) {
+  return selectedUser.some(su => su.id === i )
 }
 
 function nameInitialLettersAddTasks(user) {
@@ -188,44 +220,32 @@ function nameInitialLettersAddTasks(user) {
   return initialLetters;
 }
 
-// /**
-//  * Close openUserList Popup when click outside
-//  */
-// window.addEventListener('mouseup',function(event){
-//     let userSelect = document.getElementById('user-select');
-//     let inputIcon = document.getElementById('input-icon');
-//     if(event.target != userSelect && event.target.parentNode != userSelect){
-//         userSelect.classList.add('d-none');
-//         inputIcon.src = './assets/img/arrow_drop_down_1.svg';
-//     }
-// });
 
 function renderUserList() {
-  let selectedUserContainer = document.getElementById(test3);
-  selectedUserContainer.innerHTML = '';
+  selectedUserList.innerHTML = '';
 
   selectedUser.forEach(user => {
     let initialLetters = nameInitialLettersAddTasks(user);
     const userColor = user['color'];
 
-    selectedUserContainer.innerHTML += /* html */ `
+    selectedUserList.innerHTML += /* html */ `
       <div class="user-icon" style="background-color: ${userColor};">${initialLetters}</div>
     `;
   });
 }
 
 
-function addUser(i) {
+function toggleAddUser(i) {
   let userColumn = document.getElementById(`currentUser${i}`);
   let user = users[i];
   let selectedUSerIndex = selectedUser.findIndex(u => u.id === i);
   let checkBoxUser = document.getElementById(`user-checkbox${i}`);
   if (selectedUSerIndex === -1) {
-    userColumn.classList.add('user-select-active');
+    userColumn.classList.add('user-list-active');
     selectedUser.push(user)
     checkBoxUser.src = './assets/img/checkbox_active_white.svg';
   } else {
-    userColumn.classList.remove('user-select-active');
+    userColumn.classList.remove('user-list-active');
     selectedUser.splice(selectedUSerIndex, 1);
     checkBoxUser.src = './assets/img/checkbox.svg';
   }
@@ -269,14 +289,23 @@ function loadAddTaskUser() {
 //   }
 // }
 
+// function loadAllTasks() {
+//   let allTasksAsString = localStorage.getItem("allTasks");
+//   if (allTasksAsString) {
+//       let allTasks = JSON.parse(allTasksAsString);
+//       showAllTasks(allTasks);
+
+//       // Initialisieren der Zusammenfassung nach dem Laden aller Tasks
+//       initSummary(allTasks);
+//   }
+// }
+
 function loadAllTasks() {
   let allTasksAsString = localStorage.getItem("allTasks");
   if (allTasksAsString) {
-      let allTasks = JSON.parse(allTasksAsString);
-      showAllTasks(allTasks);
+      allTasks = JSON.parse(allTasksAsString); // Aktualisieren des allTasks-Arrays mit den Daten aus dem Local Storage
   }
 }
-
 
 
 
@@ -285,7 +314,7 @@ function loadAllTasks() {
 //   let description = document.getElementById('description').value;
 //   let category = document.getElementById('category').value;
 //   let dueDate = document.getElementById('dueDate').value;
-//   let userSelect = selectedUser.map(user => user.name);
+//   let userList = selectedUser.map(user => user.name);
 //   let subtask = document.getElementById('subtask').value;
 //   let urgent = document.getElementById('urgent').classList.contains('active');
 //   let medium = document.getElementById('medium').classList.contains('active');
@@ -296,7 +325,7 @@ function loadAllTasks() {
 //     description: description,
 //     dueDate: dueDate,
 //     category: category,
-//     userSelect: userSelect,
+//     userList: userList,
 //     subtask: subtask,
 //     priority: {
 //       urgent: urgent,
@@ -327,7 +356,7 @@ function saveTasksToLocalStorage(tasks) {
 //   let titel = document.getElementById('titel').value;
 //   let description = document.getElementById('description').value;
 //   let category = document.getElementById('category').value;
-//   let userSelect = document.getElementById('user-select').innerText.trim();
+//   let userList = document.getElementById('user-list').innerText.trim();
 //   let subtask = document.getElementById('subtask').value;
 //   let urgent = document.getElementById('urgent').classList.contains('active');
 //   let medium = document.getElementById('medium').classList.contains('active');
@@ -344,7 +373,7 @@ function saveTasksToLocalStorage(tasks) {
 //     description: description,
 //     dueDate: dueDate,
 //     category: category,
-//     userSelect: userSelect,
+//     userList: userList,
 //     subtask: subtask,
 //     priority: {
 //       urgent: urgent,
@@ -365,7 +394,7 @@ function saveTasksToLocalStorage(tasks) {
 //   document.getElementById('titel').value = '';
 //   document.getElementById('description').value = '';
 //   document.getElementById('category').value = '';
-//   document.getElementById('user-select').innerText = '';
+//   document.getElementById('user-list').innerText = '';
 //   document.getElementById('subtask').value = '';
 //   document.getElementById('urgent').classList.remove('active');
 //   document.getElementById('medium').classList.remove('active');
@@ -394,7 +423,7 @@ function addTask() {
 
   // Erhalten des ausgewählten Benutzers aus dem selectedUser-Array
   // Annahme: Dies ist dein ausgewählter Benutzer-Array
-  let userSelectData = selectedUser.map(user => ({
+  let userListData = selectedUser.map(user => ({
     fname: user.name.split(' ')[0], // Extrahieren des Vornamens aus dem Namen des Benutzers
     lname: user.name.split(' ')[1], // Extrahieren des Nachnamens aus dem Namen des Benutzers
     backgroundcolor: user.color // Verwendung der Hintergrundfarbe des Benutzers
@@ -411,7 +440,7 @@ function addTask() {
     description: description,
     dueDate: dueDate,
     category: category,
-    userSelect: userSelectData, // Hinzufügen der ausgewählten Benutzerdaten
+    userList: userListData, // Hinzufügen der ausgewählten Benutzerdaten
     subtask: subtasks, // Hinzufügen der Todos als Subtasks
     priority: {
       urgent: urgent,
@@ -436,14 +465,28 @@ function addTask() {
   document.getElementById('category').value = '';
   document.getElementById('subtask').value = '';
   document.getElementById('urgent').classList.remove('active');
-  document.getElementById('medium').classList.remove('active');
+  document.getElementById('medium').classList.add('active');
   document.getElementById('low').classList.remove('active');
   document.getElementById('dueDate').value = '';
   // Standort neu laden, falls notwendig
   // location.reload(); // Diese Anweisung scheint nicht notwendig zu sein und kann eventuell entfernt werden
+
+  initSummary(allTasks);
 }
 
-
+function clearInputFields() {
+  document.getElementById('titel').value = '';
+  document.getElementById('description').value = '';
+  document.getElementById('category').value = '';
+  document.getElementById('subtask').value = '';
+  document.getElementById('urgent').classList.remove('active-urgent');
+  document.getElementById('medium').classList.add('active-medium');
+  document.getElementById('low').classList.remove('active-low');
+  document.getElementById('dueDate').value = '';
+  document.getElementById('mylist').innerHTML = '';
+  document.getElementById('selected-user').innerHTML = '';
+  selectedUser.length = 0;
+}
 
 
 
@@ -469,7 +512,7 @@ function showTaskOnPage(task) {
 //   let titel = document.getElementById('titel').value;
 //   let description = document.getElementById('description').value;
 //   let category = document.getElementById('category').value;
-//   let userSelect = selectedUser; // Benutzer aus der Auswahl
+//   let userList = selectedUser; // Benutzer aus der Auswahl
 //   let subtasks = document.getElementById('subtask').value.split(',').map(todo => ({ todo: todo.trim() })); // Subtasks aus Textfeld
 
 //   // Priorität aus den Klassen der Buttons erhalten
@@ -487,7 +530,7 @@ function showTaskOnPage(task) {
 //     description: description,
 //     dueDate: dueDate,
 //     category: category,
-//     userSelect: userSelect,
+//     userList: userList,
 //     subtask: subtasks,
 //     priority: {
 //       urgent: urgent,
@@ -510,7 +553,7 @@ function showTaskOnPage(task) {
 //   document.getElementById('titel').value = '';
 //   document.getElementById('description').value = '';
 //   document.getElementById('category').value = '';
-//   document.getElementById('user-select').innerText = '';
+//   document.getElementById('user-list').innerText = '';
 //   document.getElementById('subtask').value = '';
 //   document.getElementById('urgent').classList.remove('active');
 //   document.getElementById('medium').classList.remove('active');
@@ -521,50 +564,27 @@ function showTaskOnPage(task) {
 
 
 
-
-
-
-
-
-
 function togglePriority(priority) {
-  var button = document.getElementById(priority);
+  let urgentButton = document.getElementById('urgent');
+  let mediumButton = document.getElementById('medium');
+  let lowButton = document.getElementById('low'); 
+                      
+  let prioButton = document.getElementById(priority);
+  if (prioButton == urgentButton) {
+    mediumButton.classList.remove('active-medium');
+    lowButton.classList.remove('active-low');
+    urgentButton.classList.add('active-urgent');
 
-  if (button.classList.contains('active')) {
-    // Wenn der aktuelle Button bereits ausgewählt ist, dann abwählen
-    button.classList.remove('active');
-    button.style.backgroundColor = ''; // Zurücksetzen der Hintergrundfarbe
-    button.style.color = '';
-    button.querySelector('img').style.filter = '';
-    button.style.color = '';
-    button.querySelector('img').style.filter = '';
-  } else {
-    // Andernfalls den aktuellen Button auswählen und den vorherigen abwählen
-    var prevSelectedButton = document.querySelector('.priority-button.active');
-    if (prevSelectedButton) {
-      prevSelectedButton.classList.remove('active');
-      prevSelectedButton.style.backgroundColor = ''; // Zurücksetzen der Hintergrundfarbe
-      prevSelectedButton.style.color = '';
-      prevSelectedButton.querySelector('img').style.filter = '';
-      prevSelectedButton.style.color = '';
-      prevSelectedButton.querySelector('img').style.filter = '';
-    }
-
-    button.classList.add('active');
-    var computedStyle = getComputedStyle(button);
-    button.style.backgroundColor = computedStyle.backgroundColor;
-    button.style.color = 'white';
-    button.querySelector('img').style.filter = 'brightness(0) invert(100%)';
-    button.style.color = 'white';
-    button.querySelector('img').style.filter = 'brightness(0) invert(100%)';
-
-    // Hintergrundfarbe für den Medium-Button auf Gelb setzen
-    if (priority === 'medium' || 'medium-desktop') {
-      button.style.backgroundColor = '#ffa200';
-    }
+  } if (prioButton == mediumButton) {
+    urgentButton.classList.remove('active-urgent');
+    lowButton.classList.remove('active-low');
+    mediumButton.classList.add('active-medium');
+  } if (prioButton == lowButton) {
+    urgentButton.classList.remove('active-urgent');
+    mediumButton.classList.remove('active-medium');
+    lowButton.classList.add('active-low');
   }
 }
-
 
 
 let todos = [];
@@ -682,29 +702,3 @@ function setMinimumDateForToday(inputId) {
   const minDate = year + '-' + month + '-' + day;
   document.getElementById(inputId).min = minDate;
 }
-
-function clearForm() {
-  // Clear Title input
-  document.getElementById('titel').value = '';
-  document.getElementById('description').value = '';
-  document.getElementById('user-select-desktop').innerHTML = '';
-  document.getElementById('selected-user-desktop').innerHTML = '';
-  document.getElementById('user-select-mobile').innerHTML = '';
-  document.getElementById('selected-user-mobile').innerHTML = '';
-  document.getElementById('urgent').classList.remove('active');
-  document.getElementById('medium').classList.add('active');
-  document.getElementById('low').classList.remove('active');
-  document.getElementById('urgent-desktop').classList.remove('active');
-  document.getElementById('medium-desktop').classList.add('active');
-  document.getElementById('low-desktop').classList.remove('active');
-  document.getElementById('dueDate').value = '';
-  document.getElementById('category').selectedIndex = 0;
-  document.getElementById('subtask').value = '';
-  document.getElementById('mylist').innerHTML = '';
-}
-
-
-document.querySelector('.button-clear').addEventListener('click', function(event) {
-  event.preventDefault(); 
-  clearForm(); 
-});

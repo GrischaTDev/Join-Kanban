@@ -51,8 +51,6 @@
   border-radius: 10px;
   border: 1px solid rgb(209, 209, 209);
   font-family: "Inter", sans-serif;
-  display: flex;
-  flex-direction: initial;
 }
 
 .add-task-border {
@@ -134,29 +132,42 @@ textarea {
   cursor: pointer;
 }
 
-.priority-button:hover {
-  background-color: #ff0000;
-  color: white;
-}
-
-#medium:hover {
-  background-color: #ffa200;
-  color: white;
-}
-
-#low:hover {
-  background-color: #03c509fc;
-  color: white;
-}
-
-.priority-button img {
+.priority-button svg {
   margin-left: 8px;
 }
 
-.priority-button:hover img,
-#medium:hover img,
-#low:hover img {
-  filter: brightness(0) invert(1);
+.priority-button:hover {
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.30);
+}
+
+.active-urgent {
+  color: white;
+  background-color: #ff0000;
+  pointer-events: none;
+}
+
+.active-urgent #svg-urgent path {
+  fill: #FFF !important;
+}
+
+.active-medium {
+  color: white;
+  background-color: #ffa200;
+  pointer-events: none;
+}
+
+.active-medium #svg-medium path {
+  fill: #FFF !important;
+}
+
+.active-low {
+  color: white;
+  background-color: #03c509fc;
+  pointer-events: none;
+}
+
+.active-low #svg-low path {
+  fill: #FFF !important;
 }
 
 /***************-priority-section-END     ***************/
@@ -192,23 +203,12 @@ textarea {
   align-items: center;
 }
 
-#user-select-mobile {
+#user-list {
   background-color: white;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  overflow: scroll;
-  height: 250px;
-  margin-top: -5px;
-}
-
-#user-select-desktop {
-  background-color: white;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   overflow: scroll;
   height: 250px;
   margin-top: -5px;
@@ -227,13 +227,13 @@ textarea {
   border-radius: 6px;
 }
 
-.user-select-active {
+.user-list-active {
   color: white;
   background-color: #2a3647;
   border-radius: 6px;
 }
 
-.user-select-active:hover {
+.user-list-active:hover {
   background-color: #161e29;
 }
 
@@ -266,15 +266,15 @@ textarea {
   border-radius: 50%;
 }
 
-#selected-user-mobile {
+#selected-user {
   display: flex;
   gap: 12px;
 }
 
-#selected-user-desktop {
+/* #selected-user-desktop {
   display: flex;
   gap: 12px;
-}
+} */
 
 .user-icon {
   color: white;
@@ -363,7 +363,7 @@ ul {
   align-items: center;
   color: #2a3647;
   width: 120px;
-  height: 56px;
+  height: 48px;
   border: 1px solid #2a3647;
   border-radius: 10px;
   text-decoration: none;
@@ -405,8 +405,8 @@ ul {
   justify-content: center;
   align-items: center;
   color: white;
-  width: 183px;
-  height: 56px;
+  width: 170px;
+  height: 48px;
   background-color: #2a3647;
   border-radius: 10px;
   text-decoration: none;
@@ -421,18 +421,9 @@ ul {
 
 
 @media screen and (max-width: 900px) {
-  .prio-desktop {
-    display: none;
-  }
-
-  .assigned-desktop {
-    display: none;
-  }
-
   .button-clear {
     display: none;
   }
- 
 }
 
 /* Responsiv for laptop */
@@ -503,16 +494,8 @@ ul {
   .priority-button.active {
     pointer-events: none;
     /* Deaktiviert das Klicken auf den Button */
-    opacity: 0.5;
+    opacity: 0.9;
     /* Ändert die Opazität, um anzuzeigen, dass der Button deaktiviert ist */
-  }
-
-  .prio-mobile {
-    display: none;
-  }
-
-  .assigned-mobile {
-    display: none;
   }
 
   .form-button {
@@ -525,7 +508,6 @@ ul {
 
 /* Responsiv for desktop */
 @media screen and (min-width: 1600px) {
-
   .content {
       margin: 160px 0 0 331px;
   }

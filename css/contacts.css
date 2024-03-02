@@ -364,7 +364,7 @@ p {
     margin-bottom: 80px;
     height: 84%;
     width: 100%;
-    padding-left: 10px;
+    padding-left: 15px;
 }
 
 .showContactHeaderBox {
@@ -579,7 +579,7 @@ p {
     }
 }
 
-@media(max-width:800px) {
+@media(max-width:900px) {
 
     .move-to-screen {
         animation: push-from-bottom-to-screen 250ms ease forwards;
@@ -669,7 +669,7 @@ p {
 
 }
 
-@media(min-width:800px) {
+@media(min-width:900px) {
     .contact_list_snippet_box_blue {
         display: flex;
         padding: 16px 10px;
