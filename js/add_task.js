@@ -162,32 +162,35 @@ function filterUser() {
       userList.innerHTML += `
       <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active': ''}" onclick="toggleAddUser(${i})">
         <div class="user-name">
-          <span class="letter-icon">${initialLetters}</span>
+          <span class="letter-icon" style="background-color:${userColor}">${initialLetters}</span>
           <div>${user.name}</div>
         </div>
         <img id="user-checkbox${i}" src="${isUSerSelected(i) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
       </div>
       `;
-      const color = document.getElementsByClassName('letter-icon');
-      color[i].style.backgroundColor = `${userColor}`;
+      // const color = document.getElementsByClassName('letter-icon');
+      // color[i].style.backgroundColor = `${userColor}`;
     }
   }
-
-  console.log('Bin da!', search);
 }
 
-function openUserList() {
+function openUserList(event) {
   selectedUserList = document.getElementById('selected-user');;
   let userList = document.getElementById('user-list');
   let inputIcon = document.getElementById('input-icon');
+  if (selectedUser.length >= 1) {
+    userList.classList.remove('d-none');
+    event.stopPropagation();
+    return;
+  }
+
   userList.innerHTML = '';
+  
+  
   if (userList.classList.contains('d-none')) {
     userList.classList.remove('d-none');
     inputIcon.src = './assets/img/arrow_drop_down_2.svg';
-  } else {
-    userList.classList.add('d-none');
-    inputIcon.src = './assets/img/arrow_drop_down_1.svg';
-  }
+  } 
 
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
@@ -198,15 +201,16 @@ function openUserList() {
     userList.innerHTML += `
     <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active': ''}" onclick="toggleAddUser(${i})">
       <div class="user-name">
-        <span class="letter-icon">${initialLetters}</span>
+        <span class="letter-icon" style="background-color:${userColor}">${initialLetters}</span>
         <div>${user.name}</div>
       </div>
       <img id="user-checkbox${i}" src="${isUSerSelected(i) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
     </div>
     `;
-    const color = document.getElementsByClassName('letter-icon');
-    color[i].style.backgroundColor = `${userColor}`;
+    // const color = document.getElementsByClassName('letter-icon');
+    // color[i].style.backgroundColor = `${userColor}`;
   }
+  event.stopPropagation();
 }
 
 function isUSerSelected(i) {
@@ -218,6 +222,10 @@ function nameInitialLettersAddTasks(user) {
   const letters = fullNameSplitt.map(name => name[0]);
   const initialLetters = letters.join("");
   return initialLetters;
+}
+
+function doNotClose(event) {
+  event.stopPropagation();
 }
 
 
@@ -251,6 +259,16 @@ function toggleAddUser(i) {
   }
   renderUserList(i);
   save();
+}
+
+
+window.onclick = function() {
+  const userList = document.getElementById('user-list');
+  const inputIcon = document.getElementById('input-icon');
+  if (!userList.classList.contains('d-none')) {
+    userList.classList.add('d-none');
+    inputIcon.src = './assets/img/arrow_drop_down_1.svg';
+  }
 }
 
 
@@ -485,6 +503,7 @@ function clearInputFields() {
   document.getElementById('dueDate').value = '';
   document.getElementById('mylist').innerHTML = '';
   document.getElementById('selected-user').innerHTML = '';
+  document.getElementById('search-user').value = '';
   selectedUser.length = 0;
 }
 
