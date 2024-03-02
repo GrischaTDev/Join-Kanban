@@ -572,15 +572,10 @@ function deleteTask(taskId) {
   if (taskIndex !== -1) {
       // Löschen des Tasks aus dem Array
       allTasks.splice(taskIndex, 1);
-      
-      // Aktualisieren des Local Storage
       saveTasksToLocalStorage(allTasks);
-      
-      // Aktualisieren der Anzeige
       loadAllTasks();
-      
-      // Schließen des Popups
-      closePopup();
+      closeIncomePopup();
+      showAllTasks(allTasks);
   } else {
       console.log("Task not found");
   }
