@@ -293,6 +293,12 @@ textarea {
 }
 
 /*************** Subtask **************/
+.subtask-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+}
 
 .input-sub-field {
   display: flex;
