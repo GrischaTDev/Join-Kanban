@@ -441,6 +441,10 @@ ul {
   .button-clear {
     display: none;
   }
+  .content {
+    margin-top: 70px;
+    padding-bottom: 150px;
+  }
 }
 
 /* Responsiv for laptop */

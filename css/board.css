@@ -600,7 +600,6 @@ h2 {
 }
 
 .popup-card {
-  
   height: 80vh;
   min-width: 270px;
   width: 480px;
@@ -672,6 +671,17 @@ h2 {
 }
 
 @media (max-width: 900px) {
+
+  
+  .task-topic{
+    margin: -80px;
+    padding-left: 80px;
+  }
+ 
+
+  .desktop-complete-container{
+    padding-bottom: 150px;
+  }
   .task-edit-form {
     height: 95%;
     width: 80%;
@@ -797,7 +807,7 @@ h2 {
   }
 
   .desktop-h1 {
-    margin-top: 200px;
+    margin-top: 150px;
     font-size: 61px;
   }
 
@@ -841,6 +851,7 @@ h2 {
     padding-top: 40px;
     display: flex;
     height: 100vh;
+    
   }
 
   h6 {
@@ -892,6 +903,7 @@ h2 {
     width: 300px;
     height: 48px;
   }
+  
 }
 
 /*end of desktop*/
