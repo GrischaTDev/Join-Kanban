@@ -153,88 +153,102 @@ function closeaddTaskPopup() {
 
 // Update the showPopup function to include an onchange event listener for the checkboxes
 function showPopup(taskId) {
-  let task = findTaskById(taskId);
-  let urgentSymbolHTML = task.priority.urgent
-      ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">`
+    let task = findTaskById(taskId);
+    let urgentSymbolHTML = task.priority.urgent
+      ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent"> Urgent`
       : "";
-  let mediumSymbolHTML = task.priority.medium
-      ? `<img src="/assets/img/prio-medium.svg" alt="Medium">`
+    let mediumSymbolHTML = task.priority.medium
+      ? `<img src="/assets/img/prio-medium.svg" alt="Medium"> Medium`
       : "";
-  let lowSymbolHTML = task.priority.low
-      ? `<img src="/assets/img/prio-low.svg" alt="Low">`
+    let lowSymbolHTML = task.priority.low
+      ? `<img src="/assets/img/prio-low.svg" alt="Low"> Low`
       : "";
-
+  
     // Benutzerinitialen und Hintergrundfarben anzeigen
-    let userNamesHTML = task.userList.map(user => `
-        <div class="user-details">
-            <div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
-            <div class="user-full-name">${user.fname} ${user.lname}</div>
-        </div>`).join('');
-
-  // Subtasks anzeigen
-  let subtasksHTML = task.subtask ? task.subtask.map(subtask => `
-  <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="subtask_${subtask.name}" ${subtask.status ? 'checked' : ''} onchange="updateSubtaskStatus(${taskId}, '${subtask.name}', this.checked)">
-      <label class="form-check-label" for="subtask_${subtask.name}">${subtask.name}</label>
-  </div>
-`).join('') : '';
-
+    let userNamesHTML = task.userList
+      .map(
+        (user) => `
+          <div class="user-details">
+              <div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
+              <div class="user-full-name">${user.fname} ${user.lname}</div>
+          </div>`
+      )
+      .join("");
+  
+    // Subtasks anzeigen
+    let subtasksHTML = task.subtask
+      ? task.subtask
+          .map(
+            (subtask) => `
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="subtask_${subtask.name}" ${
+              subtask.status ? 'checked' : ''
+            } onchange="updateSubtaskStatus(${taskId}, '${subtask.name}', this.checked)">
+        <label class="form-check-label" for="subtask_${subtask.name}">${subtask.name}</label>
+    </div>
+  `
+          )
+          .join("")
+      : "";
+  
     document.getElementById("incomePopup").classList.remove("d-none");
     document.getElementById("incomePopup").innerHTML = `
-        <div class="complete_board_popup" onclick="doNotClose(event)">
-            <div onclick="doNotClose(event)">
-            <div class="board_popup">
-                <div class="flex_container_head">
-                    <div class="task_popup_${task.category}">
-                        <p>${task.category}</p>
-                    </div>
-                    <div class="close_icon_box">
-                        <img class="img_popup" style="cursor: pointer;" onclick="closeIncomePopup()"
-                            src="./assets/img/close_icon.svg" alt="close Button">
-                    </div>
-                </div>
-                <div class="header_popup">
-                    <h2>${task.titel}</h2>
-                </div>
-                <div class="p-element">
-                    <p>${task.description}</p>
-                </div>
-                <div class="due_date_popup">
-                    <p style="color: #42526E;">Due Date:</p>
-                    <p id="variable_date">${task.dueDate}</p>
-                </div>
-                <div class="priority_popup">
-                    <p style="color: #42526E;">Priority:</p>
-                    ${urgentSymbolHTML}
-                    ${mediumSymbolHTML}
-                    ${lowSymbolHTML}
-                </div>
-                <div class="assigned-popup">
-        <p style="color: #42526E;">Assigned to:</p>
-        <div class="user-container-popup">
-            ${userNamesHTML} <!-- Hier werden Initialen und Vor- und Nachnamen angezeigt -->
-        </div>
-        <p class="subtask_container" style="color: #42526E;">Subtasks</p>
-        <div class="subtask-list">
-            ${subtasksHTML} <!-- Hier werden die Subtasks mit Checkboxen angezeigt -->
-        </div>
-        <div class="edit-delete" id="edit">
-            <a class="button-delete-edit" href="#" onclick="deleteTask(${task.id})">
-                <img class="edit-delete-img" src="/assets/img/delete_icon.svg"
-                    alt="Bild plus Button" />
-                <div class="text-container">Delete</div>
-            </a>
-            <a class="button-delete-edit" href="#" onclick="editPopup()">
-                <img class="edit-delete-img" src="/assets/img/edit_icon.svg"
-                    alt="Bild plus Button" />
-                <div class="text-container">Edit</div>
-            </a>
-        </div>
-    </div>
-            </div>
-        </div>
-    `;
-}
+          <div class="complete_board_popup" onclick="doNotClose(event)">
+              <div class="popup-card" onclick="doNotClose(event)">
+              <div class="board_popup">
+                  <div class="flex_container_head">
+                      <div class="task_popup_${task.category}">
+                          <p>${task.category}</p>
+                      </div>
+                      <div class="close_icon_box">
+                          <img class="img_popup" style="cursor: pointer;" onclick="closeIncomePopup()"
+                              src="./assets/img/close_icon.svg" alt="close Button">
+                      </div>
+                  </div>
+                  <div class="header_popup">
+                      <h2>${task.titel}</h2>
+                  </div>
+                  <div class="p-element">
+                      <p>${task.description}</p>
+                  </div>
+                  <div class="due_date_popup">
+                      <p style="color: #42526E;">Due Date:</p>
+                      <p id="variable_date">${task.dueDate}</p>
+                  </div>
+                  <div class="priority_popup">
+                      <p style="color: #42526E;">Priority:</p>
+                      ${urgentSymbolHTML}
+                      ${mediumSymbolHTML}
+                      ${lowSymbolHTML}
+                  </div>
+                  <div class="assigned-popup">
+          <p style="color: #42526E;">Assigned to:</p>
+          <div class="user-container-popup">
+              ${userNamesHTML} <!-- Hier werden Initialen und Vor- und Nachnamen angezeigt -->
+          </div>
+          <p class="subtask_container" style="color: #42526E;">Subtasks</p>
+          <div class="subtask-list">
+              ${subtasksHTML} <!-- Hier werden die Subtasks mit Checkboxen angezeigt -->
+          </div>
+          <div class="edit-delete" id="edit">
+              <a class="button-delete-edit" href="#" onclick="deleteTask(${task.id})">
+                  <img class="edit-delete-img" src="/assets/img/delete_icon.svg"
+                      alt="Bild plus Button" />
+                  <div class="edit-delete-popup-button">Delete</div>
+              </a>
+              <a class="button-delete-edit" href="#" onclick="editPopup(${task.id})">
+                  <img class="edit-delete-img" src="/assets/img/edit_icon.svg"
+                      alt="Bild plus Button" />
+                  <div class="edit-delete-popup-button">Edit</div>
+              </a>
+          </div>
+      </div>
+              </div>
+          </div>
+      `;
+  }
+  
+  
 
 function closeIncomePopup() {
     document.getElementById("incomePopup").classList.add("d-none");
@@ -248,6 +262,143 @@ function closeIncomePopup() {
 
 
 
+//   function editPopup(taskId) {
+//     // Verberge das showPopup
+//     document.getElementById("incomePopup").classList.add("d-none");
+
+//     // Zeige das editPopup
+//     document.getElementById('edit_popup').classList.remove('d-none');
+//     document.getElementById('edit_popup').innerHTML = '';
+
+//     // Abrufen des Tasks aus dem Local Storage
+//     let tasks = JSON.parse(localStorage.getItem('allTasks'));
+//     let taskToEdit = tasks.find(task => task.id === taskId);
+
+//     // Füge das Formular für die Bearbeitung hinzu und setze die Werte der Eingabefelder
+//     document.getElementById('edit_popup').innerHTML += `
+//         <form class="popup-card" onsubmit="saveEditedTask(taskId)">
+//             <div class="task-edit-form" >
+//                 <div class="add-task-title">
+//                     <span>Title<span class="red-asterisk"></span></span>
+//                     <input type="text" required placeholder="Enter a title" id="titel">
+//                 </div>
+
+//                 <div class="add-task-title">
+//                     <span>Description</span>
+//                     <textarea type="text" required minlength="5" placeholder="Enter a description" id="description"></textarea>
+//                 </div>
+//                 <div class="add-task-title prio-mobile">
+//                     <span>Prio</span>
+//                     <div class="priority-buttons">
+//                         <button type="button" class="priority-button" id="urgent" onclick="togglePriority('urgent')">
+//                             Urgent
+//                             <img src="/assets/img/prio-urgent.svg" alt="Urgent Image">
+//                         </button>
+//                         <button type="button" class="priority-button" id="medium" onclick="togglePriority('medium')">
+//                             Medium
+//                             <img src="/assets/img/prio-medium.svg" alt="Medium Image">
+//                         </button>
+//                         <button type="button" class="priority-button" id="low" onclick="togglePriority('low')">
+//                             Low
+//                             <img src="/assets/img/prio-low.svg" alt="Low Image">
+//                         </button>  
+//                     </div>
+//                 </div>
+            
+//                 <div class="add-task-title">
+//                     <span>Due a date<span class="red-asterisk"></span></span>
+//                     <input class="input-task-date" type="date" id="dueDate" required>
+//                 </div>
+
+//                 <div class="add-task-title">
+//                     <span>Category<span class="red-asterisk"></span></span>
+//                     <select class="input-task-select" id="category" aria-placeholder="Select task category">
+//                         <option value="" disabled selected>Select a Category</option>
+//                         <option value="technical-task">Technical Task</option>
+//                         <option value="user-story">User Story</option>
+//                     </select>
+//                 </div>
+//                 <div class="add-task-title assigned-mobile">
+//                     <span>Assigned to</span>
+//                     <div class="assigned-input">
+//                         <input onclick="openUserList('user-select-mobile', 'selected-user-mobile')" class="input-task-select" type="text" placeholder="Select contacts to assign">
+//                         <img onclick="openUserList('user-select-mobile')" id="input-icon" class="input-arrow" src="./assets/img/arrow_drop_down_1.svg" alt="">
+//                     </div>
+//                     <div id="user-select-mobile" class="d-none"></div>
+//                     <div id="selected-user-mobile"></div>
+//                 </div>
+//                 <div>
+//                     <span class="subtask-container">Subtask</span>
+//                     <div class="input-sub-field">
+//                         <input class="input-subtask" id="subtask" />
+//                         <div onclick="addTodo();" id="addButton"><span class="suffix"><i><svg width="12" height="12" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Capa 1"><g id="Group 11"><path id="Vector 13" d="M11 1V21" stroke="black" stroke-width="2" stroke-linecap="round" /><path id="Vector 14" d="M21 11L1.00048 11.138" stroke="black" stroke-width="2" stroke-linecap="round" /></g></g></svg></i></span></div>
+//                     </div>
+//                     <ul id="mylist"></ul>
+//                 </div>
+//                 <div class="ok-button">
+//                     <button id="saveEditButton" class="button-create" onclick="SaveEditedTask(taskId)">OK<img src="/assets/img/check.svg" alt=""></button>
+//                 </div>
+//             </div>
+//         </form>
+//     `;
+
+//     // Setze die Werte der Eingabefelder basierend auf dem abgerufenen Task
+//     document.getElementById('titel').value = taskToEdit.titel;
+//     document.getElementById('description').value = taskToEdit.description;
+//     document.getElementById('dueDate').value = taskToEdit.dueDate;
+//     document.getElementById('category').value = taskToEdit.category;
+//     // Weitere Felder entsprechend setzen...
+
+//     // Setze die Prioritätsschaltflächen entsprechend
+//     if (taskToEdit.priority.urgent) {
+//         document.getElementById('urgent').classList.add('active');
+//     } else if (taskToEdit.priority.medium) {
+//         document.getElementById('medium').classList.add('active');
+//     } else {
+//         document.getElementById('low').classList.add('active');
+//     }
+// }
+
+
+
+// function fillPopupFields(taskId) {
+//     let task = findTaskById(taskId);
+
+//     // Fülle die Eingabefelder mit den Daten der Aufgabe
+//     document.getElementById("titel").value = task.titel;
+//     document.getElementById("description").value = task.description;
+//     document.getElementById("dueDate").value = task.dueDate;
+//     document.getElementById("category").value = task.category;
+
+//     // Fülle die Prioritätssymbole entsprechend der Aufgabe
+//     document.getElementById("urgent").classList.toggle("active", task.priority.urgent);
+//     document.getElementById("medium").classList.toggle("active", task.priority.medium);
+//     document.getElementById("low").classList.toggle("active", task.priority.low);
+
+//     // Fülle weitere Daten der Aufgabe ein, falls vorhanden
+// }
+
+
+
+
+// function SaveEditedTask(taskId) {
+//     // Abrufen des Tasks aus dem Local Storage
+//     let tasks = JSON.parse(localStorage.getItem('allTasks'));
+//     let taskIndex = tasks.findIndex(task => task.id === taskId);
+
+//         // Aktualisiere die Werte des Tasks basierend auf den Eingabefeldern
+//         tasks[taskIndex].titel = document.getElementById('titel').value;
+//         tasks[taskIndex].description = document.getElementById('description').value;
+//         tasks[taskIndex].dueDate = document.getElementById('dueDate').value;
+//         tasks[taskIndex].category = document.getElementById('category').value;
+
+//         localStorage.setItem('allTasks', JSON.stringify(tasks));
+
+//         // Optional: Zeige eine Erfolgsmeldung oder führe andere Aktionen aus
+//         console.log('Task erfolgreich bearbeitet und gespeichert.');
+   
+// }
+
 function editPopup(taskId) {
     // Verberge das showPopup
     document.getElementById("incomePopup").classList.add("d-none");
@@ -256,118 +407,142 @@ function editPopup(taskId) {
     document.getElementById('edit_popup').classList.remove('d-none');
     document.getElementById('edit_popup').innerHTML = '';
 
-    // Füge das Formular für die Bearbeitung hinzu
+    // Abrufen des Tasks aus dem Local Storage
+    let tasks = JSON.parse(localStorage.getItem('allTasks'));
+    let taskToEdit = tasks.find(task => task.id === taskId);
+
+    // Füge das Formular für die Bearbeitung hinzu und setze die Werte der Eingabefelder
     document.getElementById('edit_popup').innerHTML += `
-        <!-- Hier dein Formular für die Bearbeitung -->
+        <form class="popup-card" onsubmit="SaveEditedTask(${taskId})">
+            <div class="task-edit-form" >
+                <div class="add-task-title">
+                    <span>Title<span class="red-asterisk"></span></span>
+                    <input type="text" required placeholder="Enter a title" id="titel">
+                </div>
+
+                <div class="add-task-title">
+                    <span>Description</span>
+                    <textarea type="text" required minlength="5" placeholder="Enter a description" id="description"></textarea>
+                </div>
+                <div class="add-task-title prio-mobile">
+                    <span>Prio</span>
+                    <div class="priority-buttons">
+                        <button type="button" class="priority-button" id="urgent" onclick="togglePriority('urgent')">
+                            Urgent
+                            <img src="/assets/img/prio-urgent.svg" alt="Urgent Image">
+                        </button>
+                        <button type="button" class="priority-button" id="medium" onclick="togglePriority('medium')">
+                            Medium
+                            <img src="/assets/img/prio-medium.svg" alt="Medium Image">
+                        </button>
+                        <button type="button" class="priority-button" id="low" onclick="togglePriority('low')">
+                            Low
+                            <img src="/assets/img/prio-low.svg" alt="Low Image">
+                        </button>  
+                    </div>
+                </div>
+            
+                <div class="add-task-title">
+                    <span>Due a date<span class="red-asterisk"></span></span>
+                    <input class="input-task-date" type="date" id="dueDate" required>
+                </div>
+
+                <div class="add-task-title">
+                    <span>Category<span class="red-asterisk"></span></span>
+                    <select class="input-task-select" id="category" aria-placeholder="Select task category">
+                        <option value="" disabled selected>Select a Category</option>
+                        <option value="technical-task">Technical Task</option>
+                        <option value="user-story">User Story</option>
+                    </select>
+                </div>
+                <div class="add-task-title assigned-mobile">
+                    <span>Assigned to</span>
+                    <div class="assigned-input">
+                        <input onclick="openUserList('user-select-mobile', 'selected-user-mobile')" class="input-task-select" type="text" placeholder="Select contacts to assign">
+                        <img onclick="openUserList('user-select-mobile')" id="input-icon" class="input-arrow" src="./assets/img/arrow_drop_down_1.svg" alt="">
+                    </div>
+                    <div id="user-select-mobile" class="d-none"></div>
+                    <div id="selected-user-mobile"></div>
+                </div>
+                <div>
+                    <span class="subtask-container">Subtask</span>
+                    <div class="input-sub-field">
+                        <input class="input-subtask" id="subtask" />
+                        <div onclick="addTodo();" id="addButton"><span class="suffix"><i><svg width="12" height="12" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Capa 1"><g id="Group 11"><path id="Vector 13" d="M11 1V21" stroke="black" stroke-width="2" stroke-linecap="round" /><path id="Vector 14" d="M21 11L1.00048 11.138" stroke="black" stroke-width="2" stroke-linecap="round" /></g></g></svg></i></span></div>
+                    </div>
+                    <ul id="mylist"></ul>
+                </div>
+                <div class="ok-button">
+                    <button id="saveEditButton" class="button-create" onclick="SaveEditedTask(${taskId})">OK<img src="/assets/img/check.svg" alt=""></button>
+                </div>
+            </div>
+        </form>
     `;
 
-    // Füge den OK-Button hinzu
-    document.getElementById('edit_popup').innerHTML +=  `
-  <form class="form-container" onsubmit="saveEdit()">
-  <div class="task-edit-form" >
-          <div class="add-task-title">
-              <span>Title<span class="red-asterisk"></span></span>
-              <input  type="text"  required placeholder="Enter a title" id="titel">
-          </div>
+    // Setze die Werte der Eingabefelder basierend auf dem abgerufenen Task
+    document.getElementById('titel').value = taskToEdit.titel;
+    document.getElementById('description').value = taskToEdit.description;
+    document.getElementById('dueDate').value = taskToEdit.dueDate;
+    document.getElementById('category').value = taskToEdit.category;
+    // Weitere Felder entsprechend setzen...
 
-          <div class="add-task-title">
-              <span>Description</span>
-              <textarea  type="text" required minlength="5" placeholder="Enter a description"
-                  id="description"></textarea>
-          </div>
-          <div class="add-task-title prio-mobile">
-              <span>Prio</span>
-              <div class="priority-buttons">
-                  <button  type="button" class="priority-button" id="urgent" onclick="togglePriority('urgent')">
-                      Urgent
-                      <img src="/assets/img/prio-urgent.svg" alt="Urgent Image">
-                  </button>
-                  <button  type="button" class="priority-button active" id="medium" onclick="togglePriority('medium')">
-                      Medium
-                      <img src="/assets/img/prio-medium.svg" alt="Medium Image">
-                  </button>
-                  <button  type="button" class="priority-button" id="low" onclick="togglePriority('low')">
-                      Low
-                      <img src="/assets/img/prio-low.svg" alt="Low Image">
-                  </button>  
-              </div>
-          </div>
-    
-          <div class="add-task-title">
-              <span>Due a date<span class="red-asterisk"></span></span>
-              <input class="input-task-date" type="date" id="dueDate" required>
-          </div>
+    // Setze die Prioritätsschaltflächen entsprechend
+    if (taskToEdit.priority.urgent) {
+        document.getElementById('urgent').classList.add('active');
+    } else if (taskToEdit.priority.medium) {
+        document.getElementById('medium').classList.add('active');
+    } else {
+        document.getElementById('low').classList.add('active');
+    }
 
-          <div class="add-task-title">
-              <span>Category<span class="red-asterisk"></span></span>
-              <select class="input-task-select" id="category" aria-placeholder="Select task category">
-                  <option value="" disabled selected>Select a Category</option>
-                  <option value="technical-task">Technical Task</option>
-                  <option value="user-story">User Story</option>
-              </select>
-          </div>
-          <div class="add-task-title assigned-mobile">
-              <span>Assigned to</span>
-              <div class="assigned-input">
-                  <input onclick="openUserList('user-select-mobile', 'selected-user-mobile')" class="input-task-select" type="text"
-                      placeholder="Select contacts to assign">
-                  <img onclick="openUserList('user-select-mobile')" id="input-icon" class="input-arrow"
-                      src="./assets/img/arrow_drop_down_1.svg" alt="">
-              </div>
-              <div id="user-select-mobile" class="d-none"></div>
-              <div id="selected-user-mobile"></div>
-          </div>
-          <div>
-              <span class="subtask-container">Subtask</span>
-              <div class="input-sub-field">
-                  <input class="input-subtask" id="subtask" />
-                  <div onclick="addTodo();" id="addButton"><span class="suffix"><i><svg width="12" height="12"
-                      viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <g id="Capa 1">
-                          <g id="Group 11">
-                              <path id="Vector 13" d="M11 1V21" stroke="black" stroke-width="2"
-                                  stroke-linecap="round" />
-                              <path id="Vector 14" d="M21 11L1.00048 11.138" stroke="black"
-                                  stroke-width="2" stroke-linecap="round" />
-                          </g>
-                      </g>
-                  </svg></i></span></div>
-              </div>
-              <ul id="mylist"></ul>
+    // Anzeigen der ausgewählten Benutzer
+    taskToEdit.userList.forEach(user => {
+        document.getElementById('selected-user-mobile').innerHTML += `
+            <div class="user-details">
+                <div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
+                <div class="user-full-name">${user.fname} ${user.lname}</div>
             </div>
-            <div class="ok-button">
-            <button id="saveEditButton" class="button-create" onclick="SaveEditClick()">OK<img src="/assets/img/check.svg" alt=""></button>
-            </div>
-          <div
-    </div>
-      
-  </div>
-  <div class="form-button">
-      
+        `;
+    });
+
+    // Anzeigen der Subtasks
+    taskToEdit.subtask.forEach(subtask => {
+        document.getElementById('mylist').innerHTML += `
+            <li>${subtask.name}</li>
+        `;
+    });
+}
+
+
+function SaveEditedTask(taskId) {
+    // Abrufen des Tasks aus dem Local Storage
+    let tasks = JSON.parse(localStorage.getItem('allTasks'));
+
+    // Finden des Index des bearbeiteten Tasks im Array
+    let taskIndex = tasks.findIndex(task => task.id === taskId);
+        // Aktualisieren der Werte des bearbeiteten Tasks basierend auf den Eingabefeldern
+        tasks[taskIndex].titel = document.getElementById('titel').value;
+        tasks[taskIndex].description = document.getElementById('description').value;
+        tasks[taskIndex].dueDate = document.getElementById('dueDate').value;
+        tasks[taskIndex].category = document.getElementById('category').value;
+        // Weitere Felder entsprechend aktualisieren...
+
+        // Aktualisieren der Priorität des bearbeiteten Tasks basierend auf den Schaltflächen
+        let priorityButtons = document.querySelectorAll('.priority-button');
+        tasks[taskIndex].priority.urgent = priorityButtons[0].classList.contains('active');
+        tasks[taskIndex].priority.medium = priorityButtons[1].classList.contains('active');
+        tasks[taskIndex].priority.low = priorityButtons[2].classList.contains('active');
+
+        // Speichern der aktualisierten Tasks im Local Storage
+        localStorage.setItem('allTasks', JSON.stringify(tasks));
+
+        // Optional: Zeige eine Erfolgsmeldung oder führe andere Aktionen aus
+        console.log('Bearbeiteter Task erfolgreich gespeichert.');
+        closeEditPopup(taskId);
  
-</div>
-</form>
-  `;
-
 }
 
 
-function fillPopupFields(taskId) {
-    let task = findTaskById(taskId);
-
-    // Fülle die Eingabefelder mit den Daten der Aufgabe
-    document.getElementById("titel").value = task.titel;
-    document.getElementById("description").value = task.description;
-    document.getElementById("dueDate").value = task.dueDate;
-    document.getElementById("category").value = task.category;
-
-    // Fülle die Prioritätssymbole entsprechend der Aufgabe
-    document.getElementById("urgent").classList.toggle("active", task.priority.urgent);
-    document.getElementById("medium").classList.toggle("active", task.priority.medium);
-    document.getElementById("low").classList.toggle("active", task.priority.low);
-
-    // Fülle weitere Daten der Aufgabe ein, falls vorhanden
-}
 
 // function saveEdit(taskId) {
 //     // Daten aus den Eingabefeldern abrufen
@@ -400,24 +575,23 @@ function fillPopupFields(taskId) {
 
 
 
-function closeEditPopup(taskId) {
+function closeEditPopup() {
     // Schließe das editPopup
     document.getElementById("edit_popup").classList.add("d-none");
-
-    // Zeige das showPopup wieder an
-    showPopup(taskId);
+    loadAllTasks();
+    showAllTasks(allTasks);
 }
 
-document.addEventListener("click", function(event) {
-    let editPopup = document.getElementById("edit_popup");
-    let editPopupContainer = editPopup.querySelector(".form-container");
+// document.addEventListener("click", function(event) {
+//     let editPopup = document.getElementById("edit_popup");
+//     let editPopupContainer = editPopup.querySelector(".form-container");
 
-    // Überprüfen, ob das geklickte Element sich innerhalb des edit_popup befindet
-    if (!editPopupContainer.contains(event.target) && editPopup !== event.target) {
-        // Klick erfolgte außerhalb des edit_popup, schließe das Popup
-        closeEditPopup();
-    }
-});
+//     // Überprüfen, ob das geklickte Element sich innerhalb des edit_popup befindet
+//     if (!editPopupContainer.contains(event.target) && editPopup !== event.target) {
+//         // Klick erfolgte außerhalb des edit_popup, schließe das Popup
+//         closeEditPopup();
+//     }
+// });
 
 
 

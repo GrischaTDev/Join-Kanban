@@ -369,6 +369,9 @@ span {
   padding: 32px 20px;
   display: flex;
   flex-direction: column;
+  height: 90%;
+  max-width: 500px;
+  justify-content: space-between;
 }
 
 .img_popup {
@@ -524,6 +527,12 @@ span {
 
 .text-container {
   padding-left: 8px;
+}
+
+.popup-card {
+  height: 80vh;
+    min-width: 270px;
+    width: 480px;
 }
 
 .card-section {
