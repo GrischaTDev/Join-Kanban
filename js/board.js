@@ -169,7 +169,7 @@ function showPopup(taskId) {
       .map(
         (user) => `
           <div class="user-details">
-              <div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
+              <div class="initials-circle-two" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
               <div class="user-full-name">${user.fname} ${user.lname}</div>
           </div>`
       )
@@ -205,18 +205,18 @@ function showPopup(taskId) {
                               src="./assets/img/close_icon.svg" alt="close Button">
                       </div>
                   </div>
-                  <div class="header_popup">
-                      <h2>${task.titel}</h2>
-                  </div>
-                  <div class="p-element">
-                      <p>${task.description}</p>
-                  </div>
+                  
+                  <textarea class="titelarea">${task.titel}</textarea>
+            
+           
+                  <textarea class="descriptionarea">${task.description}</textarea>
+              
                   <div class="due_date_popup">
                       <p style="color: #42526E;">Due Date:</p>
                       <p id="variable_date">${task.dueDate}</p>
                   </div>
                   <div class="priority_popup">
-                      <p style="color: #42526E;">Priority:</p>
+                      <p class="prioity_container" style="color: #42526E;">Priority:</p>
                       ${urgentSymbolHTML}
                       ${mediumSymbolHTML}
                       ${lowSymbolHTML}
@@ -224,11 +224,11 @@ function showPopup(taskId) {
                   <div class="assigned-popup">
           <p style="color: #42526E;">Assigned to:</p>
           <div class="user-container-popup">
-              ${userNamesHTML} <!-- Hier werden Initialen und Vor- und Nachnamen angezeigt -->
+              ${userNamesHTML} 
           </div>
           <p class="subtask_container" style="color: #42526E;">Subtasks</p>
           <div class="subtask-list">
-              ${subtasksHTML} <!-- Hier werden die Subtasks mit Checkboxen angezeigt -->
+              ${subtasksHTML} 
           </div>
           <div class="edit-delete" id="edit">
               <a class="button-delete-edit" href="#" onclick="deleteTask(${task.id})">
@@ -544,55 +544,12 @@ function SaveEditedTask(taskId) {
 
 
 
-// function saveEdit(taskId) {
-//     // Daten aus den Eingabefeldern abrufen
-//     var titel = document.getElementById('titel').value;
-//     var description = document.getElementById('description').value;
-//     var dueDate = document.getElementById('dueDate').value;
-//     var category = document.getElementById('category').value;
-//     // Weitere Daten nach Bedarf abrufen
-
-//     // Speichere die Daten oder führe andere Aktionen durch, z. B. das Aktualisieren der Aufgabe
-//     // Hier kannst du die Logik implementieren, um die Änderungen zu speichern
-
-//     // Beispiel: Aktualisierung der Aufgabe mit den neuen Daten
-//     var task = findTaskById(taskId); // Annahme: Funktion findTaskById() gibt die Aufgabe mit der angegebenen ID zurück
-//     task.titel = titel;
-//     task.description = description;
-//     task.dueDate = dueDate;
-//     task.category = category;
-//     // Weitere Aktualisierungen je nach Bedarf
-
-//     // Schließe das editPopup
-//     document.getElementById("edit_popup").classList.add("d-none");
-
-//     // Zeige das incomePopup wieder an
-//     document.getElementById("incomePopup").classList.remove("d-none");
-
-//     // Optional: Aktualisiere das showPopup mit den aktualisierten Daten
-//     showPopup(taskId);
-// }
-
-
-
 function closeEditPopup() {
     // Schließe das editPopup
     document.getElementById("edit_popup").classList.add("d-none");
     loadAllTasks();
     showAllTasks(allTasks);
 }
-
-// document.addEventListener("click", function(event) {
-//     let editPopup = document.getElementById("edit_popup");
-//     let editPopupContainer = editPopup.querySelector(".form-container");
-
-//     // Überprüfen, ob das geklickte Element sich innerhalb des edit_popup befindet
-//     if (!editPopupContainer.contains(event.target) && editPopup !== event.target) {
-//         // Klick erfolgte außerhalb des edit_popup, schließe das Popup
-//         closeEditPopup();
-//     }
-// });
-
 
 
 
