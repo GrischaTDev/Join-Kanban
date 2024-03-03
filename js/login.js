@@ -1,12 +1,17 @@
 let loggedInUser = [];
 let checkBoxLogin = false;
 
-
+/**
+ * Load registered users.
+ */
 function initLogin(){
     loadRegisteredUsers();
 }
 
 
+/**
+ * Load registered users from server.
+ */
 async function loadRegisteredUsers(){
     try {
         users = JSON.parse(await getItem('users'));
@@ -16,6 +21,9 @@ async function loadRegisteredUsers(){
 }
 
 
+/**
+ * Takes the value of the input fields and checks whether the user exists.
+ */
 async function login() {
     let loginEmail = document.getElementById('login-email').value;
     let loginPassword = document.getElementById('login-password').value;
@@ -33,12 +41,23 @@ async function login() {
 }
 
 
+/**
+ * Clears the input fields after successful login.
+ * 
+ * @param {string} loginEmail - ID from email input field
+ * @param {string} loginPassword - ID from password input field
+ */
 function resetLoginForm(loginEmail, loginPassword) {
     loginEmail = '';
     loginPassword = '';
 }
 
 
+/**
+ * Saves the logged-in user as json in the local storage.
+ * 
+ * @param {JSON} user - Saved login user data
+ */
 async function userPushLogin(user) {
     loggedInUser.push({
       id: user.id,
@@ -47,14 +66,21 @@ async function userPushLogin(user) {
     });
 
     save();
-  }
+}
 
-  function save() {
+
+/**
+ * Saved login users in local storage.
+ */
+function save() {
     let loggedUSer = JSON.stringify(loggedInUser);
     localStorage.setItem('loggedInUser', loggedUSer);
 }
 
 
+/**
+ * Saves the login data in the input fields.
+ */
 function rememberMe() {
     let checkBoxImage = document.getElementById('remember-me');
 
@@ -67,6 +93,10 @@ function rememberMe() {
     }
 }
 
+
+/**
+ * Login as guest user without registration.
+ */
 function guestLogIn() {
     document.getElementById('login-email').value = 'test-user@join.com';
     document.getElementById('login-password').value = 'xt8mnVL6t8i4f4N';

@@ -32,7 +32,9 @@ function load() {
     }
 }
 
-
+/**
+ * This function logs the user out and deletes the user from the local storage
+ */
 function logout() {
     loggedInUser.splice(0, loggedInUser.length);
     window.location.href = './index.html';
