@@ -306,7 +306,15 @@ input:focus-visible {
     cursor: pointer;
 }
 
-/* Responsiv for Tablet 800px - 1200px */
+@media screen and (max-width: 375px) {
+    input {
+        font-size: 16px;
+    }
+
+    .arrow-left {
+        margin-left: -260px;
+    }
+}
 
 
 /* Responsiv for Laptop 1200px - 1600px */
