@@ -600,6 +600,7 @@ h2 {
 }
 
 .popup-card {
+  
   height: 80vh;
   min-width: 270px;
   width: 480px;
@@ -650,6 +651,19 @@ h2 {
   margin-bottom: 38px;
   justify-content: space-between;
 }
+.task-edit-form {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  border-radius: 24px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 800px;
+}
+
+
 
 @media (min-width: 900px) {
   .addTask_popup {
@@ -658,6 +672,19 @@ h2 {
 }
 
 @media (max-width: 900px) {
+  .task-edit-form {
+    height: 95%;
+    width: 80%;
+    background-color: white;
+    border-radius: 24px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 800px;
+    margin-left: 20px;
+  }
+  
   .addTask_popup {
     height: 100%;
     width: 100%;
@@ -747,6 +774,12 @@ h2 {
     height: 16px;
 
   }
+  /* .popup-card-mobile {
+    width: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
   
 }
 
@@ -862,15 +895,3 @@ h2 {
 }
 
 /*end of desktop*/
-
-.task-edit-form {
-  height: 100%;
-  width: 100%;
-  background-color: white;
-  border-radius: 24px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 800px;
-}

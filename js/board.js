@@ -194,7 +194,7 @@ function showPopup(taskId) {
     document.getElementById("incomePopup").classList.remove("d-none");
     document.getElementById("incomePopup").innerHTML = `
           <div class="complete_board_popup" onclick="doNotClose(event)">
-              <div class="popup-card", onclick="doNotClose(event)">
+              <div class="popup-card popup-card-mobile", onclick="doNotClose(event)">
               <div class="board_popup board_popup_mobile">
                   <div class="flex_container_head">
                       <div class="task_popup_${task.category}">
@@ -413,8 +413,19 @@ function editPopup(taskId) {
 
     // Füge das Formular für die Bearbeitung hinzu und setze die Werte der Eingabefelder
     document.getElementById('edit_popup').innerHTML += `
-        <form class="popup-card" onsubmit="SaveEditedTask(${taskId})">
-            <div class="task-edit-form" >
+        <form class="popup-card popup-card-mobile" onsubmit="SaveEditedTask(${taskId})">
+            <div class="task-edit-form task-edit-form-mobile" {
+                height: 100%;
+                width: 90%;
+                background-color: white;
+                border-radius: 24px;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                max-width: 800px;
+              }
+              " >
                 <div class="add-task-title">
                     <span>Title<span class="red-asterisk"></span></span>
                     <input type="text" required placeholder="Enter a title" id="titel">
