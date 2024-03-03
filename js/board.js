@@ -414,18 +414,7 @@ function editPopup(taskId) {
     // Füge das Formular für die Bearbeitung hinzu und setze die Werte der Eingabefelder
     document.getElementById('edit_popup').innerHTML += `
         <form class="popup-card popup-card-mobile" onsubmit="SaveEditedTask(${taskId})">
-            <div class="task-edit-form task-edit-form-mobile" {
-                height: 100%;
-                width: 90%;
-                background-color: white;
-                border-radius: 24px;
-                padding: 20px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                max-width: 800px;
-              }
-              " >
+            <div class="task-edit-form">
                 <div class="add-task-title">
                     <span>Title<span class="red-asterisk"></span></span>
                     <input type="text" required placeholder="Enter a title" id="titel">
@@ -632,7 +621,7 @@ function showAllTasks(allTasks) {
           <div class="card">
             <div class="card-category-${task.category}">${task.category}</div>
             <div class="card-headline">${task.titel}</div>
-            <div class="card-discription">${task.description}</div>
+            <div class="card-description">${task.description}</div>
             <div class="progress-container">
               <div class="progress" style="flex: 1;">
                 <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
@@ -677,7 +666,7 @@ for (let i = 0; i < inprogress_container.length; i++) {
     <div class="card">
     <div class="card-category-${task.category}">${task.category}</div>
     <div class="card-headline">${task.titel}</div>
-    <div class="card-discription">${task.description}</div>
+    <div class="card-description">${task.description}</div>
     <div class="progress-container">
               <div class="progress" style="flex: 1;">
                 <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
@@ -721,7 +710,7 @@ for (let i = 0; i < await_feedback_container.length; i++) {
     <div class="card">
     <div class="card-category-${task.category}">${task.category}</div>
     <div class="card-headline">${task.titel}</div>
-    <div class="card-discription">${task.description}</div>
+    <div class="card-description">${task.description}</div>
     <div class="progress-container">
               <div class="progress" style="flex: 1;">
                 <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
@@ -765,7 +754,7 @@ for (let i = 0; i < done_container.length; i++) {
     <div class="card">
     <div class="card-category-${task.category}">${task.category}</div>
     <div class="card-headline">${task.titel}</div>
-    <div class="card-discription">${task.description}</div>
+    <div class="card-description">${task.description}</div>
     <div class="progress-container">
               <div class="progress" style="flex: 1;">
                 <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
