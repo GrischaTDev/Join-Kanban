@@ -138,6 +138,7 @@ h2 {
 
 /*-no_tasks-END*/
 /*-card-section*/
+
 .drag-area {
   display: flex;
   justify-content: flex-start;
@@ -296,6 +297,24 @@ h2 {
   align-items: flex-start;
   flex-direction: column;
   max-height: 180px;
+  overflow: hidden; 
+  overflow-y: scroll;
+}
+
+.user-container-edit-popup {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  max-height: 100px;
+  overflow: hidden; 
+  overflow-y: scroll;
+}
+
+.subtask-list-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  max-height: 50px;
   overflow: hidden; 
 }
 

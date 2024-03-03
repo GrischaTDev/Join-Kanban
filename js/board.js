@@ -462,7 +462,7 @@ function editPopup(taskId) {
                         <img onclick="openUserList('user-select-mobile')" id="input-icon" class="input-arrow" src="./assets/img/arrow_drop_down_1.svg" alt="">
                     </div>
                     <div id="user-select-mobile" class="d-none"></div>
-                    <div id="selected-user-mobile"></div>
+                    <div class="user-container-edit-popup" id="selected-user-mobile"></div>
                 </div>
                 <div>
                     <span class="subtask-container">Subtask</span>
@@ -470,7 +470,7 @@ function editPopup(taskId) {
                         <input class="input-subtask" id="subtask" />
                         <div onclick="addTodo();" id="addButton"><span class="suffix"><i><svg width="12" height="12" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Capa 1"><g id="Group 11"><path id="Vector 13" d="M11 1V21" stroke="black" stroke-width="2" stroke-linecap="round" /><path id="Vector 14" d="M21 11L1.00048 11.138" stroke="black" stroke-width="2" stroke-linecap="round" /></g></g></svg></i></span></div>
                     </div>
-                    <ul id="mylist"></ul>
+                    <ul class="subtask-list-container" id="mylist"></ul>
                 </div>
                 <div class="ok-button">
                     <button id="saveEditButton" class="button-create" onclick="SaveEditedTask(${taskId})">OK<img src="/assets/img/check.svg" alt=""></button>
@@ -538,7 +538,7 @@ function SaveEditedTask(taskId) {
 
         // Optional: Zeige eine Erfolgsmeldung oder führe andere Aktionen aus
         console.log('Bearbeiteter Task erfolgreich gespeichert.');
-        closeEditPopup(taskId);
+        closeEditPopup();
  
 }
 
