@@ -168,9 +168,9 @@ function showPopup(taskId) {
     let userNamesHTML = task.userList
       .map(
         (user) => `
-          <div class="user-details">
-              <div class="initials-circle-two" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
-              <div class="user-full-name">${user.fname} ${user.lname}</div>
+          <div class="user-details user-details-mobile">
+              <div class="initials-circle-two initials-circle-mobile" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
+              <div class="user-full-name user-full-name-mobile">${user.fname} ${user.lname}</div>
           </div>`
       )
       .join("");
@@ -181,7 +181,7 @@ function showPopup(taskId) {
           .map(
             (subtask) => `
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="subtask_${subtask.name}" ${
+        <input class="form-check-input form-check-input-mobile" type="checkbox" id="subtask_${subtask.name}" ${
               subtask.status ? 'checked' : ''
             } onchange="updateSubtaskStatus(${taskId}, '${subtask.name}', this.checked)">
         <label class="form-check-label" for="subtask_${subtask.name}">${subtask.name}</label>
@@ -194,52 +194,52 @@ function showPopup(taskId) {
     document.getElementById("incomePopup").classList.remove("d-none");
     document.getElementById("incomePopup").innerHTML = `
           <div class="complete_board_popup" onclick="doNotClose(event)">
-              <div class="popup-card" onclick="doNotClose(event)">
-              <div class="board_popup">
+              <div class="popup-card", onclick="doNotClose(event)">
+              <div class="board_popup board_popup_mobile">
                   <div class="flex_container_head">
                       <div class="task_popup_${task.category}">
                           <p>${task.category}</p>
                       </div>
                       <div class="close_icon_box">
-                          <img class="img_popup" style="cursor: pointer;" onclick="closeIncomePopup()"
+                          <img class="img_popup img_popup_mobile" style="cursor: pointer;" onclick="closeIncomePopup()"
                               src="./assets/img/close_icon.svg" alt="close Button">
                       </div>
                   </div>
                   
-                  <textarea class="titelarea">${task.titel}</textarea>
+                  <textarea class="titelarea titelarea-mobile">${task.titel}</textarea>
             
            
-                  <textarea class="descriptionarea">${task.description}</textarea>
+                  <textarea class="descriptionarea descriptionarea-mobile">${task.description}</textarea>
               
-                  <div class="due_date_popup">
+                  <div class="due_date_popup due-date-popup-mobile">
                       <p style="color: #42526E;">Due Date:</p>
                       <p id="variable_date">${task.dueDate}</p>
                   </div>
-                  <div class="priority_popup">
-                      <p class="prioity_container" style="color: #42526E;">Priority:</p>
+                  <div class="priority_popup priority-popup-mobile">
+                      <p class="prioity_container prioity-container-mobile" style="color: #42526E;">Priority:</p>
                       ${urgentSymbolHTML}
                       ${mediumSymbolHTML}
                       ${lowSymbolHTML}
                   </div>
                   <div class="assigned-popup">
-          <p style="color: #42526E;">Assigned to:</p>
+          <p class="assigned-mobile" style="color: #42526E;">Assigned to:</p>
           <div class="user-container-popup">
               ${userNamesHTML} 
           </div>
-          <p class="subtask_container" style="color: #42526E;">Subtasks</p>
-          <div class="subtask-list">
+          <p class="subtask_container subtask-container-mobile" style="color: #42526E;">Subtasks</p>
+          <div class="subtask-list subtask-list-mobile">
               ${subtasksHTML} 
           </div>
           <div class="edit-delete" id="edit">
               <a class="button-delete-edit" href="#" onclick="deleteTask(${task.id})">
-                  <img class="edit-delete-img" src="/assets/img/delete_icon.svg"
+                  <img class="edit-delete-img edit-delete-img-mobile" src="/assets/img/delete_icon.svg"
                       alt="Bild plus Button" />
-                  <div class="edit-delete-popup-button">Delete</div>
+                  <div class="edit-delete-popup-button edit-delete-popup-button-mobile">Delete</div>
               </a>
               <a class="button-delete-edit" href="#" onclick="editPopup(${task.id})">
-                  <img class="edit-delete-img" src="/assets/img/edit_icon.svg"
+                  <img class="edit-delete-img edit-delete-img-mobile" src="/assets/img/edit_icon.svg"
                       alt="Bild plus Button" />
-                  <div class="edit-delete-popup-button">Edit</div>
+                  <div class="edit-delete-popup-button edit-delete-popup-button-mobile">Edit</div>
               </a>
           </div>
       </div>
@@ -500,7 +500,7 @@ function editPopup(taskId) {
         document.getElementById('selected-user-mobile').innerHTML += `
             <div class="user-details">
                 <div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
-                <div class="user-full-name">${user.fname} ${user.lname}</div>
+                <div class="user-full-name user-full-name-mobile">${user.fname} ${user.lname}</div>
             </div>
         `;
     });

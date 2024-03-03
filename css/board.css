@@ -152,7 +152,11 @@ h2 {
 }
 
 .form-check-input {
+  
   cursor: pointer;
+}
+.form-check{
+  height: 32px;
 }
 .card-section {
   margin-right: 16px;
@@ -273,7 +277,7 @@ h2 {
   color: #000000;
   width: 70px;
 }
-.ok-button{
+.ok-button {
   display: flex;
   justify-content: flex-end;
 }
@@ -434,24 +438,26 @@ h2 {
 }
 
 .titelarea {
-  border: none; 
-  resize: none; 
-  overflow: hidden; 
-  width: 400px; 
-  height: 150px; 
-  font-size: 61px;
+  border: none;
+  resize: none;
+  overflow: hidden;
+  width: 400px;
+  max-height: 150px;
+  font-size: 40px;
   font-weight: 700;
   margin: 0;
-  pointer-events: none; 
+  pointer-events: none;
+  margin-top: -40px;
 }
 .descriptionarea {
-  border: none; 
-  resize: none; 
+  border: none;
+  resize: none;
   overflow: hidden;
   width: 400px;
   height: 50px;
   font-size: 20px;
-  pointer-events: none; 
+  pointer-events: none;
+  margin-top: -40px;
 }
 
 .p-element {
@@ -459,17 +465,19 @@ h2 {
   height: 20px;
   margin-bottom: 26px;
 }
-.prioity_container{
-  margin-right: 70px;
+.prioity_container {
+  margin-right: 50px;
 }
 
-.priority_popup{
+.priority_popup {
   width: 50%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 38px;
   font-size: 20px;
+  margin-top: -80px;
+  margin-bottom: -90px;
 }
 .due_date_popup {
   width: 50%;
@@ -478,11 +486,13 @@ h2 {
   align-items: center;
   height: 38px;
   font-size: 20px;
+  margin-top: -80px;
 }
 
 .assigned_popup {
   width: 100%;
   font-size: 20px;
+  
 }
 
 .initials_circle {
@@ -506,7 +516,6 @@ h2 {
 }
 
 .close_addTask_icon_box {
-
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -592,8 +601,8 @@ h2 {
 
 .popup-card {
   height: 80vh;
-    min-width: 270px;
-    width: 480px;
+  min-width: 270px;
+  width: 480px;
 }
 
 .card-section {
@@ -624,37 +633,34 @@ h2 {
 
 .addTask_popup {
   height: 78%;
-    width: 67%;
-    background-color: white;
-    border-radius: 24px;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 800px;
+  width: 67%;
+  background-color: white;
+  border-radius: 24px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 800px;
 }
 
 .add-task-header-container {
   display: flex;
-    align-items: center;
-    background-color: #F6F7F8;
-    margin-bottom: 38px;
-    justify-content: space-between;
+  align-items: center;
+  background-color: #f6f7f8;
+  margin-bottom: 38px;
+  justify-content: space-between;
 }
 
-
-@media(min-width:900px) {
-  
-
+@media (min-width: 900px) {
   .addTask_popup {
     max-height: 700px;
   }
 }
 
-@media(max-width:900px) {
+@media (max-width: 900px) {
   .addTask_popup {
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
     padding: 50px;
     margin-top: 50px;
   }
@@ -663,19 +669,95 @@ h2 {
     margin-right: 16px;
     margin-bottom: 150px;
   }
+  .titelarea-mobile {
+    font-size: 32px;
+    border: none;
+    resize: none;
+    overflow: hidden;
+    width: 280px;
+    max-height: 200px;
+    font-weight: 700;
+    margin: 0;
+    pointer-events: none;
+    margin-top: -80px;
+    margin-bottom: -40px;
+  
+  }
+  .descriptionarea-mobile {
+    font-size: 16px;
+    border: none;
+    resize: none;
+    overflow: hidden;
+    width: 280px;
+    max-height: 50px;
+    margin: 0;
+    pointer-events: none;
+    margin-top: -60px;
+    margin-bottom: -60px;
+    
+  }
+  .due-date-popup-mobile {
+    font-size: 16px;
+    width: 70%;
+    margin-top: -40px;
+    margin-bottom: -40px;
+  }
+  .priority-popup-mobile {
+    font-size: 16px;
+    width: 70%;
+    margin-bottom: -40px;
+  }
+  .assigned-mobile {
+    font-size: 16px;
+    margin-top: -68px;
+  }
+  .board_popup_mobile {
+    width: 60%;
+  }
+  .img_popup_mobile {
+    width: 34px;
+    height: 34px;
+  }
+  .user-full-name-mobile {
+    font-size: 16px;
+  }
+  .initials-circle-mobile{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 12px;
+  }
+  .subtask-container-mobile{
+    font-size: 16px;
+  }
+  .subtask-list-mobile{
+    font-size: 16px;
+  }
+  .edit-delete-img-mobile{
+    height: 10px;
+  }
+  .edit-delete-popup-button-mobile{
+ font-size: 16px;
+  }
+  .edit-delete-img-mobile {
+    height: 16px;
+
+  }
+  
 }
 
-
-
-@media(max-width:1600px) {
-.add-task-text {
-  display: none;
-}
-
+@media (max-width: 1600px) {
+  .add-task-text {
+    display: none;
+  }
 }
 
 /* Responsiv for desktop */
-@media(min-width:1600px) {
+@media (min-width: 1600px) {
   .content-board {
     margin: 160px 0 0 310px;
     max-width: 1400px;
@@ -781,8 +863,7 @@ h2 {
 
 /*end of desktop*/
 
-
-.task-edit-form{
+.task-edit-form {
   height: 100%;
   width: 100%;
   background-color: white;
