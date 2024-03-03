@@ -299,6 +299,12 @@ textarea {
   gap: 6px;
 
 }
+.todo-item,
+.actions,
+.input-subtask,
+.edit-input {
+  color: black; /* Textfarbe auf Schwarz setzen */
+}
 
 .input-sub-field {
   display: flex;
@@ -356,6 +362,7 @@ textarea {
 
 ul {
   margin-left: -40px;
+  color: black;
 }
 .edit-input{
   width: 100%;

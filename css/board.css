@@ -82,6 +82,9 @@ h2 {
   height: calc(100% - 4px);
   background-color: rgb(207, 207, 207);
 }
+#mylist li {
+  list-style-type: none; /* Marker entfernen */
+}
 
 /*-board-search-END-*/
 /*-todo-*/
@@ -115,9 +118,9 @@ h2 {
 /*-todo-END*/
 /*-no_tasks-*/
 
-span {
+/* span {
   color: #a8a8a8;
-}
+} */
 
 .no-tasks {
   display: flex;
@@ -269,6 +272,10 @@ span {
   justify-content: flex-end;
   color: #000000;
   width: 70px;
+}
+.ok-button{
+  display: flex;
+  justify-content: flex-end;
 }
 
 /*progress-bar-inside-CARD-end*/
@@ -571,7 +578,6 @@ span {
   padding: 6px 6px;
 }
 .assigned-popup {
-  /* margin-top: -40px; */
   font-size: 20px;
 }
 
@@ -636,59 +642,6 @@ span {
     justify-content: space-between;
 }
 
-/* .header-container {
-  display: flex;
-  align-items: flex-end;
-  background-color: #F6F7F8;
-  margin-bottom: 38px;
-}
-
-.form-width {
-  max-width: 1200px;
-  padding-right: 80px;
-}
-
-.add-task-form {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.add-task-form-row {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.add-task-title {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.add-task-title input {
-  font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: 1px solid rgb(209, 209, 209);
-  font-family: "Inter", sans-serif;
-  display: flex;
-  flex-direction: initial;
-}
-
-.add-task-border {
-  display: none;
-}
-
-.add-task-title textarea {
-  font-size: 16px;
-  padding: 10px 20px;
-  margin: 0;
-  border-radius: 10px;
-  border: 1px solid rgb(209, 209, 209);
-  height: 60px;
-  font-family: "Inter", sans-serif;
-} */
 
 @media(min-width:900px) {
   
