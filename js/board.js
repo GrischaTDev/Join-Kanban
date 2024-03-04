@@ -448,7 +448,7 @@ function editPopup(taskId) {
         <div class="close_icon_edit_popup">
         <img class="img_popup img_popup_mobile" style="cursor: pointer;" onclick="closeEditPopup();" src="./assets/img/close_icon.svg" alt="close Button">
     </div>
-            <div class="add-task-form">
+            <div class="add-task-form-popup">
                 <div class="add-task-form-row">
                     <div class="add-task-title">
                         <span>Title<span class="red-asterisk">*</span></span>
@@ -474,8 +474,6 @@ function editPopup(taskId) {
                         <div id="selected-user"></div>
                     </div>
                 </div>
-
-                <div class="add-task-border"></div>
 
                 <div class="add-task-form-row">
                     <div class="add-task-title">
@@ -534,15 +532,6 @@ function editPopup(taskId) {
                         </div>
                     </div>
 
-                    <div class="add-task-title">
-                        <span>Category<span class="red-asterisk">*</span></span>
-                        <select class="input-task-select" id="category" aria-placeholder="Select task category">
-                            <option value="" disabled selected>Select a Category</option>
-                            <option value="technical-task">Technical Task</option>
-                            <option value="user-story">User Story</option>
-                        </select>
-                    </div>
-
                     <div class="subtask-container">
                         <span>Subtask</span>
                         <div class="input-sub-field">
@@ -569,7 +558,6 @@ function editPopup(taskId) {
     document.getElementById('titel').value = taskToEdit.titel;
     document.getElementById('description').value = taskToEdit.description;
     document.getElementById('dueDate').value = taskToEdit.dueDate;
-    document.getElementById('category').value = taskToEdit.category;
     // Weitere Felder entsprechend setzen...
 
     // Setze die Prioritätsschaltflächen entsprechend
