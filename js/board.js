@@ -461,8 +461,9 @@ function editPopup(taskId) {
                 <div class="add-task-title assigned-mobile">
                     <span>Assigned to</span>
                     <div class="assigned-input">
-                        <input onclick="openUserList('user-select-mobile', 'selected-user-mobile')" class="input-task-select" type="text" placeholder="Select contacts to assign">
-                        <img onclick="openUserList('user-select-mobile')" id="input-icon" class="input-arrow" src="./assets/img/arrow_drop_down_1.svg" alt="">
+                    <input onclick="openUserListPopUp(userListId)" class="input-task-select" type="text" placeholder="Select contacts to assign">
+<img onclick="openUserListPopUp(userListId)" id="input-icon" class="input-arrow" src="./assets/img/arrow_drop_down_1.svg" alt="">
+
                     </div>
                     <div id="user-select-mobile" class="d-none"></div>
                     <div class="user-container-edit-popup" id="selected-user-mobile"></div>
@@ -503,7 +504,6 @@ function editPopup(taskId) {
         document.getElementById('selected-user-mobile').innerHTML += `
             <div class="user-details">
                 <div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
-                <div class="user-full-name user-full-name-mobile">${user.fname} ${user.lname}</div>
             </div>
         `;
     });
@@ -515,6 +515,44 @@ function editPopup(taskId) {
         `;
     });
 }
+
+
+
+function openUserListPopUp(userListId) {
+    let selectedUserList = document.getElementById('user-select-mobile');
+    let userList = document.getElementById('user-select-mobile');
+    let inputIcon = document.getElementById('input-icon');
+    
+    // Überprüfe, ob bereits Benutzer ausgewählt wurden
+    if (selectedUser.length >= 1) {
+        // Falls ja, zeige das Popup an
+        userList.classList.remove('d-none');
+        event.stopPropagation();
+        return;
+    }
+
+    // Rende die Benutzerliste im Popup
+    userList.innerHTML = '';
+
+    // Überprüfe, ob das Popup ausgeblendet ist
+    if (userList.classList.contains('d-none')) {
+        // Falls ja, zeige das Popup an
+        userList.classList.remove('d-none');
+        inputIcon.src = './assets/img/arrow_drop_down_1.svg';
+    }
+
+    selectedUser.forEach(user => {
+        document.getElementById('user-select-mobile').innerHTML += `
+        <div class="user-details user-details-mobile">
+              <div class="initials-circle-two initials-circle-mobile" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
+              <div class="user-full-name user-full-name-mobile">${user.fname} ${user.lname}</div>
+          </div>
+        `;
+    });
+
+    event.stopPropagation();
+}
+
 
 
 function SaveEditedTask(taskId) {

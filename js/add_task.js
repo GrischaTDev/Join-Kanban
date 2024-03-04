@@ -280,7 +280,6 @@ if (window.location.href.includes('add_task.html')) {
   });
 }
 
-
 function save() {
   let saveUser = JSON.stringify(selectedUser);
   localStorage.setItem("selectedUser", saveUser);

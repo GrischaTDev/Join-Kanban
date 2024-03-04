@@ -309,7 +309,7 @@ h2 {
 .user-container-edit-popup {
   display: flex;
   align-items: flex-start;
-  flex-direction: column;
+  flex-direction: row;
   max-height: 100px;
   overflow: hidden;
   overflow-y: scroll;
