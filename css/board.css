@@ -538,6 +538,14 @@ h2 {
   color: rgb(255, 246, 246);
 }
 
+.close_icon_edit_popup {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: rgb(255, 246, 246);
+}
+
 .close_addTask_icon_box {
   display: flex;
   justify-content: flex-end;
@@ -623,7 +631,7 @@ h2 {
 }
 
 .popup-card {
-  height: 80vh;
+  height: 85vh;
   min-width: 270px;
   width: 480px;
 }
@@ -674,15 +682,15 @@ h2 {
   justify-content: space-between;
 }
 .task-edit-form {
-  height: 100%;
   width: 90%;
-  background-color: white;
-  border-radius: 24px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 800px;
+    background-color: white;
+    border-radius: 24px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 800px;
+    gap: 10px;
 }
 
 
