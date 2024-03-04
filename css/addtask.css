@@ -22,7 +22,6 @@ body {
 .header-container {
   display: flex;
   align-items: flex-end;
-  background-color: #F6F7F8;
   margin-bottom: 38px;
 }
 
@@ -408,7 +407,6 @@ ul {
 }
 
 .create-task-container {
-  background-color: #F6F7F8;
   width: 100%;
   display: flex;
   position: fixed;

@@ -16,9 +16,9 @@
     <script src="script.js" defer></script>
     <script src="./js/add_task.js" defer></script>
     <script src="./js/login.js" defer></script>
+    <script src="./js/storage.js " defer></script>
 
     <!-- bootstrap files for progressbar -->
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
@@ -76,15 +76,8 @@
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
                 </div>
-                <div id="inprogress_container" class="drag-area desktop-drag-area"
-                    ondrop="moveTo('inprogress_container', event)" ondragleave="removeHighlight('inprogress_container')"
-                    ondragover="allowDrop(event); highlight('inprogress_container')">
-
-
-                </div>
+                <div id="inprogress_container" class="drag-area desktop-drag-area" ondrop="moveTo('inprogress_container', event)" ondragleave="removeHighlight('inprogress_container')" ondragover="allowDrop(event); highlight('inprogress_container')"></div>
             </div>
-
-
 
             <div class="desktop-complete-card">
                 <div class="headlines-container desktop-headlines-container" id="await_feedback">
@@ -93,40 +86,24 @@
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
                 </div>
-                <div id="await_feedback_container" class="drag-area desktop-drag-area"
-                    ondrop="moveTo('await_feedback_container', event)" ondragover="allowDrop(event)">
-
-                </div>
+                <div id="await_feedback_container" class="drag-area desktop-drag-area" ondrop="moveTo('await_feedback_container', event)" ondragover="allowDrop(event)"></div>
             </div>
 
             <div class="desktop-complete-card">
                 <div class="headlines-container desktop-headlines-container" id="done">
                     <h6>Done</h6>
                 </div>
-                <div id="done_container" class="drag-area desktop-drag-area" ondrop="moveTo('done_container', event)"
-                    ondragover="allowDrop(event)">
-
-                </div>
+                <div id="done_container" class="drag-area desktop-drag-area" ondrop="moveTo('done_container', event)" ondragover="allowDrop(event)"></div>
             </div>
 
             <div>
-                <div id="incomePopup" class="popup-bg d-none" onclick="closeIncomePopup()">
-
-                </div>
-                <div id="edit_popup" class="popup-bg d-none" onclick="closeEditPopup()">
-                </div>
+                <div id="incomePopup" class="popup-bg d-none" onclick="closeIncomePopup()"></div>
+                <div id="edit_popup" class="popup-bg d-none" onclick="closeEditPopup()"></div>
             </div>
         </div>
     </div>
-
-    <div id="add-task-popup-container" class="popup-bg d-none" onclick="closeaddTaskPopup()">
-
-    </div>
+    <div id="add-task-popup-container" class="popup-bg d-none" onclick="closeaddTaskPopup()"></div>
 
     <div w3-include-html="/assets/templates/mobile_menu.html"></div>
-
-
-
 </body>
-
 </html>

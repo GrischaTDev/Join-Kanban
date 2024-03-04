@@ -706,6 +706,9 @@ h2 {
   gap: 10px;
 }
 
+.task-edit-form-board {
+  background-color: orange;
+}
 
 
 @media (min-width: 900px) {

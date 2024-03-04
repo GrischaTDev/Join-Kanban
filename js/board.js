@@ -7,6 +7,7 @@ async function initBoard() {
     loadAllTasks();
     activeMenu();
     load();
+    loadUsers();
     loadUserProfile();
     showAllTasks(allTasks);
     // Überprüfen, ob der Local Storage leer ist
@@ -24,124 +25,154 @@ async function initBoard() {
 
 
 
-function openAddNewTaskPopup(userListId, selectedUserId) {
+function openAddNewTaskPopup() {
     document.getElementById('add-task-popup-container').classList.remove('d-none');
     document.getElementById('add-task-popup-container').innerHTML = '';
-    document.getElementById('add-task-popup-container').innerHTML += `
+    document.getElementById('add-task-popup-container').innerHTML += /* html */ `
     <div class="addTask_popup" onclick="doNotClose(event)">
    
+    <div>
+        <div class="header-container">
+            <h1>Add Task</h1>
+        </div>
 
-    <div class="header-container">
-        <h1>Add Task</h1>
-    </div>
-
-    <form class="form-width" onsubmit="addTask()">
-        <div class="add-task-form" >
-            <div class="add-task-form-row">
-                <div class="add-task-title">
-                    <span>Title<span class="red-asterisk">*</span></span>
-                    <input type="text" required placeholder="Enter a title" id="titel">
-                </div>
-
-                <div class="add-task-title">
-                    <span>Description</span>
-                    <textarea type="text" required minlength="5" placeholder="Enter a description"
-                        id="description"></textarea>
-                </div>
-
-                <div class="add-task-title">
-                    <span>Assigned to</span>
-                    <div class="assigned-input">
-                        <input onclick="openUserList('${userListId}', '${selectedUserId}')" class="input-task-select" type="text"
-                            placeholder="Select contacts to assign">
-                        <img onclick="openUserList('${userListId}', '${selectedUserId}')" id="input-icon" class="input-arrow"
-                            src="./assets/img/arrow_drop_down_1.svg" alt="">
+        <form onsubmit="addTask()">
+            <div class="add-task-form">
+                <div class="add-task-form-row">
+                    <div class="add-task-title">
+                        <span>Title<span class="red-asterisk">*</span></span>
+                        <input type="text" required placeholder="Enter a title" id="titel">
                     </div>
-                    <div id="user-select" class="d-none"></div>
-                    <div id="selected-user"></div>
+
+                    <div class="add-task-title">
+                        <span>Description</span>
+                        <textarea type="text" required minlength="5" placeholder="Enter a description"
+                            id="description"></textarea>
+                    </div>
+
+                    <div class="add-task-title">
+                        <span>Assigned to</span>
+                        <div class="assigned-input">
+                            <input class="input-task-select" id="search-user" autocomplete="off"
+                                onkeydown="filterUser()" onclick="openUserList(event)" type="text"
+                                placeholder="Select contacts to assign">
+                            <img onclick="openUserList(event)" id="input-icon" class="input-arrow"
+                                src="./assets/img/arrow_drop_down_1.svg" alt="">
+                        </div>
+                        <div id="user-list" class="d-none" onclick="doNotClose(event)"></div>
+                        <div id="selected-user"></div>
+                    </div>
+                </div>
+
+                <div class="add-task-border"></div>
+
+                <div class="add-task-form-row">
+                    <div class="add-task-title">
+                        <span>Due a date<span class="red-asterisk">*</span></span>
+                        <input class="input-task-date" type="date" id="dueDate" required>
+                    </div>
+
+                    <div class="add-task-title">
+                        <span>Prio</span>
+                        <div class="priority-buttons">
+                            <button type="button" class="priority-button" id="urgent"
+                                onclick="togglePriority('urgent')">
+                                <span>Urgent</span>
+                                <svg id="svg-urgent" xmlns="http://www.w3.org/2000/svg" width="21" height="15"
+                                    fill="none">
+                                    <g fill="#FF3D00" clip-path="url(#a)">
+                                        <path
+                                            d="M19.571 14.755c-.234 0-.463-.075-.652-.214l-8.252-6.083-8.252 6.083a1.098 1.098 0 0 1-1.304-1.763l8.904-6.57a1.096 1.096 0 0 1 1.304 0l8.904 6.57a1.095 1.095 0 0 1-.652 1.977Z" />
+                                        <path
+                                            d="M19.571 9.006c-.234 0-.463-.075-.652-.214L10.667 2.71 2.415 8.792A1.098 1.098 0 0 1 1.111 7.03L10.015.46a1.096 1.096 0 0 1 1.304 0l8.904 6.57a1.096 1.096 0 0 1-.652 1.977Z" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="a">
+                                            <path fill="#fff" d="M.667.245h20v14.51h-20z" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </button>
+                            <button type="button" class="priority-button active-medium" id="medium"
+                                onclick="togglePriority('medium')">
+                                <span>Medium</span>
+                                <svg id="svg-medium" xmlns="http://www.w3.org/2000/svg" width="18" height="8"
+                                    fill="none">
+                                    <g fill="#FFA800" clip-path="url(#a)">
+                                        <path
+                                            d="M16.569 7.167H1.431a.928.928 0 0 1-.66-.275.942.942 0 0 1 0-1.327.928.928 0 0 1 .66-.275h15.137c.247 0 .483.099.658.275a.942.942 0 0 1 0 1.327.928.928 0 0 1-.659.275ZM16.569 2.71H1.431a.928.928 0 0 1-.66-.275.942.942 0 0 1 0-1.327.928.928 0 0 1 .66-.275h15.137c.247 0 .483.1.658.275a.942.942 0 0 1 0 1.327.928.928 0 0 1-.659.275Z" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="a">
+                                            <path fill="#fff" d="M.5.833h17v6.333H.5z" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </button>
+                            <button type="button" class="priority-button" id="low" onclick="togglePriority('low')">
+                                <span>Low</span>
+                                <svg id="svg-low" xmlns="http://www.w3.org/2000/svg" width="21" height="15" fill="none">
+                                    <g fill="#7AE229">
+                                        <path
+                                            d="M10.334 9.006c-.235 0-.463-.075-.652-.214L.779 2.222A1.096 1.096 0 1 1 2.083.46l8.251 6.082L18.585.46a1.097 1.097 0 0 1 1.304 1.763l-8.903 6.57c-.189.138-.417.213-.652.213Z" />
+                                        <path
+                                            d="M10.334 14.754c-.235 0-.463-.074-.652-.213L.779 7.97a1.096 1.096 0 1 1 1.304-1.763l8.251 6.083 8.251-6.083a1.098 1.098 0 0 1 1.304 1.763l-8.903 6.57c-.189.139-.417.214-.652.213Z" />
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="add-task-title">
+                        <span>Category<span class="red-asterisk">*</span></span>
+                        <select class="input-task-select" id="category" aria-placeholder="Select task category">
+                            <option value="" disabled selected>Select a Category</option>
+                            <option value="technical-task">Technical Task</option>
+                            <option value="user-story">User Story</option>
+                        </select>
+                    </div>
+
+                    <div class="subtask-container">
+                        <span>Subtask</span>
+                        <div class="input-sub-field">
+                            <input class="input-subtask" id="subtask" />
+                            <div onclick="addTodo();" id="addButton" class="suffix">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" fill="none">
+                                    <path fill="#2A3647"
+                                        d="M6.249 8h-5a.968.968 0 0 1-.713-.287A.968.968 0 0 1 .249 7c0-.283.095-.52.287-.713A.968.968 0 0 1 1.249 6h5V1c0-.283.095-.52.287-.713A.968.968 0 0 1 7.249 0c.283 0 .52.096.712.287.192.192.288.43.288.713v5h5c.283 0 .52.096.712.287.192.192.287.43.287.713s-.095.52-.287.713a.967.967 0 0 1-.713.287h-5v5c0 .283-.095.52-.287.713a.967.967 0 0 1-.712.287.967.967 0 0 1-.713-.287.968.968 0 0 1-.287-.713V8Z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <ul id="mylist"></ul>
+                    </div>
                 </div>
             </div>
 
-            <div class="add-task-border"></div>
-
-            <div class="add-task-form-row">
-                <div class="add-task-title">
-                    <span>Due a date<span class="red-asterisk">*</span></span>
-                    <input class="input-task-date" type="date" id="dueDate" required>
-                </div>
-
-                <div class="add-task-title">
-                    <span>Prio</span>
-                    <div class="priority-buttons">
-                        <button type="button" class="priority-button" id="urgent" onclick="togglePriority('urgent')">
-                            Urgent
-                            <svg id="svg-urgent" xmlns="http://www.w3.org/2000/svg" width="21" height="15" fill="none"><g fill="#FF3D00" clip-path="url(#a)"><path d="M19.571 14.755c-.234 0-.463-.075-.652-.214l-8.252-6.083-8.252 6.083a1.098 1.098 0 0 1-1.304-1.763l8.904-6.57a1.096 1.096 0 0 1 1.304 0l8.904 6.57a1.095 1.095 0 0 1-.652 1.977Z"/><path d="M19.571 9.006c-.234 0-.463-.075-.652-.214L10.667 2.71 2.415 8.792A1.098 1.098 0 0 1 1.111 7.03L10.015.46a1.096 1.096 0 0 1 1.304 0l8.904 6.57a1.096 1.096 0 0 1-.652 1.977Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M.667.245h20v14.51h-20z"/></clipPath></defs></svg>
-                        </button>
-                        <button type="button" class="priority-button active-medium" id="medium" onclick="togglePriority('medium')">
-                            Medium
-                            <svg id="svg-medium" xmlns="http://www.w3.org/2000/svg" width="18" height="8" fill="none"><g fill="#FFA800" clip-path="url(#a)"><path d="M16.569 7.167H1.431a.928.928 0 0 1-.66-.275.942.942 0 0 1 0-1.327.928.928 0 0 1 .66-.275h15.137c.247 0 .483.099.658.275a.942.942 0 0 1 0 1.327.928.928 0 0 1-.659.275ZM16.569 2.71H1.431a.928.928 0 0 1-.66-.275.942.942 0 0 1 0-1.327.928.928 0 0 1 .66-.275h15.137c.247 0 .483.1.658.275a.942.942 0 0 1 0 1.327.928.928 0 0 1-.659.275Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M.5.833h17v6.333H.5z"/></clipPath></defs></svg>
-                        </button>
-                        <button type="button" class="priority-button" id="low" onclick="togglePriority('low')">
-                            Low
-                            <svg id="svg-low" xmlns="http://www.w3.org/2000/svg" width="21" height="15" fill="none"><g fill="#7AE229"><path d="M10.334 9.006c-.235 0-.463-.075-.652-.214L.779 2.222A1.096 1.096 0 1 1 2.083.46l8.251 6.082L18.585.46a1.097 1.097 0 0 1 1.304 1.763l-8.903 6.57c-.189.138-.417.213-.652.213Z"/><path d="M10.334 14.754c-.235 0-.463-.074-.652-.213L.779 7.97a1.096 1.096 0 1 1 1.304-1.763l8.251 6.083 8.251-6.083a1.098 1.098 0 0 1 1.304 1.763l-8.903 6.57c-.189.139-.417.214-.652.213Z"/></g></svg>
-                        </button>  
-                    </div>
-                </div>
-
-                <div class="add-task-title">
-                    <span>Category<span class="red-asterisk">*</span></span>
-                    <select class="input-task-select" id="category" aria-placeholder="Select task category">
-                        <option value="" disabled selected>Select a Category</option>
-                        <option value="technical-task">Technical Task</option>
-                        <option value="user-story">User Story</option>
-                    </select>
-                </div>
-
-                
-                <div>
-                    <span class="subtask-container">Subtask</span>
-                    <div class="input-sub-field">
-                        <input class="input-subtask" id="subtask" />
-                        <div onclick="addTodo();" id="addButton"><span class="suffix"><i><svg width="12" height="12"
-                            viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g id="Capa 1">
-                                <g id="Group 11">
-                                    <path id="Vector 13" d="M11 1V21" stroke="black" stroke-width="2"
-                                        stroke-linecap="round" />
-                                    <path id="Vector 14" d="M21 11L1.00048 11.138" stroke="black"
-                                        stroke-width="2" stroke-linecap="round" />
-                                </g>
+            <div class="create-task-container">
+                <span>
+                    <span class="red-asterisk">*</span>This field is required
+                </span>
+                <div class="form-button">
+                    <div class="button-clear" onclick="clearInputFields()">
+                        <span>Clear</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+                            <mask id="a" width="24" height="24" x="4" y="4" maskUnits="userSpaceOnUse"
+                                style="mask-type:alpha">
+                                <path fill="#D9D9D9" d="M4 4h24v24H4z" />
+                            </mask>
+                            <g mask="url(#a)">
+                                <path fill="#fff"
+                                    d="m16 17.4-4.9 4.9a.948.948 0 0 1-.7.275.948.948 0 0 1-.7-.275.948.948 0 0 1-.275-.7c0-.283.091-.517.275-.7l4.9-4.9-4.9-4.9a.948.948 0 0 1-.275-.7c0-.283.091-.517.275-.7a.948.948 0 0 1 .7-.275c.283 0 .516.092.7.275l4.9 4.9 4.9-4.9a.948.948 0 0 1 .7-.275c.283 0 .516.092.7.275a.948.948 0 0 1 .275.7.948.948 0 0 1-.275.7L17.4 16l4.9 4.9a.949.949 0 0 1 .275.7.948.948 0 0 1-.275.7.948.948 0 0 1-.7.275.948.948 0 0 1-.7-.275L16 17.4Z" />
                             </g>
-                        </svg></i></span></div>
+                        </svg>
                     </div>
-                    <ul id="mylist"></ul>
+                    <button class="button-create">
+                        <span>Create Task</span>
+                        <img src="/assets/img/check.svg" alt="">
+                    </button>
                 </div>
-
             </div>
-        </div>
-        <div class="create-task-container">
-            <span>
-                <span class="red-asterisk">*</span>This field is required
-            </span>
-            <div class="form-button">
-                <button href="#" class="button-clear">Clear <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <mask id="mask0_71720_5848" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4"
-                            width="24" height="24">
-                            <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
-                        </mask>
-                        <g mask="url(#mask0_71720_5848)">
-                            <path
-                                d="M15.9998 17.4L11.0998 22.3C10.9165 22.4834 10.6831 22.575 10.3998 22.575C10.1165 22.575 9.88314 22.4834 9.6998 22.3C9.51647 22.1167 9.4248 21.8834 9.4248 21.6C9.4248 21.3167 9.51647 21.0834 9.6998 20.9L14.5998 16L9.6998 11.1C9.51647 10.9167 9.4248 10.6834 9.4248 10.4C9.4248 10.1167 9.51647 9.88338 9.6998 9.70005C9.88314 9.51672 10.1165 9.42505 10.3998 9.42505C10.6831 9.42505 10.9165 9.51672 11.0998 9.70005L15.9998 14.6L20.8998 9.70005C21.0831 9.51672 21.3165 9.42505 21.5998 9.42505C21.8831 9.42505 22.1165 9.51672 22.2998 9.70005C22.4831 9.88338 22.5748 10.1167 22.5748 10.4C22.5748 10.6834 22.4831 10.9167 22.2998 11.1L17.3998 16L22.2998 20.9C22.4831 21.0834 22.5748 21.3167 22.5748 21.6C22.5748 21.8834 22.4831 22.1167 22.2998 22.3C22.1165 22.4834 21.8831 22.575 21.5998 22.575C21.3165 22.575 21.0831 22.4834 20.8998 22.3L15.9998 17.4Z"
-                                fill="white" />
-                        </g>
-                    </svg>
-                </button>
-                <button class="button-create">Create Task <img src="/assets/img/check.svg" alt=""></button>
-            </div>
-        </div>
-    </form>
-
+        </form>
     </div>
     `;
 }
@@ -411,74 +442,125 @@ function editPopup(taskId) {
     let taskToEdit = tasks.find(task => task.id === taskId);
 
     // Füge das Formular für die Bearbeitung hinzu und setze die Werte der Eingabefelder
-    document.getElementById('edit_popup').innerHTML += /*html*/`
-        <form class="popup-card popup-card-mobile" onclick="doNotClose(event)" onsubmit="SaveEditedTask(${taskId})">
-            <div class="task-edit-form">
-            <div class="close_icon_edit_popup">
-            <img class="img_popup img_popup_mobile" style="cursor: pointer;" onclick="closeEditPopup();"
-                src="./assets/img/close_icon.svg" alt="close Button">
-        </div>
-                <div class="add-task-title">
-                    <span>Title<span class="red-asterisk"></span></span>
-                    <input type="text" required placeholder="Enter a title" id="titel">
-                </div>
+    document.getElementById('edit_popup').innerHTML += /* html */ `
+    <form class="task-edit-form" onsubmit="addTask()" onclick="doNotClose(event)">
+    <div>
+        <div class="close_icon_edit_popup">
+        <img class="img_popup img_popup_mobile" style="cursor: pointer;" onclick="closeEditPopup();" src="./assets/img/close_icon.svg" alt="close Button">
+    </div>
+            <div class="add-task-form">
+                <div class="add-task-form-row">
+                    <div class="add-task-title">
+                        <span>Title<span class="red-asterisk">*</span></span>
+                        <input type="text" required placeholder="Enter a title" id="titel">
+                    </div>
 
-                <div class="add-task-title">
-                    <span>Description</span>
-                    <textarea type="text" required minlength="5" placeholder="Enter a description" id="description"></textarea>
-                </div>
-                <div class="add-task-title prio-mobile">
-                    <span>Prio</span>
-                    <div class="priority-buttons">
-                        <button type="button" class="priority-button" id="urgent" onclick="togglePriority('urgent')">
-                            Urgent
-                            <img src="/assets/img/prio-urgent.svg" alt="Urgent Image">
-                        </button>
-                        <button type="button" class="priority-button" id="medium" onclick="togglePriority('medium')">
-                            Medium
-                            <img src="/assets/img/prio-medium.svg" alt="Medium Image">
-                        </button>
-                        <button type="button" class="priority-button" id="low" onclick="togglePriority('low')">
-                            Low
-                            <img src="/assets/img/prio-low.svg" alt="Low Image">
-                        </button>  
+                    <div class="add-task-title">
+                        <span>Description</span>
+                        <textarea type="text" required minlength="5" placeholder="Enter a description"
+                            id="description"></textarea>
+                    </div>
+
+                    <div class="add-task-title">
+                        <span>Assigned to</span>
+                        <div class="assigned-input">
+                            <input class="input-task-select" id="search-user" autocomplete="off"
+                                onkeydown="filterUser()" onclick="openUserList(event)" type="text"
+                                placeholder="Select contacts to assign">
+                            <img onclick="openUserList(event)" id="input-icon" class="input-arrow"
+                                src="./assets/img/arrow_drop_down_1.svg" alt="">
+                        </div>
+                        <div id="user-list" class="d-none" onclick="doNotClose(event)"></div>
+                        <div id="selected-user"></div>
                     </div>
                 </div>
-            
-                <div class="add-task-title">
-                    <span>Due a date<span class="red-asterisk"></span></span>
-                    <input class="input-task-date" type="date" id="dueDate" required>
-                </div>
 
-                <div class="add-task-title">
-                    <span>Category<span class="red-asterisk"></span></span>
-                    <select class="input-task-select" id="category" aria-placeholder="Select task category">
-                        <option value="" disabled selected>Select a Category</option>
-                        <option value="technical-task">Technical Task</option>
-                        <option value="user-story">User Story</option>
-                    </select>
-                </div>
-                <div class="add-task-title assigned-mobile">
-                    <span>Assigned to</span>
-                    <div class="assigned-input">
-                    <input onclick="openUserListPopUp(userListId)" class="input-task-select" type="text" placeholder="Select contacts to assign">
-<img onclick="openUserListPopUp(userListId)" id="input-icon" class="input-arrow" src="./assets/img/arrow_drop_down_1.svg" alt="">
+                <div class="add-task-border"></div>
 
+                <div class="add-task-form-row">
+                    <div class="add-task-title">
+                        <span>Due a date<span class="red-asterisk">*</span></span>
+                        <input class="input-task-date" type="date" id="dueDate" required>
                     </div>
-                    <div id="user-select-mobile" class="d-none"></div>
-                    <div class="user-container-edit-popup" id="selected-user-mobile"></div>
-                </div>
-                <div>
-                    <span class="subtask-container">Subtask</span>
-                    <div class="input-sub-field">
-                        <input class="input-subtask" id="subtask" />
-                        <div onclick="addTodo();" id="addButton"><span class="suffix"><i><svg width="12" height="12" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Capa 1"><g id="Group 11"><path id="Vector 13" d="M11 1V21" stroke="black" stroke-width="2" stroke-linecap="round" /><path id="Vector 14" d="M21 11L1.00048 11.138" stroke="black" stroke-width="2" stroke-linecap="round" /></g></g></svg></i></span></div>
+
+                    <div class="add-task-title">
+                        <span>Prio</span>
+                        <div class="priority-buttons">
+                            <button type="button" class="priority-button" id="urgent"
+                                onclick="togglePriority('urgent')">
+                                <span>Urgent</span>
+                                <svg id="svg-urgent" xmlns="http://www.w3.org/2000/svg" width="21" height="15"
+                                    fill="none">
+                                    <g fill="#FF3D00" clip-path="url(#a)">
+                                        <path
+                                            d="M19.571 14.755c-.234 0-.463-.075-.652-.214l-8.252-6.083-8.252 6.083a1.098 1.098 0 0 1-1.304-1.763l8.904-6.57a1.096 1.096 0 0 1 1.304 0l8.904 6.57a1.095 1.095 0 0 1-.652 1.977Z" />
+                                        <path
+                                            d="M19.571 9.006c-.234 0-.463-.075-.652-.214L10.667 2.71 2.415 8.792A1.098 1.098 0 0 1 1.111 7.03L10.015.46a1.096 1.096 0 0 1 1.304 0l8.904 6.57a1.096 1.096 0 0 1-.652 1.977Z" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="a">
+                                            <path fill="#fff" d="M.667.245h20v14.51h-20z" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </button>
+                            <button type="button" class="priority-button active-medium" id="medium"
+                                onclick="togglePriority('medium')">
+                                <span>Medium</span>
+                                <svg id="svg-medium" xmlns="http://www.w3.org/2000/svg" width="18" height="8"
+                                    fill="none">
+                                    <g fill="#FFA800" clip-path="url(#a)">
+                                        <path
+                                            d="M16.569 7.167H1.431a.928.928 0 0 1-.66-.275.942.942 0 0 1 0-1.327.928.928 0 0 1 .66-.275h15.137c.247 0 .483.099.658.275a.942.942 0 0 1 0 1.327.928.928 0 0 1-.659.275ZM16.569 2.71H1.431a.928.928 0 0 1-.66-.275.942.942 0 0 1 0-1.327.928.928 0 0 1 .66-.275h15.137c.247 0 .483.1.658.275a.942.942 0 0 1 0 1.327.928.928 0 0 1-.659.275Z" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="a">
+                                            <path fill="#fff" d="M.5.833h17v6.333H.5z" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </button>
+                            <button type="button" class="priority-button" id="low" onclick="togglePriority('low')">
+                                <span>Low</span>
+                                <svg id="svg-low" xmlns="http://www.w3.org/2000/svg" width="21" height="15" fill="none">
+                                    <g fill="#7AE229">
+                                        <path
+                                            d="M10.334 9.006c-.235 0-.463-.075-.652-.214L.779 2.222A1.096 1.096 0 1 1 2.083.46l8.251 6.082L18.585.46a1.097 1.097 0 0 1 1.304 1.763l-8.903 6.57c-.189.138-.417.213-.652.213Z" />
+                                        <path
+                                            d="M10.334 14.754c-.235 0-.463-.074-.652-.213L.779 7.97a1.096 1.096 0 1 1 1.304-1.763l8.251 6.083 8.251-6.083a1.098 1.098 0 0 1 1.304 1.763l-8.903 6.57c-.189.139-.417.214-.652.213Z" />
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                    <ul class="subtask-list-container" id="mylist"></ul>
+
+                    <div class="add-task-title">
+                        <span>Category<span class="red-asterisk">*</span></span>
+                        <select class="input-task-select" id="category" aria-placeholder="Select task category">
+                            <option value="" disabled selected>Select a Category</option>
+                            <option value="technical-task">Technical Task</option>
+                            <option value="user-story">User Story</option>
+                        </select>
+                    </div>
+
+                    <div class="subtask-container">
+                        <span>Subtask</span>
+                        <div class="input-sub-field">
+                            <input class="input-subtask" id="subtask" />
+                            <div onclick="addTodo();" id="addButton" class="suffix">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" fill="none">
+                                    <path fill="#2A3647"
+                                        d="M6.249 8h-5a.968.968 0 0 1-.713-.287A.968.968 0 0 1 .249 7c0-.283.095-.52.287-.713A.968.968 0 0 1 1.249 6h5V1c0-.283.095-.52.287-.713A.968.968 0 0 1 7.249 0c.283 0 .52.096.712.287.192.192.288.43.288.713v5h5c.283 0 .52.096.712.287.192.192.287.43.287.713s-.095.52-.287.713a.967.967 0 0 1-.713.287h-5v5c0 .283-.095.52-.287.713a.967.967 0 0 1-.712.287.967.967 0 0 1-.713-.287.968.968 0 0 1-.287-.713V8Z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <ul id="mylist"></ul>
+                    </div>
                 </div>
-                <div class="ok-button">
-                    <button id="saveEditButton" class="button-create" onclick="SaveEditedTask(${taskId})">OK<img src="/assets/img/check.svg" alt=""></button>
-                </div>
+            </div>
+
+            <div class="ok-button">
+                <button id="saveEditButton" class="button-create" onclick="SaveEditedTask(${taskId})">OK<img src="/assets/img/check.svg" alt=""></button>
             </div>
         </form>
     `;
@@ -501,7 +583,7 @@ function editPopup(taskId) {
 
     // Anzeigen der ausgewählten Benutzer
     taskToEdit.userList.forEach(user => {
-        document.getElementById('selected-user-mobile').innerHTML += `
+        document.getElementById('selected-user').innerHTML += `
             <div class="user-details">
                 <div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
             </div>
@@ -518,40 +600,92 @@ function editPopup(taskId) {
 
 
 
-function openUserListPopUp(userListId) {
-    let selectedUserList = document.getElementById('user-select-mobile');
-    let userList = document.getElementById('user-select-mobile');
+function openUserListPopUp(event) {
+    selectedUserList = document.getElementById('selected-user');;
+    let userList = document.getElementById('user-list');
     let inputIcon = document.getElementById('input-icon');
-    
-    // Überprüfe, ob bereits Benutzer ausgewählt wurden
     if (selectedUser.length >= 1) {
-        // Falls ja, zeige das Popup an
-        userList.classList.remove('d-none');
-        event.stopPropagation();
-        return;
+      userList.classList.remove('d-none');
+      event.stopPropagation();
+      return;
     }
-
-    // Rende die Benutzerliste im Popup
+  
     userList.innerHTML = '';
-
-    // Überprüfe, ob das Popup ausgeblendet ist
+  
+  
     if (userList.classList.contains('d-none')) {
-        // Falls ja, zeige das Popup an
-        userList.classList.remove('d-none');
-        inputIcon.src = './assets/img/arrow_drop_down_1.svg';
+      userList.classList.remove('d-none');
+      inputIcon.src = './assets/img/arrow_drop_down_2.svg';
     }
-
-    selectedUser.forEach(user => {
-        document.getElementById('user-select-mobile').innerHTML += `
-        <div class="user-details user-details-mobile">
-              <div class="initials-circle-two initials-circle-mobile" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
-              <div class="user-full-name user-full-name-mobile">${user.fname} ${user.lname}</div>
-          </div>
-        `;
-    });
-
+  
+    for (let i = 0; i < users.length; i++) {
+      const user = users[i];
+      const userColor = users[i]['color'];
+  
+      let initialLetters = nameInitialLettersAddTasks(user);
+  
+      userList.innerHTML += `
+      <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active' : ''}" onclick="toggleAddUser(${i})">
+        <div class="user-name">
+          <span class="letter-icon" style="background-color:${userColor}">${initialLetters}</span>
+          <div>${user.name}</div>
+        </div>
+        <img id="user-checkbox${i}" src="${isUSerSelected(i) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
+      </div>
+      `;
+      // const color = document.getElementsByClassName('letter-icon');
+      // color[i].style.backgroundColor = `${userColor}`;
+    }
     event.stopPropagation();
-}
+  }
+  
+  function isUSerSelected(i) {
+    return selectedUser.some(su => su.id === i)
+  }
+  
+  function nameInitialLettersAddTasks(user) {
+    const fullNameSplitt = user.name.split(" ");
+    const letters = fullNameSplitt.map(name => name[0]);
+    const initialLetters = letters.join("");
+    return initialLetters;
+  }
+  
+  function doNotClose(event) {
+    event.stopPropagation();
+  }
+  
+  
+  function renderUserList() {
+    selectedUserList.innerHTML = '';
+  
+    selectedUser.forEach(user => {
+      let initialLetters = nameInitialLettersAddTasks(user);
+      const userColor = user['color'];
+  
+      selectedUserList.innerHTML += /* html */ `
+        <div class="user-icon" style="background-color: ${userColor};">${initialLetters}</div>
+      `;
+    });
+  }
+  
+  
+  function toggleAddUser(i) {
+    let userColumn = document.getElementById(`currentUser${i}`);
+    let user = users[i];
+    let selectedUSerIndex = selectedUser.findIndex(u => u.id === i);
+    let checkBoxUser = document.getElementById(`user-checkbox${i}`);
+    if (selectedUSerIndex === -1) {
+      userColumn.classList.add('user-list-active');
+      selectedUser.push(user)
+      checkBoxUser.src = './assets/img/checkbox_active_white.svg';
+    } else {
+      userColumn.classList.remove('user-list-active');
+      selectedUser.splice(selectedUSerIndex, 1);
+      checkBoxUser.src = './assets/img/checkbox.svg';
+    }
+    renderUserList(i);
+    save();
+  }
 
 
 
