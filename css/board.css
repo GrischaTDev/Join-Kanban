@@ -84,8 +84,10 @@ h2 {
   height: calc(100% - 4px);
   background-color: rgb(207, 207, 207);
 }
+
 #mylist li {
-  list-style-type: none; /* Marker entfernen */
+  list-style-type: none;
+  /* Marker entfernen */
 }
 
 /*-board-search-END-*/
@@ -155,12 +157,14 @@ h2 {
 }
 
 .form-check-input {
-  
+
   cursor: pointer;
 }
-.form-check{
+
+.form-check {
   height: 32px;
 }
+
 .card-section {
   margin-right: 16px;
   text-decoration: none;
@@ -280,6 +284,7 @@ h2 {
   color: #000000;
   width: 70px;
 }
+
 .ok-button {
   display: flex;
   justify-content: flex-end;
@@ -297,7 +302,7 @@ h2 {
   align-items: flex-start;
   flex-direction: column;
   max-height: 180px;
-  overflow: hidden; 
+  overflow: hidden;
   overflow-y: scroll;
 }
 
@@ -306,7 +311,7 @@ h2 {
   align-items: flex-start;
   flex-direction: column;
   max-height: 100px;
-  overflow: hidden; 
+  overflow: hidden;
   overflow-y: scroll;
 }
 
@@ -315,7 +320,7 @@ h2 {
   align-items: flex-start;
   flex-direction: column;
   max-height: 50px;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .initials-circle {
@@ -361,6 +366,7 @@ h2 {
   height: 32px;
   border-radius: 50%;
 }
+
 .initials-circle-two {
   width: 42px;
   height: 42px;
@@ -378,9 +384,11 @@ h2 {
   gap: 30px;
   font-size: 20px;
 }
+
 .subtask-list {
   margin: 16px;
 }
+
 .form-check-label {
   padding-left: 16px;
 }
@@ -472,6 +480,7 @@ h2 {
   pointer-events: none;
   margin-top: -80px;
 }
+
 .descriptionarea {
   border: none;
   resize: none;
@@ -488,6 +497,7 @@ h2 {
   height: 20px;
   margin-bottom: 26px;
 }
+
 .prioity_container {
   margin-right: 50px;
 }
@@ -502,6 +512,7 @@ h2 {
   margin-top: -80px;
   margin-bottom: -90px;
 }
+
 .due_date_popup {
   width: 50%;
   display: flex;
@@ -515,7 +526,7 @@ h2 {
 .assigned_popup {
   width: 100%;
   font-size: 20px;
-  
+
 }
 
 .initials_circle {
@@ -617,6 +628,7 @@ h2 {
   color: #000;
   padding: 6px 6px;
 }
+
 .assigned-popup {
   font-size: 20px;
 }
@@ -681,16 +693,17 @@ h2 {
   margin-bottom: 38px;
   justify-content: space-between;
 }
+
 .task-edit-form {
   width: 90%;
-    background-color: white;
-    border-radius: 24px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 800px;
-    gap: 10px;
+  background-color: white;
+  border-radius: 24px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 800px;
+  gap: 10px;
 }
 
 
@@ -706,16 +719,17 @@ h2 {
   .user-container-popup {
     max-height: 150px;
   }
-  
-  .task-topic{
+
+  .task-topic {
     margin: -80px;
     padding-left: 80px;
   }
- 
 
-  .desktop-complete-container{
+
+  .desktop-complete-container {
     padding-bottom: 150px;
   }
+
   .task-edit-form {
     height: 95%;
     width: 80%;
@@ -728,18 +742,20 @@ h2 {
     max-width: 800px;
     margin-left: 20px;
   }
-  
+
   .addTask_popup {
     height: 100%;
     width: 100%;
     padding: 50px;
     margin-top: 50px;
   }
+
   .content-board {
     margin-left: 16px;
     margin-right: 16px;
     margin-bottom: 150px;
   }
+
   .titelarea-mobile {
     font-size: 32px;
     border: none;
@@ -752,8 +768,9 @@ h2 {
     pointer-events: none;
     margin-top: -80px;
     margin-bottom: -40px;
-  
+
   }
+
   .descriptionarea-mobile {
     font-size: 16px;
     border: none;
@@ -765,34 +782,41 @@ h2 {
     pointer-events: none;
     margin-top: -60px;
     margin-bottom: -60px;
-    
+
   }
+
   .due-date-popup-mobile {
     font-size: 16px;
     width: 70%;
     margin-top: -40px;
     margin-bottom: -40px;
   }
+
   .priority-popup-mobile {
     font-size: 16px;
     width: 70%;
     margin-bottom: -40px;
   }
+
   .assigned-mobile {
     font-size: 16px;
     margin-top: -68px;
   }
+
   .board_popup_mobile {
     width: 57%;
   }
+
   .img_popup_mobile {
     width: 34px;
     height: 34px;
   }
+
   .user-full-name-mobile {
     font-size: 16px;
   }
-  .initials-circle-mobile{
+
+  .initials-circle-mobile {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -802,18 +826,23 @@ h2 {
     color: #ffffff;
     font-size: 12px;
   }
-  .subtask-container-mobile{
+
+  .subtask-container-mobile {
     font-size: 16px;
   }
-  .subtask-list-mobile{
+
+  .subtask-list-mobile {
     font-size: 16px;
   }
-  .edit-delete-img-mobile{
+
+  .edit-delete-img-mobile {
     height: 10px;
   }
-  .edit-delete-popup-button-mobile{
- font-size: 16px;
+
+  .edit-delete-popup-button-mobile {
+    font-size: 16px;
   }
+
   .edit-delete-img-mobile {
     height: 16px;
 
@@ -879,7 +908,7 @@ h2 {
     padding-top: 40px;
     display: flex;
     height: 100vh;
-    
+
   }
 
   h6 {
@@ -931,7 +960,7 @@ h2 {
     width: 300px;
     height: 48px;
   }
-  
+
 }
 
 /*end of desktop*/

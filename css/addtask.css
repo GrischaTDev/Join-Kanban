@@ -299,11 +299,13 @@ textarea {
   gap: 6px;
 
 }
+
 .todo-item,
 .actions,
 .input-subtask,
 .edit-input {
-  color: black; /* Textfarbe auf Schwarz setzen */
+  color: black;
+  /* Textfarbe auf Schwarz setzen */
 }
 
 .input-sub-field {
@@ -318,11 +320,13 @@ textarea {
   border: 1px solid rgb(209, 209, 209);
   font-size: 16px;
   background-color: white;
-  
+
 }
+
 .suffix {
   cursor: pointer;
 }
+
 .input-subtask {
   width: 100%;
   all: unset;
@@ -344,8 +348,9 @@ textarea {
 .todo-item {
   display: flex;
   align-items: center;
-  
+
 }
+
 #mylist li::before {
   content: "•";
   transform: translateY(-20%);
@@ -353,6 +358,7 @@ textarea {
   padding-left: 10px;
   margin-right: 10px;
 }
+
 #mylist li:hover {
   width: 100%;
   background-color: #f0f0f0;
@@ -364,7 +370,8 @@ ul {
   margin-left: -40px;
   color: black;
 }
-.edit-input{
+
+.edit-input {
   width: 100%;
 }
 
@@ -441,6 +448,7 @@ ul {
   .button-clear {
     display: none;
   }
+
   .content {
     margin-top: 70px;
     padding-bottom: 150px;
@@ -450,7 +458,7 @@ ul {
 /* Responsiv for laptop */
 @media screen and (min-width: 900px) {
 
-  
+
   .content {
     margin: 160px 0 0 310px;
     height: auto;
@@ -528,6 +536,6 @@ ul {
 /* Responsiv for desktop */
 @media screen and (min-width: 1600px) {
   .content {
-      margin: 160px 0 0 331px;
+    margin: 160px 0 0 331px;
   }
 }

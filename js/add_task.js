@@ -18,7 +18,7 @@ let allTasks = [
       "fname": "Klaus",
       "lname": "Kruse",
       "backgroundcolor": "#FF5733"
-    },{
+    }, {
       "fname": "Berthold",
       "lname": "Wiebe",
       "backgroundcolor": "#33FF4F"
@@ -44,11 +44,11 @@ let allTasks = [
       "fname": "Frank",
       "lname": "Bülling",
       "backgroundcolor": "#FFDA33"
-    },{
+    }, {
       "fname": "Johanna",
       "lname": "Held",
       "backgroundcolor": "#3633FF"
-    },{
+    }, {
       "fname": "Viktor",
       "lname": "Schmidt",
       "backgroundcolor": "#33FF74"
@@ -75,11 +75,11 @@ let allTasks = [
       "fname": "Stefan",
       "lname": "Dietz",
       "backgroundcolor": "#33FF7A"
-    },{
+    }, {
       "fname": "Horst",
       "lname": "Schleifenbaum",
       "backgroundcolor": "#FFF033"
-    },{
+    }, {
       "fname": "Detlef",
       "lname": "Sierts",
       "backgroundcolor": "#AFFF33"
@@ -106,11 +106,11 @@ let allTasks = [
       "fname": "Waldemar",
       "lname": "Günther",
       "backgroundcolor": "#B833FF"
-    },{
+    }, {
       "fname": "Fabian",
       "lname": "Zacharias",
       "backgroundcolor": "#FF9F33"
-    },{
+    }, {
       "fname": "Jessica",
       "lname": "Engels",
       "backgroundcolor": "#33A5FF"
@@ -157,10 +157,10 @@ function filterUser() {
     const user = users[i];
     const userColor = users[i]['color'];
     let initialLetters = nameInitialLettersAddTasks(user);
-    
+
     if (user.name.toLowerCase().includes(search)) {
       userList.innerHTML += `
-      <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active': ''}" onclick="toggleAddUser(${i})">
+      <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active' : ''}" onclick="toggleAddUser(${i})">
         <div class="user-name">
           <span class="letter-icon" style="background-color:${userColor}">${initialLetters}</span>
           <div>${user.name}</div>
@@ -185,21 +185,21 @@ function openUserList(event) {
   }
 
   userList.innerHTML = '';
-  
-  
+
+
   if (userList.classList.contains('d-none')) {
     userList.classList.remove('d-none');
     inputIcon.src = './assets/img/arrow_drop_down_2.svg';
-  } 
+  }
 
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
     const userColor = users[i]['color'];
 
     let initialLetters = nameInitialLettersAddTasks(user);
-    
+
     userList.innerHTML += `
-    <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active': ''}" onclick="toggleAddUser(${i})">
+    <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active' : ''}" onclick="toggleAddUser(${i})">
       <div class="user-name">
         <span class="letter-icon" style="background-color:${userColor}">${initialLetters}</span>
         <div>${user.name}</div>
@@ -214,7 +214,7 @@ function openUserList(event) {
 }
 
 function isUSerSelected(i) {
-  return selectedUser.some(su => su.id === i )
+  return selectedUser.some(su => su.id === i)
 }
 
 function nameInitialLettersAddTasks(user) {
@@ -268,13 +268,13 @@ function toggleAddUser(i) {
  * @param userList ID from popup container
  */
 if (window.location.href.includes('add_task.html')) {
-  document.getElementById('container').addEventListener('click', function(event) {
+  document.getElementById('container').addEventListener('click', function (event) {
     const userList = document.getElementById('user-list');
     const inputIcon = document.getElementById('input-icon');
     const isClickInside = userList.contains(event.target);
-  
+
     if (!isClickInside) { // Klick war außerhalb der Benutzerliste
-      userList.classList.add('d-none'); 
+      userList.classList.add('d-none');
       inputIcon.src = './assets/img/arrow_drop_down_1.svg';
     }
   });
@@ -303,7 +303,7 @@ function loadAddTaskUser() {
 function loadAllTasks() {
   let allTasksAsString = localStorage.getItem("allTasks");
   if (allTasksAsString) {
-      allTasks = JSON.parse(allTasksAsString); // Aktualisieren des allTasks-Arrays mit den Daten aus dem Local Storage
+    allTasks = JSON.parse(allTasksAsString); // Aktualisieren des allTasks-Arrays mit den Daten aus dem Local Storage
   }
 }
 
@@ -421,8 +421,8 @@ function showTaskOnPage(task) {
 function togglePriority(priority) {
   let urgentButton = document.getElementById('urgent');
   let mediumButton = document.getElementById('medium');
-  let lowButton = document.getElementById('low'); 
-                      
+  let lowButton = document.getElementById('low');
+
   let prioButton = document.getElementById(priority);
   if (prioButton == urgentButton) {
     mediumButton.classList.remove('active-medium');
@@ -461,7 +461,7 @@ function showTodos() {
     const li = document.createElement("li");
     li.className = "todo-item";
 
-    li.innerHTML = `
+    li.innerHTML = /*html*/`
             <div>
                 <span>${todo}</span>
                 <input size="60" class="edit-input d-none" value="${todo}" onchange="updateTodo(${i}, this.value)">

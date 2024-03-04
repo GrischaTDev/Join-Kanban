@@ -4,21 +4,21 @@ let currentDraggedElement;
 
 async function initBoard() {
     await includeHTML();
-  loadAllTasks();
-  activeMenu();
-  load();
-  loadUserProfile();
-  showAllTasks(allTasks);
-  // Überprüfen, ob der Local Storage leer ist
-  if (!localStorage.getItem("allTasks")) {
-    // Wenn der Local Storage leer ist, speichern Sie die Aufgaben aus dem Array
-    saveTasksToLocalStorage(allTasks);
-  } else {
-    // Wenn der Local Storage nicht leer ist, laden Sie die Aufgaben aus dem Local Storage
-    allTasks = JSON.parse(localStorage.getItem("allTasks"));
-    // Aktualisieren Sie das Array im Local Storage, um sicherzustellen, dass es immer synchronisiert ist
-    saveTasksToLocalStorage(allTasks);
-  }
+    loadAllTasks();
+    activeMenu();
+    load();
+    loadUserProfile();
+    showAllTasks(allTasks);
+    // Überprüfen, ob der Local Storage leer ist
+    if (!localStorage.getItem("allTasks")) {
+        // Wenn der Local Storage leer ist, speichern Sie die Aufgaben aus dem Array
+        saveTasksToLocalStorage(allTasks);
+    } else {
+        // Wenn der Local Storage nicht leer ist, laden Sie die Aufgaben aus dem Local Storage
+        allTasks = JSON.parse(localStorage.getItem("allTasks"));
+        // Aktualisieren Sie das Array im Local Storage, um sicherzustellen, dass es immer synchronisiert ist
+        saveTasksToLocalStorage(allTasks);
+    }
 }
 
 
@@ -148,49 +148,48 @@ function openAddNewTaskPopup(userListId, selectedUserId) {
 
 
 function closeaddTaskPopup() {
-  document.getElementById("add-task-popup-container").classList.add("d-none");
+    document.getElementById("add-task-popup-container").classList.add("d-none");
 }
 
 // Update the showPopup function to include an onchange event listener for the checkboxes
 function showPopup(taskId) {
     let task = findTaskById(taskId);
     let urgentSymbolHTML = task.priority.urgent
-      ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent"> Urgent`
-      : "";
+        ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent"> Urgent`
+        : "";
     let mediumSymbolHTML = task.priority.medium
-      ? `<img src="/assets/img/prio-medium.svg" alt="Medium"> Medium`
-      : "";
+        ? `<img src="/assets/img/prio-medium.svg" alt="Medium"> Medium`
+        : "";
     let lowSymbolHTML = task.priority.low
-      ? `<img src="/assets/img/prio-low.svg" alt="Low"> Low`
-      : "";
-  
+        ? `<img src="/assets/img/prio-low.svg" alt="Low"> Low`
+        : "";
+
     // Benutzerinitialen und Hintergrundfarben anzeigen
     let userNamesHTML = task.userList
-      .map(
-        (user) => `
+        .map(
+            (user) => `
           <div class="user-details user-details-mobile">
               <div class="initials-circle-two initials-circle-mobile" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
               <div class="user-full-name user-full-name-mobile">${user.fname} ${user.lname}</div>
           </div>`
-      )
-      .join("");
-  
+        )
+        .join("");
+
     // Subtasks anzeigen
     let subtasksHTML = task.subtask
-      ? task.subtask
-          .map(
-            (subtask) => `
+        ? task.subtask
+            .map(
+                (subtask) => `
     <div class="form-check">
-        <input class="form-check-input form-check-input-mobile" type="checkbox" id="subtask_${subtask.name}" ${
-              subtask.status ? 'checked' : ''
-            } onchange="updateSubtaskStatus(${taskId}, '${subtask.name}', this.checked)">
+        <input class="form-check-input form-check-input-mobile" type="checkbox" id="subtask_${subtask.name}" ${subtask.status ? 'checked' : ''
+                    } onchange="updateSubtaskStatus(${taskId}, '${subtask.name}', this.checked)">
         <label class="form-check-label" for="subtask_${subtask.name}">${subtask.name}</label>
     </div>
   `
-          )
-          .join("")
-      : "";
-  
+            )
+            .join("")
+        : "";
+
     document.getElementById("incomePopup").classList.remove("d-none");
     document.getElementById("incomePopup").innerHTML = `
           <div class="complete_board_popup" onclick="doNotClose(event)">
@@ -246,14 +245,14 @@ function showPopup(taskId) {
               </div>
           </div>
       `;
-  }
-  
-  
+}
+
+
 
 function closeIncomePopup() {
     document.getElementById("incomePopup").classList.add("d-none");
-  }
-  
+}
+
 
 
 
@@ -304,7 +303,7 @@ function closeIncomePopup() {
 //                         </button>  
 //                     </div>
 //                 </div>
-            
+
 //                 <div class="add-task-title">
 //                     <span>Due a date<span class="red-asterisk"></span></span>
 //                     <input class="input-task-date" type="date" id="dueDate" required>
@@ -396,7 +395,7 @@ function closeIncomePopup() {
 
 //         // Optional: Zeige eine Erfolgsmeldung oder führe andere Aktionen aus
 //         console.log('Task erfolgreich bearbeitet und gespeichert.');
-   
+
 // }
 
 function editPopup(taskId) {
@@ -412,9 +411,13 @@ function editPopup(taskId) {
     let taskToEdit = tasks.find(task => task.id === taskId);
 
     // Füge das Formular für die Bearbeitung hinzu und setze die Werte der Eingabefelder
-    document.getElementById('edit_popup').innerHTML += `
-        <form class="popup-card popup-card-mobile" onsubmit="SaveEditedTask(${taskId})">
+    document.getElementById('edit_popup').innerHTML += /*html*/`
+        <form class="popup-card popup-card-mobile" onclick="doNotClose(event)" onsubmit="SaveEditedTask(${taskId})">
             <div class="task-edit-form">
+            <div class="close_icon_edit_popup">
+            <img class="img_popup img_popup_mobile" style="cursor: pointer;" onclick="closeEditPopup();"
+                src="./assets/img/close_icon.svg" alt="close Button">
+        </div>
                 <div class="add-task-title">
                     <span>Title<span class="red-asterisk"></span></span>
                     <input type="text" required placeholder="Enter a title" id="titel">
@@ -520,26 +523,26 @@ function SaveEditedTask(taskId) {
 
     // Finden des Index des bearbeiteten Tasks im Array
     let taskIndex = tasks.findIndex(task => task.id === taskId);
-        // Aktualisieren der Werte des bearbeiteten Tasks basierend auf den Eingabefeldern
-        tasks[taskIndex].titel = document.getElementById('titel').value;
-        tasks[taskIndex].description = document.getElementById('description').value;
-        tasks[taskIndex].dueDate = document.getElementById('dueDate').value;
-        tasks[taskIndex].category = document.getElementById('category').value;
-        // Weitere Felder entsprechend aktualisieren...
+    // Aktualisieren der Werte des bearbeiteten Tasks basierend auf den Eingabefeldern
+    tasks[taskIndex].titel = document.getElementById('titel').value;
+    tasks[taskIndex].description = document.getElementById('description').value;
+    tasks[taskIndex].dueDate = document.getElementById('dueDate').value;
+    tasks[taskIndex].category = document.getElementById('category').value;
+    // Weitere Felder entsprechend aktualisieren...
 
-        // Aktualisieren der Priorität des bearbeiteten Tasks basierend auf den Schaltflächen
-        let priorityButtons = document.querySelectorAll('.priority-button');
-        tasks[taskIndex].priority.urgent = priorityButtons[0].classList.contains('active');
-        tasks[taskIndex].priority.medium = priorityButtons[1].classList.contains('active');
-        tasks[taskIndex].priority.low = priorityButtons[2].classList.contains('active');
+    // Aktualisieren der Priorität des bearbeiteten Tasks basierend auf den Schaltflächen
+    let priorityButtons = document.querySelectorAll('.priority-button');
+    tasks[taskIndex].priority.urgent = priorityButtons[0].classList.contains('active');
+    tasks[taskIndex].priority.medium = priorityButtons[1].classList.contains('active');
+    tasks[taskIndex].priority.low = priorityButtons[2].classList.contains('active');
 
-        // Speichern der aktualisierten Tasks im Local Storage
-        localStorage.setItem('allTasks', JSON.stringify(tasks));
+    // Speichern der aktualisierten Tasks im Local Storage
+    localStorage.setItem('allTasks', JSON.stringify(tasks));
 
-        // Optional: Zeige eine Erfolgsmeldung oder führe andere Aktionen aus
-        console.log('Bearbeiteter Task erfolgreich gespeichert.');
-        closeEditPopup();
- 
+    // Optional: Zeige eine Erfolgsmeldung oder führe andere Aktionen aus
+    console.log('Bearbeiteter Task erfolgreich gespeichert.');
+    closeEditPopup();
+
 }
 
 
@@ -554,17 +557,17 @@ function closeEditPopup() {
 
 
 function updateSubtaskStatus(taskId, subtaskName, status) {
-  // Find the task by ID
-  let task = findTaskById(taskId);
-  if (task) {
-      let subtask = task.subtask.find(sub => sub.name === subtaskName);
-      if (subtask && subtask.status !== status) { 
-          // Update the subtask status
-          subtask.status = status;
-          let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
-          let totalSubtasks = task.subtask ? task.subtask.length : 0;
-          let progressPercentage = Math.round((completedSubtasks / totalSubtasks) * 100);
-          task.progress = progressPercentage;
+    // Find the task by ID
+    let task = findTaskById(taskId);
+    if (task) {
+        let subtask = task.subtask.find(sub => sub.name === subtaskName);
+        if (subtask && subtask.status !== status) {
+            // Update the subtask status
+            subtask.status = status;
+            let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
+            let totalSubtasks = task.subtask ? task.subtask.length : 0;
+            let progressPercentage = Math.round((completedSubtasks / totalSubtasks) * 100);
+            task.progress = progressPercentage;
 
             // Save the updated task object to local storage
             saveTasksToLocalStorage(allTasks);
@@ -576,13 +579,13 @@ function updateSubtaskStatus(taskId, subtaskName, status) {
 
 
 function findTaskById(taskId) {
-  for (let i = 0; i < allTasks.length; i++) {
-    if (allTasks[i].id === taskId) {
-      return allTasks[i];
+    for (let i = 0; i < allTasks.length; i++) {
+        if (allTasks[i].id === taskId) {
+            return allTasks[i];
+        }
     }
-  }
 
-  return null;
+    return null;
 }
 
 
@@ -591,32 +594,32 @@ function findTaskById(taskId) {
 
 
 function showAllTasks(allTasks) {
-  let todo_container = allTasks.filter(t => t['progressfield'] == 'todo_container');
-  document.getElementById('todo_container').innerHTML = '';
+    let todo_container = allTasks.filter(t => t['progressfield'] == 'todo_container');
+    document.getElementById('todo_container').innerHTML = '';
 
-  if (todo_container.length === 0) {
-    document.getElementById('todo_container').innerHTML = `
+    if (todo_container.length === 0) {
+        document.getElementById('todo_container').innerHTML = `
       <div>
         <div class="no-tasks desktop-no-tasks">
           <span>No tasks to do</span>
         </div>
       </div>`;
-  } else {
-    for (let i = 0; i < todo_container.length; i++) {
-      let task = todo_container[i];
-      let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
-      let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
-      let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
+    } else {
+        for (let i = 0; i < todo_container.length; i++) {
+            let task = todo_container[i];
+            let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
+            let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
+            let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
 
-      let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
+            let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
 
-      let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
-      let totalSubtasks = task.subtask ? task.subtask.length : 0;
+            let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
+            let totalSubtasks = task.subtask ? task.subtask.length : 0;
 
-      // Calculate the progress percentage
-      let progressPercentage = totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0;
+            // Calculate the progress percentage
+            let progressPercentage = totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0;
 
-      document.getElementById('todo_container').innerHTML += `
+            document.getElementById('todo_container').innerHTML += /*html*/`
         <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
           <div class="card">
             <div class="card-category-${task.category}">${task.category}</div>
@@ -641,25 +644,25 @@ function showAllTasks(allTasks) {
             
           </div>
         </a>`;
+        }
     }
-  }
 
     let inprogress_container = allTasks.filter(t => t['progressfield'] == 'inprogress_container');
-document.getElementById('inprogress_container').innerHTML = '';
-for (let i = 0; i < inprogress_container.length; i++) {
-    let task = inprogress_container[i];
-    let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
-    let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
-    let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
+    document.getElementById('inprogress_container').innerHTML = '';
+    for (let i = 0; i < inprogress_container.length; i++) {
+        let task = inprogress_container[i];
+        let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
+        let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
+        let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
 
-    let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
+        let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
 
-    let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
-    let totalSubtasks = task.subtask ? task.subtask.length : 0;
+        let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
+        let totalSubtasks = task.subtask ? task.subtask.length : 0;
 
-    let progressPercentage = totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0;
+        let progressPercentage = totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0;
 
-    document.getElementById('inprogress_container').innerHTML += `
+        document.getElementById('inprogress_container').innerHTML += /*html*/`
     <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
 
 
@@ -686,24 +689,24 @@ for (let i = 0; i < inprogress_container.length; i++) {
             </div>
         </a>
     `;
-}
+    }
 
-let await_feedback_container = allTasks.filter(t => t['progressfield'] == 'await_feedback_container');
-document.getElementById('await_feedback_container').innerHTML = '';
-for (let i = 0; i < await_feedback_container.length; i++) {
-    let task = await_feedback_container[i];
-    let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
-    let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
-    let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
+    let await_feedback_container = allTasks.filter(t => t['progressfield'] == 'await_feedback_container');
+    document.getElementById('await_feedback_container').innerHTML = '';
+    for (let i = 0; i < await_feedback_container.length; i++) {
+        let task = await_feedback_container[i];
+        let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
+        let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
+        let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
 
-    let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
+        let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
 
-    let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
-    let totalSubtasks = task.subtask ? task.subtask.length : 0;
+        let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
+        let totalSubtasks = task.subtask ? task.subtask.length : 0;
 
-    let progressPercentage = totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0;
+        let progressPercentage = totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0;
 
-    document.getElementById('await_feedback_container').innerHTML += `
+        document.getElementById('await_feedback_container').innerHTML += /*html*/`
     <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
 
 
@@ -730,24 +733,24 @@ for (let i = 0; i < await_feedback_container.length; i++) {
             </div>
         </a>
     `;
-}
+    }
 
-let done_container = allTasks.filter(t => t['progressfield'] == 'done_container');
-document.getElementById('done_container').innerHTML = '';
-for (let i = 0; i < done_container.length; i++) {
-    let task = done_container[i];
-    let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
-    let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
-    let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
+    let done_container = allTasks.filter(t => t['progressfield'] == 'done_container');
+    document.getElementById('done_container').innerHTML = '';
+    for (let i = 0; i < done_container.length; i++) {
+        let task = done_container[i];
+        let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
+        let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
+        let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
 
-    let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
+        let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
 
-    let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
-    let totalSubtasks = task.subtask ? task.subtask.length : 0;
+        let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
+        let totalSubtasks = task.subtask ? task.subtask.length : 0;
 
-    let progressPercentage = totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0;
+        let progressPercentage = totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0;
 
-    document.getElementById('done_container').innerHTML += `
+        document.getElementById('done_container').innerHTML += /*html*/`
     <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
 
 
@@ -774,7 +777,7 @@ for (let i = 0; i < done_container.length; i++) {
             </div>
         </a>
     `;
-}
+    }
 }
 
 
@@ -782,11 +785,11 @@ for (let i = 0; i < done_container.length; i++) {
 
 
 function startDragging(index) {
-  currentDraggedElement = index;
+    currentDraggedElement = index;
 }
 
 function allowDrop(ev) {
-  ev.preventDefault();
+    ev.preventDefault();
 }
 
 // alte version ohne speichern im local storage
@@ -797,61 +800,61 @@ function allowDrop(ev) {
 // }
 
 function moveTo(progressfield) {
-  // Index um 1 reduzieren, da IDs bei 1 beginnen
-  const taskIndex = currentDraggedElement - 1;
+    // Index um 1 reduzieren, da IDs bei 1 beginnen
+    const taskIndex = currentDraggedElement - 1;
 
-  // Aktualisiere den Fortschrittsstatus des gezogenen Elements
-  allTasks[taskIndex]["progressfield"] = progressfield;
+    // Aktualisiere den Fortschrittsstatus des gezogenen Elements
+    allTasks[taskIndex]["progressfield"] = progressfield;
 
-  // Speichere den aktualisierten allTasks-Array im Local Storage
-  localStorage.setItem("allTasks", JSON.stringify(allTasks));
+    // Speichere den aktualisierten allTasks-Array im Local Storage
+    localStorage.setItem("allTasks", JSON.stringify(allTasks));
 
-  // Aktualisiere die Anzeige aller Aufgaben
-  showAllTasks(allTasks);
+    // Aktualisiere die Anzeige aller Aufgaben
+    showAllTasks(allTasks);
 }
 
 function highlight(id) {
-  document.getElementById(id).classList.add("drag-area-highlight");
+    document.getElementById(id).classList.add("drag-area-highlight");
 }
 
 function removeHighlight(id) {
-  document.getElementById(id).classList.remove("drag-area-highlight");
+    document.getElementById(id).classList.remove("drag-area-highlight");
 }
 
 
 function findTask() {
-  let searchInput = document.getElementById('search').value.toLowerCase();
-  let filteredTasks = allTasks.filter(task =>
-      task.titel.toLowerCase().includes(searchInput) ||
-      task.description.toLowerCase().includes(searchInput) ||
-      task.category.toLowerCase().includes(searchInput)
-  );
+    let searchInput = document.getElementById('search').value.toLowerCase();
+    let filteredTasks = allTasks.filter(task =>
+        task.titel.toLowerCase().includes(searchInput) ||
+        task.description.toLowerCase().includes(searchInput) ||
+        task.category.toLowerCase().includes(searchInput)
+    );
 
-  showAllTasks(filteredTasks);
+    showAllTasks(filteredTasks);
 }
 
 function deleteTask(taskId) {
-  let allTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
-  
-  // Finden des Index des Tasks im Array anhand der ID
-  let taskIndex = allTasks.findIndex(task => task.id === taskId);
-  
-  if (taskIndex !== -1) {
-      // Löschen des Tasks aus dem Array
-      allTasks.splice(taskIndex, 1);
-      saveTasksToLocalStorage(allTasks);
-      loadAllTasks();
-      closeIncomePopup();
-      showAllTasks(allTasks);
-  } else {
-      console.log("Task not found");
-  }
+    let allTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
+
+    // Finden des Index des Tasks im Array anhand der ID
+    let taskIndex = allTasks.findIndex(task => task.id === taskId);
+
+    if (taskIndex !== -1) {
+        // Löschen des Tasks aus dem Array
+        allTasks.splice(taskIndex, 1);
+        saveTasksToLocalStorage(allTasks);
+        loadAllTasks();
+        closeIncomePopup();
+        showAllTasks(allTasks);
+    } else {
+        console.log("Task not found");
+    }
 }
 
 
 
 function doNotClose(event) {
-  event.stopPropagation();
+    event.stopPropagation();
 }
 
 
