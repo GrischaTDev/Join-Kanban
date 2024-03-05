@@ -642,7 +642,7 @@ function toggleAddUser(i) {
   save();
 }
 
-function SaveEditedTask(taskId) {
+function saveEditedTask(taskId) {
   // Erfassen der bearbeiteten Eingabedaten
   let titel = document.getElementById("titel").value;
   let description = document.getElementById("description").value;
@@ -669,7 +669,7 @@ function SaveEditedTask(taskId) {
 
     localStorage.setItem("allTasks", JSON.stringify(tasks));
 
-    renderTasksOnPage();
+    // renderTasksOnPage();
 
     closeEditPopup();
   } else {
