@@ -678,8 +678,8 @@ h2 {
 }
 
 .addTask-popup {
-  height: 78%;
-  width: 67%;
+  height: 50%;
+  width: 70%;
   background-color: white;
   border-radius: 24px;
   padding: 50px;
@@ -721,9 +721,10 @@ h2 {
 
 @media (max-width: 900px) {
 
+
   .board_popup_mobile {
     width: 90%;
-    height: 75vh;
+    height: 5vh;
     display: flex;
     justify-content: space-between
    }
@@ -752,12 +753,6 @@ h2 {
   }
 
 
-  .addTask_popup {
-    height: 100%;
-    width: 100%;
-    padding: 50px;
-    margin-top: 50px;
-  }
 
   .content-board {
     margin-left: 16px;
