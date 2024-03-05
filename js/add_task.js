@@ -555,3 +555,4 @@ function setMinimumDateForToday(inputId) {
   const minDate = year + '-' + month + '-' + day;
   document.getElementById(inputId).min = minDate;
 }
+

@@ -314,13 +314,11 @@ function editPopup(taskId) {
 }
 
 function renderEditPopup(taskId) {
-    // Abrufen des Tasks aus dem Local Storage
     let tasks = JSON.parse(localStorage.getItem('allTasks'));
     let taskToEdit = tasks.find(task => task.id === taskId);
 
-    // Füge das Formular für die Bearbeitung hinzu und setze die Werte der Eingabefelder
     document.getElementById('edit_popup').innerHTML += /*html*/ `
-    <form class="task-edit-form" onsubmit="addTask()" onclick="doNotClose(event)">
+    <form class="task-edit-form task-edit-form-mobile" onsubmit="addTask()" onclick="doNotClose(event)">
     <div>
         <div class="close_icon_edit_popup">
         <img class="img_popup img_popup_mobile" style="cursor: pointer;" onclick="closeEditPopup();" src="./assets/img/close_icon.svg" alt="close Button">
@@ -361,8 +359,9 @@ function renderEditPopup(taskId) {
                     <div class="add-task-title">
                         <span>Prio</span>
                         <div class="priority-buttons">
-                            <button type="button" class="priority-button" id="urgent"
-                                onclick="togglePriority('urgent')">
+
+                        <button type="button" class="priority-button ${taskToEdit.priority.urgent ? 'active' : ''}" id="urgent" onclick="togglePriority('urgent')">
+                                
                                 <span>Urgent</span>
                                 <svg id="svg-urgent" xmlns="http://www.w3.org/2000/svg" width="21" height="15"
                                     fill="none">
@@ -379,8 +378,9 @@ function renderEditPopup(taskId) {
                                     </defs>
                                 </svg>
                             </button>
-                            <button type="button" class="priority-button active-medium" id="medium"
-                                onclick="togglePriority('medium')">
+
+                            <button type="button" class="priority-button ${taskToEdit.priority.medium ? 'active' : ''}" id="medium" onclick="togglePriority('medium')">
+                                
                                 <span>Medium</span>
                                 <svg id="svg-medium" xmlns="http://www.w3.org/2000/svg" width="18" height="8"
                                     fill="none">
@@ -395,7 +395,8 @@ function renderEditPopup(taskId) {
                                     </defs>
                                 </svg>
                             </button>
-                            <button type="button" class="priority-button" id="low" onclick="togglePriority('low')">
+
+                            <button type="button" class="priority-button ${taskToEdit.priority.low ? 'active' : ''}" id="low" onclick="togglePriority('low')">
                                 <span>Low</span>
                                 <svg id="svg-low" xmlns="http://www.w3.org/2000/svg" width="21" height="15" fill="none">
                                     <g fill="#7AE229">
@@ -406,6 +407,7 @@ function renderEditPopup(taskId) {
                                     </g>
                                 </svg>
                             </button>
+
                         </div>
                     </div>
 
@@ -426,8 +428,8 @@ function renderEditPopup(taskId) {
             </div>
 
             <div class="ok-button">
-                <button id="saveEditButton" class="button-create" onclick="SaveEditedTask(${taskId})">OK<img src="/assets/img/check.svg" alt=""></button>
-            </div>
+                    <button id="saveEditButton" class="button-create" onclick="saveEditedTask(${taskId})">OK<img src="/assets/img/check.svg" alt=""></button>
+                </div>
         </form>
     `;
 
@@ -627,10 +629,11 @@ function openUserListPopUp(event) {
     renderUserList(i);
     save();
   }
+  
 
 
 
-function SaveEditedTask(taskId) {
+  function SaveEditedTask(taskId) {
     // Erfassen der bearbeiteten Eingabedaten
     let titel = document.getElementById('titel').value;
     let description = document.getElementById('description').value;
@@ -646,23 +649,25 @@ function SaveEditedTask(taskId) {
     let editedTaskIndex = tasks.findIndex(task => task.id === taskId);
 
     if (editedTaskIndex !== -1) {
-        // Aktualisieren der Daten des bearbeiteten Tasks
+    
         tasks[editedTaskIndex].titel = titel;
         tasks[editedTaskIndex].description = description;
         tasks[editedTaskIndex].dueDate = dueDate;
         tasks[editedTaskIndex].priority = { urgent: urgent, medium: medium, low: low };
 
-        // Speichern des aktualisierten Arrays im Local Storage
+    
         localStorage.setItem('allTasks', JSON.stringify(tasks));
 
-        // Neu laden der Seite oder Aktualisieren des Inhalts entsprechend
-        // Zum Beispiel:
-        renderTasksOnPage(); // Annahme: Funktion zum Neuzeichnen der Aufgabenliste auf der Seite
-        closeEditPopup(); // Schließen des Popup nach dem Speichern der Bearbeitung
+    
+        renderTasksOnPage(); 
+
+        closeEditPopup();
     } else {
         console.error('Task not found for editing.');
     }
+
 }
+
 
 
 
