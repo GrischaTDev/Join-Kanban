@@ -1,13 +1,11 @@
 let users = [];
 let checkBox = false;
 
-function initRegister() {
-  loadUsersRegister();
-  console.log('Init register geladen!');
-}
 
-
-async function loadUsersRegister() {  
+/**
+ * Load registered user.
+ */
+async function loadRegisteredUser() {  
   try {
     users = JSON.parse(await getItem('users'));
   } catch (e) {
@@ -16,6 +14,11 @@ async function loadUsersRegister() {
 }
 
 
+/**
+ * Push newly registered users into the users array.
+ * 
+ * @returns Cancels registration if the requirements are not met.
+ */
 function addUser() {
   let registerButton = document.getElementById('register-button');
   registerButton.disabled = true;
@@ -36,13 +39,17 @@ function addUser() {
 
   let dontPrivacyAccept = document.getElementById('dont-accept');
   dontPrivacyAccept.classList.add('d-none');
-
   userPush(registerName, registerEmail, registerPassword, registerConfirmPassword);
   successfullyMessage();
   resetForm(registerName, registerEmail, registerPassword, registerConfirmPassword, registerButton);
 }
 
 
+/**
+ * Checks whether the entered passwords match.
+ * 
+ * @param {boolean} registerButton - Registry button true or false.
+ */
 function checkPassword(registerButton) {
   let passwordDontMatch = document.getElementById('password-dont-match');
   let passwordDontMatchBorder = document.getElementById('register-confirm-password');
@@ -54,6 +61,11 @@ function checkPassword(registerButton) {
 }
 
 
+/**
+ * Checks whether the privacy checkbox has been confirmed.
+ * 
+ * @param {boolean} registerButton - Registry button true or false
+ */
 function checkPrivacyConsent(registerButton) {
   let dontPrivacyAccept = document.getElementById('dont-accept');
   dontPrivacyAccept.classList.remove('d-none');
@@ -64,6 +76,13 @@ function checkPrivacyConsent(registerButton) {
   registerButton.disabled = false;
 }
 
+/**
+ * Push the registered user into a json.
+ * 
+ * @param {string} registerName - User name
+ * @param {string} registerEmail - User email
+ * @param {string} registerPassword - User password
+ */
 async function userPush(registerName, registerEmail, registerPassword) {
   let userId = users.length;
   users.push({
@@ -77,6 +96,9 @@ async function userPush(registerName, registerEmail, registerPassword) {
 }
 
 
+/**
+ * Checks whether the privacy checkbox has been activated.
+ */
 function privacyCheck() {
   let checkBoxImage = document.getElementById('checkbox');
 
@@ -90,6 +112,9 @@ function privacyCheck() {
 }
 
 
+/**
+ * Confirmation message after successful registration.
+ */
 async function successfullyMessage() {
   let msg = document.getElementById('msgBox');
   msg.classList.remove('d-none');
@@ -100,6 +125,15 @@ async function successfullyMessage() {
 }
 
 
+/**
+ * Resets the form and clears the fields.
+ * 
+ * @param {string} registerName - User name
+ * @param {string} registerEmail - User email
+ * @param {string} registerPassword - User password
+ * @param {string} registerConfirmPassword - User confirm password
+ * @param {boolean} registerButton - Registry button true or false
+ */
 function resetForm(registerName, registerEmail, registerPassword, registerConfirmPassword, registerButton) {
   registerName = '';
   registerEmail = '';
@@ -109,8 +143,15 @@ function resetForm(registerName, registerEmail, registerPassword, registerConfir
 }
 
 
-function showPassword(input, showIcon) {
-  let inputField = document.getElementById(input);
+/**
+ * Displays the password by activating an icon.
+ * 
+ * @param {string} inputPassword - Register input password
+ * @param {string} showIcon - Register input field icon
+ * @returns 
+ */
+function showPassword(inputPassword, showIcon) {
+  let inputField = document.getElementById(inputPassword);
   let icon = document.getElementById(showIcon);
 
   if (inputField.value === '') {
@@ -125,8 +166,14 @@ function showPassword(input, showIcon) {
 }
 
 
-function changePasswordIcon(input, showIcon) {
-  const inputField = document.getElementById(input);
+/**
+ * Changes the icon to display the password.
+ * 
+ * @param {string} inputPassword - User password
+ * @param {icon} showIcon - Change icon
+ */
+function changePasswordIcon(inputPassword, showIcon) {
+  const inputField = document.getElementById(inputPassword);
   const icon = document.getElementById(showIcon);
 
   if (inputField.value === '') {

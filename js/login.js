@@ -1,4 +1,5 @@
 let loggedInUser = [];
+let rememberMeUser = [];
 let checkBoxLogin = false;
 
 /**
@@ -6,6 +7,7 @@ let checkBoxLogin = false;
  */
 function initLogin(){
     loadRegisteredUsers();
+    loadRememberMeUser();
 }
 
 
@@ -64,7 +66,6 @@ async function userPushLogin(user) {
       name: user.name,
       color: user.color
     });
-
     save();
 }
 
@@ -83,14 +84,76 @@ function save() {
  */
 function rememberMe() {
     let checkBoxImage = document.getElementById('remember-me');
+    let loginEmail = document.getElementById('login-email').value;
+    let loginPassword = document.getElementById('login-password').value;
+
+    if (loginEmail.length === 0 && loginPassword.length === 0) {
+        return;
+    }
 
     if (!checkBoxLogin) {
       checkBoxImage.src = './assets/img/checkbox_active.svg';
       checkBoxLogin = true;
+      pushRememberMe(loginEmail, loginPassword)
+      loadRememberMeUser();
     } else {
       checkBoxImage.src = './assets/img/checkbox.svg';
       checkBoxLogin = false;
+      rememberMeUser.splice(0, rememberMeUser.length);
+      saveRememberMe();
+      loadRememberMeUser();
     }
+}
+
+
+/**
+ * Saves the logged-in user as json in the local storage.
+ * 
+ * @param {JSON} user - Saved login user data
+ */
+function pushRememberMe(loginEmail, loginPassword) {
+    rememberMeUser = [];
+    rememberMeUser.push({
+      email: loginEmail,
+      password: loginPassword,
+    });
+    saveRememberMe();
+}
+
+
+/**
+ * Saved remember me user in local storage.
+ */
+function saveRememberMe() {
+    let saveUserLogin = JSON.stringify(rememberMeUser);
+    localStorage.setItem('rememberMeUser', saveUserLogin);
+    loadRememberMeUser();
+}
+
+
+/**
+ * Load remember me user from local storage.
+ */
+function loadRememberMeUser() {
+    let loadUserLogin = localStorage.getItem("rememberMeUser");
+    if (loadUserLogin) {
+        rememberMeUser = JSON.parse(loadUserLogin);
+    }
+    loadRememberMeInputValue();
+}
+
+
+/**
+ * Load remember me user in input fields.
+ */
+function loadRememberMeInputValue() {
+    let checkBoxImage = document.getElementById('remember-me');
+    if (rememberMeUser.length > 0) {
+        checkBoxImage.src = './assets/img/checkbox_active.svg';
+        checkBoxLogin = true;
+        document.getElementById('login-email').value = rememberMeUser[0].email;
+        document.getElementById('login-password').value = rememberMeUser[0].password;
+    } 
 }
 
 
