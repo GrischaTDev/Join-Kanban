@@ -30,7 +30,7 @@ function openAddNewTaskPopup() {
     document.getElementById('add-task-popup-container').classList.remove('d-none');
     document.getElementById('add-task-popup-container').innerHTML = '';
     document.getElementById('add-task-popup-container').innerHTML += /* html */ `
-    <div class="addTask_popup" onclick="doNotClose(event)">
+    <div class="addTask-popup" onclick="doNotClose(event)">
    
     <div>
         <div class="header-container">
