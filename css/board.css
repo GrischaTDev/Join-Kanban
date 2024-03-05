@@ -424,6 +424,7 @@ h2 {
 
 .flex_container_head {
   display: flex;
+ 
 }
 
 .board_popup {
@@ -545,7 +546,7 @@ h2 {
 }
 
 .close_icon_box {
-  width: 65%;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -647,8 +648,7 @@ h2 {
 
 .popup-card {
   height: 85vh;
-  min-width: 270px;
-  width: 480px;
+  
 }
 
 .card-section {
@@ -677,9 +677,9 @@ h2 {
   z-index: 51;
 }
 
-.addTask_popup {
-  height: 78%;
-  width: 67%;
+.addTask-popup {
+height: 50%;
+  width: 70%;
   background-color: white;
   border-radius: 24px;
   padding: 50px;
@@ -698,15 +698,18 @@ h2 {
 }
 
 .task-edit-form {
-  width: 90%;
+  min-width: 400px;
+  max-width: 480px;
+  height: 75vh;
   background-color: white;
   border-radius: 24px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 400px;
-  gap: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  
 }
 
 @media (min-width: 900px) {
@@ -717,6 +720,24 @@ h2 {
 }
 
 @media (max-width: 900px) {
+ 
+
+  .board_popup_mobile {
+    width: 90%;
+    height: 75vh;
+    display: flex;
+    justify-content: space-between
+   }
+ 
+  .task-edit-form-mobile {
+  height: 85vh;
+  min-width: 320px;
+  max-width: 360px;
+  margin: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  }
   .user-container-popup {
     max-height: 150px;
   }
@@ -731,25 +752,7 @@ h2 {
     padding-bottom: 150px;
   }
 
-  .task-edit-form {
-    height: 95%;
-    width: 80%;
-    background-color: white;
-    border-radius: 24px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 800px;
-    margin-left: 20px;
-  }
 
-  .addTask_popup {
-    height: 100%;
-    width: 100%;
-    padding: 50px;
-    margin-top: 50px;
-  }
 
   .content-board {
     margin-left: 16px;
@@ -805,10 +808,7 @@ h2 {
     margin-top: -68px;
   }
 
-  .board_popup_mobile {
-    width: 57%;
-  }
-
+  
   .img_popup_mobile {
     width: 34px;
     height: 34px;
@@ -864,6 +864,7 @@ h2 {
     margin: 160px 0 0 310px;
     max-width: 1400px;
   }
+
 
   .desktop-h1 {
     margin-top: 150px;
