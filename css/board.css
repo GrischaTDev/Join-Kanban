@@ -2,6 +2,9 @@
   margin: 160px 15px 0px 310px;
 }
 
+body.popup-open {
+  overflow: hidden;
+}
 
 
 h2 {
@@ -752,6 +755,7 @@ h2 {
     margin-left: 16px;
     margin-right: 16px;
     margin-bottom: 150px;
+    overflow: hidden !important;
   }
 
   .titelarea-mobile {
