@@ -152,6 +152,7 @@ function openAddNewTaskPopup() {
         </form>
     </div>
     `;
+    }
 }
 
 
@@ -957,5 +958,4 @@ function deleteTask(taskId) {
 function doNotClose(event) {
   event.stopPropagation();
 }
-
 
