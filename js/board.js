@@ -22,6 +22,8 @@ async function initBoard() {
   }
 }
 
+alt
+
 function openAddNewTaskPopup() {
   if (window.innerWidth > 900) {
     document.body.classList.add("popup-open");
