@@ -26,6 +26,7 @@ async function initBoard() {
 
 
 function openAddNewTaskPopup() {
+    if (window.innerWidth > 900) {
     document.body.classList.add('popup-open');
     document.getElementById('add-task-popup-container').classList.remove('d-none');
     document.getElementById('add-task-popup-container').innerHTML = '';
@@ -176,6 +177,9 @@ function openAddNewTaskPopup() {
         </form>
     </div>
     `;
+    } else {
+        window.location.href = 'add_task.html';
+    }
 }
 
 
@@ -289,150 +293,6 @@ function closeIncomePopup() {
 }
 
 
-
-
-
-
-
-
-
-//   function editPopup(taskId) {
-//     // Verberge das showPopup
-//     document.getElementById("incomePopup").classList.add("d-none");
-
-//     // Zeige das editPopup
-//     document.getElementById('edit_popup').classList.remove('d-none');
-//     document.getElementById('edit_popup').innerHTML = '';
-
-//     // Abrufen des Tasks aus dem Local Storage
-//     let tasks = JSON.parse(localStorage.getItem('allTasks'));
-//     let taskToEdit = tasks.find(task => task.id === taskId);
-
-//     // Füge das Formular für die Bearbeitung hinzu und setze die Werte der Eingabefelder
-//     document.getElementById('edit_popup').innerHTML += `
-//         <form class="popup-card" onsubmit="saveEditedTask(taskId)">
-//             <div class="task-edit-form" >
-//                 <div class="add-task-title">
-//                     <span>Title<span class="red-asterisk"></span></span>
-//                     <input type="text" required placeholder="Enter a title" id="titel">
-//                 </div>
-
-//                 <div class="add-task-title">
-//                     <span>Description</span>
-//                     <textarea type="text" required minlength="5" placeholder="Enter a description" id="description"></textarea>
-//                 </div>
-//                 <div class="add-task-title prio-mobile">
-//                     <span>Prio</span>
-//                     <div class="priority-buttons">
-//                         <button type="button" class="priority-button" id="urgent" onclick="togglePriority('urgent')">
-//                             Urgent
-//                             <img src="/assets/img/prio-urgent.svg" alt="Urgent Image">
-//                         </button>
-//                         <button type="button" class="priority-button" id="medium" onclick="togglePriority('medium')">
-//                             Medium
-//                             <img src="/assets/img/prio-medium.svg" alt="Medium Image">
-//                         </button>
-//                         <button type="button" class="priority-button" id="low" onclick="togglePriority('low')">
-//                             Low
-//                             <img src="/assets/img/prio-low.svg" alt="Low Image">
-//                         </button>  
-//                     </div>
-//                 </div>
-
-//                 <div class="add-task-title">
-//                     <span>Due a date<span class="red-asterisk"></span></span>
-//                     <input class="input-task-date" type="date" id="dueDate" required>
-//                 </div>
-
-//                 <div class="add-task-title">
-//                     <span>Category<span class="red-asterisk"></span></span>
-//                     <select class="input-task-select" id="category" aria-placeholder="Select task category">
-//                         <option value="" disabled selected>Select a Category</option>
-//                         <option value="technical-task">Technical Task</option>
-//                         <option value="user-story">User Story</option>
-//                     </select>
-//                 </div>
-//                 <div class="add-task-title assigned-mobile">
-//                     <span>Assigned to</span>
-//                     <div class="assigned-input">
-//                         <input onclick="openUserList('user-select-mobile', 'selected-user-mobile')" class="input-task-select" type="text" placeholder="Select contacts to assign">
-//                         <img onclick="openUserList('user-select-mobile')" id="input-icon" class="input-arrow" src="./assets/img/arrow_drop_down_1.svg" alt="">
-//                     </div>
-//                     <div id="user-select-mobile" class="d-none"></div>
-//                     <div id="selected-user-mobile"></div>
-//                 </div>
-//                 <div>
-//                     <span class="subtask-container">Subtask</span>
-//                     <div class="input-sub-field">
-//                         <input class="input-subtask" id="subtask" />
-//                         <div onclick="addTodo();" id="addButton"><span class="suffix"><i><svg width="12" height="12" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Capa 1"><g id="Group 11"><path id="Vector 13" d="M11 1V21" stroke="black" stroke-width="2" stroke-linecap="round" /><path id="Vector 14" d="M21 11L1.00048 11.138" stroke="black" stroke-width="2" stroke-linecap="round" /></g></g></svg></i></span></div>
-//                     </div>
-//                     <ul id="mylist"></ul>
-//                 </div>
-//                 <div class="ok-button">
-//                     <button id="saveEditButton" class="button-create" onclick="SaveEditedTask(taskId)">OK<img src="/assets/img/check.svg" alt=""></button>
-//                 </div>
-//             </div>
-//         </form>
-//     `;
-
-//     // Setze die Werte der Eingabefelder basierend auf dem abgerufenen Task
-//     document.getElementById('titel').value = taskToEdit.titel;
-//     document.getElementById('description').value = taskToEdit.description;
-//     document.getElementById('dueDate').value = taskToEdit.dueDate;
-//     document.getElementById('category').value = taskToEdit.category;
-//     // Weitere Felder entsprechend setzen...
-
-//     // Setze die Prioritätsschaltflächen entsprechend
-//     if (taskToEdit.priority.urgent) {
-//         document.getElementById('urgent').classList.add('active');
-//     } else if (taskToEdit.priority.medium) {
-//         document.getElementById('medium').classList.add('active');
-//     } else {
-//         document.getElementById('low').classList.add('active');
-//     }
-// }
-
-
-
-// function fillPopupFields(taskId) {
-//     let task = findTaskById(taskId);
-
-//     // Fülle die Eingabefelder mit den Daten der Aufgabe
-//     document.getElementById("titel").value = task.titel;
-//     document.getElementById("description").value = task.description;
-//     document.getElementById("dueDate").value = task.dueDate;
-//     document.getElementById("category").value = task.category;
-
-//     // Fülle die Prioritätssymbole entsprechend der Aufgabe
-//     document.getElementById("urgent").classList.toggle("active", task.priority.urgent);
-//     document.getElementById("medium").classList.toggle("active", task.priority.medium);
-//     document.getElementById("low").classList.toggle("active", task.priority.low);
-
-//     // Fülle weitere Daten der Aufgabe ein, falls vorhanden
-// }
-
-
-
-
-// function SaveEditedTask(taskId) {
-//     // Abrufen des Tasks aus dem Local Storage
-//     let tasks = JSON.parse(localStorage.getItem('allTasks'));
-//     let taskIndex = tasks.findIndex(task => task.id === taskId);
-
-//         // Aktualisiere die Werte des Tasks basierend auf den Eingabefeldern
-//         tasks[taskIndex].titel = document.getElementById('titel').value;
-//         tasks[taskIndex].description = document.getElementById('description').value;
-//         tasks[taskIndex].dueDate = document.getElementById('dueDate').value;
-//         tasks[taskIndex].category = document.getElementById('category').value;
-
-//         localStorage.setItem('allTasks', JSON.stringify(tasks));
-
-//         // Optional: Zeige eine Erfolgsmeldung oder führe andere Aktionen aus
-//         console.log('Task erfolgreich bearbeitet und gespeichert.');
-
-// }
-
 function editPopup(taskId) {
     // Verberge das showPopup
     document.body.classList.add('popup-open');
@@ -447,8 +307,10 @@ function editPopup(taskId) {
     let taskToEdit = tasks.find(task => task.id === taskId);
 
     if (taskToEdit && taskToEdit.subtask) {
-        // Laden der Subtasks ins todo-Array und Rendering
-        loadSubtasksForEditing(taskId);
+        // Laden der Subtasks ins todos-Array
+        todos = taskToEdit.subtask.map(subtask => subtask.name);
+    } else {
+        todos = []; // Falls keine Subtasks vorhanden sind
     }
 
     // Rendern des Popups mit den bearbeiteten Daten
@@ -598,132 +460,128 @@ function renderEditPopup(taskId) {
         `;
     });
 
-    renderSubtasksInEditPopup(taskToEdit);
+    // Anzeigen der Subtasks im Popup-Fenster
+    showTodos();
 }
 
-    function renderSubtasksInEditPopup(taskToEdit) {
-
-    // Anzeigen der Subtasks
-    const subtaskList = document.getElementById('mylist');
-    subtaskList.innerHTML = ''; // Löschen des vorhandenen Inhalts
-
-    if (taskToEdit.subtask) {
-        taskToEdit.subtask.forEach((subtask, index) => {
-            const li = document.createElement('li');
-            li.className = 'todo-item';
-
-            li.innerHTML = `
-            <div>
-            <span>${subtask.name}</span>
-            <input size="60" class="edit-input d-none" value="${subtask.name}" onchange="updateSubtask(${taskToEdit.id}, ${index}, this.value)">
-        </div>
-        <div class="actions d-none">
-            <a href="#/" onclick="editSubtask(${index})"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <mask id="mask0_129363_1220" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-                <rect width="24" height="24" fill="#D9D9D9"/>
-                </mask>
-                <g mask="url(#mask0_129363_1220)">
-                <path d="M5 19H6.4L15.025 10.375L13.625 8.975L5 17.6V19ZM19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM17.85 10.4L7.25 21H3V16.75L13.6 6.15L17.85 10.4Z" fill="#2A3647"/>
-                </g>
-                </svg>
-            </svg></a>
-            <a href="#/" onclick="deleteSubtaskFromEditPopup(${index}, ${taskToEdit.id})"><svg width="20" height="19" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <svg width="20" height="19" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <mask id="mask0_129363_1225" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="24">
-                <rect x="0.5" width="24" height="24" fill="#D9D9D9"/>
-                </mask>
-                <g mask="url(#mask0_129363_1225)">
-                <path d="M7.5 21C6.95 21 6.47917 20.8042 6.0875 20.4125C5.69583 20.0208 5.5 19.55 5.5 19V6C5.21667 6 4.97917 5.90417 4.7875 5.7125C4.59583 5.52083 4.5 5.28333 4.5 5C4.5 4.71667 4.59583 4.47917 4.7875 4.2875C4.97917 4.09583 5.21667 4 5.5 4H9.5C9.5 3.71667 9.59583 3.47917 9.7875 3.2875C9.97917 3.09583 10.2167 3 10.5 3H14.5C14.7833 3 15.0208 3.09583 15.2125 3.2875C15.4042 3.47917 15.5 3.71667 15.5 4H19.5C19.7833 4 20.0208 4.09583 20.2125 4.2875C20.4042 4.47917 20.5 4.71667 20.5 5C20.5 5.28333 20.4042 5.52083 20.2125 5.7125C20.0208 5.90417 19.7833 6 19.5 6V19C19.5 19.55 19.3042 20.0208 18.9125 20.4125C18.5208 20.8042 18.05 21 17.5 21H7.5ZM7.5 6V19H17.5V6H7.5ZM9.5 16C9.5 16.2833 9.59583 16.5208 9.7875 16.7125C9.97917 16.9042 10.2167 17 10.5 17C10.7833 17 11.0208 16.9042 11.2125 16.7125C11.4042 16.5208 11.5 16.2833 11.5 16V9C11.5 8.71667 11.4042 8.47917 11.2125 8.2875C11.0208 8.09583 10.7833 8 10.5 8C10.2167 8 9.97917 8.09583 9.7875 8.2875C9.59583 8.47917 9.5 8.71667 9.5 9V16ZM13.5 16C13.5 16.2833 13.5958 16.5208 13.7875 16.7125C13.9792 16.9042 14.2167 17 14.5 17C14.7833 17 15.0208 16.9042 15.2125 16.7125C15.4042 16.5208 15.5 16.2833 15.5 16V9C15.5 8.71667 15.4042 8.47917 15.2125 8.2875C15.0208 8.09583 14.7833 8 14.5 8C14.2167 8 13.9792 8.09583 13.7875 8.2875C13.5958 8.47917 13.5 8.71667 13.5 9V16Z" fill="#2A3647"/>
-                </g>
-                </svg>
-            </svg></a>
-        </div>
-        `;
-
-        li.addEventListener('mouseenter', function () {
-            li.querySelector('.actions').classList.remove('d-none');
-        });
-
-        li.addEventListener('mouseleave', function () {
-            li.querySelector('.actions').classList.add('d-none');
-        });
-
-        subtaskList.appendChild(li);
+function renderSelectedUsersInEdit(selectedUser) {
+    let selectedUserList = document.getElementById('selected-user');
+    selectedUserList.innerHTML = '';
+  
+    selectedUser.forEach(user => {
+      let initialLetters = nameInitialLettersAddTasks(user);
+      const userColor = user['color'];
+  
+      selectedUserList.innerHTML += /* html */ `
+        <div class="user-icon" style="background-color: ${userColor};">${initialLetters}</div>
+      `;
     });
-}
-    // loadSubtasksForEditing(taskToEdit.id);
-}
+  }
 
-
-function loadSubtasksForEditing(taskId) {
-    let tasks = JSON.parse(localStorage.getItem('allTasks'));
-    let taskToEdit = tasks.find(task => task.id === taskId);
-    if (taskToEdit && taskToEdit.subtask) {
-        // Leeren des 'todos'-Arrays
-        todos = [];
-        // Iterieren über die Subtasks des Tasks und sie dem Array 'todos' hinzufügen
-        for (let i = 0; i < taskToEdit.subtask.length; i++) {
-            todos.push(taskToEdit.subtask[i].name);
-        }
-        // Speichern des aktualisierten 'todos'-Arrays im Local Storage
-        localStorage.setItem('todos', JSON.stringify(todos));
-    }
-}
-
-
-function deleteSubtaskFromEditPopup(index, taskId) {
-    // Abrufen der Subtasks aus dem Local Storage
-    let subtasks = JSON.parse(localStorage.getItem('todos'));
-
-    // Entfernen des ausgewählten Subtasks aus dem Array
-    subtasks.splice(index, 1);
-
-    // Aktualisieren des Subtask-Arrays im Local Storage
-    localStorage.setItem('todos', JSON.stringify(subtasks));
-    renderSubtasksInEditPopup(taskId);
-
-}
-
-
-function openUserListPopUp(event) {
-    selectedUserList = document.getElementById('selected-user');;
+  function openUserListEdit(event) {
     let userList = document.getElementById('user-list');
     let inputIcon = document.getElementById('input-icon');
-    if (selectedUser.length >= 1) {
-      userList.classList.remove('d-none');
-      event.stopPropagation();
-      return;
-    }
   
     userList.innerHTML = '';
-  
   
     if (userList.classList.contains('d-none')) {
       userList.classList.remove('d-none');
       inputIcon.src = './assets/img/arrow_drop_down_2.svg';
     }
   
-    for (let i = 0; i < users.length; i++) {
-      const user = users[i];
-      const userColor = users[i]['color'];
-  
+    users.forEach((user, i) => {
+      const userColor = user['color'];
       let initialLetters = nameInitialLettersAddTasks(user);
   
-      userList.innerHTML += `
-      <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active' : ''}" onclick="toggleAddUser(${i})">
-        <div class="user-name">
-          <span class="letter-icon" style="background-color:${userColor}">${initialLetters}</span>
-          <div>${user.name}</div>
+      userList.innerHTML += /* html */ `
+        <div id="currentUser${i}" class="userColumn ${isUSerSelectedEdit(user.id) ? 'user-list-active' : ''}" onclick="toggleAddUserEdit(${user.id})">
+          <div class="user-name">
+            <span class="letter-icon" style="background-color:${userColor}">${initialLetters}</span>
+            <div>${user.name}</div>
+          </div>
+          <img id="user-checkbox${i}" src="${isUSerSelectedEdit(user.id) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
         </div>
-        <img id="user-checkbox${i}" src="${isUSerSelected(i) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
-      </div>
       `;
-      // const color = document.getElementsByClassName('letter-icon');
-      // color[i].style.backgroundColor = `${userColor}`;
-    }
+    });
     event.stopPropagation();
   }
+  
+  // Funktion zum Überprüfen, ob ein Benutzer im Bearbeitungsmodus ausgewählt ist
+  function isUSerSelectedEdit(userId) {
+    return selectedUser.some(su => su.id === userId);
+  }
+  
+  // Funktion zum Hinzufügen oder Entfernen eines Benutzers im Bearbeitungsmodus
+  function toggleAddUserEdit(userId) {
+    let user = users.find(u => u.id === userId);
+    let selectedUSerIndex = selectedUser.findIndex(u => u.id === userId);
+    let checkBoxUser = document.getElementById(`user-checkbox${userId}`);
+    
+    if (selectedUSerIndex === -1) {
+      selectedUser.push(user);
+      checkBoxUser.src = './assets/img/checkbox_active_white.svg';
+    } else {
+      selectedUser.splice(selectedUSerIndex, 1);
+      checkBoxUser.src = './assets/img/checkbox.svg';
+    }
+  
+    renderSelectedUsersInEdit(selectedUser);
+  }
+  
+  // Funktion zum Speichern der ausgewählten Benutzer im Local Storage
+  function saveSelectedUserToLocalStorage(selectedUser) {
+    localStorage.setItem("selectedUser", JSON.stringify(selectedUser));
+  }
+  
+  // Funktion zum Laden der ausgewählten Benutzer aus dem Local Storage
+  function loadSelectedUserFromLocalStorage() {
+    let loadUser = localStorage.getItem("selectedUser");
+    if (loadUser) {
+      selectedUser = JSON.parse(loadUser);
+    }
+  }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// function openUserListPopUp(event) {
+//     selectedUserList = document.getElementById('selected-user');;
+//     let userList = document.getElementById('user-list');
+//     let inputIcon = document.getElementById('input-icon');
+//     if (selectedUser.length >= 1) {
+//       userList.classList.remove('d-none');
+//       event.stopPropagation();
+//       return;
+//     }
+  
+//     userList.innerHTML = '';
+  
+  
+//     if (userList.classList.contains('d-none')) {
+//       userList.classList.remove('d-none');
+//       inputIcon.src = './assets/img/arrow_drop_down_2.svg';
+//     }
+  
+//     for (let i = 0; i < users.length; i++) {
+//       const user = users[i];
+//       const userColor = users[i]['color'];
+  
+//       let initialLetters = nameInitialLettersAddTasks(user);
+  
+//       userList.innerHTML += `
+//       <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active' : ''}" onclick="toggleAddUser(${i})">
+//         <div class="user-name">
+//           <span class="letter-icon" style="background-color:${userColor}">${initialLetters}</span>
+//           <div>${user.name}</div>
+//         </div>
+//         <img id="user-checkbox${i}" src="${isUSerSelected(i) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
+//       </div>
+//       `;
+//       // const color = document.getElementsByClassName('letter-icon');
+//       // color[i].style.backgroundColor = `${userColor}`;
+//     }
+//     event.stopPropagation();
+//   }
   
   function isUSerSelected(i) {
     return selectedUser.some(su => su.id === i)
@@ -741,18 +599,18 @@ function openUserListPopUp(event) {
   }
   
   
-  function renderUserList() {
-    selectedUserList.innerHTML = '';
+//   function renderUserList() {
+//     selectedUserList.innerHTML = '';
   
-    selectedUser.forEach(user => {
-      let initialLetters = nameInitialLettersAddTasks(user);
-      const userColor = user['color'];
+//     selectedUser.forEach(user => {
+//       let initialLetters = nameInitialLettersAddTasks(user);
+//       const userColor = user['color'];
   
-      selectedUserList.innerHTML += /* html */ `
-        <div class="user-icon" style="background-color: ${userColor};">${initialLetters}</div>
-      `;
-    });
-  }
+//       selectedUserList.innerHTML += /* html */ `
+//         <div class="user-icon" style="background-color: ${userColor};">${initialLetters}</div>
+//       `;
+//     });
+//   }
   
   
   function toggleAddUser(i) {
@@ -774,39 +632,57 @@ function openUserListPopUp(event) {
   }
 
 
+function updateUserListInTasks() {
+    allTasks.forEach(task => {
+      // Überprüfen, ob der Task Benutzer hat
+      if (task.userList && task.userList.length > 0) {
+        task.userList = task.userList.map(user => {
+          // Suchen des entsprechenden Benutzers im selectedUser-Array
+          const selectedUserIndex = selectedUser.findIndex(selected => selected.name === user.fname + ' ' + user.lname);
+          if (selectedUserIndex !== -1) {
+            // Aktualisieren der Benutzerdaten im Task
+            user.backgroundcolor = selectedUser[selectedUserIndex].color;
+          }
+          return user;
+        });
+      }
+    });
+  }
+  
 
 function SaveEditedTask(taskId) {
-    // Erfassen der bearbeiteten Eingabedaten
-    let titel = document.getElementById('titel').value;
-    let description = document.getElementById('description').value;
-    let dueDate = document.getElementById('dueDate').value;
-    let urgent = document.getElementById('urgent').classList.contains('active');
-    let medium = document.getElementById('medium').classList.contains('active');
-    let low = document.getElementById('low').classList.contains('active');
+    // Abrufen des bearbeiteten Tasks aus dem Formular
+    const editedTask = {
+        id: taskId,
+        titel: document.getElementById('titel').value,
+        description: document.getElementById('description').value,
+        dueDate: document.getElementById('dueDate').value,
+        category: allTasks.find(task => task.id === taskId).category, // Category unverändert lassen
+        priority: {
+                       low: document.getElementById('low').classList.contains('active-low'),
+                       medium: document.getElementById('medium').classList.contains('active-medium'),
+                       urgent: document.getElementById('urgent').classList.contains('active-urgent')
+                   },
+        subtask: todos.map(name => ({ name, status: false })), // Subtasks aktualisieren
+        userList: selectedUser.map(user => ({
+            fname: user.name.split(' ')[0], // Extrahieren des Vornamens aus dem Namen des Benutzers
+            lname: user.name.split(' ')[1], // Extrahieren des Nachnamens aus dem Namen des Benutzers
+            backgroundcolor: user.color // Verwendung der Hintergrundfarbe des Benutzers
+        })),
+        progressfield: allTasks.find(task => task.id === taskId).progressfield // Progressfield unverändert lassen
+    };
 
-    // Laden der vorhandenen Tasks aus dem Local Storage
-    let tasks = JSON.parse(localStorage.getItem('allTasks'));
-
-    // Finden des bearbeiteten Tasks im Array
-    let editedTaskIndex = tasks.findIndex(task => task.id === taskId);
-
-    if (editedTaskIndex !== -1) {
-        // Aktualisieren der Daten des bearbeiteten Tasks
-        tasks[editedTaskIndex].titel = titel;
-        tasks[editedTaskIndex].description = description;
-        tasks[editedTaskIndex].dueDate = dueDate;
-        tasks[editedTaskIndex].priority = { urgent: urgent, medium: medium, low: low };
-
-        // Speichern des aktualisierten Arrays im Local Storage
-        localStorage.setItem('allTasks', JSON.stringify(tasks));
-
-        // Neu laden der Seite oder Aktualisieren des Inhalts entsprechend
-        // Zum Beispiel:
-        renderTasksOnPage(); // Annahme: Funktion zum Neuzeichnen der Aufgabenliste auf der Seite
-        closeEditPopup(); // Schließen des Popup nach dem Speichern der Bearbeitung
-    } else {
-        console.error('Task not found for editing.');
+    // Suchen und aktualisieren des bearbeiteten Tasks im Array
+    const index = allTasks.findIndex(task => task.id === taskId);
+    if (index !== -1) {
+        allTasks[index] = editedTask;
     }
+
+    // Speichern des aktualisierten Arrays im Local Storage
+    localStorage.setItem('allTasks', JSON.stringify(allTasks));
+
+    // Schließen des Bearbeitungspopups
+    closeEditPopup();
 }
 
 
@@ -1058,12 +934,6 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-// alte version ohne speichern im local storage
-
-// function moveTo(progressfield) {
-//     allTasks[currentDraggedElement - 1]['progressfield'] = progressfield; // Index um 1 reduzieren, da IDs bei 1 beginnen
-//     showAllTasks(allTasks);
-// }
 
 function moveTo(progressfield) {
     // Index um 1 reduzieren, da IDs bei 1 beginnen

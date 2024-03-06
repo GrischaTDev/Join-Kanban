@@ -712,15 +712,16 @@ height: 50%;
   
 }
 
+
 @media (min-width: 900px) {
   .addTask_popup {
     max-height: 700px;
   }
+ 
 
 }
 
 @media (max-width: 900px) {
- 
 
   .board_popup_mobile {
     width: 90%;

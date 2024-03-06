@@ -451,7 +451,18 @@ ul {
     margin-top: 70px;
     padding-bottom: 150px;
   }
+
+  .create-task-container {
+    position: fixed;
+    width: 100%;
+    height: 90px;
+    background-color: #FFF;
+    z-index: 999; 
+    overflow: hidden;
+    background-color: #f6f7f8;; 
 }
+}
+
 
 /* Responsiv for laptop */
 @media screen and (min-width: 900px) {
@@ -516,6 +527,7 @@ ul {
     left: unset;
     padding: unset;
     margin-bottom: unset;
+    
   }
 
   .priority-button.active {
