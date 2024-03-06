@@ -21,6 +21,7 @@ async function loadUsers() {
   }
 }
 
+
 function filterUser() {
   let search = document.getElementById('search-user').value;
   search = search.toLowerCase();
@@ -47,11 +48,10 @@ function filterUser() {
         <img id="user-checkbox${i}" src="${isUSerSelected(i) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
       </div>
       `;
-      // const color = document.getElementsByClassName('letter-icon');
-      // color[i].style.backgroundColor = `${userColor}`;
     }
   }
 }
+
 
 function openUserList(event) {
   selectedUserList = document.getElementById('selected-user');;
@@ -86,8 +86,6 @@ function openUserList(event) {
       <img id="user-checkbox${i}" src="${isUSerSelected(i) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
     </div>
     `;
-    // const color = document.getElementsByClassName('letter-icon');
-    // color[i].style.backgroundColor = `${userColor}`;
   }
   event.stopPropagation();
 }
@@ -146,7 +144,7 @@ function toggleAddUser(i) {
  * 
  * @param userList ID from popup container
  */
-if (window.location.href.includes('add_task.html')) {
+if (window.location.href.includes('add_task.html') || window.location.href.includes('board.html')) {
   document.getElementById('container').addEventListener('click', function (event) {
     const userList = document.getElementById('user-list');
     const inputIcon = document.getElementById('input-icon');
@@ -171,22 +169,17 @@ function loadAddTaskUser() {
     selectedUser = JSON.parse(loadUser);
   }
 }
-//////////////////////////////////////////////////////////////////////
+
 
 /**
  * alles in Json und array speichern und umwandeln
  */
-
-
 function loadAllTasks() {
   let allTasksAsString = localStorage.getItem("allTasks");
   if (allTasksAsString) {
     allTasks = JSON.parse(allTasksAsString); // Aktualisieren des allTasks-Arrays mit den Daten aus dem Local Storage
   }
 }
-
-
-
 
 
 function saveTasksToLocalStorage(tasks) {
@@ -199,9 +192,9 @@ function addTask() {
   let titel = document.getElementById('titel').value;
   let description = document.getElementById('description').value;
   let category = document.getElementById('category').value;
-  let urgent = document.getElementById('urgent').classList.contains('active');
-  let medium = document.getElementById('medium').classList.contains('active');
-  let low = document.getElementById('low').classList.contains('active');
+  let urgent = document.getElementById('urgent').classList.contains('active-urgent');
+  let medium = document.getElementById('medium').classList.contains('active-medium');
+  let low = document.getElementById('low').classList.contains('active-low');
   let dueDate = document.getElementById('dueDate').value;
 
   // Laden der vorhandenen Tasks aus dem Local Storage oder Initialisieren mit einem leeren Array

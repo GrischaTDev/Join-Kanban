@@ -4,20 +4,19 @@
 function initSummary() {
     init();
     loadAllTasks();
-    let tasksFromLocalStorage = localStorage.getItem("allTasks");
-    if (!tasksFromLocalStorage) {
-        saveTasksToLocalStorage(allTasks);
-    } else {
-        allTasks = JSON.parse(tasksFromLocalStorage);
-    }
+    loadSummaryContent();
+}
 
+/**
+ * 
+ */
+function loadSummaryContent() {
     let todo = [];
     let done = [];
     let urgent = [];
     let inProgress = [];
     let awaitFeedback = [];
     let allTasksCount = allTasks.length;
-
     let earliestUrgentDueDate = null;
 
     allTasks.forEach(task => {

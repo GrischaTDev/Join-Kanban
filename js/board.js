@@ -27,11 +27,11 @@ async function initBoard() {
 
 function openAddNewTaskPopup() {
     if (window.innerWidth > 900) {
-    document.body.classList.add('popup-open');
-    document.getElementById('add-task-popup-container').classList.remove('d-none');
-    document.getElementById('add-task-popup-container').innerHTML = '';
-    document.getElementById('add-task-popup-container').innerHTML += /* html */ `
-    <div class="addTask-popup" onclick="doNotClose(event)">
+        document.body.classList.add('popup-open');
+        document.getElementById('add-task-popup-container').classList.remove('d-none');
+        document.getElementById('add-task-popup-container').innerHTML = '';
+        document.getElementById('add-task-popup-container').innerHTML += /* html */ `
+    <div class="addTask-popup" id="container" onclick="doNotClose(event)">
    
     <div>
         <div class="header-container">
@@ -467,33 +467,33 @@ function renderEditPopup(taskId) {
 function renderSelectedUsersInEdit(selectedUser) {
     let selectedUserList = document.getElementById('selected-user');
     selectedUserList.innerHTML = '';
-  
+
     selectedUser.forEach(user => {
-      let initialLetters = nameInitialLettersAddTasks(user);
-      const userColor = user['color'];
-  
-      selectedUserList.innerHTML += /* html */ `
+        let initialLetters = nameInitialLettersAddTasks(user);
+        const userColor = user['color'];
+
+        selectedUserList.innerHTML += /* html */ `
         <div class="user-icon" style="background-color: ${userColor};">${initialLetters}</div>
       `;
     });
-  }
+}
 
-  function openUserListEdit(event) {
+function openUserListEdit(event) {
     let userList = document.getElementById('user-list');
     let inputIcon = document.getElementById('input-icon');
-  
+
     userList.innerHTML = '';
-  
+
     if (userList.classList.contains('d-none')) {
-      userList.classList.remove('d-none');
-      inputIcon.src = './assets/img/arrow_drop_down_2.svg';
+        userList.classList.remove('d-none');
+        inputIcon.src = './assets/img/arrow_drop_down_2.svg';
     }
-  
+
     users.forEach((user, i) => {
-      const userColor = user['color'];
-      let initialLetters = nameInitialLettersAddTasks(user);
-  
-      userList.innerHTML += /* html */ `
+        const userColor = user['color'];
+        let initialLetters = nameInitialLettersAddTasks(user);
+
+        userList.innerHTML += /* html */ `
         <div id="currentUser${i}" class="userColumn ${isUSerSelectedEdit(user.id) ? 'user-list-active' : ''}" onclick="toggleAddUserEdit(${user.id})">
           <div class="user-name">
             <span class="letter-icon" style="background-color:${userColor}">${initialLetters}</span>
@@ -504,153 +504,100 @@ function renderSelectedUsersInEdit(selectedUser) {
       `;
     });
     event.stopPropagation();
-  }
-  
-  // Funktion zum Überprüfen, ob ein Benutzer im Bearbeitungsmodus ausgewählt ist
-  function isUSerSelectedEdit(userId) {
+}
+
+// Funktion zum Überprüfen, ob ein Benutzer im Bearbeitungsmodus ausgewählt ist
+function isUSerSelectedEdit(userId) {
     return selectedUser.some(su => su.id === userId);
-  }
-  
-  // Funktion zum Hinzufügen oder Entfernen eines Benutzers im Bearbeitungsmodus
-  function toggleAddUserEdit(userId) {
+}
+
+// Funktion zum Hinzufügen oder Entfernen eines Benutzers im Bearbeitungsmodus
+function toggleAddUserEdit(userId) {
     let user = users.find(u => u.id === userId);
     let selectedUSerIndex = selectedUser.findIndex(u => u.id === userId);
     let checkBoxUser = document.getElementById(`user-checkbox${userId}`);
-    
+
     if (selectedUSerIndex === -1) {
-      selectedUser.push(user);
-      checkBoxUser.src = './assets/img/checkbox_active_white.svg';
+        selectedUser.push(user);
+        checkBoxUser.src = './assets/img/checkbox_active_white.svg';
     } else {
-      selectedUser.splice(selectedUSerIndex, 1);
-      checkBoxUser.src = './assets/img/checkbox.svg';
+        selectedUser.splice(selectedUSerIndex, 1);
+        checkBoxUser.src = './assets/img/checkbox.svg';
     }
-  
+
     renderSelectedUsersInEdit(selectedUser);
-  }
-  
-  // Funktion zum Speichern der ausgewählten Benutzer im Local Storage
-  function saveSelectedUserToLocalStorage(selectedUser) {
+}
+
+// Funktion zum Speichern der ausgewählten Benutzer im Local Storage
+function saveSelectedUserToLocalStorage(selectedUser) {
     localStorage.setItem("selectedUser", JSON.stringify(selectedUser));
-  }
-  
-  // Funktion zum Laden der ausgewählten Benutzer aus dem Local Storage
-  function loadSelectedUserFromLocalStorage() {
+}
+
+// Funktion zum Laden der ausgewählten Benutzer aus dem Local Storage
+function loadSelectedUserFromLocalStorage() {
     let loadUser = localStorage.getItem("selectedUser");
     if (loadUser) {
-      selectedUser = JSON.parse(loadUser);
+        selectedUser = JSON.parse(loadUser);
     }
-  }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}
 
 
-// function openUserListPopUp(event) {
-//     selectedUserList = document.getElementById('selected-user');;
-//     let userList = document.getElementById('user-list');
-//     let inputIcon = document.getElementById('input-icon');
-//     if (selectedUser.length >= 1) {
-//       userList.classList.remove('d-none');
-//       event.stopPropagation();
-//       return;
-//     }
-  
-//     userList.innerHTML = '';
-  
-  
-//     if (userList.classList.contains('d-none')) {
-//       userList.classList.remove('d-none');
-//       inputIcon.src = './assets/img/arrow_drop_down_2.svg';
-//     }
-  
-//     for (let i = 0; i < users.length; i++) {
-//       const user = users[i];
-//       const userColor = users[i]['color'];
-  
-//       let initialLetters = nameInitialLettersAddTasks(user);
-  
-//       userList.innerHTML += `
-//       <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active' : ''}" onclick="toggleAddUser(${i})">
-//         <div class="user-name">
-//           <span class="letter-icon" style="background-color:${userColor}">${initialLetters}</span>
-//           <div>${user.name}</div>
-//         </div>
-//         <img id="user-checkbox${i}" src="${isUSerSelected(i) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
-//       </div>
-//       `;
-//       // const color = document.getElementsByClassName('letter-icon');
-//       // color[i].style.backgroundColor = `${userColor}`;
-//     }
-//     event.stopPropagation();
-//   }
-  
-  function isUSerSelected(i) {
+function isUSerSelected(i) {
     return selectedUser.some(su => su.id === i)
-  }
-  
-  function nameInitialLettersAddTasks(user) {
+}
+
+
+function nameInitialLettersAddTasks(user) {
     const fullNameSplitt = user.name.split(" ");
     const letters = fullNameSplitt.map(name => name[0]);
     const initialLetters = letters.join("");
     return initialLetters;
-  }
-  
-  function doNotClose(event) {
+}
+
+
+function doNotClose(event) {
     event.stopPropagation();
-  }
-  
-  
-//   function renderUserList() {
-//     selectedUserList.innerHTML = '';
-  
-//     selectedUser.forEach(user => {
-//       let initialLetters = nameInitialLettersAddTasks(user);
-//       const userColor = user['color'];
-  
-//       selectedUserList.innerHTML += /* html */ `
-//         <div class="user-icon" style="background-color: ${userColor};">${initialLetters}</div>
-//       `;
-//     });
-//   }
-  
-  
-  function toggleAddUser(i) {
+}
+
+
+function toggleAddUser(i) {
     let userColumn = document.getElementById(`currentUser${i}`);
     let user = users[i];
     let selectedUSerIndex = selectedUser.findIndex(u => u.id === i);
     let checkBoxUser = document.getElementById(`user-checkbox${i}`);
     if (selectedUSerIndex === -1) {
-      userColumn.classList.add('user-list-active');
-      selectedUser.push(user)
-      checkBoxUser.src = './assets/img/checkbox_active_white.svg';
+        userColumn.classList.add('user-list-active');
+        selectedUser.push(user)
+        checkBoxUser.src = './assets/img/checkbox_active_white.svg';
     } else {
-      userColumn.classList.remove('user-list-active');
-      selectedUser.splice(selectedUSerIndex, 1);
-      checkBoxUser.src = './assets/img/checkbox.svg';
+        userColumn.classList.remove('user-list-active');
+        selectedUser.splice(selectedUSerIndex, 1);
+        checkBoxUser.src = './assets/img/checkbox.svg';
     }
     renderUserList(i);
     save();
-  }
+}
 
 
 function updateUserListInTasks() {
     allTasks.forEach(task => {
-      // Überprüfen, ob der Task Benutzer hat
-      if (task.userList && task.userList.length > 0) {
-        task.userList = task.userList.map(user => {
-          // Suchen des entsprechenden Benutzers im selectedUser-Array
-          const selectedUserIndex = selectedUser.findIndex(selected => selected.name === user.fname + ' ' + user.lname);
-          if (selectedUserIndex !== -1) {
-            // Aktualisieren der Benutzerdaten im Task
-            user.backgroundcolor = selectedUser[selectedUserIndex].color;
-          }
-          return user;
-        });
-      }
+        // Überprüfen, ob der Task Benutzer hat
+        if (task.userList && task.userList.length > 0) {
+            task.userList = task.userList.map(user => {
+                // Suchen des entsprechenden Benutzers im selectedUser-Array
+                const selectedUserIndex = selectedUser.findIndex(selected => selected.name === user.fname + ' ' + user.lname);
+                if (selectedUserIndex !== -1) {
+                    // Aktualisieren der Benutzerdaten im Task
+                    user.backgroundcolor = selectedUser[selectedUserIndex].color;
+                }
+                return user;
+            });
+        }
     });
-  }
-  
+}
 
-  function SaveEditedTask(taskId) {
+
+function SaveEditedTask(taskId) {
     // Abrufen des bearbeiteten Tasks aus dem Formular
     const editedTask = {
         id: taskId,
@@ -695,10 +642,6 @@ function updateUserListInTasks() {
 }
 
 
-
-
-
-
 function closeEditPopup() {
     // Schließe das editPopup
     document.body.classList.remove('popup-open');
@@ -706,7 +649,6 @@ function closeEditPopup() {
     loadAllTasks();
     showAllTasks(allTasks);
 }
-
 
 
 function updateSubtaskStatus(taskId, subtaskName, status) {
@@ -740,10 +682,6 @@ function findTaskById(taskId) {
 
     return null;
 }
-
-
-
-
 
 
 function showAllTasks(allTasks) {
@@ -934,12 +872,10 @@ function showAllTasks(allTasks) {
 }
 
 
-
-
-
 function startDragging(index) {
     currentDraggedElement = index;
 }
+
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -960,9 +896,11 @@ function moveTo(progressfield) {
     showAllTasks(allTasks);
 }
 
+
 function highlight(id) {
     document.getElementById(id).classList.add("drag-area-highlight");
 }
+
 
 function removeHighlight(id) {
     document.getElementById(id).classList.remove("drag-area-highlight");
@@ -979,6 +917,7 @@ function findTask() {
 
     showAllTasks(filteredTasks);
 }
+
 
 function deleteTask(taskId) {
     let allTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
@@ -997,7 +936,6 @@ function deleteTask(taskId) {
         console.log("Task not found");
     }
 }
-
 
 
 function doNotClose(event) {

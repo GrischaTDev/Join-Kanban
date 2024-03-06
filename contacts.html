@@ -24,9 +24,7 @@
     <div w3-include-html="assets/templates/desktop_menu.html"></div>
 
     <div class="contacts_container" id="contacts_container">
-
         <div class="contacts_list_box">
-
             <div id="add_contacts_button_box" class="add_contacts_button_box  z_index4">
                 <div onclick="openAddContactCard()" class="add_contacts_button">
                     <div class="add_new_contact_text">Add new contact</div>
@@ -49,22 +47,18 @@
                     <p>Contact succesfully deleted</p>
                 </div>
             </div>
-
         </div>
 
-        <div onclick="closeEditDeleteContactPopup()" id="showContactContainer" class="showContactContainer z_index1">
-        </div>
+        <div onclick="closeEditDeleteContactPopup()" id="showContactContainer" class="showContactContainer z_index1"></div>
 
         <div class="contacts_slogan_desktop">
-
             <div class="showContactHeadline"></div>
 
             <div id="addContactScreen" class="d-none add_contact_card-bg" onclick="hideAddContactCardFromScreen()">
                 <div id="add_contact_card" class="add_contact_card" onclick="doNotClose(event)">
                     <div class="add_contact_card_header">
                         <div class="close_icon_box">
-                            <img style="cursor: pointer;" onclick="hideAddContactCardFromScreen()"
-                                src="./assets/img/close_icon.svg" alt="close Button">
+                            <img style="cursor: pointer;" onclick="hideAddContactCardFromScreen()" src="./assets/img/close_icon.svg" alt="close Button">
                         </div>
                         <div>
                             <div class="popup_logo">
@@ -91,7 +85,6 @@
                             <h1>Add contact</h1>
                             <p style="text-align: center; color: white;">Tasks are better with a team!</p>
                             <div class="blue_line_horizontal"></div>
-                            <div></div>
                         </div>
                     </div>
                     <div class="add_contact_card_footer">
@@ -112,23 +105,19 @@
                                 </svg>
                             </div>
                             <div class="inputfield_box">
-                                <input id="add_contact_fname" class="inputfield" type="text" required
-                                    placeholder="First Name" required>
+                                <input id="add_contact_fname" class="inputfield" type="text" required placeholder="First Name" required>
                                 <img class="input_icon" src="./assets/img/profile_mini_icon.svg" alt="profile icon">
                             </div>
                             <div class="inputfield_box">
-                                <input id="add_contact_lname" class="inputfield" type="text" required
-                                    placeholder="Last Name" required>
+                                <input id="add_contact_lname" class="inputfield" type="text" required placeholder="Last Name" required>
                                 <img class="input_icon" src="./assets/img/profile_mini_icon.svg" alt="profile icon">
                             </div>
                             <div class="inputfield_box">
-                                <input id="add_contact_email" class="inputfield" type="email" required
-                                    placeholder="Email" required>
+                                <input id="add_contact_email" class="inputfield" type="email" required placeholder="Email" required>
                                 <img class="input_icon" src="./assets/img/mail_icon.svg" alt="email icon">
                             </div>
                             <div class="inputfield_box">
-                                <input id="add_contact_phone" class="inputfield" type="tel" required placeholder="Phone"
-                                    required>
+                                <input id="add_contact_phone" class="inputfield" type="tel" required placeholder="Phone" required>
                                 <img class="input_icon" src="./assets/img/phone_icon.svg" alt="phone icon">
                             </div>
                             <div class="save_contact_box">
@@ -140,15 +129,11 @@
                 </div>
             </div>
 
-
             <div id="editContactScreen" class="d-none edit_contact_card-bg" onclick="hideEditCardFromScreen()"></div>
 
-            <div onclick="moveEditDeleteContactPopupFromScreenToRight()" id="edit_delete_contact_popup_screen"
-                class="edit_delete_contact_popup_screen d-none">
-            </div>
+            <div onclick="moveEditDeleteContactPopupFromScreenToRight()" id="edit_delete_contact_popup_screen" class="edit_delete_contact_popup_screen d-none"></div>
         </div>
 
         <div w3-include-html="assets/templates/mobile_menu.html"></div>
-
 </body>
 </html>

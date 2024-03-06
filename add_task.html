@@ -39,18 +39,14 @@
 
                     <div class="add-task-title">
                         <span>Description</span>
-                        <textarea type="text" required minlength="5" placeholder="Enter a description"
-                            id="description"></textarea>
+                        <textarea type="text" required minlength="5" placeholder="Enter a description" id="description"></textarea>
                     </div>
 
                     <div class="add-task-title">
                         <span>Assigned to</span>
                         <div class="assigned-input">
-                            <input class="input-task-select" id="search-user" autocomplete="off"
-                                onkeydown="filterUser()" onclick="openUserList(event)" type="text"
-                                placeholder="Select contacts to assign">
-                            <img onclick="openUserList(event)" id="input-icon" class="input-arrow"
-                                src="./assets/img/arrow_drop_down_1.svg" alt="">
+                            <input class="input-task-select" id="search-user" autocomplete="off" onkeydown="filterUser()" onclick="openUserList(event)" type="text" placeholder="Select contacts to assign">
+                            <img onclick="openUserList(event)" id="input-icon" class="input-arrow" src="./assets/img/arrow_drop_down_1.svg" alt="">
                         </div>
                         <div id="user-list" class="d-none" onclick="doNotClose(event)"></div>
                         <div id="selected-user"></div>
