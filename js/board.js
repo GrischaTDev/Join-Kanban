@@ -325,7 +325,7 @@ function renderEditPopup(taskId) {
     // Füge das Formular für die Bearbeitung hinzu und setze die Werte der Eingabefelder
     document.getElementById('edit_popup').innerHTML += /*html*/ `
     <form class="task-edit-form" onsubmit="addTask()" onclick="doNotClose(event)">
-    <div>
+    <div class="edit-container">
         <div class="close_icon_edit_popup">
         <img class="img_popup img_popup_mobile" style="cursor: pointer;" onclick="closeEditPopup();" src="./assets/img/close_icon.svg" alt="close Button">
     </div>

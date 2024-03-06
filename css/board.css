@@ -722,6 +722,27 @@ height: 50%;
 }
 
 @media (max-width: 900px) {
+.edit-container{
+  
+  height: 85vh;
+  width: 100%;
+}
+  .close_icon_edit_popup {
+    position: fixed;
+    width: 320px;
+    height: 90px;
+    background-color: #ffffff;
+    z-index: 900; 
+    overflow: hidden;
+    padding-right: 30px;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-radius: 20px;
+  }
+  .add-task-form-row{
+    padding-top: 80px;
+  }
+  
 
   .board_popup_mobile {
     width: 90%;
@@ -732,13 +753,14 @@ height: 50%;
 
    
   .task-edit-form{
+  
   height: 85vh;
   min-width: 320px;
   max-width: 360px;
   margin: 20px;
   overflow-x: hidden;
   overflow-y: auto;
-  padding-top: 100px;
+  
 
   }
   .user-container-popup {
