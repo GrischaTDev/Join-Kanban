@@ -26,6 +26,7 @@ async function initBoard() {
 
 
 function openAddNewTaskPopup() {
+    if (window.innerWidth > 900) {
     document.body.classList.add('popup-open');
     document.getElementById('add-task-popup-container').classList.remove('d-none');
     document.getElementById('add-task-popup-container').innerHTML = '';
@@ -176,6 +177,9 @@ function openAddNewTaskPopup() {
         </form>
     </div>
     `;
+    } else {
+        window.location.href = 'add_task.html';
+    }
 }
 
 
