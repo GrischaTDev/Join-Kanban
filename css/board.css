@@ -741,10 +741,6 @@ height: 50%;
   overflow: hidden;
 }
 
-.ok-button .button-create:hover {
-  background-color: #c5c5c5; /* Change background color on hover */
-  color: #ffffff; /* Change text color on hover */
-}
 .add-task-form-popup{
   padding-top:80px;
   padding-bottom: 100px;
@@ -754,8 +750,6 @@ height: 50%;
   .addTask_popup {
     max-height: 700px;
   }
- 
-
 }
 
 @media (max-width: 900px) {
@@ -789,11 +783,6 @@ height: 50%;
   margin-left: -20px;
   border-radius: 20px;
   overflow: hidden;
-}
-
-.ok-button .button-create:hover {
-  background-color: #c5c5c5; /* Change background color on hover */
-  color: #ffffff; /* Change text color on hover */
 }
 
   .add-task-form-popup{
