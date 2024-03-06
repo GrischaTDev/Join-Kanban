@@ -712,15 +712,16 @@ height: 50%;
   
 }
 
+
 @media (min-width: 900px) {
   .addTask_popup {
     max-height: 700px;
   }
+ 
 
 }
 
 @media (max-width: 900px) {
- 
 
   .board_popup_mobile {
     width: 90%;
@@ -728,14 +729,16 @@ height: 50%;
     display: flex;
     justify-content: space-between
    }
- 
-  .task-edit-form-mobile {
+
+   
+  .task-edit-form{
   height: 85vh;
   min-width: 320px;
   max-width: 360px;
   margin: 20px;
   overflow-x: hidden;
   overflow-y: auto;
+  padding-top: 100px;
 
   }
   .user-container-popup {
