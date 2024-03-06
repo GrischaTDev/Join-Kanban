@@ -44,8 +44,8 @@ function initSummary() {
         <div class="desktop-summary-border"></div>
         <h5>Key Metrics at a Glance</h5>
     </div>
-    <div class="mobile-summary-border"><img src="./assets/img/login-border.svg"></div>
-</div>
+        <div class="mobile-summary-border"><img src="./assets/img/login-border.svg"></div>
+    </div>
 
 <div class="left-and-right-column">
     <div class="left-column">
