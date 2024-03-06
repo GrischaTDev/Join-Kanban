@@ -650,7 +650,7 @@ function updateUserListInTasks() {
   }
   
 
-function SaveEditedTask(taskId) {
+  function SaveEditedTask(taskId) {
     // Abrufen des bearbeiteten Tasks aus dem Formular
     const editedTask = {
         id: taskId,
@@ -659,11 +659,20 @@ function SaveEditedTask(taskId) {
         dueDate: document.getElementById('dueDate').value,
         category: allTasks.find(task => task.id === taskId).category, // Category unverändert lassen
         priority: {
-                       low: document.getElementById('low').classList.contains('active-low'),
-                       medium: document.getElementById('medium').classList.contains('active-medium'),
-                       urgent: document.getElementById('urgent').classList.contains('active-urgent')
-                   },
-        subtask: todos.map(name => ({ name, status: false })), // Subtasks aktualisieren
+            low: document.getElementById('low').classList.contains('active-low'),
+            medium: document.getElementById('medium').classList.contains('active-medium'),
+            urgent: document.getElementById('urgent').classList.contains('active-urgent')
+        },
+        subtask: todos.map(name => {
+            const existingSubtask = allTasks.find(task => task.id === taskId).subtask.find(subtask => subtask.name === name);
+            if (existingSubtask) {
+                // Wenn der Subtask bereits im bearbeiteten Task vorhanden ist, behalte seinen Status bei
+                return existingSubtask;
+            } else {
+                // Andernfalls füge einen neuen Subtask mit dem Status false hinzu
+                return { name, status: false };
+            }
+        }),
         userList: selectedUser.map(user => ({
             fname: user.name.split(' ')[0], // Extrahieren des Vornamens aus dem Namen des Benutzers
             lname: user.name.split(' ')[1], // Extrahieren des Nachnamens aus dem Namen des Benutzers
@@ -684,6 +693,8 @@ function SaveEditedTask(taskId) {
     // Schließen des Bearbeitungspopups
     closeEditPopup();
 }
+
+
 
 
 
