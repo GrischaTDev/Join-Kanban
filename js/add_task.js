@@ -199,9 +199,9 @@ function addTask() {
   let titel = document.getElementById('titel').value;
   let description = document.getElementById('description').value;
   let category = document.getElementById('category').value;
-  let urgent = document.getElementById('urgent').classList.contains('active');
-  let medium = document.getElementById('medium').classList.contains('active');
-  let low = document.getElementById('low').classList.contains('active');
+  let urgent = document.getElementById('urgent').classList.contains('active-urgent');
+  let medium = document.getElementById('medium').classList.contains('active-medium');
+  let low = document.getElementById('low').classList.contains('active-low');
   let dueDate = document.getElementById('dueDate').value;
 
   // Laden der vorhandenen Tasks aus dem Local Storage oder Initialisieren mit einem leeren Array
