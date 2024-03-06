@@ -11,14 +11,12 @@ async function init() {
     greatingUser();
 }
 
-
 async function initHelp() {
     await includeHTML();
     activeMenu();
     load();
     loadUserProfile();
 }
-
 
 /**
  * Load localStorage loggedInUser.
@@ -33,7 +31,6 @@ function load() {
         }
     }
 }
-
 
 /**
  * This function logs the user out and deletes the user from the local storage
@@ -88,14 +85,12 @@ function greatingUser() {
     nameDesktop.innerHTML = `<div>${name}</div>`;
 }
 
-
 function loadUserProfile() {
     let userName = loggedInUser[0].name;
     let initialLetters = nameInitialLetters(userName);
     let userProfile = document.getElementById('log-user');
     userProfile.innerHTML = /* html */ `${initialLetters}`;
 }
-
 
 function nameInitialLetters(userName) {
     const fullNameSplitt = userName.split(" ");
@@ -105,18 +100,17 @@ function nameInitialLetters(userName) {
 }
 
 
+
 function openLegalNoticeSidebar() {
     document.getElementById('legal_notice_sidebar_screen').classList.remove('d-none');
     document.getElementById('user-profile-menu').classList.add('move-from-right-to-screen');
 }
-
 
 function moveLegalNoticeSidebarFromScreenToRight() {
     document.getElementById('user-profile-menu').classList.add('move-from-screen-to-right');
     document.getElementById('legal_notice_sidebar_screen').classList.remove('d-none');
     setTimeout(closeLegalNoticeSidebar, 500);
 }
-
 
 function closeLegalNoticeSidebar() {
     document.getElementById('user-profile-menu').classList.remove('move-from-screen-to-right');
@@ -127,7 +121,6 @@ function closeLegalNoticeSidebar() {
 function goBack() {
     window.history.back();
 }
-
 
 function generateRandomColor() {
     let r = Math.floor(Math.random() * 256);
