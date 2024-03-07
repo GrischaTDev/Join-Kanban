@@ -22,8 +22,6 @@ async function initBoard() {
     }
 }
 
-sadasdsad
-
 
 function openAddNewTaskPopup() {
     if (window.innerWidth > 900) {
@@ -324,7 +322,7 @@ function renderEditPopup(taskId) {
 
     // Füge das Formular für die Bearbeitung hinzu und setze die Werte der Eingabefelder
     document.getElementById('edit_popup').innerHTML += /*html*/ `
-    <form class="task-edit-form" onsubmit="addTask()" onclick="doNotClose(event)">
+    <form class="task-edit-form" onsubmit="addTask()" onclick="doNotClose(event), closeUserListInPopup()">
     <div>
         <div class="close_icon_edit_popup">
         <img class="img_popup img_popup_mobile" style="cursor: pointer;" onclick="closeEditPopup();" src="./assets/img/close_icon.svg" alt="close Button">
@@ -462,6 +460,12 @@ function renderEditPopup(taskId) {
 
     // Anzeigen der Subtasks im Popup-Fenster
     showTodos();
+
+    
+}
+
+function closeUserListInPopup() {
+    document.getElementById('user-list').classList.add('d-none');
 }
 
 function renderSelectedUsersInEdit(selectedUser) {
@@ -503,7 +507,7 @@ function renderSelectedUsersInEdit(selectedUser) {
         </div>
       `;
     });
-    event.stopPropagation();
+   
   }
   
   // Funktion zum Überprüfen, ob ein Benutzer im Bearbeitungsmodus ausgewählt ist
@@ -690,6 +694,7 @@ function SaveEditedTask(taskId) {
 
 function closeEditPopup() {
     // Schließe das editPopup
+    document.getElementById('user-list').classList.add('d-none');
     document.body.classList.remove('popup-open');
     document.getElementById("edit_popup").classList.add("d-none");
     loadAllTasks();
