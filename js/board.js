@@ -25,11 +25,19 @@ async function initBoard() {
 
 function openAddNewTaskPopup() {
     if (window.innerWidth > 900) {
-    document.body.classList.add('popup-open');
-    document.getElementById('add-task-popup-container').classList.remove('d-none');
-    document.getElementById('add-task-popup-container').innerHTML = '';
-    document.getElementById('add-task-popup-container').innerHTML += /* html */ `
-    <div class="addTask-popup" onclick="doNotClose(event)">
+        document.body.classList.add('popup-open');
+        document.getElementById('add-task-popup-container').classList.remove('d-none');
+        document.getElementById('add-task-popup-container').innerHTML = '';
+        document.getElementById('add-task-popup-container').innerHTML += renderAddNewTaskInPopup();
+    } else {
+        window.location.href = 'add_task.html';
+    }
+}
+
+
+function renderAddNewTaskInPopup() {
+    return /* html */ `
+    <div class="addTask-popup" onclick="doNotClose(event), closeUserListInPopup()">
    
     <div>
         <div class="header-container">
@@ -175,9 +183,6 @@ function openAddNewTaskPopup() {
         </form>
     </div>
     `;
-    } else {
-        window.location.href = 'add_task.html';
-    }
 }
 
 
@@ -185,6 +190,7 @@ function closeaddTaskPopup() {
     document.getElementById("add-task-popup-container").classList.add("d-none");
     document.body.classList.remove('popup-open');
 }
+
 
 // Update the showPopup function to include an onchange event listener for the checkboxes
 function showPopup(taskId) {
@@ -227,62 +233,66 @@ function showPopup(taskId) {
         : "";
 
     document.getElementById("incomePopup").classList.remove("d-none");
-    document.getElementById("incomePopup").innerHTML = `
-          <div class="complete_board_popup" onclick="doNotClose(event)">
-              <div class="popup-card popup-card-mobile", onclick="doNotClose(event)">
-              <div class="board_popup board_popup_mobile">
-                  <div class="flex_container_head">
-                      <div class="task_popup_${task.category}">
-                          <p>${task.category}</p>
-                      </div>
-                      <div class="close_icon_box">
-                          <img class="img_popup img_popup_mobile" style="cursor: pointer;" onclick="closeIncomePopup()"
-                              src="./assets/img/close_icon.svg" alt="close Button">
-                      </div>
-                  </div>
-                  
-                  <textarea class="titelarea titelarea-mobile">${task.titel}</textarea>
-            
-           
-                  <textarea class="descriptionarea descriptionarea-mobile">${task.description}</textarea>
-              
-                  <div class="due_date_popup due-date-popup-mobile">
-                      <p style="color: #42526E;">Due Date:</p>
-                      <p id="variable_date">${task.dueDate}</p>
-                  </div>
-                  <div class="priority_popup priority-popup-mobile">
-                      <p class="prioity_container prioity-container-mobile" style="color: #42526E;">Priority:</p>
-                      ${urgentSymbolHTML}
-                      ${mediumSymbolHTML}
-                      ${lowSymbolHTML}
-                  </div>
-                  <div class="assigned-popup">
-          <p class="assigned-mobile" style="color: #42526E;">Assigned to:</p>
-          <div class="user-container-popup">
-              ${userNamesHTML} 
-          </div>
-          <p class="subtask_container subtask-container-mobile" style="color: #42526E;">Subtasks</p>
-          <div class="subtask-list subtask-list-mobile">
-              ${subtasksHTML} 
-          </div>
-          <div class="edit-delete" id="edit">
-              <a class="button-delete-edit" href="#" onclick="deleteTask(${task.id})">
-                  <img class="edit-delete-img edit-delete-img-mobile" src="/assets/img/delete_icon.svg"
-                      alt="Bild plus Button" />
-                  <div class="edit-delete-popup-button edit-delete-popup-button-mobile">Delete</div>
-              </a>
-              <a class="button-delete-edit" href="#" onclick="editPopup(${task.id})">
-                  <img class="edit-delete-img edit-delete-img-mobile" src="/assets/img/edit_icon.svg"
-                      alt="Bild plus Button" />
-                  <div class="edit-delete-popup-button edit-delete-popup-button-mobile">Edit</div>
-              </a>
-          </div>
-      </div>
-              </div>
-          </div>
-      `;
+    document.getElementById("incomePopup").innerHTML = renderTaskDetailsInPopup(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userNamesHTML, subtasksHTML);
 }
 
+
+function renderTaskDetailsInPopup(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userNamesHTML, subtasksHTML) {
+    return /*html*/ `
+    <div class="complete_board_popup" onclick="doNotClose(event)">
+        <div class="popup-card popup-card-mobile", onclick="doNotClose(event)">
+        <div class="board_popup board_popup_mobile">
+            <div class="flex_container_head">
+                <div class="task_popup_${task.category}">
+                    <p>${task.category}</p>
+                </div>
+                <div class="close_icon_box">
+                    <img class="img_popup img_popup_mobile" style="cursor: pointer;" onclick="closeIncomePopup()"
+                        src="./assets/img/close_icon.svg" alt="close Button">
+                </div>
+            </div>
+            
+            <textarea class="titelarea titelarea-mobile">${task.titel}</textarea>
+      
+     
+            <textarea class="descriptionarea descriptionarea-mobile">${task.description}</textarea>
+        
+            <div class="due_date_popup due-date-popup-mobile">
+                <p style="color: #42526E;">Due Date:</p>
+                <p id="variable_date">${task.dueDate}</p>
+            </div>
+            <div class="priority_popup priority-popup-mobile">
+                <p class="prioity_container prioity-container-mobile" style="color: #42526E;">Priority:</p>
+                ${urgentSymbolHTML}
+                ${mediumSymbolHTML}
+                ${lowSymbolHTML}
+            </div>
+            <div class="assigned-popup">
+    <p class="assigned-mobile" style="color: #42526E;">Assigned to:</p>
+    <div class="user-container-popup">
+        ${userNamesHTML} 
+    </div>
+    <p class="subtask_container subtask-container-mobile" style="color: #42526E;">Subtasks</p>
+    <div class="subtask-list subtask-list-mobile">
+        ${subtasksHTML} 
+    </div>
+    <div class="edit-delete" id="edit">
+        <a class="button-delete-edit" href="#" onclick="deleteTask(${task.id})">
+            <img class="edit-delete-img edit-delete-img-mobile" src="/assets/img/delete_icon.svg"
+                alt="Bild plus Button" />
+            <div class="edit-delete-popup-button edit-delete-popup-button-mobile">Delete</div>
+        </a>
+        <a class="button-delete-edit" href="#" onclick="editPopup(${task.id})">
+            <img class="edit-delete-img edit-delete-img-mobile" src="/assets/img/edit_icon.svg"
+                alt="Bild plus Button" />
+            <div class="edit-delete-popup-button edit-delete-popup-button-mobile">Edit</div>
+        </a>
+    </div>
+</div>
+        </div>
+    </div>
+`;
+}
 
 
 function closeIncomePopup() {
@@ -314,6 +324,7 @@ function editPopup(taskId) {
     // Rendern des Popups mit den bearbeiteten Daten
     renderEditPopup(taskId);
 }
+
 
 function renderEditPopup(taskId) {
     // Abrufen des Tasks aus dem Local Storage
@@ -433,7 +444,6 @@ function renderEditPopup(taskId) {
         </form>
     `;
 
-
     // Setze die Werte der Eingabefelder basierend auf dem abgerufenen Task
     document.getElementById('titel').value = taskToEdit.titel;
     document.getElementById('description').value = taskToEdit.description;
@@ -460,44 +470,41 @@ function renderEditPopup(taskId) {
 
     // Anzeigen der Subtasks im Popup-Fenster
     showTodos();
-
-    
 }
+
 
 function closeUserListInPopup() {
     document.getElementById('user-list').classList.add('d-none');
 }
 
+
 function renderSelectedUsersInEdit(selectedUser) {
     let selectedUserList = document.getElementById('selected-user');
     selectedUserList.innerHTML = '';
-  
+
     selectedUser.forEach(user => {
-      let initialLetters = nameInitialLettersAddTasks(user);
-      const userColor = user['color'];
-  
-      selectedUserList.innerHTML += /* html */ `
+        let initialLetters = nameInitialLettersAddTasks(user);
+        const userColor = user['color'];
+
+        selectedUserList.innerHTML += /* html */ `
         <div class="user-icon" style="background-color: ${userColor};">${initialLetters}</div>
       `;
     });
-  }
+}
 
-  function openUserListEdit(event) {
+
+function openUserListEdit(event) {
     let userList = document.getElementById('user-list');
     let inputIcon = document.getElementById('input-icon');
-  
     userList.innerHTML = '';
-  
     if (userList.classList.contains('d-none')) {
-      userList.classList.remove('d-none');
-      inputIcon.src = './assets/img/arrow_drop_down_2.svg';
+        userList.classList.remove('d-none');
+        inputIcon.src = './assets/img/arrow_drop_down_2.svg';
     }
-  
     users.forEach((user, i) => {
-      const userColor = user['color'];
-      let initialLetters = nameInitialLettersAddTasks(user);
-  
-      userList.innerHTML += /* html */ `
+        const userColor = user['color'];
+        let initialLetters = nameInitialLettersAddTasks(user);
+        userList.innerHTML += /* html */ `
         <div id="currentUser${i}" class="userColumn ${isUSerSelectedEdit(user.id) ? 'user-list-active' : ''}" onclick="toggleAddUserEdit(${user.id})">
           <div class="user-name">
             <span class="letter-icon" style="background-color:${userColor}">${initialLetters}</span>
@@ -507,152 +514,99 @@ function renderSelectedUsersInEdit(selectedUser) {
         </div>
       `;
     });
-   
-  }
-  
-  // Funktion zum Überprüfen, ob ein Benutzer im Bearbeitungsmodus ausgewählt ist
-  function isUSerSelectedEdit(userId) {
+}
+
+
+// Funktion zum Überprüfen, ob ein Benutzer im Bearbeitungsmodus ausgewählt ist
+function isUSerSelectedEdit(userId) {
     return selectedUser.some(su => su.id === userId);
-  }
-  
-  // Funktion zum Hinzufügen oder Entfernen eines Benutzers im Bearbeitungsmodus
-  function toggleAddUserEdit(userId) {
+}
+
+// Funktion zum Hinzufügen oder Entfernen eines Benutzers im Bearbeitungsmodus
+function toggleAddUserEdit(userId) {
     let user = users.find(u => u.id === userId);
     let selectedUSerIndex = selectedUser.findIndex(u => u.id === userId);
     let checkBoxUser = document.getElementById(`user-checkbox${userId}`);
-    
     if (selectedUSerIndex === -1) {
-      selectedUser.push(user);
-      checkBoxUser.src = './assets/img/checkbox_active_white.svg';
+        selectedUser.push(user);
+        checkBoxUser.src = './assets/img/checkbox_active_white.svg';
     } else {
-      selectedUser.splice(selectedUSerIndex, 1);
-      checkBoxUser.src = './assets/img/checkbox.svg';
+        selectedUser.splice(selectedUSerIndex, 1);
+        checkBoxUser.src = './assets/img/checkbox.svg';
     }
-  
     renderSelectedUsersInEdit(selectedUser);
-  }
-  
-  // Funktion zum Speichern der ausgewählten Benutzer im Local Storage
-  function saveSelectedUserToLocalStorage(selectedUser) {
+}
+
+
+// Funktion zum Speichern der ausgewählten Benutzer im Local Storage
+function saveSelectedUserToLocalStorage(selectedUser) {
     localStorage.setItem("selectedUser", JSON.stringify(selectedUser));
-  }
-  
-  // Funktion zum Laden der ausgewählten Benutzer aus dem Local Storage
-  function loadSelectedUserFromLocalStorage() {
+}
+
+
+// Funktion zum Laden der ausgewählten Benutzer aus dem Local Storage
+function loadSelectedUserFromLocalStorage() {
     let loadUser = localStorage.getItem("selectedUser");
     if (loadUser) {
-      selectedUser = JSON.parse(loadUser);
+        selectedUser = JSON.parse(loadUser);
     }
-  }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}
 
 
-// function openUserListPopUp(event) {
-//     selectedUserList = document.getElementById('selected-user');;
-//     let userList = document.getElementById('user-list');
-//     let inputIcon = document.getElementById('input-icon');
-//     if (selectedUser.length >= 1) {
-//       userList.classList.remove('d-none');
-//       event.stopPropagation();
-//       return;
-//     }
-  
-//     userList.innerHTML = '';
-  
-  
-//     if (userList.classList.contains('d-none')) {
-//       userList.classList.remove('d-none');
-//       inputIcon.src = './assets/img/arrow_drop_down_2.svg';
-//     }
-  
-//     for (let i = 0; i < users.length; i++) {
-//       const user = users[i];
-//       const userColor = users[i]['color'];
-  
-//       let initialLetters = nameInitialLettersAddTasks(user);
-  
-//       userList.innerHTML += `
-//       <div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active' : ''}" onclick="toggleAddUser(${i})">
-//         <div class="user-name">
-//           <span class="letter-icon" style="background-color:${userColor}">${initialLetters}</span>
-//           <div>${user.name}</div>
-//         </div>
-//         <img id="user-checkbox${i}" src="${isUSerSelected(i) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
-//       </div>
-//       `;
-//       // const color = document.getElementsByClassName('letter-icon');
-//       // color[i].style.backgroundColor = `${userColor}`;
-//     }
-//     event.stopPropagation();
-//   }
-  
-  function isUSerSelected(i) {
+function isUSerSelected(i) {
     return selectedUser.some(su => su.id === i)
-  }
-  
-  function nameInitialLettersAddTasks(user) {
+}
+
+
+function nameInitialLettersAddTasks(user) {
     const fullNameSplitt = user.name.split(" ");
     const letters = fullNameSplitt.map(name => name[0]);
     const initialLetters = letters.join("");
     return initialLetters;
-  }
-  
-  function doNotClose(event) {
+}
+
+
+function doNotClose(event) {
     event.stopPropagation();
-  }
-  
-  
-//   function renderUserList() {
-//     selectedUserList.innerHTML = '';
-  
-//     selectedUser.forEach(user => {
-//       let initialLetters = nameInitialLettersAddTasks(user);
-//       const userColor = user['color'];
-  
-//       selectedUserList.innerHTML += /* html */ `
-//         <div class="user-icon" style="background-color: ${userColor};">${initialLetters}</div>
-//       `;
-//     });
-//   }
-  
-  
-  function toggleAddUser(i) {
+}
+
+
+function toggleAddUser(i) {
     let userColumn = document.getElementById(`currentUser${i}`);
     let user = users[i];
     let selectedUSerIndex = selectedUser.findIndex(u => u.id === i);
     let checkBoxUser = document.getElementById(`user-checkbox${i}`);
     if (selectedUSerIndex === -1) {
-      userColumn.classList.add('user-list-active');
-      selectedUser.push(user)
-      checkBoxUser.src = './assets/img/checkbox_active_white.svg';
+        userColumn.classList.add('user-list-active');
+        selectedUser.push(user)
+        checkBoxUser.src = './assets/img/checkbox_active_white.svg';
     } else {
-      userColumn.classList.remove('user-list-active');
-      selectedUser.splice(selectedUSerIndex, 1);
-      checkBoxUser.src = './assets/img/checkbox.svg';
+        userColumn.classList.remove('user-list-active');
+        selectedUser.splice(selectedUSerIndex, 1);
+        checkBoxUser.src = './assets/img/checkbox.svg';
     }
     renderUserList(i);
     save();
-  }
+}
 
 
 function updateUserListInTasks() {
     allTasks.forEach(task => {
-      // Überprüfen, ob der Task Benutzer hat
-      if (task.userList && task.userList.length > 0) {
-        task.userList = task.userList.map(user => {
-          // Suchen des entsprechenden Benutzers im selectedUser-Array
-          const selectedUserIndex = selectedUser.findIndex(selected => selected.name === user.fname + ' ' + user.lname);
-          if (selectedUserIndex !== -1) {
-            // Aktualisieren der Benutzerdaten im Task
-            user.backgroundcolor = selectedUser[selectedUserIndex].color;
-          }
-          return user;
-        });
-      }
+        // Überprüfen, ob der Task Benutzer hat
+        if (task.userList && task.userList.length > 0) {
+            task.userList = task.userList.map(user => {
+                // Suchen des entsprechenden Benutzers im selectedUser-Array
+                const selectedUserIndex = selectedUser.findIndex(selected => selected.name === user.fname + ' ' + user.lname);
+                if (selectedUserIndex !== -1) {
+                    // Aktualisieren der Benutzerdaten im Task
+                    user.backgroundcolor = selectedUser[selectedUserIndex].color;
+                }
+                return user;
+            });
+        }
     });
-  }
-  
+}
+
 
 function SaveEditedTask(taskId) {
     // Abrufen des bearbeiteten Tasks aus dem Formular
@@ -663,10 +617,10 @@ function SaveEditedTask(taskId) {
         dueDate: document.getElementById('dueDate').value,
         category: allTasks.find(task => task.id === taskId).category, // Category unverändert lassen
         priority: {
-                       low: document.getElementById('low').classList.contains('active-low'),
-                       medium: document.getElementById('medium').classList.contains('active-medium'),
-                       urgent: document.getElementById('urgent').classList.contains('active-urgent')
-                   },
+            low: document.getElementById('low').classList.contains('active-low'),
+            medium: document.getElementById('medium').classList.contains('active-medium'),
+            urgent: document.getElementById('urgent').classList.contains('active-urgent')
+        },
         subtask: todos.map(name => ({ name, status: false })), // Subtasks aktualisieren
         userList: selectedUser.map(user => ({
             fname: user.name.split(' ')[0], // Extrahieren des Vornamens aus dem Namen des Benutzers
@@ -690,8 +644,6 @@ function SaveEditedTask(taskId) {
 }
 
 
-
-
 function closeEditPopup() {
     // Schließe das editPopup
     document.getElementById('user-list').classList.add('d-none');
@@ -700,7 +652,6 @@ function closeEditPopup() {
     loadAllTasks();
     showAllTasks(allTasks);
 }
-
 
 
 function updateSubtaskStatus(taskId, subtaskName, status) {
@@ -731,13 +682,8 @@ function findTaskById(taskId) {
             return allTasks[i];
         }
     }
-
     return null;
 }
-
-
-
-
 
 
 function showAllTasks(allTasks) {
@@ -745,162 +691,83 @@ function showAllTasks(allTasks) {
     document.getElementById('todo_container').innerHTML = '';
 
     if (todo_container.length === 0) {
-        document.getElementById('todo_container').innerHTML = `
-      <div>
-        <div class="no-tasks desktop-no-tasks">
-          <span>No tasks to do</span>
-        </div>
-      </div>`;
+        document.getElementById('todo_container').innerHTML = renderEmptyProgressfieldTodo();
     } else {
         for (let i = 0; i < todo_container.length; i++) {
             let task = todo_container[i];
-            let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
-            let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
-            let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
-
-            let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
-
-            let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
-            let totalSubtasks = task.subtask ? task.subtask.length : 0;
-
-            // Calculate the progress percentage
-            let progressPercentage = totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0;
-
-            document.getElementById('todo_container').innerHTML += /*html*/`
-        <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
-          <div class="card">
-            <div class="card-category-${task.category}">${task.category}</div>
-            <div class="card-headline">${task.titel}</div>
-            <div class="card-description">${task.description}</div>
-            <div class="progress-container">
-              <div class="progress" style="flex: 1;">
-                <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
-            </div>
-            <div class="user-priority-container">
-              <div class="user-container">
-                ${userInitialsHTML}
-              </div>
-              <div class="priority-symbols">
-                ${urgentSymbolHTML}
-                ${mediumSymbolHTML}
-                ${lowSymbolHTML}
-              </div>
-            </div>
-            
-          </div>
-        </a>`;
-        }
+            let taskDetails = calculateTaskDetails(task); // Hier die berechneten Details abrufen
+            document.getElementById('todo_container').innerHTML += renderAllTasksInProgressfieldTodo(task, taskDetails.urgentSymbolHTML, taskDetails.mediumSymbolHTML, taskDetails.lowSymbolHTML, taskDetails.userInitialsHTML, taskDetails.progressPercentage, taskDetails.completedSubtasks, taskDetails.totalSubtasks);}
     }
 
     let inprogress_container = allTasks.filter(t => t['progressfield'] == 'inprogress_container');
     document.getElementById('inprogress_container').innerHTML = '';
     for (let i = 0; i < inprogress_container.length; i++) {
         let task = inprogress_container[i];
-        let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
-        let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
-        let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
-
-        let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
-
-        let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
-        let totalSubtasks = task.subtask ? task.subtask.length : 0;
-
-        let progressPercentage = totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0;
-
-        document.getElementById('inprogress_container').innerHTML += /*html*/`
-    <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
-
-
-    <div class="card">
-    <div class="card-category-${task.category}">${task.category}</div>
-    <div class="card-headline">${task.titel}</div>
-    <div class="card-description">${task.description}</div>
-    <div class="progress-container">
-              <div class="progress" style="flex: 1;">
-                <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
-            </div>
-    <div class="user-priority-container">
-                    <div class="user-container">
-                        ${userInitialsHTML}
-                    </div>
-                    <div class="priority-symbols">
-                        ${urgentSymbolHTML}
-                        ${mediumSymbolHTML}
-                        ${lowSymbolHTML}
-                    </div>
-                </div>
-            </div>
-        </a>
-    `;
+        let taskDetails = calculateTaskDetails(task);
+        document.getElementById('inprogress_container').innerHTML += renderAllTasksInProgressfieldInProgress(task, taskDetails.urgentSymbolHTML, taskDetails.mediumSymbolHTML, taskDetails.lowSymbolHTML, taskDetails.userInitialsHTML, taskDetails.progressPercentage, taskDetails.completedSubtasks, taskDetails.totalSubtasks);
     }
 
     let await_feedback_container = allTasks.filter(t => t['progressfield'] == 'await_feedback_container');
     document.getElementById('await_feedback_container').innerHTML = '';
     for (let i = 0; i < await_feedback_container.length; i++) {
         let task = await_feedback_container[i];
-        let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
-        let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
-        let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
-
-        let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
-
-        let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
-        let totalSubtasks = task.subtask ? task.subtask.length : 0;
-
-        let progressPercentage = totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0;
-
-        document.getElementById('await_feedback_container').innerHTML += /*html*/`
-    <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
-
-
-    <div class="card">
-    <div class="card-category-${task.category}">${task.category}</div>
-    <div class="card-headline">${task.titel}</div>
-    <div class="card-description">${task.description}</div>
-    <div class="progress-container">
-              <div class="progress" style="flex: 1;">
-                <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
-            </div>
-    <div class="user-priority-container">
-                    <div class="user-container">
-                        ${userInitialsHTML}
-                    </div>
-                    <div class="priority-symbols">
-                        ${urgentSymbolHTML}
-                        ${mediumSymbolHTML}
-                        ${lowSymbolHTML}
-                    </div>
-                </div>
-            </div>
-        </a>
-    `;
+        let taskDetails = calculateTaskDetails(task);
+        document.getElementById('await_feedback_container').innerHTML += renderAllTasksInProgressfieldAwaitFeedback(task, taskDetails.urgentSymbolHTML, taskDetails.mediumSymbolHTML, taskDetails.lowSymbolHTML, taskDetails.userInitialsHTML, taskDetails.progressPercentage, taskDetails.completedSubtasks, taskDetails.totalSubtasks);
     }
 
     let done_container = allTasks.filter(t => t['progressfield'] == 'done_container');
     document.getElementById('done_container').innerHTML = '';
     for (let i = 0; i < done_container.length; i++) {
         let task = done_container[i];
-        let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
-        let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
-        let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
+        let taskDetails = calculateTaskDetails(task);
+        document.getElementById('done_container').innerHTML += renderAllTasksInProgressfieldDone(task, taskDetails.urgentSymbolHTML, taskDetails.mediumSymbolHTML, taskDetails.lowSymbolHTML, taskDetails.userInitialsHTML, taskDetails.progressPercentage, taskDetails.completedSubtasks, taskDetails.totalSubtasks);
+    }
+}
 
-        let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
+function calculateTaskDetails(task) {
+    let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : '';
+    let mediumSymbolHTML = task.priority.medium ? `<img src="/assets/img/prio-medium.svg" alt="Medium">` : '';
+    let lowSymbolHTML = task.priority.low ? `<img src="/assets/img/prio-low.svg" alt="Low">` : '';
+    let userInitialsHTML = task.userList.map(user => `<div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>`).join('');
+    let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
+    let totalSubtasks = task.subtask ? task.subtask.length : 0;
+    let progressPercentage = totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0;
+    return {urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, completedSubtasks, totalSubtasks, progressPercentage};
+}
 
-        let completedSubtasks = task.subtask ? task.subtask.filter(subtask => subtask.status).length : 0;
-        let totalSubtasks = task.subtask ? task.subtask.length : 0;
 
-        let progressPercentage = totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0;
-
-        document.getElementById('done_container').innerHTML += /*html*/`
+function renderAllTasksInProgressfieldTodo(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
+    return /*html*/`
     <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
+      <div class="card">
+        <div class="card-category-${task.category}">${task.category}</div>
+        <div class="card-headline">${task.titel}</div>
+        <div class="card-description">${task.description}</div>
+        <div class="progress-container">
+          <div class="progress" style="flex: 1;">
+            <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+        </div>
+        <div class="user-priority-container">
+          <div class="user-container">
+            ${userInitialsHTML}
+          </div>
+          <div class="priority-symbols">
+            ${urgentSymbolHTML}
+            ${mediumSymbolHTML}
+            ${lowSymbolHTML}
+          </div>
+        </div>
+        
+      </div>
+    </a>`;
+}
 
 
+function renderAllTasksInProgressfieldInProgress(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
+    return /*html*/`
+    <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
     <div class="card">
     <div class="card-category-${task.category}">${task.category}</div>
     <div class="card-headline">${task.titel}</div>
@@ -924,16 +791,71 @@ function showAllTasks(allTasks) {
             </div>
         </a>
     `;
-    }
 }
 
 
+function renderAllTasksInProgressfieldAwaitFeedback(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
+    return /*html*/`
+    <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
+    <div class="card">
+    <div class="card-category-${task.category}">${task.category}</div>
+    <div class="card-headline">${task.titel}</div>
+    <div class="card-description">${task.description}</div>
+    <div class="progress-container">
+              <div class="progress" style="flex: 1;">
+                <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+            </div>
+    <div class="user-priority-container">
+                    <div class="user-container">
+                        ${userInitialsHTML}
+                    </div>
+                    <div class="priority-symbols">
+                        ${urgentSymbolHTML}
+                        ${mediumSymbolHTML}
+                        ${lowSymbolHTML}
+                    </div>
+                </div>
+            </div>
+        </a>
+    `;
+}
 
+
+function renderAllTasksInProgressfieldDone(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
+    return /*html*/`
+    <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
+    <div class="card">
+    <div class="card-category-${task.category}">${task.category}</div>
+    <div class="card-headline">${task.titel}</div>
+    <div class="card-description">${task.description}</div>
+    <div class="progress-container">
+              <div class="progress" style="flex: 1;">
+                <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+            </div>
+    <div class="user-priority-container">
+                    <div class="user-container">
+                        ${userInitialsHTML}
+                    </div>
+                    <div class="priority-symbols">
+                        ${urgentSymbolHTML}
+                        ${mediumSymbolHTML}
+                        ${lowSymbolHTML}
+                    </div>
+                </div>
+            </div>
+        </a>
+    `;
+}
 
 
 function startDragging(index) {
     currentDraggedElement = index;
 }
+
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -954,9 +876,11 @@ function moveTo(progressfield) {
     showAllTasks(allTasks);
 }
 
+
 function highlight(id) {
     document.getElementById(id).classList.add("drag-area-highlight");
 }
+
 
 function removeHighlight(id) {
     document.getElementById(id).classList.remove("drag-area-highlight");
@@ -973,6 +897,7 @@ function findTask() {
 
     showAllTasks(filteredTasks);
 }
+
 
 function deleteTask(taskId) {
     let allTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
@@ -991,7 +916,6 @@ function deleteTask(taskId) {
         console.log("Task not found");
     }
 }
-
 
 
 function doNotClose(event) {
