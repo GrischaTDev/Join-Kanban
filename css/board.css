@@ -740,6 +740,23 @@ h2 {
   overflow: hidden;
   
 }
+.todo-item{
+  margin-bottom: 10px;
+}
+.assigned-input {
+  position: relative;
+}
+
+.input-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px; 
+  pointer-events: none; 
+}
+.input-task-select {
+  cursor: pointer; /* Cursor als Punkt setzen */
+}
 
 @media (min-width: 900px) {
   .addTask_popup {
@@ -764,6 +781,9 @@ h2 {
     justify-content: flex-end;
     background-color: #fff;
     overflow: hidden;
+  }
+  .todo-item{
+    margin-bottom: 10px;
   }
   
 
