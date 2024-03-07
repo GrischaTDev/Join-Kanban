@@ -143,12 +143,12 @@ function generateContactDetailsHtml(contact) {
     let phone = contact['phone'];
     return /*html*/  `
     <div id="showContactHeaderBox" class="showContactHeaderBox">
-    <div class="showContactHeadline">
-        <h1 style="color:black !important; font-size: 48px; margin: 0;">Contacts</h1>
-        <div id="blue_line_vertical_show_contacts_container_desktop" class="blue_line_vertical"></div>
-        <p style="color:black; font-size: 20px; margin: 10px 0px 10px 0px;">Better with a team!</p>
-        <div id="blue_line_horizontal_show_contacts_container_desktop" class="blue_line_horizontal"></div>
-    </div>
+            <div class="showContactHeadline">
+                <h1 style="color:black !important; font-size: 48px; margin: 0;">Contacts</h1>
+                <div id="blue_line_vertical_show_contacts_container_desktop" class="blue_line_vertical"></div>
+                <p style="color:black; font-size: 20px; margin: 10px 0px 10px 0px;">Better with a team!</p>
+                <div id="blue_line_horizontal_show_contacts_container_desktop" class="blue_line_horizontal"></div>
+            </div>
     <div class="close_icon_box">
         <img style="cursor: pointer; height: 36px;" onclick="closeShowContact()" src="./assets/img/arrow_left.svg"
             alt="close Button">
