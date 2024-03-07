@@ -417,7 +417,7 @@ h2 {
 
 .flex-container-head {
   display: flex;
-  justify-content: flex-end
+  justify-content: space-between;
 }
 
 .board_popup {
