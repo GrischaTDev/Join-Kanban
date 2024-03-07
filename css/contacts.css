@@ -623,7 +623,6 @@ p {
     }
 
     .contacts_list_box {
-        padding-top: 80px;
         padding-bottom: 80px;
         width: 100%;
     }
@@ -665,6 +664,10 @@ p {
     }
 
     br {
+        display: none;
+    }
+
+    .contact-titel {
         display: none;
     }
 
@@ -720,6 +723,30 @@ p {
         margin-left: 232px;
         height: calc(100vh - 96px);
         width: calc(100vw - 232px);
+    }
+
+    .show-contact {
+        margin: 50px;
+    }
+
+    .contact-titel {
+        color: black;
+        display: flex;
+        align-items: center;
+        gap: 26px;
+    }
+
+    .contact-titel h1 {
+        color: black !important;
+        font-size: 47px;
+    }
+
+    .showContactHeadline {
+        display: none !important;
+    }
+
+    .show-contact a {
+        color: var(--black);
     }
 
     .show_contact_desktop_version {
@@ -813,12 +840,6 @@ p {
         justify-content: flex-end;
         cursor: pointer;
     }
-
-    /* .showContactFooterBox {
-        animation: push-from-right-to-screen !important;
-        animation-duration: 250ms !important;
-        animation-direction: normal !important;
-    } */
 
     .initials_circle_show_contact {
         font-size: 40px;
