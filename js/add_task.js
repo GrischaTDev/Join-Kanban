@@ -257,7 +257,9 @@ function addTask() {
   // Standort neu laden, falls notwendig
   // location.reload(); // Diese Anweisung scheint nicht notwendig zu sein und kann eventuell entfernt werden
 
-  initSummary(allTasks);
+  // initSummary(allTasks);
+  closeAddTaskPopup();
+  showAllTasks(allTasks);
 }
 
 function clearInputFields() {

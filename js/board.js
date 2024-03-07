@@ -2,6 +2,9 @@ loggedInUser = [];
 
 let currentDraggedElement;
 
+/**
+ * This function is used to initial the board.
+ */
 async function initBoard() {
     await includeHTML();
     loadAllTasks();
@@ -23,6 +26,9 @@ async function initBoard() {
 }
 
 
+/**
+ * This functioin is used to open a new Task Popup.
+ */
 function openAddNewTaskPopup() {
     if (window.innerWidth > 900) {
         document.body.classList.add('popup-open');
@@ -35,6 +41,9 @@ function openAddNewTaskPopup() {
 }
 
 
+/**
+ * This function is used to render the html of the new Task Popup.
+ */
 function renderAddNewTaskInPopup() {
     return /* html */ `
     <div class="addTask-popup" onclick="doNotClose(event), closeUserListInPopup()">
@@ -186,7 +195,10 @@ function renderAddNewTaskInPopup() {
 }
 
 
-function closeaddTaskPopup() {
+/**
+ * This function is used to close the add new Task Popup.
+ */
+function closeAddTaskPopup() {
     document.getElementById("add-task-popup-container").classList.add("d-none");
     document.body.classList.remove('popup-open');
 }
@@ -205,7 +217,6 @@ function showPopup(taskId) {
     let lowSymbolHTML = task.priority.low
         ? `<img src="/assets/img/prio-low.svg" alt="Low"> Low`
         : "";
-
     // Benutzerinitialen und Hintergrundfarben anzeigen
     let userNamesHTML = task.userList
         .map(
@@ -216,7 +227,6 @@ function showPopup(taskId) {
           </div>`
         )
         .join("");
-
     // Subtasks anzeigen
     let subtasksHTML = task.subtask
         ? task.subtask
@@ -231,12 +241,22 @@ function showPopup(taskId) {
             )
             .join("")
         : "";
-
     document.getElementById("incomePopup").classList.remove("d-none");
     document.getElementById("incomePopup").innerHTML = renderTaskDetailsInPopup(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userNamesHTML, subtasksHTML);
 }
 
 
+/**
+ * This function is used to render the HTML of the Popup.
+ * 
+ * @param {Object} task - The task object containing details about the task.
+ * @param {string} urgentSymbolHTML - HTML representing the urgent priority symbol.
+ * @param {string} mediumSymbolHTML - HTML representing the medium priority symbol.
+ * @param {string} lowSymbolHTML - HTML representing the low priority symbol.
+ * @param {string} userNamesHTML - HTML representing the assigned users' names and initials.
+ * @param {string} subtasksHTML - HTML representing the subtasks of the task.
+ * @returns {string} - The HTML string representing the popup.
+ */
 function renderTaskDetailsInPopup(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userNamesHTML, subtasksHTML) {
     return /*html*/ `
     <div class="complete_board_popup" onclick="doNotClose(event)">
@@ -295,44 +315,121 @@ function renderTaskDetailsInPopup(task, urgentSymbolHTML, mediumSymbolHTML, lowS
 }
 
 
+/**
+ * This function is used to close the Popup that shows the Task details
+ */
 function closeIncomePopup() {
     document.getElementById("incomePopup").classList.add("d-none");
     document.body.classList.remove('popup-open');
 }
 
 
+/**
+ * Opens a popup window to edit the details of a selected task.
+ * 
+ * @param {number} taskId - The ID of the task to be edited.
+ */
 function editPopup(taskId) {
-    // Verberge das showPopup
     document.body.classList.add('popup-open');
     document.getElementById("incomePopup").classList.add("d-none");
     document.getElementById('content-board').classList.add('do-not-scroll');
-    // Zeige das editPopup
     document.getElementById('edit_popup').classList.remove('d-none');
     document.getElementById('edit_popup').innerHTML = '';
-
-    // Abrufen des Tasks aus dem Local Storage
     let tasks = JSON.parse(localStorage.getItem('allTasks'));
     let taskToEdit = tasks.find(task => task.id === taskId);
-
     if (taskToEdit && taskToEdit.subtask) {
-        // Laden der Subtasks ins todos-Array
         todos = taskToEdit.subtask.map(subtask => subtask.name);
     } else {
-        todos = []; // Falls keine Subtasks vorhanden sind
+        todos = [];
     }
-
-    // Rendern des Popups mit den bearbeiteten Daten
     renderEditPopup(taskId);
 }
 
 
+/**
+ * Renders a popup window for editing the details of a selected task.
+ * 
+ * @param {number} taskId - The ID of the task to be edited.
+ */
 function renderEditPopup(taskId) {
     // Abrufen des Tasks aus dem Local Storage
-    let tasks = JSON.parse(localStorage.getItem('allTasks'));
-    let taskToEdit = tasks.find(task => task.id === taskId);
+    let taskToEdit = getTaskFromLocalStorage(taskId);
 
-    // Füge das Formular für die Bearbeitung hinzu und setze die Werte der Eingabefelder
-    document.getElementById('edit_popup').innerHTML += /*html*/ `
+    // Formular für die Bearbeitung hinzufügen und Werte der Eingabefelder setzen
+    addEditFormAndSetValues(taskToEdit);
+
+    // Anzeigen der ausgewählten Benutzer
+    renderSelectedUsers(taskToEdit.userList);
+
+    // Anzeigen der Subtasks im Popup-Fenster
+    showTodos();
+}
+
+/**
+ * Retrieves a task from local storage based on the given task ID.
+ * 
+ * @param {number} taskId - The ID of the task to retrieve.
+ * @returns {Object} - The task object.
+ */
+function getTaskFromLocalStorage(taskId) {
+    let tasks = JSON.parse(localStorage.getItem('allTasks'));
+    return tasks.find(task => task.id === taskId);
+}
+
+/**
+ * Adds the edit form to the popup and sets values of input fields based on the given task.
+ * 
+ * @param {Object} taskToEdit - The task object to be edited.
+ */
+function addEditFormAndSetValues(taskToEdit) {
+    document.getElementById('edit_popup').innerHTML += generateHtmlForEditPopup(taskToEdit);
+    document.getElementById('titel').value = taskToEdit.titel;
+    document.getElementById('description').value = taskToEdit.description;
+    document.getElementById('dueDate').value = taskToEdit.dueDate;
+    // Setze weitere Felder entsprechend...
+    setPriorityButtons(taskToEdit.priority);
+}
+
+/**
+ * Renders the selected users by displaying their initials inside colored circles.
+ * 
+ * @param {Array} userList - An array containing user objects with 'fname', 'lname', and 'backgroundcolor' properties.
+ */
+function renderSelectedUsers(userList) {
+    let selectedUserList = document.getElementById('selected-user');
+    selectedUserList.innerHTML = '';
+    userList.forEach(user => {
+        selectedUserList.innerHTML += `
+            <div class="user-details">
+                <div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
+            </div>
+        `;
+    });
+}
+
+/**
+ * Sets the priority buttons based on the given priority object.
+ * 
+ * @param {Object} priority - The priority object containing 'urgent', 'medium', and 'low' properties.
+ */
+function setPriorityButtons(priority) {
+    if (priority.urgent) {
+        document.getElementById('urgent').classList.add('active');
+    } else if (priority.medium) {
+        document.getElementById('medium').classList.add('active');
+    } else {
+        document.getElementById('low').classList.add('active');
+    }
+}
+
+
+/**
+ * Generates HTML for the edit popup form.
+ * 
+ * @returns {string} - The HTML markup for the edit popup form.
+ */
+function generateHtmlForEditPopup(taskId) {
+    return/*html*/ `
     <form class="task-edit-form" onsubmit="addTask()" onclick="doNotClose(event), closeUserListInPopup()">
     <div>
         <div class="close_icon_edit_popup">
@@ -443,49 +540,28 @@ function renderEditPopup(taskId) {
             </div>
         </form>
     `;
-
-    // Setze die Werte der Eingabefelder basierend auf dem abgerufenen Task
-    document.getElementById('titel').value = taskToEdit.titel;
-    document.getElementById('description').value = taskToEdit.description;
-    document.getElementById('dueDate').value = taskToEdit.dueDate;
-    // Weitere Felder entsprechend setzen...
-
-    // Setze die Prioritätsschaltflächen entsprechend
-    if (taskToEdit.priority.urgent) {
-        document.getElementById('urgent').classList.add('active');
-    } else if (taskToEdit.priority.medium) {
-        document.getElementById('medium').classList.add('active');
-    } else {
-        document.getElementById('low').classList.add('active');
-    }
-
-    // Anzeigen der ausgewählten Benutzer
-    taskToEdit.userList.forEach(user => {
-        document.getElementById('selected-user').innerHTML += `
-            <div class="user-details">
-                <div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
-            </div>
-        `;
-    });
-
-    // Anzeigen der Subtasks im Popup-Fenster
-    showTodos();
 }
 
 
+/**
+ * This function closes the user list in a popup
+ */
 function closeUserListInPopup() {
     document.getElementById('user-list').classList.add('d-none');
 }
 
 
+/**
+ * Renders the selected users by displaying their initials inside colored circles.
+ * 
+ * @param {Array} selectedUser - An array containing user objects with 'color' property.
+ */
 function renderSelectedUsersInEdit(selectedUser) {
     let selectedUserList = document.getElementById('selected-user');
     selectedUserList.innerHTML = '';
-
     selectedUser.forEach(user => {
         let initialLetters = nameInitialLettersAddTasks(user);
         const userColor = user['color'];
-
         selectedUserList.innerHTML += /* html */ `
         <div class="user-icon" style="background-color: ${userColor};">${initialLetters}</div>
       `;
@@ -493,6 +569,11 @@ function renderSelectedUsersInEdit(selectedUser) {
 }
 
 
+/**
+ * Opens the user list for selection in the edit popup.
+ * 
+ * @param {Event} event - The event object triggered by the user's action.
+ */
 function openUserListEdit(event) {
     let userList = document.getElementById('user-list');
     let inputIcon = document.getElementById('input-icon');
@@ -504,16 +585,29 @@ function openUserListEdit(event) {
     users.forEach((user, i) => {
         const userColor = user['color'];
         let initialLetters = nameInitialLettersAddTasks(user);
-        userList.innerHTML += /* html */ `
-        <div id="currentUser${i}" class="userColumn ${isUSerSelectedEdit(user.id) ? 'user-list-active' : ''}" onclick="toggleAddUserEdit(${user.id})">
-          <div class="user-name">
-            <span class="letter-icon" style="background-color:${userColor}">${initialLetters}</span>
-            <div>${user.name}</div>
-          </div>
-          <img id="user-checkbox${i}" src="${isUSerSelectedEdit(user.id) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
-        </div>
-      `;
+        userList.innerHTML += renderUserInUserList(user, i, userColor, initialLetters);
     });
+}
+
+/**
+ * Renders a user in the user list for selection in the edit popup.
+ * 
+ * @param {Object} user - The user object to be rendered.
+ * @param {number} i - The index of the user in the loop.
+ * @param {string} userColor - The background color of the user's initials.
+ * @param {string} initialLetters - The initials of the user's name.
+ * @returns {string} - The HTML markup for rendering the user in the user list.
+ */
+function renderUserInUserList(user, i, userColor, initialLetters) {
+    return /* html */ `
+    <div id="currentUser${i}" class="userColumn ${isUSerSelectedEdit(user.id) ? 'user-list-active' : ''}" onclick="toggleAddUserEdit(${user.id})">
+      <div class="user-name">
+        <span class="letter-icon" style="background-color:${userColor}">${initialLetters}</span>
+        <div>${user.name}</div>
+      </div>
+      <img id="user-checkbox${i}" src="${isUSerSelectedEdit(user.id) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
+    </div>
+  `;
 }
 
 
@@ -735,6 +829,14 @@ function calculateTaskDetails(task) {
     return {urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, completedSubtasks, totalSubtasks, progressPercentage};
 }
 
+function renderEmptyProgressfieldTodo() {
+    return`
+    <div>
+      <div class="no-tasks desktop-no-tasks">
+        <span>No tasks to do</span>
+      </div>
+    </div>`;
+}
 
 function renderAllTasksInProgressfieldTodo(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
     return /*html*/`
