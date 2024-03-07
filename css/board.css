@@ -675,7 +675,7 @@ h2 {
 .task-edit-form {
   min-width: 400px;
   max-width: 480px;
-  height: 900px;
+  height: 800px;
   background-color: white;
   border-radius: 24px;
   padding: 20px;
@@ -731,7 +731,7 @@ h2 {
   position: fixed;
   z-index: 9999;
   width: 400px;
-  margin-top: 44px;
+  margin-top: 8px;
   height: 80px;
   display: flex;
   align-items: center;
