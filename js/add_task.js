@@ -73,14 +73,24 @@ function openUserList(event) {
     userList.classList.remove('d-none');
     inputIcon.src = './assets/img/arrow_drop_down_2.svg';
   }
+  generateUserListHTML(userList);
+  event.stopPropagation();
+}
+
+/**
+ * This function generates HTML for the user list
+ * 
+ * @param {*} userList 
+ */
+function generateUserListHTML(userList) {
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
     const userColor = users[i]['color'];
     let initialLetters = nameInitialLettersAddTasks(user);
     userList.innerHTML += generateOpenUserListHtml(user, userColor, initialLetters, i);
   }
-  event.stopPropagation();
 }
+
 
 
 /**
@@ -134,7 +144,7 @@ function renderUserList() {
 
 
 /**
- * This function 
+ * This function is used to select a user for a task by toggeling
  * 
  * @param {*} i 
  */
@@ -217,60 +227,66 @@ function saveTasksToLocalStorage(tasks) {
 
 
 /**
- * 
+ * This function adds a task to allTasks array
  */
 function addTask() {
-  // Erfassen der Eingabedaten
-  let titel = document.getElementById('titel').value;
-  let description = document.getElementById('description').value;
-  let category = document.getElementById('category').value;
-  let urgent = document.getElementById('urgent').classList.contains('active-urgent');
-  let medium = document.getElementById('medium').classList.contains('active-medium');
-  let low = document.getElementById('low').classList.contains('active-low');
-  let dueDate = document.getElementById('dueDate').value;
-
-  // Laden der vorhandenen Tasks aus dem Local Storage oder Initialisieren mit einem leeren Array
+  let { titel, description, category, urgent, medium, low, dueDate } = getValueFromAddTaskForm();
   let allTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
-
-  // Erhalten des ausgewählten Benutzers aus dem selectedUser-Array
-  // Annahme: Dies ist dein ausgewählter Benutzer-Array
   let userListData = selectedUser.map(user => ({
     fname: user.name.split(' ')[0], // Extrahieren des Vornamens aus dem Namen des Benutzers
     lname: user.name.split(' ')[1], // Extrahieren des Nachnamens aus dem Namen des Benutzers
     backgroundcolor: user.color // Verwendung der Hintergrundfarbe des Benutzers
   }));
+  let subtasks = todos.map(todo => ({ name: todo, status: false }));
+  let task = setVariableforSaveTask(allTasks, titel, description, dueDate, category, userListData, subtasks, urgent, medium, low);
+  allTasks.push(task);
+  saveTasksToLocalStorage(allTasks);
+  showTaskOnPage(task);
+  clearAllInputfieldsInAddTask();
+  closeAddTaskPopup();
+  showAllTasks(allTasks);
+}
 
-  // Hinzufügen der Todos aus dem todos-Array als Subtasks
-  // Annahme: Dein Todos-Array
-  let subtasks = todos.map(todo => ({ name: todo, status: false })); // Todos als Subtasks mit 'false' hinzufügen
 
-  // Erstellen des Task-Objekts mit progressfield: "todo_container" und Subtasks
+/**
+ * This function set variables for saveAddTask
+ * 
+ * @param {*} allTasks 
+ * @param {*} titel 
+ * @param {*} description 
+ * @param {*} dueDate 
+ * @param {*} category 
+ * @param {*} userListData 
+ * @param {*} subtasks 
+ * @param {*} urgent 
+ * @param {*} medium 
+ * @param {*} low 
+ * @returns 
+ */
+function setVariableforSaveTask(allTasks, titel, description, dueDate, category, userListData, subtasks, urgent, medium, low) {
   let task = {
-    id: allTasks.length > 0 ? allTasks[allTasks.length - 1].id + 1 : 0, // Setzen der ID
+    id: allTasks.length > 0 ? allTasks[allTasks.length - 1].id + 1 : 0,
     titel: titel,
     description: description,
     dueDate: dueDate,
     category: category,
-    userList: userListData, // Hinzufügen der ausgewählten Benutzerdaten
-    subtask: subtasks, // Hinzufügen der Todos als Subtasks
+    userList: userListData,
+    subtask: subtasks,
     priority: {
       urgent: urgent,
       medium: medium,
       low: low,
     },
-    progressfield: "todo_container", // Hinzufügen des progressfield: "todo"
+    progressfield: "todo_container"
   };
+  return task;
+}
 
-  // Hinzufügen des neuen Tasks zum Array
-  allTasks.push(task);
 
-  // Speichern des aktualisierten Arrays im Local Storage
-  saveTasksToLocalStorage(allTasks);
-
-  // Hinzufügen des neu erstellten Tasks zur Anzeige auf der Seite
-  showTaskOnPage(task);
-
-  // Leeren der Eingabefelder
+/**
+ * clears all inputfields in addTask form
+ */
+function clearAllInputfieldsInAddTask() {
   document.getElementById('titel').value = '';
   document.getElementById('description').value = '';
   document.getElementById('category').value = '';
@@ -279,17 +295,28 @@ function addTask() {
   document.getElementById('medium').classList.add('active');
   document.getElementById('low').classList.remove('active');
   document.getElementById('dueDate').value = '';
-  // Standort neu laden, falls notwendig
-  // location.reload(); // Diese Anweisung scheint nicht notwendig zu sein und kann eventuell entfernt werden
-
-  // initSummary(allTasks);
-  closeAddTaskPopup();
-  showAllTasks(allTasks);
 }
 
 
 /**
  * 
+ * @returns get values from addTask input fields
+ */
+function getValueFromAddTaskForm() {
+  return {
+    titel: document.getElementById('titel').value,
+    description: document.getElementById('description').value,
+    category: document.getElementById('category').value,
+    urgent: document.getElementById('urgent').classList.contains('active-urgent'),
+    medium: document.getElementById('medium').classList.contains('active-medium'),
+    low: document.getElementById('low').classList.contains('active-low'),
+    dueDate: document.getElementById('dueDate').value
+  };
+}
+
+
+/**
+ * this function clears all inputfields after add a task
  */
 function clearInputFields() {
   document.getElementById('titel').value = '';
@@ -313,15 +340,10 @@ function clearInputFields() {
  * @param {} task 
  */
 function showTaskOnPage(task) {
-  // Hier kannst du den neu hinzugefügten Task zur Anzeige auf der Seite hinzufügen, z.B. durch Manipulation des DOM
-  // Je nachdem, wie deine Seite strukturiert ist, könntest du dies auf verschiedene Arten erreichen.
-  // Zum Beispiel könntest du eine Funktion aufrufen, die den neuen Task in die entsprechende Liste einfügt.
-  // Beachte, dass du die Logik anpassen musst, um den Task entsprechend deinem Seitenlayout hinzuzufügen.
-  // Ein Beispiel:
-  let container = document.getElementById(task.progressfield); // Annahme: Die ID des Containers entspricht dem progressfield-Wert des Tasks
+  let container = document.getElementById(task.progressfield);
   let taskElement = document.createElement('div');
   taskElement.classList.add('task');
-  taskElement.textContent = task.titel; // Annahme: Der Titel des Tasks soll angezeigt werden
+  taskElement.textContent = task.titel;
   container.appendChild(taskElement);
 }
 
@@ -355,7 +377,7 @@ function togglePriority(priority) {
 
 
 /**
- * 
+ * loads subtasks in Task, if available
  */
 function loadTodos() {
   const storedTodos = localStorage.getItem('todos');
@@ -367,7 +389,7 @@ function loadTodos() {
 
 
 /**
- * 
+ * this function is used to render subtasks in addTask form
  */
 function showTodos() {
   const mylist = document.getElementById("mylist");
@@ -392,7 +414,7 @@ function showTodos() {
 
 
 /**
- * 
+ *  adds subtasks to local storage
  */
 function addTodo() {
   let todo = document.getElementById("subtask").value;
@@ -404,6 +426,7 @@ function addTodo() {
 
 
 /**
+ * this function deletes subtasks from todo array
  * 
  * @param {*} position 
  */
@@ -415,6 +438,7 @@ function deleteTodo(position) {
 
 
 /**
+ * this function allows to edit a subtask
  * 
  * @param {*} index 
  */
@@ -425,10 +449,8 @@ function editTodo(index) {
   let spanElement = document.querySelector(
     `#mylist .todo-item:nth-child(${index + 1}) span`
   );
-
   inputField.classList.toggle("d-none");
   spanElement.classList.toggle("d-none");
-
   if (!inputField.classList.contains("d-none")) {
     inputField.focus();
   }
@@ -436,6 +458,7 @@ function editTodo(index) {
 
 
 /**
+ * this function is able to update subtasks in todo array in local storage
  * 
  * @param {*} index 
  * @param {*} newValue 
@@ -448,6 +471,7 @@ function updateTodo(index, newValue) {
 
 
 /**
+ * this function prevents to select dates from past
  * 
  * @param {*} inputId 
  */
@@ -456,12 +480,8 @@ function setMinimumDateForToday(inputId) {
   const year = currentDate.getFullYear();
   let month = currentDate.getMonth() + 1;
   let day = currentDate.getDate();
-
-  // Ensure leading zeros if needed
   month = month < 10 ? '0' + month : month;
   day = day < 10 ? '0' + day : day;
-
-  // Set the minimum date for the input to today's date
   const minDate = year + '-' + month + '-' + day;
   document.getElementById(inputId).min = minDate;
 }

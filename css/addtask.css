@@ -347,6 +347,7 @@ textarea {
 .todo-item {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 
 }
 
@@ -447,6 +448,9 @@ ul {
   .content {
     margin-top: 70px;
     padding-bottom: 150px;
+  }
+  .todo-item{
+    margin-bottom: 10px;
   }
 
   .create-task-container {

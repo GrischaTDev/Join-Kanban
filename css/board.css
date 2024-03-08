@@ -89,7 +89,7 @@ h2 {
 
 #mylist li {
   list-style-type: none;
-  /* Marker entfernen */
+  padding-bottom: 10px;
 }
 
 /*-board-search-END-*/
@@ -417,7 +417,7 @@ h2 {
 
 .flex-container-head {
   display: flex;
-  justify-content: flex-end
+  justify-content: space-between;
 }
 
 .board_popup {
@@ -675,7 +675,7 @@ h2 {
 .task-edit-form {
   min-width: 400px;
   max-width: 480px;
-  height: 900px;
+  height: 800px;
   background-color: white;
   border-radius: 24px;
   padding: 20px;
@@ -723,22 +723,26 @@ h2 {
   overflow: hidden;
 }
 .add-task-form-row{
-  padding-top: 60px;
   height: 65%;
-  padding-bottom: 150px;
+  
+ 
+  
 }
+
+.add-task-form-edit{
+padding-top: 80px;
+}
+
 .button-ok{
   position: fixed;
   z-index: 9999;
   width: 400px;
-  margin-top: 44px;
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   background-color: #fff;
   overflow: hidden;
-  
 }
 .todo-item{
   margin-bottom: 10px;
@@ -755,7 +759,14 @@ h2 {
   pointer-events: none; 
 }
 .input-task-select {
-  cursor: pointer; /* Cursor als Punkt setzen */
+  cursor: pointer;
+}
+.flex-container-head{
+  display: flex;
+}
+
+.addTask-popup{
+  height: 500px;
 }
 
 @media (min-width: 900px) {
@@ -765,11 +776,7 @@ h2 {
 }
 
 @media (max-width: 900px) {
-  .add-task-form-row{
-    padding-top: 60px;
-    height: 65%;
-    padding-bottom: 110px;
-  }
+  
   .close-icon-edit-popup {
     position: fixed;
     z-index: 9999;
@@ -786,23 +793,6 @@ h2 {
     margin-bottom: 10px;
   }
   
-
-  /* .button-edit-ok {
-    font-size: 21px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    height: 48px;
-    background-color: #2a3647;
-    border-radius: 10px;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-    position: fixed;
-    z-index: 9999;
-  } */
-
   .button-ok{
     position: fixed;
     z-index: 9999;
