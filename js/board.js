@@ -260,14 +260,14 @@ function nameInitialLettersAddTasks(user) {
 }
 
 
-/**
- * this function is used to prevent to close a popup by clicking on it
- * 
- * @param {*} event 
- */
-function doNotClose(event) {
-  event.stopPropagation();
-}
+// /**
+//  * this function is used to prevent to close a popup by clicking on it
+//  * 
+//  * @param {*} event 
+//  */
+// function doNotClose(event) {
+//   event.stopPropagation();
+// }
 
 
 /**
