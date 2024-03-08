@@ -723,9 +723,8 @@ h2 {
   overflow: hidden;
 }
 .add-task-form-row{
-  padding-top: 60px;
   height: 65%;
-  padding-bottom: 150px;
+  
 }
 .button-ok{
   position: fixed;
@@ -759,7 +758,10 @@ h2 {
 }
 .flex-container-head{
   display: flex;
-  
+}
+
+.addTask-popup{
+  height: 500px;
 }
 
 @media (min-width: 900px) {
