@@ -134,7 +134,7 @@ function renderUserList() {
 
 
 /**
- * This function 
+ * This function is used to select a user for a task by toggeling
  * 
  * @param {*} i 
  */
@@ -217,7 +217,7 @@ function saveTasksToLocalStorage(tasks) {
 
 
 /**
- * 
+ * This function adds a task to allTasks array
  */
 function addTask() {
   // Erfassen der Eingabedaten
@@ -289,7 +289,7 @@ function addTask() {
 
 
 /**
- * 
+ * this function clears all inputfields after add a task
  */
 function clearInputFields() {
   document.getElementById('titel').value = '';
@@ -355,7 +355,7 @@ function togglePriority(priority) {
 
 
 /**
- * 
+ * loads subtasks in Task, if available
  */
 function loadTodos() {
   const storedTodos = localStorage.getItem('todos');
@@ -367,7 +367,7 @@ function loadTodos() {
 
 
 /**
- * 
+ * this function is used to render subtasks in addTask form
  */
 function showTodos() {
   const mylist = document.getElementById("mylist");
@@ -392,7 +392,7 @@ function showTodos() {
 
 
 /**
- * 
+ *  adds subtasks to local storage
  */
 function addTodo() {
   let todo = document.getElementById("subtask").value;
@@ -404,6 +404,7 @@ function addTodo() {
 
 
 /**
+ * this function deletes subtasks from todo array
  * 
  * @param {*} position 
  */
@@ -415,6 +416,7 @@ function deleteTodo(position) {
 
 
 /**
+ * this function allows to edit a subtask
  * 
  * @param {*} index 
  */
@@ -436,6 +438,7 @@ function editTodo(index) {
 
 
 /**
+ * this function is able to update subtasks in todo array in local storage
  * 
  * @param {*} index 
  * @param {*} newValue 
@@ -448,6 +451,7 @@ function updateTodo(index, newValue) {
 
 
 /**
+ * this function prevents to select dates from past
  * 
  * @param {*} inputId 
  */
