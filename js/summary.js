@@ -17,13 +17,10 @@ function initSummary() {
     let inProgress = [];
     let awaitFeedback = [];
     let allTasksCount = allTasks.length;
-
     let earliestUrgentDueDate = null;
-
     allTasks.forEach(task => {
         if (task.progressfield === 'todo_container') todo.push(task);
         else if (task.progressfield === 'done_container') done.push(task);
-
         if (task.priority.urgent) {
             urgent.push(task);
             if (task.dueDate) {
@@ -33,14 +30,17 @@ function initSummary() {
                 }
             }
         }
-
         if (task.progressfield === 'inprogress_container') inProgress.push(task);
         else if (task.progressfield === 'await_feedback_container') awaitFeedback.push(task);
     });
 
     let upcomingDeadline = earliestUrgentDueDate ? earliestUrgentDueDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : '';
 
-    document.getElementById('content-summary').innerHTML = `
+    document.getElementById('content-summary').innerHTML = generateHtmlForSummary(todo, done, urgent, inProgress, awaitFeedback, allTasksCount, upcomingDeadline);
+}
+
+function generateHtmlForSummary(todo, done, urgent, inProgress, awaitFeedback, allTasksCount, upcomingDeadline) {
+    return /*html*/`
     <div class="titel-box">
     <div class="summary-title">
         <h1 class="desktop-h1">Join 360</h1>
