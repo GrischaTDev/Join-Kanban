@@ -220,28 +220,13 @@ function saveTasksToLocalStorage(tasks) {
  * This function adds a task to allTasks array
  */
 function addTask() {
-  // Erfassen der Eingabedaten
-  let titel = document.getElementById('titel').value;
-  let description = document.getElementById('description').value;
-  let category = document.getElementById('category').value;
-  let urgent = document.getElementById('urgent').classList.contains('active-urgent');
-  let medium = document.getElementById('medium').classList.contains('active-medium');
-  let low = document.getElementById('low').classList.contains('active-low');
-  let dueDate = document.getElementById('dueDate').value;
-
-  // Laden der vorhandenen Tasks aus dem Local Storage oder Initialisieren mit einem leeren Array
+  let { titel, description, category, urgent, medium, low, dueDate } = getValueFromAddTaskForm();
   let allTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
-
-  // Erhalten des ausgewählten Benutzers aus dem selectedUser-Array
-  // Annahme: Dies ist dein ausgewählter Benutzer-Array
   let userListData = selectedUser.map(user => ({
     fname: user.name.split(' ')[0], // Extrahieren des Vornamens aus dem Namen des Benutzers
     lname: user.name.split(' ')[1], // Extrahieren des Nachnamens aus dem Namen des Benutzers
     backgroundcolor: user.color // Verwendung der Hintergrundfarbe des Benutzers
   }));
-
-  // Hinzufügen der Todos aus dem todos-Array als Subtasks
-  // Annahme: Dein Todos-Array
   let subtasks = todos.map(todo => ({ name: todo, status: false })); // Todos als Subtasks mit 'false' hinzufügen
 
   // Erstellen des Task-Objekts mit progressfield: "todo_container" und Subtasks
@@ -258,16 +243,12 @@ function addTask() {
       medium: medium,
       low: low,
     },
-    progressfield: "todo_container", // Hinzufügen des progressfield: "todo"
+    progressfield: "todo_container" // Hinzufügen des progressfield: "todo"
   };
 
   // Hinzufügen des neuen Tasks zum Array
   allTasks.push(task);
-
-  // Speichern des aktualisierten Arrays im Local Storage
   saveTasksToLocalStorage(allTasks);
-
-  // Hinzufügen des neu erstellten Tasks zur Anzeige auf der Seite
   showTaskOnPage(task);
 
   // Leeren der Eingabefelder
@@ -285,6 +266,19 @@ function addTask() {
   // initSummary(allTasks);
   closeAddTaskPopup();
   showAllTasks(allTasks);
+}
+
+function getValueFromAddTaskForm() {
+  // Rückgabe der erfassten Werte als Objekt
+  return {
+    titel: document.getElementById('titel').value,
+    description: document.getElementById('description').value,
+    category: document.getElementById('category').value,
+    urgent: document.getElementById('urgent').classList.contains('active-urgent'),
+    medium: document.getElementById('medium').classList.contains('active-medium'),
+    low: document.getElementById('low').classList.contains('active-low'),
+    dueDate: document.getElementById('dueDate').value
+  };
 }
 
 
