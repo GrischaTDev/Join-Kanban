@@ -128,3 +128,12 @@ function generateRandomColor() {
     let b = Math.floor(Math.random() * 256);
     return `rgb(${r},${g},${b})`;
 }
+
+function legalPopup(popupId) {
+    let legalPopup = document.getElementById(popupId);
+    if (legalPopup.classList.contains('d-none')) {
+        legalPopup.classList.remove('d-none');
+    } else {
+        legalPopup.classList.add('d-none');
+    }
+}

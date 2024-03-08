@@ -92,6 +92,23 @@ h6 {
   text-decoration: none;
 }
 
+.popup-style {
+  position: absolute;
+  background-color: white;
+  padding: 40px 40px;
+  z-index: 600;
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.close-icon {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
 .help {
   cursor: pointer;
 }
@@ -158,7 +175,7 @@ border-color: rgb(168,168,168, 0.5);*/
 }
 
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   h1 {
     font-size: 42px;
   }
@@ -170,5 +187,16 @@ border-color: rgb(168,168,168, 0.5);*/
   .text-container {
     margin: 160px 60px 0 310px;
     max-width: 1600px;
+  }
+
+  .popup-style {
+    position: absolute;
+    background-color: white;
+    padding: 40px 80px;
+    border-radius: 30px;
+    z-index: 600;
+    height: 80%;
+    max-width: 900px;
+    overflow: scroll;
   }
 }

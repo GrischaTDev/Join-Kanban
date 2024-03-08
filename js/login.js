@@ -5,7 +5,8 @@ let checkBoxLogin = false;
 /**
  * Load registered users.
  */
-function initLogin(){
+async function initLogin(){
+    await includeHTML();
     loadRegisteredUsers();
     loadRememberMeUser();
 }
