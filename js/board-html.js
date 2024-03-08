@@ -168,7 +168,7 @@ function renderTaskDetailsInPopup(task, urgentSymbolHTML, mediumSymbolHTML, lowS
     <div class="complete_board_popup" onclick="doNotClose(event)">
         <div class="popup-card popup-card-mobile", onclick="doNotClose(event)">
         <div class="board_popup board_popup_mobile">
-            <div class="flex_container_head">
+            <div class="flex-container-head">
                 <div class="task_popup_${task.category}">
                     <p>${task.category}</p>
                 </div>

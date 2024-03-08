@@ -757,6 +757,10 @@ h2 {
 .input-task-select {
   cursor: pointer; /* Cursor als Punkt setzen */
 }
+.flex-container-head{
+  display: flex;
+  
+}
 
 @media (min-width: 900px) {
   .addTask_popup {
