@@ -6,6 +6,7 @@ let checkBox = false;
  * Load registered user.
  */
 async function loadRegisteredUser() {  
+  await includeHTML();
   try {
     users = JSON.parse(await getItem('users'));
   } catch (e) {
