@@ -228,51 +228,38 @@ function renderTaskDetailsInPopup(task, urgentSymbolHTML, mediumSymbolHTML, lowS
  */
 function generateHtmlForEditPopup(taskId) {
     return/*html*/ `
-    <form class="task-edit-form" onsubmit="SaveEditedTask(${taskId})" onclick="doNotClose(event), closeUserListInPopup()">
-    <div>
-        <div class="close_icon_edit_popup">
-        <img class="img_popup img_popup_mobile" style="cursor: pointer;" onclick="closeEditPopup();" src="./assets/img/close_icon.svg" alt="close Button">
+<form class="task-edit-form" onsubmit="addTask()" onclick="doNotClose(event), closeUserListInPopup()">
+<div class="close-icon-edit-popup" onclick="closeEditPopup();">
+        <img class="img_popup" style="cursor: pointer;" src="./assets/img/close_icon.svg" alt="close Button">
     </div>
-            <div class="add-task-form-popup">
-                <div class="add-task-form-row">
-                    <div class="add-task-title">
-                        <span>Title<span class="red-asterisk">*</span></span>
-                        <input type="text" required placeholder="Enter a title" id="titel">
-                    </div>
-
-                    <div class="add-task-title">
-                        <span>Description</span>
-                        <textarea type="text" required minlength="5" placeholder="Enter a description"
-                            id="description"></textarea>
-                    </div>
-
-                    <div class="add-task-title">
-                        <span>Assigned to</span>
-                        <div class="assigned-input">
-                            <input class="input-task-select" id="search-user" autocomplete="off"
-                                onkeydown="filterUser()" onclick="openUserList(event)" type="text"
-                                placeholder="Select contacts to assign">
-                            <img onclick="openUserList(event)" id="input-icon" class="input-arrow"
-                                src="./assets/img/arrow_drop_down_1.svg" alt="">
-                        </div>
-                        <div id="user-list" class="d-none" onclick="doNotClose(event)"></div>
-                        <div id="selected-user"></div>
-                    </div>
-                </div>
-
-                <div class="add-task-form-row">
-                    <div class="add-task-title">
-                        <span>Due a date<span class="red-asterisk">*</span></span>
-                        <input class="input-task-date" type="date" id="dueDate" required>
-                    </div>
-
-                    <div class="add-task-title">
-                        <span>Prio</span>
-                        <div class="priority-buttons">
-                            <button type="button" class="priority-button" id="urgent"
-                                onclick="togglePriority('urgent')">
-                                <span>Urgent</span>
-                                <svg id="svg-urgent" xmlns="http://www.w3.org/2000/svg" width="21" height="15"
+<div class="add-task-form-row">
+    <div class="add-task-title">
+        <span>Title<span class="red-asterisk">*</span></span>
+        <input type="text" required placeholder="Enter a title" id="titel">
+    </div>
+    <div class="add-task-title">
+        <span>Description</span>
+        <textarea type="text" required minlength="5" placeholder="Enter a description" id="description"></textarea>
+    </div>
+    <div class="add-task-title">
+        <span>Assigned to</span>
+        <div class="assigned-input">
+    <input class="input-task-select" id="search-user" autocomplete="off" onkeydown="filterUser()" onclick="openUserList(event)" type="text" placeholder="Select contacts to assign">
+    <img onclick="openUserList(event)" id="input-icon" class="input-arrow" src="./assets/img/arrow_drop_down_1.svg" alt="">
+      </div>
+      <div id="user-list" class="d-none" onclick="doNotClose(event)"></div>
+    <div id="selected-user"></div>
+    </div>
+    <div class="add-task-title">
+        <span>Due a date<span class="red-asterisk">*</span></span>
+        <input class="input-task-date" type="date" id="dueDate" required>
+    </div>
+    <div class="add-task-title">
+        <span>Prio</span>
+        <div class="priority-buttons">
+            <button type="button" class="priority-button" id="urgent" onclick="togglePriority('urgent')">
+                <span>Urgent</span>
+                <svg id="svg-urgent" xmlns="http://www.w3.org/2000/svg" width="21" height="15"
                                     fill="none">
                                     <g fill="#FF3D00" clip-path="url(#a)">
                                         <path
@@ -314,29 +301,27 @@ function generateHtmlForEditPopup(taskId) {
                                     </g>
                                 </svg>
                             </button>
-                        </div>
-                    </div>
-
-                    <div class="subtask-container">
-                        <span>Subtask</span>
-                        <div class="input-sub-field">
-                            <input class="input-subtask" id="subtask" />
-                            <div onclick="addTodo();" id="addButton" class="suffix">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" fill="none">
-                                    <path fill="#2A3647"
-                                        d="M6.249 8h-5a.968.968 0 0 1-.713-.287A.968.968 0 0 1 .249 7c0-.283.095-.52.287-.713A.968.968 0 0 1 1.249 6h5V1c0-.283.095-.52.287-.713A.968.968 0 0 1 7.249 0c.283 0 .52.096.712.287.192.192.288.43.288.713v5h5c.283 0 .52.096.712.287.192.192.287.43.287.713s-.095.52-.287.713a.967.967 0 0 1-.713.287h-5v5c0 .283-.095.52-.287.713a.967.967 0 0 1-.712.287.967.967 0 0 1-.713-.287.968.968 0 0 1-.287-.713V8Z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <ul id="mylist"></ul>
-                    </div>
-                </div>
+        </div>
+    </div>
+    <div class="subtask-container">
+        <span>Subtask</span>
+        <div class="input-sub-field">
+            <input class="input-subtask" id="subtask" />
+            <div onclick="addTodo();" id="addButton" class="suffix">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" fill="none">
+                <path fill="#2A3647"
+                   d="M6.249 8h-5a.968.968 0 0 1-.713-.287A.968.968 0 0 1 .249 7c0-.283.095-.52.287-.713A.968.968 0 0 1 1.249 6h5V1c0-.283.095-.52.287-.713A.968.968 0 0 1 7.249 0c.283 0 .52.096.712.287.192.192.288.43.288.713v5h5c.283 0 .52.096.712.287.192.192.287.43.287.713s-.095.52-.287.713a.967.967 0 0 1-.713.287h-5v5c0 .283-.095.52-.287.713a.967.967 0 0 1-.712.287.967.967 0 0 1-.713-.287.968.968 0 0 1-.287-.713V8Z" />
+                </svg>
             </div>
-            <div class="ok-button">
-                <button id="saveEditButton" class="button-create" onclick="SaveEditedTask(${taskId})">OK<img src="/assets/img/check.svg" alt=""></button>
-            </div>
-        </form>
-    `;
+        </div>
+        <ul id="mylist"></ul>
+    </div>
+</div>
+<div class="button-ok">
+    <button id="saveEditButton" class="button-edit-ok" onclick="SaveEditedTask(${taskId})">OK<img src="/assets/img/check.svg" alt=""></button>
+</div>
+</form>
+ `;
 }
 
 
