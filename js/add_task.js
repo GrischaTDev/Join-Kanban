@@ -73,17 +73,16 @@ function openUserList(event) {
     userList.classList.remove('d-none');
     inputIcon.src = './assets/img/arrow_drop_down_2.svg';
   }
-  renderUserList(userList);
+  generateUserListHTML(userList);
   event.stopPropagation();
 }
-
 
 /**
  * This function generates HTML for the user list
  * 
  * @param {*} userList 
  */
-function renderUserList(userList) {
+function generateUserListHTML(userList) {
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
     const userColor = users[i]['color'];
@@ -91,6 +90,7 @@ function renderUserList(userList) {
     userList.innerHTML += generateOpenUserListHtml(user, userColor, initialLetters, i);
   }
 }
+
 
 
 /**
