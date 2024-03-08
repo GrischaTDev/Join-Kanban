@@ -44,7 +44,7 @@ function openAddNewTaskPopup() {
 /**
  * This function is used to close the add new Task Popup.
  */
-function closeaddTaskPopup() {
+function closeAddTaskPopup() {
   document.getElementById("add-task-popup-container").classList.add("d-none");
   document.body.classList.remove("popup-open");
 }
