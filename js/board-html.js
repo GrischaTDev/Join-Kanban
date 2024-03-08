@@ -232,7 +232,7 @@ function generateHtmlForEditPopup(taskId) {
 <div class="close-icon-edit-popup" onclick="closeEditPopup();">
         <img class="img_popup" style="cursor: pointer;" src="./assets/img/close_icon.svg" alt="close Button">
     </div>
-<div class="add-task-form-row">
+<div class="add-task-form-edit">
     <div class="add-task-title">
         <span>Title<span class="red-asterisk">*</span></span>
         <input type="text" required placeholder="Enter a title" id="titel">

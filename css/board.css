@@ -728,6 +728,11 @@ h2 {
  
   
 }
+
+.add-task-form-edit{
+padding-top: 80px;
+}
+
 .button-ok{
   position: fixed;
   z-index: 9999;
