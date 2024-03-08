@@ -89,7 +89,7 @@ h2 {
 
 #mylist li {
   list-style-type: none;
-  /* Marker entfernen */
+  padding-bottom: 10px;
 }
 
 /*-board-search-END-*/
@@ -725,19 +725,19 @@ h2 {
 .add-task-form-row{
   height: 65%;
   
+ 
+  
 }
 .button-ok{
   position: fixed;
   z-index: 9999;
   width: 400px;
-  margin-top: 8px;
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   background-color: #fff;
   overflow: hidden;
-  
 }
 .todo-item{
   margin-bottom: 10px;
@@ -771,11 +771,7 @@ h2 {
 }
 
 @media (max-width: 900px) {
-  .add-task-form-row{
-    padding-top: 60px;
-    height: 65%;
-    padding-bottom: 110px;
-  }
+  
   .close-icon-edit-popup {
     position: fixed;
     z-index: 9999;
