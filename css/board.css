@@ -49,9 +49,9 @@ h2 {
   display: inline-block;
   margin-top: 60px;
   display: flex;
-  justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 400px;
 }
 
 .search {
@@ -962,7 +962,6 @@ h2 {
 /* Responsiv for desktop */
 @media (min-width: 1600px) {
   .content-board {
-    margin: 160px 0 0 310px;
     max-width: 1400px;
   }
 
@@ -986,9 +985,8 @@ h2 {
   }
 
   .desktop-position-add-task-button {
-    margin-left: 66%;
+    margin-left: 86%;
     margin-top: -50px;
-    position: absolute;
   }
 
   .desktop-search-container {
