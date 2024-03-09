@@ -739,8 +739,8 @@ padding-top: 80px;
   width: 400px;
   height: 80px;
   display: flex;
-  align-items: center;
   justify-content: flex-end;
+  align-items: center;
   background-color: #fff;
   overflow: hidden;
 }
