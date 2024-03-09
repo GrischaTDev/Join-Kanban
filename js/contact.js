@@ -9,29 +9,24 @@ async function initContats() {
     loadUserProfile();
 }
 
+
 /**
  * This function is used to initial the contact list.
  */
 function initContactList() {
-    let index = 0;
     let container = document.getElementById('contacts_list_container');
     container.innerHTML = '';
-
     let groupedContacts = groupContactsByFirstLetter(contact_list);
-
     for (const [letter, contacts] of groupedContacts) {
         container.innerHTML += renderLetterbox(letter);
-
         for (let i = 0; i < contacts.length; i++) {
             const contact = contacts[i];
             const initials = contact['given_name'][0] + contact['name'][0];
             const backgroundColor = contact['color'] ? `style="background-color: ${contact['color']};"` : 'style="background-color: rgb(209,209,209);"';
             container.innerHTML += renderSnippetBox(contact, backgroundColor);
-            index++; // Zählervariable inkrementieren
         }
     }
 }
-
 
 
 /**
@@ -51,6 +46,7 @@ function groupContactsByFirstLetter(contacts) {
     return new Map([...groupedContacts].filter(([letter, contacts]) => contacts.length > 0).sort());
 }
 
+
 /**
  * This function is used to open a popup to add a new contact to the contact list.
  */
@@ -60,12 +56,14 @@ function openAddContactCard() {
     setTimeout(removeAnimationsFromOpenAddContactCard, 300);
 }
 
+
 /**
  * This function is used to remove the animation, the popup needs to appear.
  */
 function removeAnimationsFromOpenAddContactCard() {
     document.getElementById('add_contact_card').classList.remove('move-to-screen');
 }
+
 
 /**
  * This function is used to add a animation to hide the "add Contact" popup from screen.
@@ -75,6 +73,7 @@ function hideAddContactCardFromScreen() {
     setTimeout(closeAddContactCard, 200);
 }
 
+
 /**
  * This function is used to close the "add Contact" popup.
  */
@@ -82,6 +81,7 @@ function closeAddContactCard() {
     document.getElementById('addContactScreen').classList.add('d-none');
     document.getElementById('add_contact_card').classList.remove('hide-from-screen');
 }
+
 
 /**
  * This function is used to open a popup to edit or delete a existing contact.
@@ -94,6 +94,7 @@ function openEditContactCard(contactId) {
     fillEditContactCardWithContactData(contactData, contactId);
     setTimeout(removeAnimationsFromOpenEditContactCard, 300);
 }
+
 
 /**
  * This function is used to fill the inputfields in edit popup with data from a existing contact
@@ -109,12 +110,14 @@ function fillEditContactCardWithContactData(contactData, contactId) {
     document.getElementById('edit_contact_phone').value = contactData['phone'];
 }
 
+
 /**
  * This function is used to remove the animation, the popup needs to appear.
  */
 function removeAnimationsFromOpenEditContactCard() {
     document.getElementById('edit_contact_card').classList.remove('move-to-screen');
 }
+
 
 /**
  * This function is used to add a animation to hide the "edit Contact" popup from screen.
@@ -125,6 +128,7 @@ function hideEditCardFromScreen() {
     setTimeout(closeEditContactCard, 200);
 }
 
+
 /**
  * This function is used to close the "edit Contact" popup.
  */
@@ -132,6 +136,7 @@ function closeEditContactCard() {
     document.getElementById('edit_contact_card').classList.remove('hide-from-screen');
     document.getElementById('editContactScreen').classList.add('d-none');
 }
+
 
 /**
  * This function prevents to hide the popup by clicking on the popup.
@@ -141,6 +146,7 @@ function closeEditContactCard() {
 function doNotClose(event) {
     event.stopPropagation();
 }
+
 
 /**
  * this function is used to select a contact from the contact list.
@@ -159,6 +165,7 @@ function selectContact(contactId) {
     selectedContactIfElseBranch(elements);
     renderContactDetails(selectedContact);
 }
+
 
 /**
  * This function is used to show a selected Contact.
@@ -218,6 +225,7 @@ function deleteSelectedContact(contactId) {
     showContactDeletedConfirmation();
 }
 
+
 /**
  * This function is used to hide the redered Contact details.
  */
@@ -234,6 +242,7 @@ function closeShowContact() {
     });
 }
 
+
 /**
  * This function is used to open a popup with a button to edit a selected Contact or delete a selected contact.
  * 
@@ -245,6 +254,7 @@ function openEditDeleteContactPopup(contactId) {
     document.getElementById('edit_delete_contact_popup_screen').innerHTML = renderEditDeleteContactPoup(contactId);
 }
 
+
 /**
  * This function is used to hide the little popup from screen with an animation.
  */
@@ -253,6 +263,7 @@ function moveEditDeleteContactPopupFromScreenToRight() {
     document.getElementById('edit_delete_contact_popup_screen').classList.remove('d-none');
     setTimeout(closeEditDeleteContactPopup, 600);
 }
+
 
 /**
  * This function is used to close the popup with the two buttons to edit or delete contacts.
@@ -267,6 +278,7 @@ function closeEditDeleteContactPopup() {
     }
 }
 
+
 /**
  * This function is used to show a confirmation-button when a contact is created or edited.
  */
@@ -275,12 +287,14 @@ function showContactCreatedConfirmation() {
     setTimeout(hideContactCreatedConfirmation, 1400);
 }
 
+
 /**
  * This function is used to hide the saved-confirmation-button.
  */
 function hideContactCreatedConfirmation() {
     document.getElementById('confirmation_container').classList.add('d-none');
 }
+
 
 /**
  * This function is used to show a confirmation-button when a contact is deleted.
@@ -290,12 +304,14 @@ function showContactDeletedConfirmation() {
     setTimeout(hideContactDeletedConfirmation, 1400);
 }
 
+
 /**
  * This function is used to hide the deleted-confirmation-button.
  */
 function hideContactDeletedConfirmation() {
     document.getElementById('delete_confirmation_container').classList.add('d-none');
 }
+
 
 /**
  * This function is used to save an added Contact
@@ -314,6 +330,7 @@ function saveAddedContact() {
     hideAddContactCardFromScreen();
     loadContactList();
 }
+
 
 /**
  * This function is used to get the informations from inputfields of add Contact Popup
@@ -335,6 +352,7 @@ function getNewContactInformation(first_name, last_name, email, phone) {
     };
 }
 
+
 /**
  * This function is used to clear the inputfields after add a new contact.
  * 
@@ -350,6 +368,7 @@ function clearAddContactInputfields(first_name, last_name, email, phone) {
     phone.value = '';
 }
 
+
 /**
  * this function is used to load the Contact list.
  */
@@ -363,12 +382,14 @@ function loadContactList() {
     initContactList();
 }
 
+
 /**
  * This function is used to generate an id for each new contact.
  */
 function generateUniqueId() {
     return (contact_list.length + 1).toString();
 }
+
 
 /**
  * This function is used to save an edited Contact
@@ -384,6 +405,7 @@ function saveEditedContact(contactId) {
     loadContactList();
     showContactCreatedConfirmation();
 }
+
 
 /**
  * This function is used to update the contacts in the inputfields of the edit contact popup.
@@ -405,6 +427,7 @@ function updateContact(contactId) {
     };
     return updatedContact;
 }
+
 
 /**
  * This function is used to declare the variables from elements by Id
