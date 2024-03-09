@@ -214,8 +214,9 @@ textarea {
   flex-direction: column;
   gap: 5px;
   overflow: scroll;
-  height: 250px;
+  height: 240px;
   margin-top: -5px;
+  box-shadow: 0px 0px 10px 3px #00000014;
 }
 
 .userColumn {
@@ -309,26 +310,25 @@ textarea {
 
 .input-sub-field {
   display: flex;
-  justify-content: space-between;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 16px;
-  padding-right: 16px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  border: 1px solid rgb(209, 209, 209);
-  font-size: 16px;
-  background-color: white;
-
+  justify-content: end;
+  align-items: center;
+  gap: 6px;
 }
 
 .suffix {
   cursor: pointer;
+  height: 14px;
+  position: absolute;
+  margin-right: 10px;
 }
 
 .input-subtask {
   width: 100%;
-  all: unset;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid rgb(209, 209, 209);
+  font-family: "Inter", sans-serif;
 }
 
 .actions {

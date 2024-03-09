@@ -414,10 +414,14 @@ function showTodos() {
  */
 function addTodo() {
   let todo = document.getElementById("subtask").value;
-  todos.push(todo);
-  localStorage.setItem('todos', JSON.stringify(todos));
-  showTodos();
-  document.getElementById("subtask").value = "";
+  if (todo === '') {
+    return
+  } else {
+    todos.push(todo);
+    localStorage.setItem('todos', JSON.stringify(todos));
+    showTodos();
+    document.getElementById("subtask").value = "";
+  }
 }
 
 
