@@ -26,133 +26,15 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>let allTasks = [
-  {
-    "id": 1,
-    "category": "user-story",
-    "description": "Build start page with recipe recommendation",
-    "dueDate": "2024-03-03",
-    "priority": {
-      "low": false,
-      "medium": true,
-      "urgent": false
-    },
-    "subtask": [
-      { "name": "works", "status": false },
-      { "name": "other stuff", "status": false }
-    ],
-    "titel": "Kochwelt Page &amp; Recipe Recommender",
-    "userList": [{
-      "fname": "Klaus",
-      "lname": "Kruse",
-      "backgroundcolor": "#FF5733"
-    },{
-      "fname": "Berthold",
-      "lname": "Wiebe",
-      "backgroundcolor": "#33FF4F"
-    }],
-    "progressfield": "inprogress_container"
-  },
-  {
-    "id": 2,
-    "category": "technical-task",
-    "description": "Create reusable HTML base templates",
-    "dueDate": "2024-03-15",
-    "priority": {
-      "low": true,
-      "medium": false,
-      "urgent": false
-    },
-    "subtask": [
-      { "name": "a lot to do", "status": false },
-      { "name": "go ahead", "status": true }
-    ],
-    "titel": "HTML Base Template Creation",
-    "userList": [{
-      "fname": "Frank",
-      "lname": "Bülling",
-      "backgroundcolor": "#FFDA33"
-    },{
-      "fname": "Johanna",
-      "lname": "Held",
-      "backgroundcolor": "#3633FF"
-    },{
-      "fname": "Viktor",
-      "lname": "Schmidt",
-      "backgroundcolor": "#33FF74"
-    }],
-    "progressfield": "await_feedback_container"
-  },
-  {
-    "id": 3,
-    "category": "technical-task",
-    "description": "Create contact form and imprint page...",
-    "dueDate": "2024-03-01",
-    "priority": {
-      "low": false,
-      "medium": true,
-      "urgent": false
-    },
-    "subtask": [
-      { "name": "meetings", "status": true },
-      { "name": "work together", "status": true },
-      { "name": "have fun", "status": false }
-    ],
-    "titel": "Contact Form &amp; Imprint",
-    "userList": [{
-      "fname": "Stefan",
-      "lname": "Dietz",
-      "backgroundcolor": "#33FF7A"
-    },{
-      "fname": "Horst",
-      "lname": "Schleifenbaum",
-      "backgroundcolor": "#FFF033"
-    },{
-      "fname": "Detlef",
-      "lname": "Sierts",
-      "backgroundcolor": "#AFFF33"
-    }],
-    "progressfield": "await_feedback_container"
-  },
-  {
-    "id": 4,
-    "category": "user-story",
-    "description": "Define CSS naming conventions and structure",
-    "dueDate": "2024-03-10",
-    "priority": {
-      "low": false,
-      "medium": false,
-      "urgent": true
-    },
-    "subtask": [
-      { "name": "meetings", "status": true },
-      { "name": "work together", "status": true },
-      { "name": "have fun", "status": true }
-    ],
-    "titel": "Define Architecture Planning",
-    "userList": [{
-      "fname": "Waldemar",
-      "lname": "Günther",
-      "backgroundcolor": "#B833FF"
-    },{
-      "fname": "Fabian",
-      "lname": "Zacharias",
-      "backgroundcolor": "#FF9F33"
-    },{
-      "fname": "Jessica",
-      "lname": "Engels",
-      "backgroundcolor": "#33A5FF"
-    }],
-    "progressfield": "done_container"
-  }
-];
-
-
-let users = [];
+            <pre class="prettyprint source linenums"><code>let users = [];
 let selectedUser = [];
 let selectedUserList;
+let todos = [];
 
 
+/**
+ * This function is used to initialise the add Task side
+ */
 async function initAddTasks() {
   await includeHTML();
   activeMenu();
@@ -162,6 +44,11 @@ async function initAddTasks() {
   loadAddTaskUser();
   setMinimumDateForToday('dueDate');
 }
+
+
+/**
+ * This function load users from remote storage
+ */
 async function loadUsers() {
   try {
     users = JSON.parse(await getItem("users"));
@@ -170,38 +57,36 @@ async function loadUsers() {
   }
 }
 
+
+/**
+ * This function filters users in search function
+ */
 function filterUser() {
   let search = document.getElementById('search-user').value;
   search = search.toLowerCase();
-
   selectedUserList = document.getElementById('selected-user');;
   let userList = document.getElementById('user-list');
   userList.innerHTML = '';
   if (userList.classList.contains('d-none')) {
     userList.classList.remove('d-none');
   }
-
   for (let i = 0; i &lt; users.length; i++) {
     const user = users[i];
     const userColor = users[i]['color'];
     let initialLetters = nameInitialLettersAddTasks(user);
-    
     if (user.name.toLowerCase().includes(search)) {
-      userList.innerHTML += `
-      &lt;div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active': ''}" onclick="toggleAddUser(${i})">
-        &lt;div class="user-name">
-          &lt;span class="letter-icon" style="background-color:${userColor}">${initialLetters}&lt;/span>
-          &lt;div>${user.name}&lt;/div>
-        &lt;/div>
-        &lt;img id="user-checkbox${i}" src="${isUSerSelected(i) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
-      &lt;/div>
-      `;
-      // const color = document.getElementsByClassName('letter-icon');
-      // color[i].style.backgroundColor = `${userColor}`;
+      userList.innerHTML += generateFilteredUserHtml(user, userColor, initialLetters, i); // Hier ist die Änderung
     }
   }
 }
 
+
+/**
+ * This function is used to open user list
+ * 
+ * @param {*} event 
+ * @returns 
+ */
 function openUserList(event) {
   selectedUserList = document.getElementById('selected-user');;
   let userList = document.getElementById('user-list');
@@ -211,40 +96,48 @@ function openUserList(event) {
     event.stopPropagation();
     return;
   }
-
   userList.innerHTML = '';
-  
-  
   if (userList.classList.contains('d-none')) {
     userList.classList.remove('d-none');
     inputIcon.src = './assets/img/arrow_drop_down_2.svg';
-  } 
-
-  for (let i = 0; i &lt; users.length; i++) {
-    const user = users[i];
-    const userColor = users[i]['color'];
-
-    let initialLetters = nameInitialLettersAddTasks(user);
-    
-    userList.innerHTML += `
-    &lt;div id="currentUser${i}" class="userColumn ${isUSerSelected(i) ? 'user-list-active': ''}" onclick="toggleAddUser(${i})">
-      &lt;div class="user-name">
-        &lt;span class="letter-icon" style="background-color:${userColor}">${initialLetters}&lt;/span>
-        &lt;div>${user.name}&lt;/div>
-      &lt;/div>
-      &lt;img id="user-checkbox${i}" src="${isUSerSelected(i) ? './assets/img/checkbox_active_white.svg' : './assets/img/checkbox.svg'}" alt="">
-    &lt;/div>
-    `;
-    // const color = document.getElementsByClassName('letter-icon');
-    // color[i].style.backgroundColor = `${userColor}`;
   }
+  generateUserListHTML(userList);
   event.stopPropagation();
 }
 
-function isUSerSelected(i) {
-  return selectedUser.some(su => su.id === i )
+/**
+ * This function generates HTML for the user list
+ * 
+ * @param {*} userList 
+ */
+function generateUserListHTML(userList) {
+  for (let i = 0; i &lt; users.length; i++) {
+    const user = users[i];
+    const userColor = users[i]['color'];
+    let initialLetters = nameInitialLettersAddTasks(user);
+    userList.innerHTML += generateOpenUserListHtml(user, userColor, initialLetters, i);
+  }
 }
 
+
+
+/**
+ * this function checks if user is selected
+ * 
+ * @param {*} i 
+ * @returns 
+ */
+function isUSerSelected(i) {
+  return selectedUser.some(su => su.id === i)
+}
+
+
+/**
+ * This function gets initial letters from users to add to task
+ * 
+ * @param {*} user 
+ * @returns 
+ */
 function nameInitialLettersAddTasks(user) {
   const fullNameSplitt = user.name.split(" ");
   const letters = fullNameSplitt.map(name => name[0]);
@@ -252,18 +145,25 @@ function nameInitialLettersAddTasks(user) {
   return initialLetters;
 }
 
+
+/**
+ * this
+ * 
+ * @param {*} event 
+ */
 function doNotClose(event) {
   event.stopPropagation();
 }
 
 
+/**
+ * This function is used to render the user list
+ */
 function renderUserList() {
   selectedUserList.innerHTML = '';
-
   selectedUser.forEach(user => {
     let initialLetters = nameInitialLettersAddTasks(user);
     const userColor = user['color'];
-
     selectedUserList.innerHTML += /* html */ `
       &lt;div class="user-icon" style="background-color: ${userColor};">${initialLetters}&lt;/div>
     `;
@@ -271,6 +171,11 @@ function renderUserList() {
 }
 
 
+/**
+ * This function is used to select a user for a task by toggeling
+ * 
+ * @param {*} i 
+ */
 function toggleAddUser(i) {
   let userColumn = document.getElementById(`currentUser${i}`);
   let user = users[i];
@@ -296,106 +201,120 @@ function toggleAddUser(i) {
  * @param userList ID from popup container
  */
 if (window.location.href.includes('add_task.html')) {
-  document.getElementById('container').addEventListener('click', function(event) {
+  document.getElementById('container').addEventListener('click', function (event) {
     const userList = document.getElementById('user-list');
     const inputIcon = document.getElementById('input-icon');
     const isClickInside = userList.contains(event.target);
-  
     if (!isClickInside) { // Klick war außerhalb der Benutzerliste
-      userList.classList.add('d-none'); 
+      userList.classList.add('d-none');
       inputIcon.src = './assets/img/arrow_drop_down_1.svg';
     }
   });
 }
 
 
+/**
+ * saves a selected user in local storage
+ */
 function save() {
   let saveUser = JSON.stringify(selectedUser);
   localStorage.setItem("selectedUser", saveUser);
 }
 
 
+/**
+ * this function loads a user for Task
+ */
 function loadAddTaskUser() {
   let loadUser = localStorage.getItem("selectedUser");
   if (loadUser) {
     selectedUser = JSON.parse(loadUser);
   }
 }
-//////////////////////////////////////////////////////////////////////
+
 
 /**
  * alles in Json und array speichern und umwandeln
  */
-
-
 function loadAllTasks() {
   let allTasksAsString = localStorage.getItem("allTasks");
   if (allTasksAsString) {
-      allTasks = JSON.parse(allTasksAsString); // Aktualisieren des allTasks-Arrays mit den Daten aus dem Local Storage
+    allTasks = JSON.parse(allTasksAsString); // Aktualisieren des allTasks-Arrays mit den Daten aus dem Local Storage
   }
 }
 
 
-
-
-
+/**
+ * saves a task to local storage
+ * 
+ * @param {*} tasks 
+ */
 function saveTasksToLocalStorage(tasks) {
   localStorage.setItem("allTasks", JSON.stringify(tasks));
 }
 
 
+/**
+ * This function adds a task to allTasks array
+ */
 function addTask() {
-  // Erfassen der Eingabedaten
-  let titel = document.getElementById('titel').value;
-  let description = document.getElementById('description').value;
-  let category = document.getElementById('category').value;
-  let urgent = document.getElementById('urgent').classList.contains('active');
-  let medium = document.getElementById('medium').classList.contains('active');
-  let low = document.getElementById('low').classList.contains('active');
-  let dueDate = document.getElementById('dueDate').value;
-
-  // Laden der vorhandenen Tasks aus dem Local Storage oder Initialisieren mit einem leeren Array
+  let { titel, description, category, urgent, medium, low, dueDate } = getValueFromAddTaskForm();
   let allTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
-
-  // Erhalten des ausgewählten Benutzers aus dem selectedUser-Array
-  // Annahme: Dies ist dein ausgewählter Benutzer-Array
   let userListData = selectedUser.map(user => ({
     fname: user.name.split(' ')[0], // Extrahieren des Vornamens aus dem Namen des Benutzers
     lname: user.name.split(' ')[1], // Extrahieren des Nachnamens aus dem Namen des Benutzers
     backgroundcolor: user.color // Verwendung der Hintergrundfarbe des Benutzers
   }));
+  let subtasks = todos.map(todo => ({ name: todo, status: false }));
+  let task = setVariableforSaveTask(allTasks, titel, description, dueDate, category, userListData, subtasks, urgent, medium, low);
+  allTasks.push(task);
+  saveTasksToLocalStorage(allTasks);
+  showTaskOnPage(task);
+  clearAllInputfieldsInAddTask();
+  closeAddTaskPopup();
+  showAllTasks(allTasks);
+}
 
-  // Hinzufügen der Todos aus dem todos-Array als Subtasks
-  // Annahme: Dein Todos-Array
-  let subtasks = todos.map(todo => ({ name: todo, status: false })); // Todos als Subtasks mit 'false' hinzufügen
 
-  // Erstellen des Task-Objekts mit progressfield: "todo_container" und Subtasks
+/**
+ * This function set variables for saveAddTask
+ * 
+ * @param {*} allTasks 
+ * @param {*} titel 
+ * @param {*} description 
+ * @param {*} dueDate 
+ * @param {*} category 
+ * @param {*} userListData 
+ * @param {*} subtasks 
+ * @param {*} urgent 
+ * @param {*} medium 
+ * @param {*} low 
+ * @returns 
+ */
+function setVariableforSaveTask(allTasks, titel, description, dueDate, category, userListData, subtasks, urgent, medium, low) {
   let task = {
-    id: allTasks.length > 0 ? allTasks[allTasks.length - 1].id + 1 : 0, // Setzen der ID
+    id: allTasks.length > 0 ? allTasks[allTasks.length - 1].id + 1 : 0,
     titel: titel,
     description: description,
     dueDate: dueDate,
     category: category,
-    userList: userListData, // Hinzufügen der ausgewählten Benutzerdaten
-    subtask: subtasks, // Hinzufügen der Todos als Subtasks
+    userList: userListData,
+    subtask: subtasks,
     priority: {
       urgent: urgent,
       medium: medium,
       low: low,
     },
-    progressfield: "todo_container", // Hinzufügen des progressfield: "todo"
+    progressfield: "todo_container"
   };
+  return task;
+}
 
-  // Hinzufügen des neuen Tasks zum Array
-  allTasks.push(task);
 
-  // Speichern des aktualisierten Arrays im Local Storage
-  saveTasksToLocalStorage(allTasks);
-
-  // Hinzufügen des neu erstellten Tasks zur Anzeige auf der Seite
-  showTaskOnPage(task);
-
-  // Leeren der Eingabefelder
+/**
+ * clears all inputfields in addTask form
+ */
+function clearAllInputfieldsInAddTask() {
   document.getElementById('titel').value = '';
   document.getElementById('description').value = '';
   document.getElementById('category').value = '';
@@ -404,12 +323,29 @@ function addTask() {
   document.getElementById('medium').classList.add('active');
   document.getElementById('low').classList.remove('active');
   document.getElementById('dueDate').value = '';
-  // Standort neu laden, falls notwendig
-  // location.reload(); // Diese Anweisung scheint nicht notwendig zu sein und kann eventuell entfernt werden
-
-  initSummary(allTasks);
 }
 
+
+/**
+ * 
+ * @returns get values from addTask input fields
+ */
+function getValueFromAddTaskForm() {
+  return {
+    titel: document.getElementById('titel').value,
+    description: document.getElementById('description').value,
+    category: document.getElementById('category').value,
+    urgent: document.getElementById('urgent').classList.contains('active-urgent'),
+    medium: document.getElementById('medium').classList.contains('active-medium'),
+    low: document.getElementById('low').classList.contains('active-low'),
+    dueDate: document.getElementById('dueDate').value
+  };
+}
+
+
+/**
+ * this function clears all inputfields after add a task
+ */
 function clearInputFields() {
   document.getElementById('titel').value = '';
   document.getElementById('description').value = '';
@@ -426,31 +362,30 @@ function clearInputFields() {
 }
 
 
-
-
-
-// Funktion zum Anzeigen eines Tasks auf der Seite hinzugefügt
+/**
+ * shows a task on page
+ * 
+ * @param {} task 
+ */
 function showTaskOnPage(task) {
-  // Hier kannst du den neu hinzugefügten Task zur Anzeige auf der Seite hinzufügen, z.B. durch Manipulation des DOM
-  // Je nachdem, wie deine Seite strukturiert ist, könntest du dies auf verschiedene Arten erreichen.
-  // Zum Beispiel könntest du eine Funktion aufrufen, die den neuen Task in die entsprechende Liste einfügt.
-  // Beachte, dass du die Logik anpassen musst, um den Task entsprechend deinem Seitenlayout hinzuzufügen.
-  // Ein Beispiel:
-  let container = document.getElementById(task.progressfield); // Annahme: Die ID des Containers entspricht dem progressfield-Wert des Tasks
+  let container = document.getElementById(task.progressfield);
   let taskElement = document.createElement('div');
   taskElement.classList.add('task');
-  taskElement.textContent = task.titel; // Annahme: Der Titel des Tasks soll angezeigt werden
+  taskElement.textContent = task.titel;
   container.appendChild(taskElement);
 }
 
 
-
-
+/**
+ * this function is used to select a priority to task by toggling
+ * 
+ * @param {} priority 
+ */
 function togglePriority(priority) {
   let urgentButton = document.getElementById('urgent');
   let mediumButton = document.getElementById('medium');
-  let lowButton = document.getElementById('low'); 
-                      
+  let lowButton = document.getElementById('low');
+
   let prioButton = document.getElementById(priority);
   if (prioButton == urgentButton) {
     mediumButton.classList.remove('active-medium');
@@ -469,8 +404,9 @@ function togglePriority(priority) {
 }
 
 
-let todos = [];
-
+/**
+ * loads subtasks in Task, if available
+ */
 function loadTodos() {
   const storedTodos = localStorage.getItem('todos');
   if (storedTodos) {
@@ -479,43 +415,18 @@ function loadTodos() {
   }
 }
 
+
+/**
+ * this function is used to render subtasks in addTask form
+ */
 function showTodos() {
   const mylist = document.getElementById("mylist");
   mylist.innerHTML = "";
-
   for (let i = 0; i &lt; todos.length; i++) {
     const todo = todos[i];
-
     const li = document.createElement("li");
     li.className = "todo-item";
-
-    li.innerHTML = `
-            &lt;div>
-                &lt;span>${todo}&lt;/span>
-                &lt;input size="60" class="edit-input d-none" value="${todo}" onchange="updateTodo(${i}, this.value)">
-                &lt;/div>
-            &lt;div class="actions d-none">
-                &lt;a href="#/" onclick='editTodo(${i})'>&lt;svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                &lt;mask id="mask0_129363_1220" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-                &lt;rect width="24" height="24" fill="#D9D9D9"/>
-                &lt;/mask>
-                &lt;g mask="url(#mask0_129363_1220)">
-                &lt;path d="M5 19H6.4L15.025 10.375L13.625 8.975L5 17.6V19ZM19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM17.85 10.4L7.25 21H3V16.75L13.6 6.15L17.85 10.4Z" fill="#2A3647"/>
-                &lt;/g>
-                &lt;/svg>
-                &lt;/a>
-                &lt;a href="#/" onclick='deleteTodo(${i})'>&lt;svg width="20" height="19" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                &lt;mask id="mask0_129363_1225" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="24">
-                &lt;rect x="0.5" width="24" height="24" fill="#D9D9D9"/>
-                &lt;/mask>
-                &lt;g mask="url(#mask0_129363_1225)">
-                &lt;path d="M7.5 21C6.95 21 6.47917 20.8042 6.0875 20.4125C5.69583 20.0208 5.5 19.55 5.5 19V6C5.21667 6 4.97917 5.90417 4.7875 5.7125C4.59583 5.52083 4.5 5.28333 4.5 5C4.5 4.71667 4.59583 4.47917 4.7875 4.2875C4.97917 4.09583 5.21667 4 5.5 4H9.5C9.5 3.71667 9.59583 3.47917 9.7875 3.2875C9.97917 3.09583 10.2167 3 10.5 3H14.5C14.7833 3 15.0208 3.09583 15.2125 3.2875C15.4042 3.47917 15.5 3.71667 15.5 4H19.5C19.7833 4 20.0208 4.09583 20.2125 4.2875C20.4042 4.47917 20.5 4.71667 20.5 5C20.5 5.28333 20.4042 5.52083 20.2125 5.7125C20.0208 5.90417 19.7833 6 19.5 6V19C19.5 19.55 19.3042 20.0208 18.9125 20.4125C18.5208 20.8042 18.05 21 17.5 21H7.5ZM7.5 6V19H17.5V6H7.5ZM9.5 16C9.5 16.2833 9.59583 16.5208 9.7875 16.7125C9.97917 16.9042 10.2167 17 10.5 17C10.7833 17 11.0208 16.9042 11.2125 16.7125C11.4042 16.5208 11.5 16.2833 11.5 16V9C11.5 8.71667 11.4042 8.47917 11.2125 8.2875C11.0208 8.09583 10.7833 8 10.5 8C10.2167 8 9.97917 8.09583 9.7875 8.2875C9.59583 8.47917 9.5 8.71667 9.5 9V16ZM13.5 16C13.5 16.2833 13.5958 16.5208 13.7875 16.7125C13.9792 16.9042 14.2167 17 14.5 17C14.7833 17 15.0208 16.9042 15.2125 16.7125C15.4042 16.5208 15.5 16.2833 15.5 16V9C15.5 8.71667 15.4042 8.47917 15.2125 8.2875C15.0208 8.09583 14.7833 8 14.5 8C14.2167 8 13.9792 8.09583 13.7875 8.2875C13.5958 8.47917 13.5 8.71667 13.5 9V16Z" fill="#2A3647"/>
-                &lt;/g>
-                &lt;/svg>
-                &lt;/a>
-            &lt;/div>
-        
-        `;
+    li.innerHTML = generateTaskHtml(todo, i);
 
     li.addEventListener("mouseenter", function () {
       li.querySelector(".actions").classList.remove("d-none");
@@ -530,6 +441,9 @@ function showTodos() {
 }
 
 
+/**
+ *  adds subtasks to local storage
+ */
 function addTodo() {
   let todo = document.getElementById("subtask").value;
   todos.push(todo);
@@ -538,6 +452,12 @@ function addTodo() {
   document.getElementById("subtask").value = "";
 }
 
+
+/**
+ * this function deletes subtasks from todo array
+ * 
+ * @param {*} position 
+ */
 function deleteTodo(position) {
   todos.splice(position, 1);
   localStorage.setItem('todos', JSON.stringify(todos));
@@ -545,6 +465,11 @@ function deleteTodo(position) {
 }
 
 
+/**
+ * this function allows to edit a subtask
+ * 
+ * @param {*} index 
+ */
 function editTodo(index) {
   let inputField = document.querySelector(
     `#mylist .todo-item:nth-child(${index + 1}) .edit-input`
@@ -552,15 +477,20 @@ function editTodo(index) {
   let spanElement = document.querySelector(
     `#mylist .todo-item:nth-child(${index + 1}) span`
   );
-
   inputField.classList.toggle("d-none");
   spanElement.classList.toggle("d-none");
-
   if (!inputField.classList.contains("d-none")) {
     inputField.focus();
   }
 }
 
+
+/**
+ * this function is able to update subtasks in todo array in local storage
+ * 
+ * @param {*} index 
+ * @param {*} newValue 
+ */
 function updateTodo(index, newValue) {
   todos[index] = newValue;
   localStorage.setItem('todos', JSON.stringify(todos));
@@ -568,22 +498,23 @@ function updateTodo(index, newValue) {
 }
 
 
-
-
+/**
+ * this function prevents to select dates from past
+ * 
+ * @param {*} inputId 
+ */
 function setMinimumDateForToday(inputId) {
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   let month = currentDate.getMonth() + 1;
   let day = currentDate.getDate();
-
-  // Ensure leading zeros if needed
   month = month &lt; 10 ? '0' + month : month;
   day = day &lt; 10 ? '0' + day : day;
-
-  // Set the minimum date for the input to today's date
   const minDate = year + '-' + month + '-' + day;
   document.getElementById(inputId).min = minDate;
-}</code></pre>
+}
+
+</code></pre>
         </article>
     </section>
 
@@ -593,13 +524,13 @@ function setMinimumDateForToday(inputId) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#clearAddContactInputfields">clearAddContactInputfields</a></li><li><a href="global.html#closeAddContactCard">closeAddContactCard</a></li><li><a href="global.html#closeEditContactCard">closeEditContactCard</a></li><li><a href="global.html#closeEditDeleteContactPopup">closeEditDeleteContactPopup</a></li><li><a href="global.html#closeShowContact">closeShowContact</a></li><li><a href="global.html#contact_list">contact_list</a></li><li><a href="global.html#declareInputs">declareInputs</a></li><li><a href="global.html#deleteSelectedContact">deleteSelectedContact</a></li><li><a href="global.html#doNotClose">doNotClose</a></li><li><a href="global.html#fillEditContactCardWithContactData">fillEditContactCardWithContactData</a></li><li><a href="global.html#generateContactDetailsHtml">generateContactDetailsHtml</a></li><li><a href="global.html#generateUniqueId">generateUniqueId</a></li><li><a href="global.html#getNewContactInformation">getNewContactInformation</a></li><li><a href="global.html#groupContactsByFirstLetter">groupContactsByFirstLetter</a></li><li><a href="global.html#guestLogIn">guestLogIn</a></li><li><a href="global.html#hideAddContactCardFromScreen">hideAddContactCardFromScreen</a></li><li><a href="global.html#hideContactCreatedConfirmation">hideContactCreatedConfirmation</a></li><li><a href="global.html#hideContactDeletedConfirmation">hideContactDeletedConfirmation</a></li><li><a href="global.html#hideEditCardFromScreen">hideEditCardFromScreen</a></li><li><a href="global.html#initContactList">initContactList</a></li><li><a href="global.html#initLogin">initLogin</a></li><li><a href="global.html#loadAllTasks">loadAllTasks</a></li><li><a href="global.html#loadContactList">loadContactList</a></li><li><a href="global.html#loadRegisteredUsers">loadRegisteredUsers</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#moveEditDeleteContactPopupFromScreenToRight">moveEditDeleteContactPopupFromScreenToRight</a></li><li><a href="global.html#openAddContactCard">openAddContactCard</a></li><li><a href="global.html#openEditContactCard">openEditContactCard</a></li><li><a href="global.html#openEditDeleteContactPopup">openEditDeleteContactPopup</a></li><li><a href="global.html#rememberMe">rememberMe</a></li><li><a href="global.html#removeAnimationsFromOpenAddContactCard">removeAnimationsFromOpenAddContactCard</a></li><li><a href="global.html#removeAnimationsFromOpenEditContactCard">removeAnimationsFromOpenEditContactCard</a></li><li><a href="global.html#renderContactDetails">renderContactDetails</a></li><li><a href="global.html#renderEditContactCard">renderEditContactCard</a></li><li><a href="global.html#renderEditDeleteContactPoup">renderEditDeleteContactPoup</a></li><li><a href="global.html#renderLetterbox">renderLetterbox</a></li><li><a href="global.html#renderSnippetBox">renderSnippetBox</a></li><li><a href="global.html#resetLoginForm">resetLoginForm</a></li><li><a href="global.html#save">save</a></li><li><a href="global.html#saveAddedContact">saveAddedContact</a></li><li><a href="global.html#saveEditedContact">saveEditedContact</a></li><li><a href="global.html#selectContact">selectContact</a></li><li><a href="global.html#selectedContactIfElseBranch">selectedContactIfElseBranch</a></li><li><a href="global.html#showContactCreatedConfirmation">showContactCreatedConfirmation</a></li><li><a href="global.html#showContactDeletedConfirmation">showContactDeletedConfirmation</a></li><li><a href="global.html#updateContact">updateContact</a></li><li><a href="global.html#userPushLogin">userPushLogin</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#SaveEditedTask">SaveEditedTask</a></li><li><a href="global.html#activeMenu">activeMenu</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#addTodo">addTodo</a></li><li><a href="global.html#addUser">addUser</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#calculateTaskDetails">calculateTaskDetails</a></li><li><a href="global.html#changePasswordIcon">changePasswordIcon</a></li><li><a href="global.html#checkPassword">checkPassword</a></li><li><a href="global.html#checkPrivacyConsent">checkPrivacyConsent</a></li><li><a href="global.html#clearAddContactInputfields">clearAddContactInputfields</a></li><li><a href="global.html#clearAllInputfieldsInAddTask">clearAllInputfieldsInAddTask</a></li><li><a href="global.html#clearInputFields">clearInputFields</a></li><li><a href="global.html#closeAddContactCard">closeAddContactCard</a></li><li><a href="global.html#closeAddTaskPopup">closeAddTaskPopup</a></li><li><a href="global.html#closeEditContactCard">closeEditContactCard</a></li><li><a href="global.html#closeEditDeleteContactPopup">closeEditDeleteContactPopup</a></li><li><a href="global.html#closeEditPopup">closeEditPopup</a></li><li><a href="global.html#closeIncomePopup">closeIncomePopup</a></li><li><a href="global.html#closeShowContact">closeShowContact</a></li><li><a href="global.html#closeUserListInPopup">closeUserListInPopup</a></li><li><a href="global.html#contact_list">contact_list</a></li><li><a href="global.html#declareInputs">declareInputs</a></li><li><a href="global.html#deleteSelectedContact">deleteSelectedContact</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#deleteTodo">deleteTodo</a></li><li><a href="global.html#doNotClose">doNotClose</a></li><li><a href="global.html#editPopup">editPopup</a></li><li><a href="global.html#editTodo">editTodo</a></li><li><a href="global.html#fillEditContactCardWithContactData">fillEditContactCardWithContactData</a></li><li><a href="global.html#filterAndRenderTasksAwaitFeedback">filterAndRenderTasksAwaitFeedback</a></li><li><a href="global.html#filterAndRenderTasksDone">filterAndRenderTasksDone</a></li><li><a href="global.html#filterAndRenderTasksForInProgress">filterAndRenderTasksForInProgress</a></li><li><a href="global.html#filterAndRenderTasksForTodo">filterAndRenderTasksForTodo</a></li><li><a href="global.html#filterUser">filterUser</a></li><li><a href="global.html#findTask">findTask</a></li><li><a href="global.html#findTaskById">findTaskById</a></li><li><a href="global.html#generateContactDetailsHtml">generateContactDetailsHtml</a></li><li><a href="global.html#generateEditedTask">generateEditedTask</a></li><li><a href="global.html#generateHtmlForEditPopup">generateHtmlForEditPopup</a></li><li><a href="global.html#generateUniqueId">generateUniqueId</a></li><li><a href="global.html#generateUserListHTML">generateUserListHTML</a></li><li><a href="global.html#getNewContactInformation">getNewContactInformation</a></li><li><a href="global.html#getValueFromAddTaskForm">getValueFromAddTaskForm</a></li><li><a href="global.html#getValuesFromAllTasksArray">getValuesFromAllTasksArray</a></li><li><a href="global.html#groupContactsByFirstLetter">groupContactsByFirstLetter</a></li><li><a href="global.html#guestLogIn">guestLogIn</a></li><li><a href="global.html#hideAddContactCardFromScreen">hideAddContactCardFromScreen</a></li><li><a href="global.html#hideContactCreatedConfirmation">hideContactCreatedConfirmation</a></li><li><a href="global.html#hideContactDeletedConfirmation">hideContactDeletedConfirmation</a></li><li><a href="global.html#hideEditCardFromScreen">hideEditCardFromScreen</a></li><li><a href="global.html#highlight">highlight</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initAddTasks">initAddTasks</a></li><li><a href="global.html#initBoard">initBoard</a></li><li><a href="global.html#initContactList">initContactList</a></li><li><a href="global.html#initLogin">initLogin</a></li><li><a href="global.html#initSummary">initSummary</a></li><li><a href="global.html#isUSerSelected">isUSerSelected</a></li><li><a href="global.html#isUSerSelectedEdit">isUSerSelectedEdit</a></li><li><a href="global.html#load">load</a></li><li><a href="global.html#loadAddTaskUser">loadAddTaskUser</a></li><li><a href="global.html#loadAllTasks">loadAllTasks</a></li><li><a href="global.html#loadContactList">loadContactList</a></li><li><a href="global.html#loadRegisteredUser">loadRegisteredUser</a></li><li><a href="global.html#loadRegisteredUsers">loadRegisteredUsers</a></li><li><a href="global.html#loadRememberMeInputValue">loadRememberMeInputValue</a></li><li><a href="global.html#loadRememberMeUser">loadRememberMeUser</a></li><li><a href="global.html#loadSelectedUserFromLocalStorage">loadSelectedUserFromLocalStorage</a></li><li><a href="global.html#loadTodos">loadTodos</a></li><li><a href="global.html#loadUsers">loadUsers</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#moveEditDeleteContactPopupFromScreenToRight">moveEditDeleteContactPopupFromScreenToRight</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#nameInitialLettersAddTasks">nameInitialLettersAddTasks</a></li><li><a href="global.html#openAddContactCard">openAddContactCard</a></li><li><a href="global.html#openAddNewTaskPopup">openAddNewTaskPopup</a></li><li><a href="global.html#openEditContactCard">openEditContactCard</a></li><li><a href="global.html#openEditDeleteContactPopup">openEditDeleteContactPopup</a></li><li><a href="global.html#openUserList">openUserList</a></li><li><a href="global.html#openUserListEdit">openUserListEdit</a></li><li><a href="global.html#privacyCheck">privacyCheck</a></li><li><a href="global.html#pushRememberMe">pushRememberMe</a></li><li><a href="global.html#rememberMe">rememberMe</a></li><li><a href="global.html#removeAnimationsFromOpenAddContactCard">removeAnimationsFromOpenAddContactCard</a></li><li><a href="global.html#removeAnimationsFromOpenEditContactCard">removeAnimationsFromOpenEditContactCard</a></li><li><a href="global.html#removeHighlight">removeHighlight</a></li><li><a href="global.html#renderAddNewTaskInPopup">renderAddNewTaskInPopup</a></li><li><a href="global.html#renderAllTasksInProgressfieldAwaitFeedback">renderAllTasksInProgressfieldAwaitFeedback</a></li><li><a href="global.html#renderAllTasksInProgressfieldDone">renderAllTasksInProgressfieldDone</a></li><li><a href="global.html#renderAllTasksInProgressfieldInProgress">renderAllTasksInProgressfieldInProgress</a></li><li><a href="global.html#renderAllTasksInProgressfieldTodo">renderAllTasksInProgressfieldTodo</a></li><li><a href="global.html#renderAssignedUserInEditPopup">renderAssignedUserInEditPopup</a></li><li><a href="global.html#renderContactDetails">renderContactDetails</a></li><li><a href="global.html#renderEditContactCard">renderEditContactCard</a></li><li><a href="global.html#renderEditDeleteContactPoup">renderEditDeleteContactPoup</a></li><li><a href="global.html#renderEditPopup">renderEditPopup</a></li><li><a href="global.html#renderEmptyProgressfieldTodo">renderEmptyProgressfieldTodo</a></li><li><a href="global.html#renderInitialsForPopup">renderInitialsForPopup</a></li><li><a href="global.html#renderLetterbox">renderLetterbox</a></li><li><a href="global.html#renderSelectedUsersInEdit">renderSelectedUsersInEdit</a></li><li><a href="global.html#renderSnippetBox">renderSnippetBox</a></li><li><a href="global.html#renderSubtasksInPopup">renderSubtasksInPopup</a></li><li><a href="global.html#renderTaskDetailsInPopup">renderTaskDetailsInPopup</a></li><li><a href="global.html#renderUserList">renderUserList</a></li><li><a href="global.html#renderUserListInEditPopup">renderUserListInEditPopup</a></li><li><a href="global.html#resetForm">resetForm</a></li><li><a href="global.html#resetLoginForm">resetLoginForm</a></li><li><a href="global.html#save">save</a></li><li><a href="global.html#saveAddedContact">saveAddedContact</a></li><li><a href="global.html#saveEditedContact">saveEditedContact</a></li><li><a href="global.html#saveRememberMe">saveRememberMe</a></li><li><a href="global.html#saveSelectedUserToLocalStorage">saveSelectedUserToLocalStorage</a></li><li><a href="global.html#saveTasksToLocalStorage">saveTasksToLocalStorage</a></li><li><a href="global.html#selectContact">selectContact</a></li><li><a href="global.html#selectedContactIfElseBranch">selectedContactIfElseBranch</a></li><li><a href="global.html#setMinimumDateForToday">setMinimumDateForToday</a></li><li><a href="global.html#setVariableforSaveTask">setVariableforSaveTask</a></li><li><a href="global.html#showAllTasks">showAllTasks</a></li><li><a href="global.html#showContactCreatedConfirmation">showContactCreatedConfirmation</a></li><li><a href="global.html#showContactDeletedConfirmation">showContactDeletedConfirmation</a></li><li><a href="global.html#showPassword">showPassword</a></li><li><a href="global.html#showPopup">showPopup</a></li><li><a href="global.html#showTaskOnPage">showTaskOnPage</a></li><li><a href="global.html#showTodos">showTodos</a></li><li><a href="global.html#startDragging">startDragging</a></li><li><a href="global.html#successfullyMessage">successfullyMessage</a></li><li><a href="global.html#toggleAddUser">toggleAddUser</a></li><li><a href="global.html#toggleAddUserEdit">toggleAddUserEdit</a></li><li><a href="global.html#togglePriority">togglePriority</a></li><li><a href="global.html#updateContact">updateContact</a></li><li><a href="global.html#updateSubtaskStatus">updateSubtaskStatus</a></li><li><a href="global.html#updateTodo">updateTodo</a></li><li><a href="global.html#updateUserListInTasks">updateUserListInTasks</a></li><li><a href="global.html#userPush">userPush</a></li><li><a href="global.html#userPushLogin">userPushLogin</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sun Mar 03 2024 22:53:30 GMT+0100 (Mitteleuropäische Normalzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Mar 08 2024 22:19:50 GMT+0100 (Mitteleuropäische Normalzeit)
 </footer>
 
 <script> prettyPrint(); </script>

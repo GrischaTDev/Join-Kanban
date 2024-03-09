@@ -69,9 +69,16 @@
         <span>You Signed Up successfully</span>
     </div>
 
+    <div id="privacy-popup" class="d-none popup-style">
+        <div w3-include-html="assets/templates/privacy-policy-temp.html"></div>
+    </div>
+    <div id="legal-popup" class="d-none popup-style">
+        <div w3-include-html="assets/templates/legal-notice-temp.html"></div>
+    </div>
+
     <div class="legal-topics">
-        <a href="./privacy-policy.html">Privacy Policy</a>
-        <a href="./legal-notice.html">Legal notice</a>
+        <a onclick="legalPopup('privacy-popup')">Privacy Policy</a>
+        <a onclick="legalPopup('legal-popup')">Legal notice</a>
     </div>
 </body>
 </html>
