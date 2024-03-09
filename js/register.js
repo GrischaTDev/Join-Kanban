@@ -149,7 +149,7 @@ function resetForm(registerName, registerEmail, registerPassword, registerConfir
  * 
  * @param {string} inputPassword - Register input password
  * @param {string} showIcon - Register input field icon
- * @returns 
+ * @returns - If the input field is empty, the function aborts
  */
 function showPassword(inputPassword, showIcon) {
   let inputField = document.getElementById(inputPassword);
