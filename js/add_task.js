@@ -76,6 +76,7 @@ function openUserList(event) {
   event.stopPropagation();
 }
 
+
 /**
  * This function generates HTML for the user list
  * 
@@ -89,7 +90,6 @@ function generateUserListHTML(userList) {
     userList.innerHTML += generateOpenUserListHtml(user, userColor, initialLetters, i);
   }
 }
-
 
 
 /**

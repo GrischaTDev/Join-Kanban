@@ -73,7 +73,9 @@
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
                 </div>
-                <div id="inprogress_container" class="drag-area desktop-drag-area" ondrop="moveTo('inprogress_container', event)" ondragleave="removeHighlight('inprogress_container')" ondragover="allowDrop(event); highlight('inprogress_container')"></div>
+                <div id="inprogress_container" class="drag-area desktop-drag-area"
+                    ondrop="moveTo('inprogress_container', event)" ondragleave="removeHighlight('inprogress_container')"
+                    ondragover="allowDrop(event); highlight('inprogress_container')"></div>
             </div>
 
             <div class="desktop-complete-card">
@@ -83,14 +85,16 @@
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
                 </div>
-                <div id="await_feedback_container" class="drag-area desktop-drag-area" ondrop="moveTo('await_feedback_container', event)" ondragover="allowDrop(event)"></div>
+                <div id="await_feedback_container" class="drag-area desktop-drag-area"
+                    ondrop="moveTo('await_feedback_container', event)" ondragover="allowDrop(event)"></div>
             </div>
 
             <div class="desktop-complete-card">
                 <div class="headlines-container desktop-headlines-container" id="done">
                     <h6>Done</h6>
                 </div>
-                <div id="done_container" class="drag-area desktop-drag-area" ondrop="moveTo('done_container', event)" ondragover="allowDrop(event)"></div>
+                <div id="done_container" class="drag-area desktop-drag-area" ondrop="moveTo('done_container', event)"
+                    ondragover="allowDrop(event)"></div>
             </div>
 
             <div>
@@ -103,4 +107,5 @@
 
     <div w3-include-html="/assets/templates/mobile_menu.html"></div>
 </body>
+
 </html>

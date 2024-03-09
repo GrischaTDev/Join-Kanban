@@ -1,5 +1,5 @@
 /**
- * 
+ * Initializes the summary view by loading tasks and generating HTML content.
  */
 function initSummary() {
     init();
@@ -39,6 +39,18 @@ function initSummary() {
     document.getElementById('content-summary').innerHTML = generateHtmlForSummary(todo, done, urgent, inProgress, awaitFeedback, allTasksCount, upcomingDeadline);
 }
 
+
+/**
+ * Generates HTML content for the summary view based on task categories and counts.
+ * @param {Array} todo - Array of tasks in 'To-do' status.
+ * @param {Array} done - Array of tasks in 'Done' status.
+ * @param {Array} urgent - Array of tasks marked as 'Urgent'.
+ * @param {Array} inProgress - Array of tasks in progress.
+ * @param {Array} awaitFeedback - Array of tasks awaiting feedback.
+ * @param {number} allTasksCount - Total count of all tasks.
+ * @param {string} upcomingDeadline - Formatted upcoming deadline date.
+ * @returns {string} HTML content for the summary view.
+ */
 function generateHtmlForSummary(todo, done, urgent, inProgress, awaitFeedback, allTasksCount, upcomingDeadline) {
     return /*html*/`
     <div class="titel-box">
