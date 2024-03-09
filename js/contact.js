@@ -360,7 +360,7 @@ function loadContactList() {
  * This function is used to generate an id for each new contact.
  */
 function generateUniqueId() {
-    let newId = (contact_list.length + 1).toString();
+    return (contact_list.length + 1).toString();
 }
 
 /**
