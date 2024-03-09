@@ -336,7 +336,6 @@ function generateHtmlForEditPopup(taskId) {
  * @param {*} progressPercentage 
  * @param {*} completedSubtasks 
  * @param {*} totalSubtasks 
- * @returns 
  */
 function renderAllTasksInProgressfieldTodo(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
     return /*html*/`
@@ -378,7 +377,6 @@ function renderAllTasksInProgressfieldTodo(task, urgentSymbolHTML, mediumSymbolH
  * @param {*} progressPercentage 
  * @param {*} completedSubtasks 
  * @param {*} totalSubtasks 
- * @returns 
  */
 function renderAllTasksInProgressfieldInProgress(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
     return /*html*/`
@@ -420,7 +418,6 @@ function renderAllTasksInProgressfieldInProgress(task, urgentSymbolHTML, mediumS
  * @param {*} progressPercentage 
  * @param {*} completedSubtasks 
  * @param {*} totalSubtasks 
- * @returns 
  */
 function renderAllTasksInProgressfieldAwaitFeedback(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
     return /*html*/`
@@ -462,7 +459,6 @@ function renderAllTasksInProgressfieldAwaitFeedback(task, urgentSymbolHTML, medi
  * @param {*} progressPercentage 
  * @param {*} completedSubtasks 
  * @param {*} totalSubtasks 
- * @returns 
  */
 function renderAllTasksInProgressfieldDone(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
     return /*html*/`
@@ -548,7 +544,6 @@ function renderSubtasksInPopup(taskId, subtask) {
  * shows selected user in popup, who belongs the task
  * 
  * @param {*} user 
- * @returns 
  */
   function renderAssignedUserInEditPopup(user) {
     return /*html*/ `
