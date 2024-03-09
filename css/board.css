@@ -305,7 +305,6 @@ h2 {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  max-height: 180px;
   overflow: hidden;
   overflow-y: scroll;
 }
@@ -433,7 +432,6 @@ h2 {
   padding: 42px 20px;
   display: flex;
   flex-direction: column;
-  max-width: 500px;
   gap: 30px;
 }
 
@@ -477,7 +475,6 @@ h2 {
   border: none;
   resize: none;
   overflow: hidden;
-  width: 400px;
   max-height: 100px;
   font-size: 32px;
   font-weight: 700;
@@ -489,7 +486,6 @@ h2 {
   border: none;
   resize: none;
   overflow: hidden;
-  width: 400px;
   height: 50px;
   font-size: 20px;
   pointer-events: none;
@@ -501,14 +497,9 @@ h2 {
   margin-bottom: 26px;
 }
 
-.prioity_container {
-  margin-right: 50px;
-}
-
 .priority_popup {
-  width: 50%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   height: 38px;
   font-size: 20px;
@@ -516,10 +507,10 @@ h2 {
 }
 
 .due_date_popup {
-  width: 50%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 20px;
   height: 38px;
   font-size: 20px;
 }
@@ -672,15 +663,14 @@ h2 {
 }
 
 .task-edit-form {
-  min-width: 400px;
-  max-width: 480px;
   height: 800px;
   background-color: white;
   border-radius: 24px;
   padding: 20px;
   overflow-x: hidden;
   overflow-y: auto;
-
+  width: 100%;
+  max-width: 500px;
 }
 
 .button-edit-ok {
@@ -712,7 +702,7 @@ h2 {
 .close-icon-edit-popup {
   position: fixed;
   z-index: 9999;
-  width: 400px;
+  width: 480px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -771,7 +761,7 @@ h2 {
   }
 
   .complete_board_popup {
-    width: unset;
+    max-width: 500px;
   }
 }
 
@@ -825,14 +815,11 @@ h2 {
 
   .task-edit-form {
     height: 600px;
-    min-width: 320px;
-    max-width: 360px;
     margin: 20px;
     overflow-x: hidden;
     overflow-y: auto;
-  }
-  .user-container-popup {
-    max-height: 150px;
+    width: 90%;
+    max-width: 400px;
   }
 
   .task-topic {
@@ -856,7 +843,6 @@ h2 {
     border: none;
     resize: none;
     overflow: hidden;
-    width: 280px;
     max-height: 200px;
     font-weight: 700;
     margin: 0;
@@ -868,7 +854,6 @@ h2 {
     border: none;
     resize: none;
     overflow: hidden;
-    width: 280px;
     max-height: 50px;
     margin: 0;
     pointer-events: none;
@@ -876,7 +861,6 @@ h2 {
 
   .due-date-popup-mobile {
     font-size: 16px;
-    width: 70%;
   }
 
   .priority-popup-mobile {
