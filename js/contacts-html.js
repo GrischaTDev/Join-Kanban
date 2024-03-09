@@ -117,7 +117,7 @@ function renderEditContactCard(contactData, contactId) {
                 <img class="input_icon" src="./assets/img/phone_icon.svg" alt="phone icon">
             </div>
             <div class="save_contact_box">
-                <button onclick="deleteSelectedContact('${contactId}'); hideEditCardFromScreen(); return false;" class="submit_delete_contact_button">Delete</button>
+                <div onclick="deleteSelectedContact('${contactId}'); hideEditCardFromScreen(); return false;" class="submit_delete_contact_button">Delete</div>
                 <button class="submit_save_contact_button">Save</button>
                 <img style="margin-left: -25px;" src="./assets/img/check.svg" alt="check">
             </div>
