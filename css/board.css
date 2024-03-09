@@ -164,6 +164,14 @@ h2 {
 
 .form-check {
   height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+
+.form-check:hover {
+  background-color: #f6f6f6;
+  border-radius: 10px;
 }
 
 .card-section {
@@ -410,23 +418,23 @@ h2 {
   background-color: white;
   border-radius: 30px;
   overflow: hidden;
-  margin: 40px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   animation: moveFromRightToScreen 1000ms ease forwards;
+  width: 90%;
 }
 
 .flex-container-head {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .board_popup {
   padding: 42px 20px;
   display: flex;
   flex-direction: column;
-  height: 90%;
   max-width: 500px;
-  justify-content: space-between;
+  gap: 30px;
 }
 
 .img_popup {
@@ -471,11 +479,10 @@ h2 {
   overflow: hidden;
   width: 400px;
   max-height: 100px;
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 700;
   margin: 0;
   pointer-events: none;
-  margin-top: -80px;
 }
 
 .descriptionarea {
@@ -486,7 +493,6 @@ h2 {
   height: 50px;
   font-size: 20px;
   pointer-events: none;
-  margin-top: -80px;
 }
 
 .p-element {
@@ -506,8 +512,7 @@ h2 {
   align-items: center;
   height: 38px;
   font-size: 20px;
-  margin-top: -80px;
-  margin-bottom: -90px;
+  gap: 20px;
 }
 
 .due_date_popup {
@@ -517,7 +522,6 @@ h2 {
   align-items: center;
   height: 38px;
   font-size: 20px;
-  margin-top: -80px;
 }
 
 .assigned_popup {
@@ -620,10 +624,6 @@ h2 {
 
 .text-container {
   padding-left: 8px;
-}
-
-.popup-card {
-  height: 85vh;
 }
 
 .card-section {
@@ -764,9 +764,14 @@ h2 {
 }
 
 
+
 @media (min-width: 900px) {
   .addTask_popup {
     max-height: 700px;
+  }
+
+  .complete_board_popup {
+    width: unset;
   }
 }
 
@@ -813,7 +818,6 @@ h2 {
 
   .board_popup_mobile {
     width: 90%;
-    height: 75vh;
     display: flex;
     justify-content: space-between;
   }
@@ -857,8 +861,6 @@ h2 {
     font-weight: 700;
     margin: 0;
     pointer-events: none;
-    margin-top: -80px;
-    margin-bottom: -40px;
   }
 
   .descriptionarea-mobile {
@@ -870,26 +872,20 @@ h2 {
     max-height: 50px;
     margin: 0;
     pointer-events: none;
-    margin-top: -60px;
-    margin-bottom: -60px;
   }
 
   .due-date-popup-mobile {
     font-size: 16px;
     width: 70%;
-    margin-top: -40px;
-    margin-bottom: -40px;
   }
 
   .priority-popup-mobile {
     font-size: 16px;
     width: 70%;
-    margin-bottom: -40px;
   }
 
   .assigned-mobile {
     font-size: 16px;
-    margin-top: -68px;
   }
 
   .img_popup {
