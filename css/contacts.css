@@ -352,6 +352,9 @@ p {
     text-decoration: none;
     font-family: 'Inter' sans-serif;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .save_contact_box {

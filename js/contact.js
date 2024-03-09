@@ -14,18 +14,25 @@ async function initContats() {
  */
 function initContactList() {
     let index = 0;
-    document.getElementById('contacts_list_container').innerHTML = '';
+    let container = document.getElementById('contacts_list_container');
+    container.innerHTML = '';
+
     let groupedContacts = groupContactsByFirstLetter(contact_list);
+
     for (const [letter, contacts] of groupedContacts) {
-        document.getElementById('contacts_list_container').innerHTML += renderLetterbox(letter);
-        contacts.forEach((contact) => {
+        container.innerHTML += renderLetterbox(letter);
+
+        for (let i = 0; i < contacts.length; i++) {
+            const contact = contacts[i];
             const initials = contact['given_name'][0] + contact['name'][0];
             const backgroundColor = contact['color'] ? `style="background-color: ${contact['color']};"` : 'style="background-color: rgb(209,209,209);"';
-            document.getElementById('contacts_list_container').innerHTML += renderSnippetBox(contact, backgroundColor);
+            container.innerHTML += renderSnippetBox(contact, backgroundColor);
             index++; // Zählervariable inkrementieren
-        });
+        }
     }
 }
+
+
 
 /**
  * This function is used to group the contacts sorted in alphabet.
@@ -35,7 +42,7 @@ function initContactList() {
  */
 function groupContactsByFirstLetter(contacts) {
     const groupedContacts = contacts.reduce((map, contact) => {
-        const firstLetter = contact.name[0].toUpperCase();
+        const firstLetter = contact.given_name[0].toUpperCase();
         const contactsWithSameLetter = map.get(firstLetter) || [];
         contactsWithSameLetter.push(contact);
         map.set(firstLetter, contactsWithSameLetter);
