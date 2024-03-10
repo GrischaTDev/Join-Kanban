@@ -51,7 +51,6 @@ function groupContactsByFirstLetter(contacts) {
  * This function is used to open a popup to add a new contact to the contact list.
  */
 function openAddContactCard() {
-    document.getElementById('contacts_list_box').classList.remove('p-fixed');
     document.getElementById('addContactScreen').classList.remove('d-none');
     document.getElementById('add_contact_card').classList.add('move-to-screen');
     setTimeout(removeAnimationsFromOpenAddContactCard, 300);
@@ -81,7 +80,6 @@ function hideAddContactCardFromScreen() {
 function closeAddContactCard() {
     document.getElementById('addContactScreen').classList.add('d-none');
     document.getElementById('add_contact_card').classList.remove('hide-from-screen');
-    document.getElementById('contacts_list_box').classList.add('p-fixed');
 }
 
 
