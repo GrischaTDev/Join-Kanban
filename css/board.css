@@ -671,6 +671,7 @@ h2 {
   overflow-y: auto;
   width: 100%;
   max-width: 500px;
+  position:relative;
 }
 
 .button-edit-ok {
@@ -699,7 +700,7 @@ h2 {
   padding-top: 80px;
   padding-bottom: 100px;
 }
-.close-icon-edit-popup {
+/* .close-icon-edit-popup {
   position: fixed;
   z-index: 9999;
   width: 480px;
@@ -708,17 +709,26 @@ h2 {
   align-items: center;
   background-color: #fff;
   overflow: hidden;
+} */
+
+.close-icon-edit-popup {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
+
 
 .add-task-form-row{
   height: 65%;
 }
 
 .add-task-form-edit{
-  padding-top: 80px;
+  /* padding-top: 80px; */
   display: flex;
   flex-direction: column;
   gap: 16px;
+  height: 80%;
+  overflow-y: scroll;
 }
 
 .button-ok{
@@ -767,7 +777,7 @@ h2 {
 
 @media (max-width: 900px) {
   
-  .close-icon-edit-popup {
+  /* .close-icon-edit-popup {
     position: fixed;
     z-index: 9999;
     width: 315px;
@@ -778,7 +788,7 @@ h2 {
     justify-content: flex-end;
     background-color: #fff;
     overflow: hidden;
-  }
+  } */
   .todo-item{
     margin-bottom: 10px;
   }
