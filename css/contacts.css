@@ -722,7 +722,6 @@ p {
     }
 
     .contacts_container {
-        margin-top: 40px;
         margin-left: 232px;
         height: calc(100vh - 96px);
         width: calc(100vw - 232px);
