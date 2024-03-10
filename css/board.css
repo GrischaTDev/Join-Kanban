@@ -723,11 +723,9 @@ h2 {
 }
 
 .add-task-form-edit{
-  /* padding-top: 80px; */
   display: flex;
   flex-direction: column;
   gap: 16px;
-  height: 80%;
   overflow-y: scroll;
 }
 
