@@ -51,6 +51,7 @@ function groupContactsByFirstLetter(contacts) {
  * This function is used to open a popup to add a new contact to the contact list.
  */
 function openAddContactCard() {
+    document.getElementById('contacts_list_box').classList.remove('p-fixed');
     document.getElementById('addContactScreen').classList.remove('d-none');
     document.getElementById('add_contact_card').classList.add('move-to-screen');
     setTimeout(removeAnimationsFromOpenAddContactCard, 300);
@@ -80,6 +81,7 @@ function hideAddContactCardFromScreen() {
 function closeAddContactCard() {
     document.getElementById('addContactScreen').classList.add('d-none');
     document.getElementById('add_contact_card').classList.remove('hide-from-screen');
+    document.getElementById('contacts_list_box').classList.add('p-fixed');
 }
 
 
@@ -173,6 +175,7 @@ function selectContact(contactId) {
  * @param {string} elements - this are the elements to add or remove classes to show the contact.
  */
 function selectedContactIfElseBranch(elements) {
+    document.getElementById('show-contact').classList.add('z_index1');
     elements.forEach(elementId => {
         const element = document.getElementById(elementId);
         if (element) {
@@ -230,6 +233,7 @@ function deleteSelectedContact(contactId) {
  * This function is used to hide the redered Contact details.
  */
 function closeShowContact() {
+    document.getElementById('show-contact').classList.remove('z_index1');
     document.getElementById('contacts_list_container').classList.add('z_index3');
     document.getElementById('showContactContainer').classList.remove('z_index5');
     document.getElementById('showContactHeaderBox').classList.remove('z_index5');
