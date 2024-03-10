@@ -636,6 +636,7 @@ p {
     }
 
     .contacts_list_box {
+        position: fixed;
         padding-bottom: 80px;
         width: 100%;
     }
@@ -723,7 +724,6 @@ p {
     }
 
     .contacts_list_box {
-        position: fixed;
         min-width: 285px;
         width: 556px;
         padding-top: 16px;
