@@ -226,7 +226,7 @@ function saveTasksToLocalStorage(tasks) {
 /**
  * This function adds a task to allTasks array
  */
-function addTask() {
+async function addTask() {
   let { titel, description, category, urgent, medium, low, dueDate } = getValueFromAddTaskForm();
   let allTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
   let userListData = selectedUser.map(user => ({
@@ -237,6 +237,8 @@ function addTask() {
   let subtasks = todos.map(todo => ({ name: todo, status: false }));
   let task = setVariableforSaveTask(allTasks, titel, description, dueDate, category, userListData, subtasks, urgent, medium, low);
   allTasks.push(task);
+  
+  await createTaskMessage()
   saveTasksToLocalStorage(allTasks);
   showTaskOnPage(task);
   clearAllInputfieldsInAddTask();
@@ -484,5 +486,17 @@ function setMinimumDateForToday(inputId) {
   day = day < 10 ? '0' + day : day;
   const minDate = year + '-' + month + '-' + day;
   document.getElementById(inputId).min = minDate;
+}
+
+
+/**
+ * Confirmation message after successful registration.
+ */
+async function createTaskMessage() {
+  let msg = document.getElementById('msg-box-create-task');
+  msg.classList.remove('d-none');
+  setTimeout(() => {
+    msg.classList.add('d-none'); // Popup ausblenden
+  }, 1500);
 }
 
