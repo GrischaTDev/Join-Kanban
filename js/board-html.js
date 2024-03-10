@@ -10,7 +10,7 @@ function renderAddNewTaskInPopup() {
             <h1>Add Task</h1>
         </div>
 
-        <form onsubmit="addTask(), event.preventDefault()">
+        <form onsubmit="addTask()">
             <div class="add-task-form">
                 <div class="add-task-form-row">
                     <div class="add-task-title">
