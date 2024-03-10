@@ -173,6 +173,7 @@ function selectContact(contactId) {
  * @param {string} elements - this are the elements to add or remove classes to show the contact.
  */
 function selectedContactIfElseBranch(elements) {
+    document.getElementById('show-contact').classList.add('z_index1');
     elements.forEach(elementId => {
         const element = document.getElementById(elementId);
         if (element) {
@@ -230,6 +231,7 @@ function deleteSelectedContact(contactId) {
  * This function is used to hide the redered Contact details.
  */
 function closeShowContact() {
+    document.getElementById('show-contact').classList.remove('z_index1');
     document.getElementById('contacts_list_container').classList.add('z_index3');
     document.getElementById('showContactContainer').classList.remove('z_index5');
     document.getElementById('showContactHeaderBox').classList.remove('z_index5');
