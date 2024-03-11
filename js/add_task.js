@@ -238,12 +238,16 @@ async function addTask() {
   let task = setVariableforSaveTask(allTasks, titel, description, dueDate, category, userListData, subtasks, urgent, medium, low);
   allTasks.push(task);
   
-  await createTaskMessage()
   saveTasksToLocalStorage(allTasks);
+  clearInputFields();
+  await createTaskMessage()
+
+  let currentPage = window.location.pathname;
+  if (currentPage === "/board.html") {
   showTaskOnPage(task);
-  clearAllInputfieldsInAddTask();
   closeAddTaskPopup();
-  showAllTasks(allTasks);
+  initBoard();
+  }
 }
 
 
@@ -278,21 +282,6 @@ function setVariableforSaveTask(allTasks, titel, description, dueDate, category,
     progressfield: "todo_container"
   };
   return task;
-}
-
-
-/**
- * clears all inputfields in addTask form
- */
-function clearAllInputfieldsInAddTask() {
-  document.getElementById('titel').value = '';
-  document.getElementById('description').value = '';
-  document.getElementById('category').value = '';
-  document.getElementById('subtask').value = '';
-  document.getElementById('urgent').classList.remove('active');
-  document.getElementById('medium').classList.add('active');
-  document.getElementById('low').classList.remove('active');
-  document.getElementById('dueDate').value = '';
 }
 
 
