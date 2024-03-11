@@ -664,14 +664,17 @@ h2 {
 
 .task-edit-form {
   height: 800px;
-  background-color: white;
-  border-radius: 24px;
-  padding: 20px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  width: 100%;
-  max-width: 500px;
-  position:relative;
+    background-color: white;
+    border-radius: 24px;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .button-edit-ok {
@@ -687,8 +690,6 @@ h2 {
   text-decoration: none;
   cursor: pointer;
   border: none;
-  position: fixed;
-  z-index: 9999;
 }
 
 .button-edit-ok:hover {
@@ -723,15 +724,14 @@ h2 {
 }
 
 .add-task-form-edit{
-  /* padding-top: 80px; */
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  height: 80%;
-  overflow-y: scroll;
+  padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: scroll;
 }
 
-.button-ok{
+/* .button-ok{
   position: fixed;
   z-index: 9999;
   width: 400px;
@@ -741,7 +741,15 @@ h2 {
   align-items: center;
   background-color: #fff;
   overflow: hidden;
+} */
+
+.button-ok {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px;
 }
+
 .todo-item{
   margin-bottom: 10px;
 }
@@ -763,7 +771,12 @@ h2 {
   display: flex;
 }
 
-
+.plus-button-subtask-edit-popup {
+  cursor: pointer;
+    height: 14px;
+    margin-right: 10px;
+    margin-left: -30px;
+}
 
 @media (min-width: 900px) {
   .addTask_popup {
@@ -793,7 +806,7 @@ h2 {
     margin-bottom: 10px;
   }
   
-  .button-ok{
+  /* .button-ok{
     position: fixed;
     z-index: 9999;
     width: 315px;
@@ -809,7 +822,7 @@ h2 {
   .button-edit-ok:hover {
     background-color: var(--Ligth-blue);
     color: #ffffff;
-  }
+  } */
 
   .add-task-form-popup {
     padding-top: 80px;
@@ -928,7 +941,7 @@ h2 {
   .add-task-text {
     display: none;
   }
-  .button-edit-ok {
+  /* .button-edit-ok {
     font-size: 21px;
     display: flex;
     justify-content: center;
@@ -946,7 +959,7 @@ h2 {
   .button-edit-ok:hover {
     background-color: var(--Ligth-blue);
     color: #ffffff;
-  }
+  } */
 }
 
 /* Responsiv for desktop */

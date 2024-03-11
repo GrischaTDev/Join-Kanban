@@ -113,7 +113,7 @@
                 </div>
                 <div class="add_contact_card_footer">
                     <img class="profile_picture" src="./assets/img/profile_picture.svg" alt="profile picture">
-                    <form class="inputfields" onsubmit="saveAddedContact(); return false;">
+                    <form id="addContactForm" class="inputfields" onsubmit="saveAddedContact(); return false;">
                         <div onclick="hideAddContactCardFromScreen()" class="popup_close_icon">
                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -144,8 +144,8 @@
                             <img class="input_icon" src="./assets/img/mail_icon.svg" alt="email icon">
                         </div>
                         <div class="inputfield_box">
-                            <input id="add_contact_phone" class="inputfield" type="tel" name="phone" required
-                                placeholder="Phone" required>
+                            <input id="add_contact_phone" class="inputfield" type="number" name="phone" required
+                                placeholder="Phone">
                             <img class="input_icon" src="./assets/img/phone_icon.svg" alt="phone icon">
                         </div>
                         <div class="save_contact_box">

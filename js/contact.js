@@ -319,7 +319,8 @@ function hideContactDeletedConfirmation() {
  * This function is used to save an added Contact
  */
 function saveAddedContact() {
-    let form = document.querySelector('.inputfields');
+    let form = document.getElementById('addContactForm');
+
     let first_name = document.getElementById('add_contact_fname');
     let last_name = document.getElementById('add_contact_lname');
     let email = document.getElementById('add_contact_email');

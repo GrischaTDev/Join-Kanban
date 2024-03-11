@@ -113,7 +113,7 @@ function renderEditContactCard(contactData, contactId) {
                 <img class="input_icon" src="./assets/img/mail_icon.svg" alt="email icon">
             </div>
             <div class="inputfield_box">
-                <input id="edit_contact_phone" class="inputfield" type="tel" required placeholder="Phone">
+                <input id="edit_contact_phone" class="inputfield" type="number" name="phone" required placeholder="Phone">
                 <img class="input_icon" src="./assets/img/phone_icon.svg" alt="phone icon">
             </div>
             <div class="save_contact_box">
