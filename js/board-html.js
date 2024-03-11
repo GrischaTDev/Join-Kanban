@@ -485,11 +485,10 @@ function renderAllTasksInProgressfieldDone(task, urgentSymbolHTML, mediumSymbolH
  */
 function renderEmptyProgressfieldTodo() {
     return /*html*/`
-    <div>
-      <div class="no-tasks desktop-no-tasks">
+    <div class="no-tasks desktop-no-tasks">
         <span>No tasks to do</span>
-      </div>
-    </div>`;
+    </div>
+    `;
   }
 
 
