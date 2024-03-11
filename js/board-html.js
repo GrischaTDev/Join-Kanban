@@ -301,8 +301,13 @@ function generateHtmlForEditPopup(taskId) {
     <div class="subtask-container">
         <span>Subtask</span>
         <div class="input-sub-field">
-            <input class="input-subtask" id="subtask" placeholder="Add new subtask"/>
-            <img src="./assets/img/add_subtask.svg" class="suffix" id="addButton" alt="" onclick="addTodo()">
+            <input class="input-subtask" id="subtask" />
+            <div onclick="addTodo();" id="addButton" class="plus-button-subtask-edit-popup">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" fill="none">
+                <path fill="#2A3647"
+                   d="M6.249 8h-5a.968.968 0 0 1-.713-.287A.968.968 0 0 1 .249 7c0-.283.095-.52.287-.713A.968.968 0 0 1 1.249 6h5V1c0-.283.095-.52.287-.713A.968.968 0 0 1 7.249 0c.283 0 .52.096.712.287.192.192.288.43.288.713v5h5c.283 0 .52.096.712.287.192.192.287.43.287.713s-.095.52-.287.713a.967.967 0 0 1-.713.287h-5v5c0 .283-.095.52-.287.713a.967.967 0 0 1-.712.287.967.967 0 0 1-.713-.287.968.968 0 0 1-.287-.713V8Z" />
+                </svg>
+            </div>
         </div>
         <ul id="mylist"></ul>
     </div>
@@ -481,12 +486,51 @@ function renderAllTasksInProgressfieldDone(task, urgentSymbolHTML, mediumSymbolH
 
 /**
  * 
- * @returns If no oneThis function shows a message, that 
+ * @returns If there are no tasks in progressfield it shows this message
  */
 function renderEmptyProgressfieldTodo() {
     return /*html*/`
     <div class="no-tasks desktop-no-tasks">
         <span>No tasks to do</span>
+    </div>
+    `;
+  }
+
+
+  /**
+ * 
+ * @returns If there are no tasks in progressfield it shows this message
+ */
+function renderEmptyProgressfieldInProgress() {
+    return /*html*/`
+    <div class="no-tasks desktop-no-tasks">
+        <span>No tasks in progress</span>
+    </div>
+    `;
+  }
+
+
+  /**
+ * 
+ * @returns If there are no tasks in progressfield it shows this message
+ */
+function renderEmptyProgressfieldAwaitFeedback() {
+    return /*html*/`
+    <div class="no-tasks desktop-no-tasks">
+        <span>No tasks in await feedback</span>
+    </div>
+    `;
+  }
+
+
+  /**
+ * 
+ * @returns If there are no tasks in progressfield it shows this message
+ */
+function renderEmptyProgressfieldDone() {
+    return /*html*/`
+    <div class="no-tasks desktop-no-tasks">
+        <span>No tasks done</span>
     </div>
     `;
   }
