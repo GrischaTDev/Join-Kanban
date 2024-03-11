@@ -486,12 +486,51 @@ function renderAllTasksInProgressfieldDone(task, urgentSymbolHTML, mediumSymbolH
 
 /**
  * 
- * @returns If no oneThis function shows a message, that 
+ * @returns If there are no tasks in progressfield it shows this message
  */
 function renderEmptyProgressfieldTodo() {
     return /*html*/`
     <div class="no-tasks desktop-no-tasks">
         <span>No tasks to do</span>
+    </div>
+    `;
+  }
+
+
+  /**
+ * 
+ * @returns If there are no tasks in progressfield it shows this message
+ */
+function renderEmptyProgressfieldInProgress() {
+    return /*html*/`
+    <div class="no-tasks desktop-no-tasks">
+        <span>No tasks in progress</span>
+    </div>
+    `;
+  }
+
+
+  /**
+ * 
+ * @returns If there are no tasks in progressfield it shows this message
+ */
+function renderEmptyProgressfieldAwaitFeedback() {
+    return /*html*/`
+    <div class="no-tasks desktop-no-tasks">
+        <span>No tasks in await feedback</span>
+    </div>
+    `;
+  }
+
+
+  /**
+ * 
+ * @returns If there are no tasks in progressfield it shows this message
+ */
+function renderEmptyProgressfieldDone() {
+    return /*html*/`
+    <div class="no-tasks desktop-no-tasks">
+        <span>No tasks done</span>
     </div>
     `;
   }
