@@ -456,11 +456,15 @@ function filterAndRenderTasksForInProgress(allTasks) {
     (t) => t["progressfield"] == "inprogress_container"
   );
   document.getElementById("inprogress_container").innerHTML = "";
+  if (inprogress_container.length === 0) {
+    document.getElementById('inprogress_container').innerHTML = renderEmptyProgressfieldInProgress();
+  } else {
   for (let i = 0; i < inprogress_container.length; i++) {
     let task = inprogress_container[i];
     let taskDetails = calculateTaskDetails(task);
     document.getElementById("inprogress_container").innerHTML += renderAllTasksInProgressfieldInProgress(task, taskDetails.urgentSymbolHTML, taskDetails.mediumSymbolHTML, taskDetails.lowSymbolHTML, taskDetails.userInitialsHTML, taskDetails.progressPercentage, taskDetails.completedSubtasks, taskDetails.totalSubtasks);
   }
+}
 }
 
 
@@ -474,11 +478,15 @@ function filterAndRenderTasksAwaitFeedback(allTasks) {
     (t) => t["progressfield"] == "await_feedback_container"
   );
   document.getElementById("await_feedback_container").innerHTML = "";
+  if (await_feedback_container.length === 0) {
+    document.getElementById('await_feedback_container').innerHTML = renderEmptyProgressfieldAwaitFeedback();
+  } else {
   for (let i = 0; i < await_feedback_container.length; i++) {
     let task = await_feedback_container[i];
     let taskDetails = calculateTaskDetails(task);
     document.getElementById("await_feedback_container").innerHTML += renderAllTasksInProgressfieldAwaitFeedback(task, taskDetails.urgentSymbolHTML, taskDetails.mediumSymbolHTML, taskDetails.lowSymbolHTML, taskDetails.userInitialsHTML, taskDetails.progressPercentage, taskDetails.completedSubtasks, taskDetails.totalSubtasks);
   }
+}
 }
 
 
@@ -492,13 +500,16 @@ function filterAndRenderTasksDone(allTasks) {
     (t) => t["progressfield"] == "done_container"
   );
   document.getElementById("done_container").innerHTML = "";
+  if (done_container.length === 0) {
+    document.getElementById('done_container').innerHTML = renderEmptyProgressfieldDone();
+  } else {
   for (let i = 0; i < done_container.length; i++) {
     let task = done_container[i];
     let taskDetails = calculateTaskDetails(task);
     document.getElementById("done_container").innerHTML += renderAllTasksInProgressfieldDone(task, taskDetails.urgentSymbolHTML, taskDetails.mediumSymbolHTML, taskDetails.lowSymbolHTML, taskDetails.userInitialsHTML, taskDetails.progressPercentage, taskDetails.completedSubtasks, taskDetails.totalSubtasks);
   }
 }
-
+}
 
 /**
  * this function calculates all tasks details
