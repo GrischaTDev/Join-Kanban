@@ -75,7 +75,6 @@ p {
 .contacts_list {
     overflow-y: auto;
     background-color: white;
-    padding: 24px;
 }
 
 .contact_list_snippet_box {
@@ -373,7 +372,7 @@ p {
 }
 
 .showContactContainer {
-    margin-top: 23px;
+    /* margin-top: 23px; */
     margin-bottom: 80px;
     height: 84%;
     width: 100%;
@@ -650,6 +649,10 @@ p {
         width: 100%;
     }
 
+    .contacts_list {
+        padding: 0 24px 86px 24px;
+    }
+
     .add_new_contact_text {
         display: none;
     }
@@ -739,6 +742,10 @@ p {
         flex-direction: column;
         background-color: white;
         box-shadow: 4px, 5px, 6px, 5px rgba(0, 0, 0, 1.0);
+    }
+
+    .contacts_list {
+        padding: 0 24px;
     }
 
     .contacts_container {
