@@ -1061,6 +1061,7 @@ h2 {
   .desktop-no-tasks {
     width: 300px;
     height: 48px;
+    margin-bottom: 300px;
   }
 }
 
