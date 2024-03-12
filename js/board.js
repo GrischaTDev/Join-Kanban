@@ -257,16 +257,6 @@ function nameInitialLettersAddTasks(user) {
 }
 
 
-// /**
-//  * this function is used to prevent to close a popup by clicking on it
-//  * 
-//  * @param {*} event 
-//  */
-// function doNotClose(event) {
-//   event.stopPropagation();
-// }
-
-
 /**
  * This function is used to add or remove with toggle a user to userlist in addTask popup
  * 
@@ -459,12 +449,12 @@ function filterAndRenderTasksForInProgress(allTasks) {
   if (inprogress_container.length === 0) {
     document.getElementById('inprogress_container').innerHTML = renderEmptyProgressfieldInProgress();
   } else {
-  for (let i = 0; i < inprogress_container.length; i++) {
-    let task = inprogress_container[i];
-    let taskDetails = calculateTaskDetails(task);
-    document.getElementById("inprogress_container").innerHTML += renderAllTasksInProgressfieldInProgress(task, taskDetails.urgentSymbolHTML, taskDetails.mediumSymbolHTML, taskDetails.lowSymbolHTML, taskDetails.userInitialsHTML, taskDetails.progressPercentage, taskDetails.completedSubtasks, taskDetails.totalSubtasks);
+    for (let i = 0; i < inprogress_container.length; i++) {
+      let task = inprogress_container[i];
+      let taskDetails = calculateTaskDetails(task);
+      document.getElementById("inprogress_container").innerHTML += renderAllTasksInProgressfieldInProgress(task, taskDetails.urgentSymbolHTML, taskDetails.mediumSymbolHTML, taskDetails.lowSymbolHTML, taskDetails.userInitialsHTML, taskDetails.progressPercentage, taskDetails.completedSubtasks, taskDetails.totalSubtasks);
+    }
   }
-}
 }
 
 
@@ -481,12 +471,12 @@ function filterAndRenderTasksAwaitFeedback(allTasks) {
   if (await_feedback_container.length === 0) {
     document.getElementById('await_feedback_container').innerHTML = renderEmptyProgressfieldAwaitFeedback();
   } else {
-  for (let i = 0; i < await_feedback_container.length; i++) {
-    let task = await_feedback_container[i];
-    let taskDetails = calculateTaskDetails(task);
-    document.getElementById("await_feedback_container").innerHTML += renderAllTasksInProgressfieldAwaitFeedback(task, taskDetails.urgentSymbolHTML, taskDetails.mediumSymbolHTML, taskDetails.lowSymbolHTML, taskDetails.userInitialsHTML, taskDetails.progressPercentage, taskDetails.completedSubtasks, taskDetails.totalSubtasks);
+    for (let i = 0; i < await_feedback_container.length; i++) {
+      let task = await_feedback_container[i];
+      let taskDetails = calculateTaskDetails(task);
+      document.getElementById("await_feedback_container").innerHTML += renderAllTasksInProgressfieldAwaitFeedback(task, taskDetails.urgentSymbolHTML, taskDetails.mediumSymbolHTML, taskDetails.lowSymbolHTML, taskDetails.userInitialsHTML, taskDetails.progressPercentage, taskDetails.completedSubtasks, taskDetails.totalSubtasks);
+    }
   }
-}
 }
 
 
@@ -503,12 +493,12 @@ function filterAndRenderTasksDone(allTasks) {
   if (done_container.length === 0) {
     document.getElementById('done_container').innerHTML = renderEmptyProgressfieldDone();
   } else {
-  for (let i = 0; i < done_container.length; i++) {
-    let task = done_container[i];
-    let taskDetails = calculateTaskDetails(task);
-    document.getElementById("done_container").innerHTML += renderAllTasksInProgressfieldDone(task, taskDetails.urgentSymbolHTML, taskDetails.mediumSymbolHTML, taskDetails.lowSymbolHTML, taskDetails.userInitialsHTML, taskDetails.progressPercentage, taskDetails.completedSubtasks, taskDetails.totalSubtasks);
+    for (let i = 0; i < done_container.length; i++) {
+      let task = done_container[i];
+      let taskDetails = calculateTaskDetails(task);
+      document.getElementById("done_container").innerHTML += renderAllTasksInProgressfieldDone(task, taskDetails.urgentSymbolHTML, taskDetails.mediumSymbolHTML, taskDetails.lowSymbolHTML, taskDetails.userInitialsHTML, taskDetails.progressPercentage, taskDetails.completedSubtasks, taskDetails.totalSubtasks);
+    }
   }
-}
 }
 
 /**
@@ -527,15 +517,6 @@ function calculateTaskDetails(task) {
   return { urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, completedSubtasks, totalSubtasks, progressPercentage, };
 }
 
-
-// /**
-//  * this function allows to drag an element
-//  * 
-//  * @param {*} index 
-//  */
-// function startDragging(index) {
-//   currentDraggedElement = index;
-// }
 
 /**
  * This function allows dragging an element
@@ -558,19 +539,6 @@ function allowDrop(ev) {
 }
 
 
-// /**
-//  * this function moves a task in other progressfields
-//  * 
-//  * @param {*} progressfield 
-//  */
-// function moveTo(progressfield) {
-//   const taskIndex = currentDraggedElement - 1;
-//   allTasks[taskIndex]["progressfield"] = progressfield;
-//   localStorage.setItem("allTasks", JSON.stringify(allTasks));
-//   showAllTasks(allTasks);
-// }
-
-
 /**
  * This function moves a task to another progress field
  * 
@@ -586,61 +554,6 @@ function moveTo(progressfield) {
     console.error("Task not found.");
   }
 }
-
-
-
-// /**
-//  * This function moves a task to another progressfield.
-//  * 
-//  * @param {string} progressfield - The destination progressfield for the task.
-//  * @param {string} taskId - The ID of the task to be moved.
-//  */
-// function moveTo(progressfield, taskId) {
-//   // Find the task by its ID
-//   const task = findTaskById(taskId);
-
-//   if (task) {
-//     // Update the progressfield of the task
-//     task["progressfield"] = progressfield;
-
-//     // Update the tasks in local storage
-//     localStorage.setItem("allTasks", JSON.stringify(allTasks));
-
-//     // Update the UI to reflect the changes
-//     showAllTasks(allTasks);
-//   } else {
-//     console.error("Task not found.");
-//   }
-// }
-
-
-// /**
-//  * This function moves a task to another progress field
-//  * 
-//  * @param {string} progressfield The progress field to move the task to
-//  */
-// function moveTo(progressfield) {
-//   // Überprüfe, ob currentDraggedElement definiert und größer als 0 ist
-//   if (currentDraggedElement && currentDraggedElement > 0) {
-//     const taskIndex = currentDraggedElement - 1;
-//     // Überprüfe, ob der Index innerhalb des Bereichs der Aufgabenliste liegt
-//     if (taskIndex >= 0 && taskIndex < allTasks.length) {
-//       allTasks[taskIndex]["progressfield"] = progressfield;
-//       localStorage.setItem("allTasks", JSON.stringify(allTasks));
-//       showAllTasks(allTasks);
-//     } else {
-//       console.error("Ungültiger Aufgabenindex.");
-//     }
-//   } else {
-//     console.error("currentDraggedElement ist nicht definiert oder ungültig.");
-//   }
-// }
-
-
-
-
-
-
 
 
 /**

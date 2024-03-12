@@ -494,83 +494,83 @@ function renderEmptyProgressfieldTodo() {
         <span>No tasks to do</span>
     </div>
     `;
-  }
+}
 
 
-  /**
- * 
- * @returns If there are no tasks in progressfield it shows this message
- */
+/**
+* 
+* @returns If there are no tasks in progressfield it shows this message
+*/
 function renderEmptyProgressfieldInProgress() {
     return /*html*/`
     <div class="no-tasks desktop-no-tasks">
         <span>No tasks in progress</span>
     </div>
     `;
-  }
+}
 
 
-  /**
- * 
- * @returns If there are no tasks in progressfield it shows this message
- */
+/**
+* 
+* @returns If there are no tasks in progressfield it shows this message
+*/
 function renderEmptyProgressfieldAwaitFeedback() {
     return /*html*/`
     <div class="no-tasks desktop-no-tasks">
         <span>No tasks in await feedback</span>
     </div>
     `;
-  }
+}
 
 
-  /**
- * 
- * @returns If there are no tasks in progressfield it shows this message
- */
+/**
+* 
+* @returns If there are no tasks in progressfield it shows this message
+*/
 function renderEmptyProgressfieldDone() {
     return /*html*/`
     <div class="no-tasks desktop-no-tasks">
         <span>No tasks done</span>
     </div>
     `;
-  }
+}
 
 
-  /**
- * Renders subtasks in the popup window.
- * 
- * @param {number} taskId - The ID of the task.
- * @param {Object} subtask - The subtask object.
- * @returns {string} - HTML markup for rendering subtasks.
- */
+/**
+* Renders subtasks in the popup window.
+* 
+* @param {number} taskId - The ID of the task.
+* @param {Object} subtask - The subtask object.
+* @returns {string} - HTML markup for rendering subtasks.
+*/
 function renderSubtasksInPopup(taskId, subtask) {
     return /*html*/`
     <div class="form-check">
         <input class="form-check-input form-check-input-mobile" type="checkbox" id="subtask_${subtask.name
-          }" ${subtask.status ? "checked" : ""
-          } onchange="updateSubtaskStatus(${taskId}, '${subtask.name}', this.checked)">
+        }" ${subtask.status ? "checked" : ""
+        } onchange="updateSubtaskStatus(${taskId}, '${subtask.name}', this.checked)">
         <label class="form-check-label" for="subtask_${subtask.name}">${subtask.name
-          }</label>
+        }</label>
     </div>
   `;
-  }
-  
+}
 
-  /**
-   * Renders initials for users in the popup window.
-   * 
-   * @param {Object} user - The user object.
-   * @returns {string} - HTML markup for rendering user initials.
-   */
-  function renderInitialsForPopup(user) {
+
+/**
+ * Renders initials for users in the popup window.
+ * 
+ * @param {Object} user - The user object.
+ * @returns {string} - HTML markup for rendering user initials.
+ */
+function renderInitialsForPopup(user) {
     return /*html*/`
   <div class="user-details user-details-mobile">
       <div class="initials-circle-two initials-circle-mobile" style="background-color: ${user.backgroundcolor
-  };">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
+        };">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
       <div class="user-full-name user-full-name-mobile">${user.fname} ${user.lname
-  }</div>
+        }</div>
   </div>`;
-  }
+}
 
 
 /**
@@ -578,30 +578,30 @@ function renderSubtasksInPopup(taskId, subtask) {
  * 
  * @param {*} user 
  */
-  function renderAssignedUserInEditPopup(user) {
+function renderAssignedUserInEditPopup(user) {
     return /*html*/ `
     <div class="user-details">
         <div class="initials-circle" style="background-color: ${user.backgroundcolor};">${user.fname.charAt(0)}${user.lname.charAt(0)}</div>
     </div>
   `;
-  }
+}
 
-  
+
 /**
  * this function is used to render the user list in editPopup
  */
 function renderUserListInEditPopup(user, userColor, initialLetters, i) {
-  return/* html */ `
+    return/* html */ `
         <div id="currentUser${i}" class="userColumn ${isUSerSelectedEdit(user.id) ? "user-list-active" : ""
-    }" onclick="toggleAddUserEdit(${user.id})">
+        }" onclick="toggleAddUserEdit(${user.id})">
           <div class="user-name">
             <span class="letter-icon" style="background-color:${userColor}">${initialLetters}</span>
             <div>${user.name}</div>
           </div>
           <img id="user-checkbox${i}" src="${isUSerSelectedEdit(user.id)
-      ? "./assets/img/checkbox_active_white.svg"
-      : "./assets/img/checkbox.svg"
-    }" alt="">
+            ? "./assets/img/checkbox_active_white.svg"
+            : "./assets/img/checkbox.svg"
+        }" alt="">
         </div>
       `;
 }
