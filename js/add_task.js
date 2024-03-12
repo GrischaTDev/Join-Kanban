@@ -267,7 +267,7 @@ async function addTask() {
  */
 function setVariableforSaveTask(allTasks, titel, description, dueDate, category, userListData, subtasks, urgent, medium, low) {
   let task = {
-    id: allTasks.length > 0 ? allTasks[allTasks.length - 1].id + 1 : 0,
+    id: allTasks.length > 0 ? allTasks[allTasks.length - 1].id + 1 : 1,
     titel: titel,
     description: description,
     dueDate: dueDate,
