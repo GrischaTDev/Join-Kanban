@@ -116,5 +116,37 @@ let allTasks = [
         "backgroundcolor": "#33A5FF"
       }],
       "progressfield": "done_container"
+    },
+    {
+      "id": 5,
+      "category": "user-story",
+      "description": "The new feature needs to check, if there are issues",
+      "dueDate": "2024-03-25",
+      "priority": {
+        "low": true,
+        "medium": false,
+        "urgent": false
+      },
+      "subtask": [
+        { "name": "check bugs", "status": true },
+        { "name": "clean code", "status": true },
+        { "name": "check errors", "status": true },
+        { "name": "check responsiveness", "status": true }
+      ],
+      "titel": "Test new feature",
+      "userList": [{
+        "fname": "Anja",
+        "lname": "Schulz",
+        "backgroundcolor": "#FF7A00"
+      }, {
+        "fname": "Benedict",
+        "lname": "Ziegler",
+        "backgroundcolor": "#6E52FF"
+      }, {
+        "fname": "Marcel",
+        "lname": "Bauer",
+        "backgroundcolor": "#8A462F"
+      }],
+      "progressfield": "done_container"
     }
   ];

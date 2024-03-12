@@ -528,14 +528,24 @@ function calculateTaskDetails(task) {
 }
 
 
+// /**
+//  * this function allows to drag an element
+//  * 
+//  * @param {*} index 
+//  */
+// function startDragging(index) {
+//   currentDraggedElement = index;
+// }
+
 /**
- * this function allows to drag an element
+ * This function allows dragging an element
  * 
- * @param {*} index 
+ * @param {*} taskId - The ID of the task being dragged
  */
-function startDragging(index) {
-  currentDraggedElement = index;
+function startDragging(taskId) {
+  currentDraggedElement = taskId;
 }
+
 
 
 /**
@@ -548,17 +558,89 @@ function allowDrop(ev) {
 }
 
 
+// /**
+//  * this function moves a task in other progressfields
+//  * 
+//  * @param {*} progressfield 
+//  */
+// function moveTo(progressfield) {
+//   const taskIndex = currentDraggedElement - 1;
+//   allTasks[taskIndex]["progressfield"] = progressfield;
+//   localStorage.setItem("allTasks", JSON.stringify(allTasks));
+//   showAllTasks(allTasks);
+// }
+
+
 /**
- * this function moves a task in other progressfields
+ * This function moves a task to another progress field
  * 
- * @param {*} progressfield 
+ * @param {*} progressfield - The progress field to move the task to
  */
 function moveTo(progressfield) {
-  const taskIndex = currentDraggedElement - 1;
-  allTasks[taskIndex]["progressfield"] = progressfield;
-  localStorage.setItem("allTasks", JSON.stringify(allTasks));
-  showAllTasks(allTasks);
+  const task = allTasks.find(task => task.id === currentDraggedElement);
+  if (task) {
+    task.progressfield = progressfield;
+    localStorage.setItem("allTasks", JSON.stringify(allTasks));
+    showAllTasks(allTasks);
+  } else {
+    console.error("Task not found.");
+  }
 }
+
+
+
+// /**
+//  * This function moves a task to another progressfield.
+//  * 
+//  * @param {string} progressfield - The destination progressfield for the task.
+//  * @param {string} taskId - The ID of the task to be moved.
+//  */
+// function moveTo(progressfield, taskId) {
+//   // Find the task by its ID
+//   const task = findTaskById(taskId);
+
+//   if (task) {
+//     // Update the progressfield of the task
+//     task["progressfield"] = progressfield;
+
+//     // Update the tasks in local storage
+//     localStorage.setItem("allTasks", JSON.stringify(allTasks));
+
+//     // Update the UI to reflect the changes
+//     showAllTasks(allTasks);
+//   } else {
+//     console.error("Task not found.");
+//   }
+// }
+
+
+// /**
+//  * This function moves a task to another progress field
+//  * 
+//  * @param {string} progressfield The progress field to move the task to
+//  */
+// function moveTo(progressfield) {
+//   // Überprüfe, ob currentDraggedElement definiert und größer als 0 ist
+//   if (currentDraggedElement && currentDraggedElement > 0) {
+//     const taskIndex = currentDraggedElement - 1;
+//     // Überprüfe, ob der Index innerhalb des Bereichs der Aufgabenliste liegt
+//     if (taskIndex >= 0 && taskIndex < allTasks.length) {
+//       allTasks[taskIndex]["progressfield"] = progressfield;
+//       localStorage.setItem("allTasks", JSON.stringify(allTasks));
+//       showAllTasks(allTasks);
+//     } else {
+//       console.error("Ungültiger Aufgabenindex.");
+//     }
+//   } else {
+//     console.error("currentDraggedElement ist nicht definiert oder ungültig.");
+//   }
+// }
+
+
+
+
+
+
 
 
 /**
