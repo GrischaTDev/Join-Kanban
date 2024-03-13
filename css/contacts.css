@@ -394,7 +394,7 @@ p {
 .showContactFooterBox {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px;
     animation: move-from-right-to-screen 250ms ease forwards !important;
 }
 
@@ -597,7 +597,6 @@ p {
 }
 
 @media(max-width:900px) {
-
 
     .move-to-screen {
         animation: push-from-bottom-to-screen 250ms ease forwards;
@@ -921,7 +920,6 @@ p {
         font-size: 22px;
         margin-right: 20px;
     }
-
 }
 
 @media(max-height:750px) {

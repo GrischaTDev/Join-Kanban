@@ -34,7 +34,7 @@ function renderAddNewTaskInPopup() {
                                 src="./assets/img/arrow_drop_down_1.svg" alt="">
                         </div>
                         <div id="user-list" class="d-none" onclick="doNotClose(event)"></div>
-                        <div id="selected-user"></div>
+                        <div id="selected-user" class="selected-user-container"></div>
                     </div>
                 </div>
 
@@ -313,7 +313,7 @@ function generateHtmlForEditPopup(taskId) {
     <img onclick="openUserList(event)" id="input-icon" class="input-arrow" src="./assets/img/arrow_drop_down_1.svg" alt="">
       </div>
       <div id="user-list" class="d-none" onclick="doNotClose(event)"></div>
-    <div id="selected-user"></div>
+    <div id="selected-user" class="selected-user-container"></div>
     </div>
     <div class="add-task-title">
         <span>Due a date<span class="red-asterisk">*</span></span>
