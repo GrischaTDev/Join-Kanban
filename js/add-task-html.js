@@ -50,7 +50,7 @@ function generateTaskHtml(todo, i) {
   return /*html*/`
     <div>
         <span>${todo}</span>
-        <input size="60" class="edit-input d-none" value="${todo}" onchange="updateTodo(${i}, this.value)">
+        <input class="edit-input d-none" value="${todo}" onchange="updateTodo(${i}, this.value)">
         </div>
     <div class="actions d-none">
         <a href="#/" onclick='editTodo(${i})'><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

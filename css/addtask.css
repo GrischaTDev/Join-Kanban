@@ -352,6 +352,10 @@ textarea {
   display: none;
 }
 
+#mylist {
+  padding: 0;
+}
+
 #mylist li:hover .actions {
   display: flex;
 }
@@ -359,8 +363,17 @@ textarea {
 .todo-item {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  padding: 8px;
+  box-sizing: border-box;
+}
 
+.edit-input {
+  font-size: 16px;
+  padding: 10px 0;
+  border: none;
+  font-family: "Inter", sans-serif;
+  outline: none;
+  background-color: #f6f7f8;
 }
 
 #mylist li::before {
@@ -379,7 +392,6 @@ textarea {
 }
 
 ul {
-  margin-left: -40px;
   color: black;
 }
 
