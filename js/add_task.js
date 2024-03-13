@@ -445,6 +445,9 @@ function editTodo(index) {
   if (!inputField.classList.contains("d-none")) {
     inputField.focus();
   }
+  let newStyle = document.getElementById('todo-id');
+  newStyle.classList.remove('todo-item');
+  newStyle.classList.add('todo-style');
 }
 
 

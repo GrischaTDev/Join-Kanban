@@ -367,6 +367,19 @@ textarea {
   box-sizing: border-box;
 }
 
+.todo-style {
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  box-sizing: border-box;
+  background-color: white;
+  border-bottom: 1px solid var(--Ligth-blue);
+}
+
+.todo-style input {
+  background-color: white;
+}
+
 .edit-input {
   font-size: 16px;
   padding: 10px 0;
@@ -384,7 +397,7 @@ textarea {
   margin-right: 10px;
 }
 
-#mylist li:hover {
+.todo-item:hover {
   width: 100%;
   background-color: #f0f0f0;
   transition: background-color 0.3s ease;
