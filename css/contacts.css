@@ -517,7 +517,8 @@ p {
 }
 
 .contacts_container {
-   overflow: hidden;
+    padding-top: 80px;
+    overflow: hidden;
     display: flex;
 }
 

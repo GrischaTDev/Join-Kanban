@@ -7,8 +7,9 @@ body {
 
 
 .content {
+  padding-top: 80px;
   margin: 130px 16px 30px 16px;
-  height: 100vh;
+ 
 }
 
 .input-container {
