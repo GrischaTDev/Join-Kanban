@@ -147,6 +147,75 @@ function renderAddNewTaskInPopup() {
 }
 
 
+// /**
+//  * This function is used to render the HTML of the Popup.
+//  * 
+//  * @param {Object} task - The task object containing details about the task.
+//  * @param {string} urgentSymbolHTML - HTML representing the urgent priority symbol.
+//  * @param {string} mediumSymbolHTML - HTML representing the medium priority symbol.
+//  * @param {string} lowSymbolHTML - HTML representing the low priority symbol.
+//  * @param {string} userNamesHTML - HTML representing the assigned users' names and initials.
+//  * @param {string} subtasksHTML - HTML representing the subtasks of the task.
+//  * @returns {string} - The HTML string representing the popup.
+//  */
+// function renderTaskDetailsInPopup(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userNamesHTML, subtasksHTML) {
+//     return /*html*/ `
+//     <div class="complete_board_popup" onclick="doNotClose(event)">
+//         <div class="popup-card popup-card-mobile", onclick="doNotClose(event)">
+//         <div class="board_popup board_popup_mobile">
+//             <div class="flex-container-head">
+//                 <div class="task_popup_${task.category}">
+//                     <p>${task.category}</p>
+//                 </div>
+//                 <div class="close_icon_box">
+//                     <img class="img_popup img_popup_mobile" style="cursor: pointer;" onclick="closeIncomePopup()"
+//                         src="./assets/img/close_icon.svg" alt="close Button">
+//                 </div>
+//             </div>
+            
+//             <textarea class="titelarea titelarea-mobile">${task.titel}</textarea>
+      
+     
+//             <textarea class="descriptionarea descriptionarea-mobile">${task.description}</textarea>
+        
+//             <div class="due_date_popup due-date-popup-mobile">
+//                 <p style="color: #42526E;">Due Date:</p>
+//                 <p id="variable_date">${task.dueDate}</p>
+//             </div>
+//             <div class="priority_popup priority-popup-mobile">
+//                 <p class="prioity_container prioity-container-mobile" style="color: #42526E;">Priority:</p>
+//                 ${urgentSymbolHTML}
+//                 ${mediumSymbolHTML}
+//                 ${lowSymbolHTML}
+//             </div>
+//             <div class="assigned-popup">
+//     <p class="assigned-mobile" style="color: #42526E;">Assigned to:</p>
+//     <div class="user-container-popup">
+//         ${userNamesHTML} 
+//     </div>
+//     <p class="subtask_container subtask-container-mobile" style="color: #42526E;">Subtasks</p>
+//     <div class="subtask-list subtask-list-mobile">
+//         ${subtasksHTML} 
+//     </div>
+//     <div class="edit-delete" id="edit">
+//         <a class="button-delete-edit" href="#" onclick="deleteTask(${task.id})">
+//             <img class="edit-delete-img edit-delete-img-mobile" src="/assets/img/delete_icon.svg"
+//                 alt="Bild plus Button" />
+//             <div class="edit-delete-popup-button edit-delete-popup-button-mobile">Delete</div>
+//         </a>
+//         <a class="button-delete-edit" href="#" onclick="editPopup(${task.id})">
+//             <img class="edit-delete-img edit-delete-img-mobile" src="/assets/img/edit_icon.svg"
+//                 alt="Bild plus Button" />
+//             <div class="edit-delete-popup-button edit-delete-popup-button-mobile">Edit</div>
+//         </a>
+//     </div>
+// </div>
+//         </div>
+//     </div>
+// `;
+// }
+
+
 /**
  * This function is used to render the HTML of the Popup.
  * 
@@ -160,61 +229,62 @@ function renderAddNewTaskInPopup() {
  */
 function renderTaskDetailsInPopup(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userNamesHTML, subtasksHTML) {
     return /*html*/ `
-    <div class="complete_board_popup" onclick="doNotClose(event)">
-        <div class="popup-card popup-card-mobile", onclick="doNotClose(event)">
-        <div class="board_popup board_popup_mobile">
-            <div class="flex-container-head">
-                <div class="task_popup_${task.category}">
-                    <p>${task.category}</p>
-                </div>
-                <div class="close_icon_box">
-                    <img class="img_popup img_popup_mobile" style="cursor: pointer;" onclick="closeIncomePopup()"
-                        src="./assets/img/close_icon.svg" alt="close Button">
-                </div>
+<div class="task-edit-form" onclick="doNotClose(event)">
+        <div class="flex-container-head">
+            <div class="task_popup_${task.category}">
+                <p>${task.category}</p>
             </div>
-            
+            <div class="close_icon_box">
+                <img class="img_popup img_popup_mobile" style="cursor: pointer;" onclick="closeIncomePopup()"
+                    src="./assets/img/close_icon.svg" alt="close Button">
+            </div>
+        </div>
+        <div class="board-popup-content">
             <textarea class="titelarea titelarea-mobile">${task.titel}</textarea>
-      
-     
+
             <textarea class="descriptionarea descriptionarea-mobile">${task.description}</textarea>
-        
+
             <div class="due_date_popup due-date-popup-mobile">
                 <p style="color: #42526E;">Due Date:</p>
                 <p id="variable_date">${task.dueDate}</p>
             </div>
+
             <div class="priority_popup priority-popup-mobile">
                 <p class="prioity_container prioity-container-mobile" style="color: #42526E;">Priority:</p>
                 ${urgentSymbolHTML}
                 ${mediumSymbolHTML}
                 ${lowSymbolHTML}
             </div>
+
             <div class="assigned-popup">
-    <p class="assigned-mobile" style="color: #42526E;">Assigned to:</p>
-    <div class="user-container-popup">
-        ${userNamesHTML} 
-    </div>
-    <p class="subtask_container subtask-container-mobile" style="color: #42526E;">Subtasks</p>
-    <div class="subtask-list subtask-list-mobile">
-        ${subtasksHTML} 
-    </div>
-    <div class="edit-delete" id="edit">
-        <a class="button-delete-edit" href="#" onclick="deleteTask(${task.id})">
-            <img class="edit-delete-img edit-delete-img-mobile" src="/assets/img/delete_icon.svg"
-                alt="Bild plus Button" />
-            <div class="edit-delete-popup-button edit-delete-popup-button-mobile">Delete</div>
-        </a>
-        <a class="button-delete-edit" href="#" onclick="editPopup(${task.id})">
-            <img class="edit-delete-img edit-delete-img-mobile" src="/assets/img/edit_icon.svg"
-                alt="Bild plus Button" />
-            <div class="edit-delete-popup-button edit-delete-popup-button-mobile">Edit</div>
-        </a>
-    </div>
-</div>
+                <p class="assigned-mobile" style="color: #42526E;">Assigned to:</p>
+                <div class="user-container-popup">
+                    ${userNamesHTML}
+                </div>
+            </div>
+            <p class="subtask_container subtask-container-mobile" style="color: #42526E;">Subtasks</p>
+            <div class="subtask-list subtask-list-mobile">
+                ${subtasksHTML}
+            </div>
         </div>
-    </div>
+        <div class="edit-delete" id="edit">
+            <a class="button-delete-edit" href="#" onclick="deleteTask(${task.id})">
+                <img class="edit-delete-img edit-delete-img-mobile" src="/assets/img/delete_icon.svg"
+                    alt="Bild plus Button" />
+                <div class="edit-delete-popup-button edit-delete-popup-button-mobile">Delete</div>
+            </a>
+            <a class="button-delete-edit" href="#" onclick="editPopup(${task.id})">
+                <img class="edit-delete-img edit-delete-img-mobile" src="/assets/img/edit_icon.svg"
+                    alt="Bild plus Button" />
+                <div class="edit-delete-popup-button edit-delete-popup-button-mobile">Edit</div>
+            </a>
+</div>  </div>
 `;
 }
 
+{/* <div class="popup-card popup-card-mobile" , onclick="doNotClose(event)">
+                
+        </div> */}
 
 /**
  * Generates HTML for the edit popup form.
@@ -355,7 +425,7 @@ function generateHtmlForEditPopup(taskId) {
 //             ${lowSymbolHTML}
 //           </div>
 //         </div>
-        
+
 //       </div>
 //     </a>`;
 // }
