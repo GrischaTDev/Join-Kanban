@@ -246,8 +246,8 @@ async function addTask() {
   if (currentPage === "/board.html") {
   showTaskOnPage(task);
   closeAddTaskPopup();
-  initBoard();
   }
+  window.location.href = "/board.html";
 }
 
 
