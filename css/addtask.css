@@ -117,7 +117,13 @@ textarea {
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  width: 100%;
+}
+
+.priority-button {
+  flex-grow: 1; /* Schaltflächen sollen sich gleichmäßig ausdehnen */
+  flex-shrink: 1; /* Schaltflächen sollen sich gleichermaßen verkleinern */
+  width: 25%; /* Anfangsbreite der Schaltflächen in Prozent */
+  max-width: 150px; /* Maximale Breite der Schaltflächen, falls erforderlich */
 }
 
 .priority-button {
@@ -273,7 +279,7 @@ textarea {
 
 #selected-user {
   display: flex;
-  gap: 12px;
+  gap: 1px;
 }
 
 /* #selected-user-desktop {
@@ -464,6 +470,14 @@ ul {
 
 
 @media screen and (max-width: 900px) {
+
+  
+  .add-task-form{
+    overflow-y: auto; /* Verwenden Sie "auto", damit die Scrollleiste nur angezeigt wird, wenn der Inhalt tatsächlich überläuft */
+    height: calc(100% - 20px); /* 20px Abstand oben und unten */
+    margin-bottom: 150px;
+  }
+
   .button-clear {
     display: none;
   }
