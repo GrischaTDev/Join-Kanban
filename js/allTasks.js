@@ -15,7 +15,7 @@ let allTasks = [
       ],
       "titel": "Kochwelt Page & Recipe Recommender",
       "userList": [{
-        "fname": "Klaus",
+        "fname": "Claudia",
         "lname": "Kruse",
         "backgroundcolor": "#FF5733"
       }, {
