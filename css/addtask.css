@@ -274,6 +274,7 @@ textarea {
 #selected-user {
   display: flex;
   gap: 12px;
+  overflow: scroll;
 }
 
 /* #selected-user-desktop {
@@ -290,6 +291,7 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-transform: uppercase;
 }
 
 /*************** Subtask **************/
@@ -469,7 +471,7 @@ ul {
   }
 
   .content {
-    margin-top: 70px;
+    margin-top: 30px;
     padding-bottom: 150px;
   }
   .todo-item{
