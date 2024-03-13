@@ -1,3 +1,8 @@
+body {
+  height: 100vh;
+}
+
+
 /*-add-task-container-*/
 
 
@@ -17,7 +22,6 @@
 .header-container {
   display: flex;
   align-items: flex-end;
-  background-color: #F6F7F8;
   margin-bottom: 38px;
 }
 
@@ -113,7 +117,13 @@ textarea {
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  width: 100%;
+}
+
+.priority-button {
+  flex-grow: 1; /* Schaltflächen sollen sich gleichmäßig ausdehnen */
+  flex-shrink: 1; /* Schaltflächen sollen sich gleichermaßen verkleinern */
+  width: 25%; /* Anfangsbreite der Schaltflächen in Prozent */
+  max-width: 150px; /* Maximale Breite der Schaltflächen, falls erforderlich */
 }
 
 .priority-button {
@@ -208,21 +218,11 @@ textarea {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  overflow: scroll;
-  height: 250px;
-  margin-top: -5px;
-}
-
-#user-select {
-  background-color: white;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
   gap: 5px;
   overflow: scroll;
-  height: 250px;
+  height: 240px;
   margin-top: -5px;
+  box-shadow: 0px 0px 10px 3px #00000014;
 }
 
 .userColumn {
@@ -238,13 +238,13 @@ textarea {
   border-radius: 6px;
 }
 
-.user-select-active {
+.user-list-active {
   color: white;
   background-color: #2a3647;
   border-radius: 6px;
 }
 
-.user-select-active:hover {
+.user-list-active:hover {
   background-color: #161e29;
 }
 
@@ -279,8 +279,7 @@ textarea {
 
 #selected-user {
   display: flex;
-  gap: 12px;
-  overflow: scroll;
+  gap: 1px;
 }
 
 /* #selected-user-desktop {
@@ -297,32 +296,45 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-transform: uppercase;
 }
 
 /*************** Subtask **************/
+.subtask-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+}
+
+.todo-item,
+.actions,
+.input-subtask,
+.edit-input {
+  color: black;
+  /* Textfarbe auf Schwarz setzen */
+}
 
 .input-sub-field {
   display: flex;
-  justify-content: space-between;
-  
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 16px;
-  padding-right: 16px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  border: 1px solid rgb(209, 209, 209);
-  font-size: 16px;
-  background-color: white;
-  
+  justify-content: end;
+  align-items: center;
+  gap: 6px;
 }
+
 .suffix {
   cursor: pointer;
+  height: 14px;
+  position: absolute;
+  margin-right: 10px;
 }
+
 .input-subtask {
   width: 100%;
-  all: unset;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid rgb(209, 209, 209);
+  font-family: "Inter", sans-serif;
 }
 
 .actions {
@@ -341,8 +353,10 @@ textarea {
 .todo-item {
   display: flex;
   align-items: center;
-  
+  margin-bottom: 10px;
+
 }
+
 #mylist li::before {
   content: "•";
   transform: translateY(-20%);
@@ -350,6 +364,7 @@ textarea {
   padding-left: 10px;
   margin-right: 10px;
 }
+
 #mylist li:hover {
   width: 100%;
   background-color: #f0f0f0;
@@ -359,10 +374,9 @@ textarea {
 
 ul {
   margin-left: -40px;
+  color: black;
 }
-.edit-input{
-  width: 100%;
-}
+
 
 
 /************** Subtask-End              ***************/
@@ -397,7 +411,6 @@ ul {
 }
 
 .create-task-container {
-  background-color: #F6F7F8;
   width: 100%;
   display: flex;
   position: fixed;
@@ -431,15 +444,45 @@ ul {
   background-color: var(--Ligth-blue);
 }
 
+#msg-box-create-task {
+  height: 100vh;
+  width: 100%;
+  background-color: #c5c5c5a6;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  border: 0;
+  z-index: 600;
+}
+
+#msg-box-create-task span {
+  color: white;
+  padding: 14px;
+  border-radius: 10px;
+  background-color: var(--dark-blue);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 
 
 @media screen and (max-width: 900px) {
+
+  
+  .add-task-form{
+    overflow-y: auto; 
+    height: calc(100% - 20px);
+  }
+
   .button-clear {
     display: none;
   }
 
   .content {
-    margin-top: 30px;
+    margin-top: 70px;
     padding-bottom: 150px;
   }
   .todo-item{
@@ -461,7 +504,7 @@ ul {
 /* Responsiv for laptop */
 @media screen and (min-width: 900px) {
 
-  
+
   .content {
     margin: 160px 0 0 310px;
     height: auto;
@@ -521,13 +564,12 @@ ul {
     left: unset;
     padding: unset;
     margin-bottom: unset;
+    
   }
 
   .priority-button.active {
     pointer-events: none;
-    /* Deaktiviert das Klicken auf den Button */
     opacity: 0.9;
-    /* Ändert die Opazität, um anzuzeigen, dass der Button deaktiviert ist */
   }
 
   .form-button {
@@ -541,6 +583,6 @@ ul {
 /* Responsiv for desktop */
 @media screen and (min-width: 1600px) {
   .content {
-      margin: 160px 0 0 331px;
+    margin: 160px 0 0 331px;
   }
 }
