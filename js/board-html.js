@@ -320,168 +320,308 @@ function generateHtmlForEditPopup(taskId) {
 }
 
 
-/**
- * This function is used to render all tasks with progress status "to do"
- * 
- * @param {*} task 
- * @param {*} urgentSymbolHTML 
- * @param {*} mediumSymbolHTML 
- * @param {*} lowSymbolHTML 
- * @param {*} userInitialsHTML 
- * @param {*} progressPercentage 
- * @param {*} completedSubtasks 
- * @param {*} totalSubtasks 
- */
+// /**
+//  * This function is used to render all tasks with progress status "to do"
+//  * 
+//  * @param {*} task 
+//  * @param {*} urgentSymbolHTML 
+//  * @param {*} mediumSymbolHTML 
+//  * @param {*} lowSymbolHTML 
+//  * @param {*} userInitialsHTML 
+//  * @param {*} progressPercentage 
+//  * @param {*} completedSubtasks 
+//  * @param {*} totalSubtasks 
+//  */
+// function renderAllTasksInProgressfieldTodo(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
+//     return /*html*/`
+//     <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
+//       <div class="card">
+//         <div class="card-category-${task.category}">${task.category}</div>
+//         <div class="card-headline">${task.titel}</div>
+//         <div class="card-description">${task.description}</div>
+//         <div id="progress-container" class="progress-container">
+//           <div class="progress" style="flex: 1;">
+//             <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+//           </div>
+//           <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+//         </div>
+//         <div class="user-priority-container">
+//           <div class="user-container">
+//             ${userInitialsHTML}
+//           </div>
+//           <div class="priority-symbols">
+//             ${urgentSymbolHTML}
+//             ${mediumSymbolHTML}
+//             ${lowSymbolHTML}
+//           </div>
+//         </div>
+        
+//       </div>
+//     </a>`;
+// }
+
+
 function renderAllTasksInProgressfieldTodo(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
+    let progressContainerHTML = '';
+    if (task.subtask && task.subtask.length > 0) {
+        progressContainerHTML = /*html*/`
+            <div id="progress-container" class="progress-container">
+                <div class="progress" style="flex: 1;">
+                    <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+            </div>`;
+    }
+
     return /*html*/`
     <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
-      <div class="card">
-        <div class="card-category-${task.category}">${task.category}</div>
-        <div class="card-headline">${task.titel}</div>
-        <div class="card-description">${task.description}</div>
-        <div class="progress-container">
-          <div class="progress" style="flex: 1;">
-            <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-          <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+        <div class="card">
+            <div class="card-category-${task.category}">${task.category}</div>
+            <div class="card-headline">${task.titel}</div>
+            <div class="card-description">${task.description}</div>
+            ${progressContainerHTML}
+            <div class="user-priority-container">
+                <div class="user-container">
+                    ${userInitialsHTML}
+                </div>
+                <div class="priority-symbols">
+                    ${urgentSymbolHTML}
+                    ${mediumSymbolHTML}
+                    ${lowSymbolHTML}
+                </div>
+            </div>
         </div>
-        <div class="user-priority-container">
-          <div class="user-container">
-            ${userInitialsHTML}
-          </div>
-          <div class="priority-symbols">
-            ${urgentSymbolHTML}
-            ${mediumSymbolHTML}
-            ${lowSymbolHTML}
-          </div>
-        </div>
-        
-      </div>
     </a>`;
 }
 
 
-/**
- * This function is used to render all tasks with progress status "in progress"
- * 
- * @param {*} task 
- * @param {*} urgentSymbolHTML 
- * @param {*} mediumSymbolHTML 
- * @param {*} lowSymbolHTML 
- * @param {*} userInitialsHTML 
- * @param {*} progressPercentage 
- * @param {*} completedSubtasks 
- * @param {*} totalSubtasks 
- */
+
+// /**
+//  * This function is used to render all tasks with progress status "in progress"
+//  * 
+//  * @param {*} task 
+//  * @param {*} urgentSymbolHTML 
+//  * @param {*} mediumSymbolHTML 
+//  * @param {*} lowSymbolHTML 
+//  * @param {*} userInitialsHTML 
+//  * @param {*} progressPercentage 
+//  * @param {*} completedSubtasks 
+//  * @param {*} totalSubtasks 
+//  */
+// function renderAllTasksInProgressfieldInProgress(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
+//     return /*html*/`
+//     <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
+//     <div class="card">
+//     <div class="card-category-${task.category}">${task.category}</div>
+//     <div class="card-headline">${task.titel}</div>
+//     <div class="card-description">${task.description}</div>
+//     <div class="progress-container">
+//               <div class="progress" style="flex: 1;">
+//                 <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+//               </div>
+//               <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+//             </div>
+//     <div class="user-priority-container">
+//                     <div class="user-container">
+//                         ${userInitialsHTML}
+//                     </div>
+//                     <div class="priority-symbols">
+//                         ${urgentSymbolHTML}
+//                         ${mediumSymbolHTML}
+//                         ${lowSymbolHTML}
+//                     </div>
+//                 </div>
+//             </div>
+//         </a>
+//     `;
+// }
+
+
 function renderAllTasksInProgressfieldInProgress(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
+    let progressContainerHTML = '';
+    if (task.subtask && task.subtask.length > 0) {
+        progressContainerHTML = /*html*/`
+            <div class="progress-container">
+                <div class="progress" style="flex: 1;">
+                    <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+            </div>`;
+    }
+
     return /*html*/`
     <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
-    <div class="card">
-    <div class="card-category-${task.category}">${task.category}</div>
-    <div class="card-headline">${task.titel}</div>
-    <div class="card-description">${task.description}</div>
-    <div class="progress-container">
-              <div class="progress" style="flex: 1;">
-                <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
-            </div>
-    <div class="user-priority-container">
-                    <div class="user-container">
-                        ${userInitialsHTML}
-                    </div>
-                    <div class="priority-symbols">
-                        ${urgentSymbolHTML}
-                        ${mediumSymbolHTML}
-                        ${lowSymbolHTML}
-                    </div>
+        <div class="card">
+            <div class="card-category-${task.category}">${task.category}</div>
+            <div class="card-headline">${task.titel}</div>
+            <div class="card-description">${task.description}</div>
+            ${progressContainerHTML}
+            <div class="user-priority-container">
+                <div class="user-container">
+                    ${userInitialsHTML}
+                </div>
+                <div class="priority-symbols">
+                    ${urgentSymbolHTML}
+                    ${mediumSymbolHTML}
+                    ${lowSymbolHTML}
                 </div>
             </div>
-        </a>
-    `;
+        </div>
+    </a>`;
 }
 
 
-/**
- * This function is used to render all tasks with progress status "await feedback"
- * 
- * @param {*} task 
- * @param {*} urgentSymbolHTML 
- * @param {*} mediumSymbolHTML 
- * @param {*} lowSymbolHTML 
- * @param {*} userInitialsHTML 
- * @param {*} progressPercentage 
- * @param {*} completedSubtasks 
- * @param {*} totalSubtasks 
- */
+
+// /**
+//  * This function is used to render all tasks with progress status "await feedback"
+//  * 
+//  * @param {*} task 
+//  * @param {*} urgentSymbolHTML 
+//  * @param {*} mediumSymbolHTML 
+//  * @param {*} lowSymbolHTML 
+//  * @param {*} userInitialsHTML 
+//  * @param {*} progressPercentage 
+//  * @param {*} completedSubtasks 
+//  * @param {*} totalSubtasks 
+//  */
+// function renderAllTasksInProgressfieldAwaitFeedback(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
+//     return /*html*/`
+//     <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
+//     <div class="card">
+//     <div class="card-category-${task.category}">${task.category}</div>
+//     <div class="card-headline">${task.titel}</div>
+//     <div class="card-description">${task.description}</div>
+//     <div class="progress-container">
+//               <div class="progress" style="flex: 1;">
+//                 <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+//               </div>
+//               <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+//             </div>
+//     <div class="user-priority-container">
+//                     <div class="user-container">
+//                         ${userInitialsHTML}
+//                     </div>
+//                     <div class="priority-symbols">
+//                         ${urgentSymbolHTML}
+//                         ${mediumSymbolHTML}
+//                         ${lowSymbolHTML}
+//                     </div>
+//                 </div>
+//             </div>
+//         </a>
+//     `;
+// }
+
+
 function renderAllTasksInProgressfieldAwaitFeedback(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
+    let progressContainerHTML = '';
+    if (task.subtask && task.subtask.length > 0) {
+        progressContainerHTML = /*html*/`
+            <div class="progress-container">
+                <div class="progress" style="flex: 1;">
+                    <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+            </div>`;
+    }
+
     return /*html*/`
     <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
-    <div class="card">
-    <div class="card-category-${task.category}">${task.category}</div>
-    <div class="card-headline">${task.titel}</div>
-    <div class="card-description">${task.description}</div>
-    <div class="progress-container">
-              <div class="progress" style="flex: 1;">
-                <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
-            </div>
-    <div class="user-priority-container">
-                    <div class="user-container">
-                        ${userInitialsHTML}
-                    </div>
-                    <div class="priority-symbols">
-                        ${urgentSymbolHTML}
-                        ${mediumSymbolHTML}
-                        ${lowSymbolHTML}
-                    </div>
+        <div class="card">
+            <div class="card-category-${task.category}">${task.category}</div>
+            <div class="card-headline">${task.titel}</div>
+            <div class="card-description">${task.description}</div>
+            ${progressContainerHTML}
+            <div class="user-priority-container">
+                <div class="user-container">
+                    ${userInitialsHTML}
+                </div>
+                <div class="priority-symbols">
+                    ${urgentSymbolHTML}
+                    ${mediumSymbolHTML}
+                    ${lowSymbolHTML}
                 </div>
             </div>
-        </a>
-    `;
+        </div>
+    </a>`;
 }
 
 
-/**
- * This function is used to render all tasks with progress status "done"
- * 
- * @param {*} task 
- * @param {*} urgentSymbolHTML 
- * @param {*} mediumSymbolHTML 
- * @param {*} lowSymbolHTML 
- * @param {*} userInitialsHTML 
- * @param {*} progressPercentage 
- * @param {*} completedSubtasks 
- * @param {*} totalSubtasks 
- */
+
+// /**
+//  * This function is used to render all tasks with progress status "done"
+//  * 
+//  * @param {*} task 
+//  * @param {*} urgentSymbolHTML 
+//  * @param {*} mediumSymbolHTML 
+//  * @param {*} lowSymbolHTML 
+//  * @param {*} userInitialsHTML 
+//  * @param {*} progressPercentage 
+//  * @param {*} completedSubtasks 
+//  * @param {*} totalSubtasks 
+//  */
+// function renderAllTasksInProgressfieldDone(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
+//     return /*html*/`
+//     <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
+//     <div class="card">
+//     <div class="card-category-${task.category}">${task.category}</div>
+//     <div class="card-headline">${task.titel}</div>
+//     <div class="card-description">${task.description}</div>
+//     <div class="progress-container">
+//               <div class="progress" style="flex: 1;">
+//                 <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+//               </div>
+//               <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+//             </div>
+//     <div class="user-priority-container">
+//                     <div class="user-container">
+//                         ${userInitialsHTML}
+//                     </div>
+//                     <div class="priority-symbols">
+//                         ${urgentSymbolHTML}
+//                         ${mediumSymbolHTML}
+//                         ${lowSymbolHTML}
+//                     </div>
+//                 </div>
+//             </div>
+//         </a>
+//     `;
+// }
+
+
 function renderAllTasksInProgressfieldDone(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
+    let progressContainerHTML = '';
+    if (task.subtask && task.subtask.length > 0) {
+        progressContainerHTML = /*html*/`
+            <div class="progress-container">
+                <div class="progress" style="flex: 1;">
+                    <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
+            </div>`;
+    }
+
     return /*html*/`
     <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
-    <div class="card">
-    <div class="card-category-${task.category}">${task.category}</div>
-    <div class="card-headline">${task.titel}</div>
-    <div class="card-description">${task.description}</div>
-    <div class="progress-container">
-              <div class="progress" style="flex: 1;">
-                <div class="progress-bar" style="width: ${progressPercentage}%; background-color:#4586ff;" role="progressbar" aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <div class="progress-text">${completedSubtasks}/${totalSubtasks} Subtasks</div>
-            </div>
-    <div class="user-priority-container">
-                    <div class="user-container">
-                        ${userInitialsHTML}
-                    </div>
-                    <div class="priority-symbols">
-                        ${urgentSymbolHTML}
-                        ${mediumSymbolHTML}
-                        ${lowSymbolHTML}
-                    </div>
+        <div class="card">
+            <div class="card-category-${task.category}">${task.category}</div>
+            <div class="card-headline">${task.titel}</div>
+            <div class="card-description">${task.description}</div>
+            ${progressContainerHTML}
+            <div class="user-priority-container">
+                <div class="user-container">
+                    ${userInitialsHTML}
+                </div>
+                <div class="priority-symbols">
+                    ${urgentSymbolHTML}
+                    ${mediumSymbolHTML}
+                    ${lowSymbolHTML}
                 </div>
             </div>
-        </a>
-    `;
+        </div>
+    </a>`;
 }
+
 
 
 /**
