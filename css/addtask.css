@@ -279,7 +279,11 @@ textarea {
 
 #selected-user {
   display: flex;
-  gap: 1px;
+  gap: 8px;
+  overflow-x: auto; 
+  height: calc(50% - 20px); 
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.0) transparent;
 }
 
 /* #selected-user-desktop {
