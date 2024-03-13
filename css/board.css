@@ -494,6 +494,7 @@ h2 {
   font-weight: 700;
   margin: 0;
   pointer-events: none;
+  max-width: 420px;
 }
 
 .descriptionarea {
@@ -889,6 +890,7 @@ h2 {
     font-weight: 700;
     margin: 0;
     pointer-events: none;
+    max-width: 220px;
   }
 
   .descriptionarea-mobile {
