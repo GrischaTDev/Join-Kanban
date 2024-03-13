@@ -384,6 +384,7 @@ function showTodos() {
     const todo = todos[i];
     const li = document.createElement("li");
     li.className = "todo-item";
+    li.id = "todo-id"
     li.innerHTML = generateTaskHtml(todo, i);
 
     li.addEventListener("mouseenter", function () {
