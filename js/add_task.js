@@ -247,7 +247,6 @@ async function addTask() {
   showTaskOnPage(task);
   closeAddTaskPopup();
   }
-  window.location.href = "/board.html";
 }
 
 
@@ -486,6 +485,7 @@ async function createTaskMessage() {
   msg.classList.remove('d-none');
   setTimeout(() => {
     msg.classList.add('d-none'); // Popup ausblenden
+    window.location.href = "/board.html";
   }, 1500);
 }
 
