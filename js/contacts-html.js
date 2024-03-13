@@ -79,7 +79,7 @@ function renderEditContactCard(contactData, contactId) {
         </div>
     </div>
     <div class="edit_contact_card_footer">
-        <div>
+        <div class="initials_circle_edit_contact_container">
         <div class="initials_circle_edit_contact" style="background-color: ${contactData.color};">
         ${contactData.given_name[0]}${contactData.name[0]}
     </div>

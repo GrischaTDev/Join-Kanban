@@ -923,3 +923,22 @@ p {
     }
 
 }
+
+@media(max-height:750px) {
+
+    .profile_picture {
+        display: none;
+    }
+
+    .add_contact_card {
+        justify-content: space-between;
+    }
+
+    .initials_circle_edit_contact_container {
+        display: none;
+    }
+
+    .edit_contact_card {
+        justify-content: space-between;
+    }
+}
