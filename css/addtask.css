@@ -396,6 +396,11 @@ textarea {
   padding-left: 10px;
   margin-right: 10px;
 }
+.todo-style::before {
+  display: none;
+}
+
+
 
 .todo-item:hover {
   width: 100%;
