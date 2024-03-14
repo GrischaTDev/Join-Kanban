@@ -470,9 +470,17 @@ function editTodo(index) {
   let spanElement = document.querySelector(`#mylist .todo-item:nth-child(${index + 1}) span`);
   inputField.classList.toggle("d-none");
   spanElement.classList.toggle("d-none");
+  
+  // Toggle icons
+  let editIcon = document.getElementById('editIcon');
+  let checkIcon = document.getElementById('checkIcon');
+  editIcon.classList.toggle("d-none");
+  checkIcon.classList.toggle("d-none");
+  
   if (!inputField.classList.contains("d-none")) {
     inputField.focus();
   }
+  
   let todoItem = document.querySelector(`#mylist .todo-item:nth-child(${index + 1})`);
   let id = `todo-${index}`;
   todoItem.setAttribute('id', id);
