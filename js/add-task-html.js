@@ -63,7 +63,7 @@ function generateTaskHtml(todo, i) {
 
 
         </svg>
-        <svg id="checkIcon" class="icon check-icon d-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg id="checkIcon" class="icon check-icon d-none" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24">
         <path d="M21 7.793l-1.414-1.414-8.293 8.293-3.293-3.293-1.414 1.414 4 4 .707.707.707-.707 9-9z"/>
         </svg>
         </a>
