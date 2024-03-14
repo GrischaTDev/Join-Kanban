@@ -496,6 +496,20 @@ document.getElementById("mylist").addEventListener("click", function(event) {
     editTodo(index);
   }
 });
+function updateTodo(index, newValue) {
+  todos[index] = newValue;
+  localStorage.setItem('todos', JSON.stringify(todos));
+  showTodos();
+}
+document.getElementById("editIcon").addEventListener("click", function(event) {
+  // Holen Sie sich das übergeordnete Element (.todo-item) des bearbeiteten Elements
+  let todoItem = event.target.closest(".todo-item");
+  if (todoItem) {
+    // Bestimme den Index des bearbeiteten Elements innerhalb seines übergeordneten Elements
+    let index = Array.from(todoItem.parentNode.children).indexOf(todoItem);
+    editTodo(index); // Starte die Bearbeitung
+  }
+});
 
 /**
  * this function is able to update subtasks in todo array in local storage
