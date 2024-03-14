@@ -137,7 +137,7 @@ h2 {
   max-width: 400px;
   height: 48px;
   font-size: 20px;
-  background-color: rgb(231, 231, 231);
+  background-color: rgb(243, 239, 239);
   border-radius: 15px;
   border: 1px dashed #bebdbd;
 }
@@ -153,6 +153,12 @@ h2 {
   padding: 8px;
   width: 100%;
   box-sizing: border-box;
+  background-color:rgb(235, 235, 235);
+  border-radius: 30px;
+}
+
+.drag-area-highlight {
+  background-color:rgb(218, 218, 218);
 }
 
 .section-done {
@@ -421,20 +427,6 @@ h2 {
   
 }
 
-/* .complete_board_popup {
-  background-color: white;
-  border-radius: 30px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  animation: moveFromRightToScreen 1000ms ease forwards;
-  height: 80%;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 30px;
-  margin: 10px;
-} */
-
 .flex-container-head {
   display: flex;
   justify-content: space-between;
@@ -641,10 +633,6 @@ h2 {
   align-items: center;
 }
 
-.drag-area-highlight {
-  background-color: rgba (0, 0, 0, 0.1);
-}
-
 .popup-bg {
   background-color: rgba(0, 0, 0, 0.2);
   position: fixed;
@@ -716,16 +704,6 @@ h2 {
   padding-top: 80px;
   padding-bottom: 100px;
 }
-/* .close-icon-edit-popup {
-  position: fixed;
-  z-index: 9999;
-  width: 480px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background-color: #fff;
-  overflow: hidden;
-} */
 
 .close-icon-edit-popup {
     display: flex;
@@ -745,18 +723,6 @@ h2 {
     gap: 16px;
     overflow-y: scroll;
 }
-
-/* .button-ok{
-  position: fixed;
-  z-index: 9999;
-  width: 400px;
-  height: 80px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background-color: #fff;
-  overflow: hidden;
-} */
 
 .button-ok {
   display: flex;
@@ -810,40 +776,10 @@ h2 {
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
   }
   
-  /* .close-icon-edit-popup {
-    position: fixed;
-    z-index: 9999;
-    width: 315px;
-    margin-top: -20px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    background-color: #fff;
-    overflow: hidden;
-  } */
   .todo-item{
     margin-bottom: 10px;
   }
   
-  /* .button-ok{
-    position: fixed;
-    z-index: 9999;
-    width: 315px;
-    margin-top: -20px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    background-color: #fff;
-    overflow: hidden;
-  }
-
-  .button-edit-ok:hover {
-    background-color: var(--Ligth-blue);
-    color: #ffffff;
-  } */
-
   .add-task-form-popup {
     padding-top: 80px;
     padding-bottom: 100px;
@@ -963,25 +899,6 @@ h2 {
   .add-task-text {
     display: none;
   }
-  /* .button-edit-ok {
-    font-size: 21px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    width: 80px;
-    height: 48px;
-    background-color: #2a3647;
-    border-radius: 10px;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-  }
-
-  .button-edit-ok:hover {
-    background-color: var(--Ligth-blue);
-    color: #ffffff;
-  } */
 }
 
 /* Responsiv for desktop */
