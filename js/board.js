@@ -141,6 +141,8 @@ function getValuesFromAllTasksArray(taskToEdit) {
  * This function closes the user list in a popup
  */
 function closeUserListInPopup() {
+  const inputIcon = document.getElementById('input-icon');
+  inputIcon.src = './assets/img/arrow_drop_down_1.svg';
   document.getElementById("user-list").classList.add("d-none");
 }
 

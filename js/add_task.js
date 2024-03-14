@@ -169,7 +169,7 @@ function toggleAddUser(i) {
  * 
  * @param userList ID from popup container
  */
-if (window.location.href.includes('add_task.html')) {
+if (window.location.href.includes('add_task.html') || window.location.href.includes('board.html')) {
   document.getElementById('container').addEventListener('click', function (event) {
     const userList = document.getElementById('user-list');
     const inputIcon = document.getElementById('input-icon');
@@ -403,7 +403,6 @@ function showTodos() {
 /**
  *  adds subtasks to local storage
  */
-
 function addTodo() {
   let todo = document.getElementById("subtask").value;
   if (todo === '') {
@@ -434,88 +433,29 @@ function deleteTodo(position) {
  * 
  * @param {*} index 
  */
-
-
-document.addEventListener("click", function(event) {
-  let todoItem = event.target.closest(".todo-style");
-  // Check if clicked element is not within a todo-style
-  if (!todoItem) {
-    let openTodo = document.querySelector(".todo-style");
-    if (openTodo) {
-      let index = Array.from(openTodo.parentNode.children).indexOf(openTodo);
-      updateTodo(index, openTodo.querySelector("input").value);
-    }
-    let openInput = document.querySelector(".edit-input:not(.d-none)");
-    if (openInput) {
-      let index = Array.from(openInput.parentNode.parentNode.children).indexOf(openInput.parentNode);
-      updateTodo(index, openInput.value);
-    }
-    closeTodoStyles();
-  }
-});
-
-function closeTodoStyles() {
-  let openTodos = document.querySelectorAll(".todo-style");
-  openTodos.forEach(function(todo) {
-    let spanElement = todo.querySelector("span");
-    let inputField = todo.querySelector(".edit-input");
-    inputField.classList.add("d-none");
-    spanElement.classList.remove("d-none");
-  });
-}
-
 function editTodo(index) {
-  closeTodoStyles();
-  let inputField = document.querySelector(`#mylist .todo-item:nth-child(${index + 1}) .edit-input`);
-  let spanElement = document.querySelector(`#mylist .todo-item:nth-child(${index + 1}) span`);
+  let inputField = document.querySelector(
+    `#mylist .todo-item:nth-child(${index + 1}) .edit-input`
+  );
+  let spanElement = document.querySelector(
+    `#mylist .todo-item:nth-child(${index + 1}) span`
+  );
   inputField.classList.toggle("d-none");
   spanElement.classList.toggle("d-none");
-  
-  // Toggle icons
-  let editIcon = document.getElementById('editIcon');
-  let checkIcon = document.getElementById('checkIcon');
-  editIcon.classList.toggle("d-none");
-  checkIcon.classList.toggle("d-none");
-  
   if (!inputField.classList.contains("d-none")) {
     inputField.focus();
   }
-  
-  let todoItem = document.querySelector(`#mylist .todo-item:nth-child(${index + 1})`);
-  let id = `todo-${index}`;
-  todoItem.setAttribute('id', id);
-  let newStyle = document.getElementById(id);
+  let newStyle = document.getElementById('todo-id');
   newStyle.classList.remove('todo-item');
   newStyle.classList.add('todo-style');
 }
 
-document.getElementById("mylist").addEventListener("click", function(event) {
-  let todoItem = event.target.closest(".todo-item");
-  if (todoItem) {
-    let index = Array.from(todoItem.parentNode.children).indexOf(todoItem);
-    editTodo(index);
-  }
-});
-function updateTodo(index, newValue) {
-  todos[index] = newValue;
-  localStorage.setItem('todos', JSON.stringify(todos));
-  showTodos();
-}
-document.getElementById("editIcon").addEventListener("click", function(event) {
-  // Holen Sie sich das übergeordnete Element (.todo-item) des bearbeiteten Elements
-  let todoItem = event.target.closest(".todo-item");
-  if (todoItem) {
-    // Bestimme den Index des bearbeiteten Elements innerhalb seines übergeordneten Elements
-    let index = Array.from(todoItem.parentNode.children).indexOf(todoItem);
-    editTodo(index); // Starte die Bearbeitung
-  }
-});
 
 /**
  * this function is able to update subtasks in todo array in local storage
- *
- * @param {*} index
- * @param {*} newValue
+ * 
+ * @param {*} index 
+ * @param {*} newValue 
  */
 function updateTodo(index, newValue) {
   todos[index] = newValue;

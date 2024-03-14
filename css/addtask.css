@@ -221,7 +221,7 @@ textarea {
   flex-direction: column;
   gap: 5px;
   overflow: scroll;
-  height: 240px;
+  height: 370px;
   margin-top: -5px;
   box-shadow: 0px 0px 10px 3px #00000014;
 }
@@ -282,15 +282,11 @@ textarea {
   display: flex;
   gap: 8px;
   overflow-x: auto; 
-  height: calc(50% - 20px); 
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.0) transparent;
 }
 
-/* #selected-user-desktop {
-  display: flex;
-  gap: 12px;
-} */
+
 
 .user-icon {
   color: white;
