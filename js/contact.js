@@ -387,10 +387,23 @@ function loadContactList() {
 
 
 /**
- * This function is used to generate an id for each new contact.
+ * Generates a unique ID for a new contact.
+ * 
+ * @returns {string} The generated unique ID.
  */
 function generateUniqueId() {
-    return (contact_list.length + 1).toString();
+    let maxId = 0;
+    
+    // Iterate through the existing contacts to find the highest used ID
+    for (const contact of contact_list) {
+        const contactId = parseInt(contact.id);
+        if (!isNaN(contactId) && contactId > maxId) {
+            maxId = contactId;
+        }
+    }
+
+    // The next available ID is the highest ID plus one
+    return (maxId + 1).toString(); // Return the ID as a string
 }
 
 
