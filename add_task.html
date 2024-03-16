@@ -129,8 +129,13 @@
                     <div class="subtask-container">
                         <span>Subtask</span>
                         <div class="input-sub-field">
-                            <input class="input-subtask" id="subtask" placeholder="Add new subtask"/>
-                            <img src="./assets/img/add_subtask.svg" class="suffix" id="addButton" alt="" onclick="addTodo()">
+                            <input class="input-subtask" id="subtask-inputfield" placeholder="Add new subtask" onclick="activeInput()"/>
+                            <img src="./assets/img/add_subtask.svg" class="suffix" id="addButton" alt="" onclick="activeInput()">
+                            <div id="input-options" class="d-none">
+                                <img src="./assets/img/subtask-clear.svg" class="subtask-btn" alt="" onclick="clearInput()">
+                                <span class="input-options-border"></span>
+                                <img src="./assets/img/create-subtask.svg" class="subtask-btn" alt="" onclick="addTodo()">
+                            </div>
                         </div>
                         <ul id="mylist"></ul>
                     </div>

@@ -323,6 +323,31 @@ textarea {
   gap: 6px;
 }
 
+#input-options {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: absolute;
+  margin-right: 10px;
+}
+
+.input-options-border {
+  height: 18px;
+  width: 1px;
+  background-color: #D1D1D1
+  ;
+}
+
+.subtask-btn {
+  cursor: pointer;
+}
+
+.subtask-btn:hover {
+  border-radius: 50%;
+  background-color: #e7e7e7;
+}
+
+
 .suffix {
   cursor: pointer;
   height: 14px;
@@ -340,12 +365,27 @@ textarea {
 }
 
 .actions {
+  display: flex;
   justify-content: flex-end;
+  align-items: center;
   width: 100%;
+  gap: 6px;
+  visibility: hidden;
 }
 
-.todo-item .actions {
-  display: none;
+.todo-item:hover .actions {
+  visibility: visible;
+}
+
+.actions-edit {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+}
+
+.edit-input-style {
+  width: 100%;
 }
 
 #mylist {
@@ -366,7 +406,8 @@ textarea {
 .todo-style {
   display: flex;
   align-items: center;
-  padding: 7px;
+  justify-content: space-between;
+  padding: 0 7px;
   box-sizing: border-box;
   background-color: white;
   border-bottom: 1px solid var(--Ligth-blue);
@@ -383,6 +424,7 @@ textarea {
   font-family: "Inter", sans-serif;
   outline: none;
   background-color: #f6f7f8;
+  width: 100%;
 }
 
 #mylist li::before {

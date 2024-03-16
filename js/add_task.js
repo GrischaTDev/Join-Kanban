@@ -308,7 +308,7 @@ function clearInputFields() {
   document.getElementById('titel').value = '';
   document.getElementById('description').value = '';
   document.getElementById('category').value = '';
-  document.getElementById('subtask').value = '';
+  document.getElementById('subtask-inputfield').value = '';
   document.getElementById('urgent').classList.remove('active-urgent');
   document.getElementById('medium').classList.add('active-medium');
   document.getElementById('low').classList.remove('active-low');
@@ -377,26 +377,40 @@ function loadTodos() {
 /**
  * this function is used to render subtasks in addTask form
  */
+// function showTodos() {
+//   const mylist = document.getElementById("mylist");
+//   mylist.innerHTML = "";
+//   for (let i = 0; i < todos.length; i++) {
+//     const todo = todos[i];
+//     const li = document.createElement("li");
+//     li.className = "todo-item";
+//     li.id = "todo-id"
+//     li.innerHTML = generateTaskHtml(todo, i);
+
+//     li.addEventListener("mouseenter", function () {
+//       li.querySelector(".actions").classList.remove("d-none");
+//     });
+
+//     li.addEventListener("mouseleave", function () {
+//       li.querySelector(".actions").classList.add("d-none");
+//     });
+
+//     mylist.appendChild(li);
+//   }
+// }
+
 function showTodos() {
   const mylist = document.getElementById("mylist");
   mylist.innerHTML = "";
-  for (let i = 0; i < todos.length; i++) {
-    const todo = todos[i];
-    const li = document.createElement("li");
-    li.className = "todo-item";
-    li.id = "todo-id"
-    li.innerHTML = generateTaskHtml(todo, i);
 
-    li.addEventListener("mouseenter", function () {
-      li.querySelector(".actions").classList.remove("d-none");
-    });
-
-    li.addEventListener("mouseleave", function () {
-      li.querySelector(".actions").classList.add("d-none");
-    });
-
-    mylist.appendChild(li);
-  }
+  todos.forEach((todo, i) => {
+    const li = `
+      <li id="todo-id-${i}" class="todo-item">
+        ${generateTaskHtml(todo, i)}
+      </li>
+    `;
+    mylist.innerHTML += li;
+  });
 }
 
 
@@ -404,16 +418,30 @@ function showTodos() {
  *  adds subtasks to local storage
  */
 function addTodo() {
-  let todo = document.getElementById("subtask").value;
+  let todo = document.getElementById("subtask-inputfield").value;
   if (todo === '') {
     return
   } else {
     todos.push(todo);
     localStorage.setItem('todos', JSON.stringify(todos));
     showTodos();
-    document.getElementById("subtask").value = "";
+    clearInput();
+    document.getElementById("subtask-inputfield").value = "";
   }
 }
+
+
+// /**
+//  *  adds subtasks to local storage when push enter!
+//  */
+const subtaskInput = document.getElementById('subtask-inputfield');
+subtaskInput.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    subtaskInput.blur();
+    addTodo();
+  }
+});
 
 
 /**
@@ -434,20 +462,20 @@ function deleteTodo(position) {
  * @param {*} index 
  */
 function editTodo(index) {
-  let inputField = document.querySelector(
-    `#mylist .todo-item:nth-child(${index + 1}) .edit-input`
-  );
-  let spanElement = document.querySelector(
-    `#mylist .todo-item:nth-child(${index + 1}) span`
-  );
-  inputField.classList.toggle("d-none");
-  spanElement.classList.toggle("d-none");
-  if (!inputField.classList.contains("d-none")) {
-    inputField.focus();
-  }
-  let newStyle = document.getElementById('todo-id');
+  let inputField = document.getElementById(`edit-input-${index}`);
+  let todoValue = document.getElementById(`todo-value-${index}`);
+  let newStyle = document.getElementById(`todo-id-${index}`);
+  let hoverActions = document.getElementById(`show-actions-${index}`);
+  let editActions = document.getElementById(`edit-actions-${index}`);
+
+
+  todoValue.classList.add('d-none');
+  inputField.classList.remove('d-none');
   newStyle.classList.remove('todo-item');
   newStyle.classList.add('todo-style');
+  hoverActions.classList.add('d-none');
+  editActions.classList.remove('d-none');
+  
 }
 
 
@@ -493,3 +521,25 @@ async function createTaskMessage() {
   }, 1500);
 }
 
+/**
+ * Activate subtask inputfield options to add a subtask
+ */
+function activeInput() {
+  let addButton = document.getElementById('addButton');
+  let inputOptions = document.getElementById('input-options');
+  addButton.classList.add('d-none');
+  inputOptions.classList.remove('d-none');
+}
+
+
+/**
+ * Deaktivate subtask inputfield options to add a subtask
+ */
+function clearInput() {
+  let subTaskInput = document.getElementById('subtask-inputfield');
+  let addButton = document.getElementById('addButton');
+  let inputOptions = document.getElementById('input-options');
+  addButton.classList.remove('d-none');
+  inputOptions.classList.add('d-none');
+  subTaskInput.value = '';
+}
