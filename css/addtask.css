@@ -373,16 +373,19 @@ textarea {
   visibility: hidden;
 }
 
+.todo-item:hover .actions {
+  visibility: visible;
+}
+
 .actions-edit {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 100%;
   gap: 6px;
 }
 
-.todo-item:hover .actions {
-  visibility: visible;
+.edit-input-style {
+  width: 100%;
 }
 
 #mylist {
@@ -403,6 +406,7 @@ textarea {
 .todo-style {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 7px;
   box-sizing: border-box;
   background-color: white;
@@ -420,6 +424,7 @@ textarea {
   font-family: "Inter", sans-serif;
   outline: none;
   background-color: #f6f7f8;
+  width: 100%;
 }
 
 #mylist li::before {

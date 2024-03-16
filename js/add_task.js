@@ -431,17 +431,17 @@ function addTodo() {
 }
 
 
-// // /**
-// //  *  adds subtasks to local storage when push enter!
-// //  */
-// const subtaskInput = document.getElementById('subtask-inputfield');
-// subtaskInput.addEventListener('keydown', function(event) {
-//   if (event.key === 'Enter') {
-//     event.preventDefault();
-//     subtaskInput.blur();
-//     addTodo();
-//   }
-// });
+// /**
+//  *  adds subtasks to local storage when push enter!
+//  */
+const subtaskInput = document.getElementById('subtask-inputfield');
+subtaskInput.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    subtaskInput.blur();
+    addTodo();
+  }
+});
 
 
 /**

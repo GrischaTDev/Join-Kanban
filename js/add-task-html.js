@@ -48,7 +48,7 @@ function generateOpenUserListHtml(user, userColor, initialLetters, i) {
 */
 function generateTaskHtml(todo, i) {
   return /*html*/`
-    <div>
+    <div class="edit-input-style">
         <span id="todo-value-${i}" >${todo}</span>
         <input id="edit-input-${i}" class="edit-input d-none" value="${todo}" onchange="updateTodo(${i}, this.value)">
         </div>
