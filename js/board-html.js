@@ -310,7 +310,7 @@ function generateHtmlForEditPopup(taskId) {
         <span>Assigned to</span>
         <div class="assigned-input">
     <input class="input-task-select" id="search-user" autocomplete="off" onkeydown="filterUser()" onclick="openUserList(event)" type="text" placeholder="Select contacts to assign">
-    <img onclick="openUserList(event)" id="input-icon" class="input-arrow" src="./assets/img/arrow_drop_down_1.svg" alt="">
+    <img onclick="openUserListEdit(event)" id="input-icon" class="input-arrow" src="./assets/img/arrow_drop_down_1.svg" alt="">
       </div>
       <div id="user-list" class="d-none board-user-list" onclick="doNotClose(event)"></div>
     <div id="selected-user" class="selected-user-container"></div>

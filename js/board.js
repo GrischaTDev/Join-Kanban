@@ -170,6 +170,7 @@ function renderSelectedUsersInEdit(selectedUser) {
  * @param {*} event 
  */
 function openUserListEdit(event) {
+  document.getElementById('user-list').classList.remove('d-none');
   let userList = document.getElementById("user-list");
   let inputIcon = document.getElementById("input-icon");
   userList.innerHTML = "";
@@ -341,7 +342,7 @@ function generateEditedTask(taskId) {
       medium: document.getElementById('medium').classList.contains('active-medium'),
       urgent: document.getElementById('urgent').classList.contains('active-urgent')
     },
-    subtask: todos.map(name => ({ name, status: false })),
+    subtask: allTasks.find(task => task.id === taskId).subtask,
     userList: selectedUser.map(user => ({
       fname: user.name.split(' ')[0],
       lname: user.name.split(' ')[1],
@@ -356,6 +357,7 @@ function generateEditedTask(taskId) {
  * this function closes the edit popup
  */
 function closeEditPopup() {
+  closeUserListInPopup();
   document.getElementById('user-list').classList.add('d-none');
   document.body.classList.remove('popup-open');
   document.getElementById("edit_popup").classList.add("d-none");

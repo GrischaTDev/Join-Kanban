@@ -397,6 +397,7 @@ h2 {
 
 .form-check-label {
   padding-left: 16px;
+  cursor: pointer;
 }
 
 /*-card-section-END*/
