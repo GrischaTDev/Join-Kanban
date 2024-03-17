@@ -226,6 +226,15 @@ h2 {
   font-style: normal;
   font-weight: 700;
   color: #000;
+  overflow: auto;
+  height: 50px;
+}
+.card-headline::-webkit-scrollbar {
+  height: 8px; 
+}
+.card-headline::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.0); 
+  border-radius: 6px; 
 }
 
 .card-description {
