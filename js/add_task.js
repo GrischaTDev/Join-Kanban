@@ -449,7 +449,18 @@ function editTodo(index) {
   newStyle.classList.add('todo-style');
   hoverActions.classList.add('d-none');
   editActions.classList.remove('d-none');
+  
 }
+function saveTodo(index) {
+  let = document.getElementById(`edit-input-${index}`).value;
+  saveTodosToLocalStorage();
+}
+function saveTodosToLocalStorage() {
+  localStorage.setItem('todos', JSON.stringify(todos));
+  showTodos();
+}
+
+
 
 
 /**

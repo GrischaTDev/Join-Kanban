@@ -58,7 +58,7 @@ function generateTaskHtml(todo, i) {
           <img src="./assets/img/delete_icon.svg" class="subtask-btn" alt="" onclick="deleteTodo(${i})">
         </div>
         <div id="edit-actions-${i}" class="actions-edit d-none">
-          <img src="./assets/img/create-subtask.svg" class="subtask-btn" alt="" onclick="editTodo(${i})">
+          <img src="./assets/img/create-subtask.svg" class="subtask-btn" alt="" onclick="saveTodo(${i})">
           <span class="input-options-border"></span>
           <img src="./assets/img/delete_icon.svg" class="subtask-btn" alt="" onclick="deleteTodo(${i})">
         </div>
