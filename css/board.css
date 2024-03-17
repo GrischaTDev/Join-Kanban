@@ -294,9 +294,18 @@ h2 {
 
 /*progress-bar-inside-CARD-end*/
 /*user-priority-section*/
+
 .user-container {
   display: flex;
   align-items: center;
+  overflow: auto;
+}
+.user-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.0); 
+  border-radius: 6px; 
+}
+.user-container::-webkit-scrollbar {
+  height: 8px; 
 }
 
 .user-container-popup {
