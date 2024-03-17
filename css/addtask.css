@@ -353,6 +353,13 @@ textarea {
   position: absolute;
   margin-right: 10px;
 }
+.suffix:hover {
+  padding: 4px;
+  border-radius: 50%;
+  background-color: #e7e7e7;
+  margin-right: 6px;
+
+}
 
 .input-subtask {
   width: 100%;
