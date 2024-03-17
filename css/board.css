@@ -149,7 +149,7 @@ h2 {
   width: 100%;
   box-sizing: border-box;
   border-radius: 30px;
-  height:100%;
+  height: 100%;
 }
 
 .section-done {
@@ -413,10 +413,9 @@ h2 {
 }
 
 .board-popup-content {
-  overflow-y: auto; 
-  height: calc(100% - 20px); 
-  padding: 10px; 
-  
+  overflow-y: auto;
+  height: calc(100% - 20px);
+  padding: 10px;
 }
 
 .flex-container-head {
@@ -663,17 +662,17 @@ h2 {
 
 .task-edit-form {
   height: 800px;
-    background-color: white;
-    border-radius: 24px;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    width: 100%;
-    max-width: 500px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  background-color: white;
+  border-radius: 24px;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .button-edit-ok {
@@ -702,22 +701,22 @@ h2 {
 }
 
 .close-icon-edit-popup {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 
-.add-task-form-row{
+.add-task-form-row {
   height: 65%;
 }
 
-.add-task-form-edit{
+.add-task-form-edit {
   padding: 5px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: scroll;
 }
 
 .button-ok {
@@ -739,9 +738,9 @@ h2 {
 
 .plus-button-subtask-edit-popup {
   cursor: pointer;
-    height: 14px;
-    margin-right: 10px;
-    margin-left: -30px;
+  height: 14px;
+  margin-right: 10px;
+  margin-left: -30px;
 }
 
 @media (min-width: 900px) {
@@ -756,13 +755,13 @@ h2 {
 
 @media (max-width: 900px) {
 
-  .selected-user-container{
-    overflow-x: auto; 
-    height: calc(50% - 20px); 
+  .selected-user-container {
+    overflow-x: auto;
+    height: calc(50% - 20px);
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
   }
-  
+
   .add-task-form-popup {
     padding-top: 80px;
     padding-bottom: 100px;
@@ -773,7 +772,7 @@ h2 {
     display: flex;
     justify-content: space-between;
   }
-  
+
 
   .task-edit-form {
     height: 600px;
