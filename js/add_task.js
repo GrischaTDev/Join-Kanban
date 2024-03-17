@@ -169,7 +169,7 @@ function toggleAddUser(i) {
  * 
  * @param userList ID from popup container
  */
-if (window.location.href.includes('add_task.html') || window.location.href.includes('board.html')) {
+if (window.location.href.includes('add_task.html')) {
   document.getElementById('container').addEventListener('click', function (event) {
     const userList = document.getElementById('user-list');
     const inputIcon = document.getElementById('input-icon');
@@ -373,32 +373,6 @@ function loadTodos() {
   }
 }
 
-
-/**
- * this function is used to render subtasks in addTask form
- */
-// function showTodos() {
-//   const mylist = document.getElementById("mylist");
-//   mylist.innerHTML = "";
-//   for (let i = 0; i < todos.length; i++) {
-//     const todo = todos[i];
-//     const li = document.createElement("li");
-//     li.className = "todo-item";
-//     li.id = "todo-id"
-//     li.innerHTML = generateTaskHtml(todo, i);
-
-//     li.addEventListener("mouseenter", function () {
-//       li.querySelector(".actions").classList.remove("d-none");
-//     });
-
-//     li.addEventListener("mouseleave", function () {
-//       li.querySelector(".actions").classList.add("d-none");
-//     });
-
-//     mylist.appendChild(li);
-//   }
-// }
-
 function showTodos() {
   const mylist = document.getElementById("mylist");
   mylist.innerHTML = "";
@@ -475,7 +449,6 @@ function editTodo(index) {
   newStyle.classList.add('todo-style');
   hoverActions.classList.add('d-none');
   editActions.classList.remove('d-none');
-  
 }
 
 

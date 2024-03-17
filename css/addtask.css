@@ -221,7 +221,7 @@ textarea {
   flex-direction: column;
   gap: 5px;
   overflow: scroll;
-  height: 370px;
+  height: 240px;
   margin-top: -5px;
   box-shadow: 0px 0px 10px 3px #00000014;
 }
@@ -313,7 +313,6 @@ textarea {
 .input-subtask,
 .edit-input {
   color: black;
-  /* Textfarbe auf Schwarz setzen */
 }
 
 .input-sub-field {
@@ -558,9 +557,6 @@ ul {
   .content {
     margin-top: 30px;
     padding-bottom: 150px;
-  }
-  .todo-item{
-    margin-bottom: 10px;
   }
 
   .create-task-container {

@@ -47,6 +47,7 @@ function openAddNewTaskPopup() {
 function closeAddTaskPopup() {
   document.getElementById("add-task-popup-container").classList.add("d-none");
   document.body.classList.remove("popup-open");
+  clearInputFields();
 }
 
 

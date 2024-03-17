@@ -5,7 +5,7 @@ function renderAddNewTaskInPopup() {
     return /* html */ `
     <div class="addTask-popup" onclick="doNotClose(event), closeUserListInPopup()">
    
-    <div>
+    <div onclick="clearInput()">
         <div class="header-container">
             <h1>Add Task</h1>
         </div>
@@ -108,9 +108,14 @@ function renderAddNewTaskInPopup() {
 
                     <div class="subtask-container">
                         <span>Subtask</span>
-                        <div class="input-sub-field">
-                            <input class="input-subtask" id="subtask" placeholder="Add new subtask"/>
-                            <img src="./assets/img/add_subtask.svg" class="suffix" id="addButton" alt="" onclick="addTodo()">
+                        <div onclick="doNotClose(event)" class="input-sub-field">
+                            <input class="input-subtask" id="subtask-inputfield" placeholder="Add new subtask" onclick="activeInput()"/>
+                            <img src="./assets/img/add_subtask.svg" class="suffix" id="addButton" alt="" onclick="activeInput()">
+                            <div id="input-options" class="d-none">
+                                <img src="./assets/img/subtask-clear.svg" class="subtask-btn" alt="" onclick="clearInput()">
+                                <span class="input-options-border"></span>
+                                <img src="./assets/img/create-subtask.svg" class="subtask-btn" alt="" onclick="addTodo()">
+                            </div>
                         </div>
                         <ul id="mylist"></ul>
                     </div>
@@ -145,75 +150,6 @@ function renderAddNewTaskInPopup() {
     </div>
     `;
 }
-
-
-// /**
-//  * This function is used to render the HTML of the Popup.
-//  * 
-//  * @param {Object} task - The task object containing details about the task.
-//  * @param {string} urgentSymbolHTML - HTML representing the urgent priority symbol.
-//  * @param {string} mediumSymbolHTML - HTML representing the medium priority symbol.
-//  * @param {string} lowSymbolHTML - HTML representing the low priority symbol.
-//  * @param {string} userNamesHTML - HTML representing the assigned users' names and initials.
-//  * @param {string} subtasksHTML - HTML representing the subtasks of the task.
-//  * @returns {string} - The HTML string representing the popup.
-//  */
-// function renderTaskDetailsInPopup(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userNamesHTML, subtasksHTML) {
-//     return /*html*/ `
-//     <div class="complete_board_popup" onclick="doNotClose(event)">
-//         <div class="popup-card popup-card-mobile", onclick="doNotClose(event)">
-//         <div class="board_popup board_popup_mobile">
-//             <div class="flex-container-head">
-//                 <div class="task_popup_${task.category}">
-//                     <p>${task.category}</p>
-//                 </div>
-//                 <div class="close_icon_box">
-//                     <img class="img_popup img_popup_mobile" style="cursor: pointer;" onclick="closeIncomePopup()"
-//                         src="./assets/img/close_icon.svg" alt="close Button">
-//                 </div>
-//             </div>
-            
-//             <textarea class="titelarea titelarea-mobile">${task.titel}</textarea>
-      
-     
-//             <textarea class="descriptionarea descriptionarea-mobile">${task.description}</textarea>
-        
-//             <div class="due_date_popup due-date-popup-mobile">
-//                 <p style="color: #42526E;">Due Date:</p>
-//                 <p id="variable_date">${task.dueDate}</p>
-//             </div>
-//             <div class="priority_popup priority-popup-mobile">
-//                 <p class="prioity_container prioity-container-mobile" style="color: #42526E;">Priority:</p>
-//                 ${urgentSymbolHTML}
-//                 ${mediumSymbolHTML}
-//                 ${lowSymbolHTML}
-//             </div>
-//             <div class="assigned-popup">
-//     <p class="assigned-mobile" style="color: #42526E;">Assigned to:</p>
-//     <div class="user-container-popup">
-//         ${userNamesHTML} 
-//     </div>
-//     <p class="subtask_container subtask-container-mobile" style="color: #42526E;">Subtasks</p>
-//     <div class="subtask-list subtask-list-mobile">
-//         ${subtasksHTML} 
-//     </div>
-//     <div class="edit-delete" id="edit">
-//         <a class="button-delete-edit" href="#" onclick="deleteTask(${task.id})">
-//             <img class="edit-delete-img edit-delete-img-mobile" src="/assets/img/delete_icon.svg"
-//                 alt="Bild plus Button" />
-//             <div class="edit-delete-popup-button edit-delete-popup-button-mobile">Delete</div>
-//         </a>
-//         <a class="button-delete-edit" href="#" onclick="editPopup(${task.id})">
-//             <img class="edit-delete-img edit-delete-img-mobile" src="/assets/img/edit_icon.svg"
-//                 alt="Bild plus Button" />
-//             <div class="edit-delete-popup-button edit-delete-popup-button-mobile">Edit</div>
-//         </a>
-//     </div>
-// </div>
-//         </div>
-//     </div>
-// `;
-// }
 
 
 /**
@@ -293,7 +229,7 @@ function renderTaskDetailsInPopup(task, urgentSymbolHTML, mediumSymbolHTML, lowS
  */
 function generateHtmlForEditPopup(taskId) {
     return/*html*/ `
-<form class="task-edit-form" onsubmit="addTask()" onclick="doNotClose(event), closeUserListInPopup()">
+<form class="task-edit-form" onsubmit="addTask()" onclick="doNotClose(event), closeUserListInPopup(), clearInput()">
 <div class="close-icon-edit-popup">
         <img class="img_popup" style="cursor: pointer;" onclick="closeEditPopup()" src="./assets/img/close_icon.svg" alt="close Button">
     </div>
@@ -369,18 +305,18 @@ function generateHtmlForEditPopup(taskId) {
         </div>
     </div>
     <div class="subtask-container">
-        <span>Subtask</span>
-        <div class="input-sub-field">
-            <input class="input-subtask" id="subtask" />
-            <div onclick="addTodo();" id="addButton" class="plus-button-subtask-edit-popup">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" fill="none">
-                <path fill="#2A3647"
-                   d="M6.249 8h-5a.968.968 0 0 1-.713-.287A.968.968 0 0 1 .249 7c0-.283.095-.52.287-.713A.968.968 0 0 1 1.249 6h5V1c0-.283.095-.52.287-.713A.968.968 0 0 1 7.249 0c.283 0 .52.096.712.287.192.192.288.43.288.713v5h5c.283 0 .52.096.712.287.192.192.287.43.287.713s-.095.52-.287.713a.967.967 0 0 1-.713.287h-5v5c0 .283-.095.52-.287.713a.967.967 0 0 1-.712.287.967.967 0 0 1-.713-.287.968.968 0 0 1-.287-.713V8Z" />
-                </svg>
-            </div>
-        </div>
-        <ul id="mylist"></ul>
-    </div>
+                        <span>Subtask</span>
+                        <div onclick="doNotClose(event)" class="input-sub-field">
+                            <input class="input-subtask" id="subtask-inputfield" placeholder="Add new subtask" onclick="activeInput()"/>
+                            <img src="./assets/img/add_subtask.svg" class="suffix" id="addButton" alt="" onclick="activeInput()">
+                            <div id="input-options" class="d-none">
+                                <img src="./assets/img/subtask-clear.svg" class="subtask-btn" alt="" onclick="clearInput()">
+                                <span class="input-options-border"></span>
+                                <img src="./assets/img/create-subtask.svg" class="subtask-btn" alt="" onclick="addTodo()">
+                            </div>
+                        </div>
+                        <ul id="mylist"></ul>
+                    </div>
 </div>
 <div class="button-ok">
     <button id="saveEditButton" class="button-edit-ok" onclick="SaveEditedTask(${taskId})">OK<img src="/assets/img/check.svg" alt=""></button>

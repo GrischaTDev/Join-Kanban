@@ -87,11 +87,6 @@ h2 {
   background-color: rgb(207, 207, 207);
 }
 
-#mylist li {
-  list-style-type: none;
-  padding-bottom: 10px;
-}
-
 /*-board-search-END-*/
 /*-todo-*/
 
@@ -732,20 +727,11 @@ h2 {
   padding: 5px;
 }
 
-.todo-item{
-  margin-bottom: 10px;
-}
+
 .assigned-input {
   position: relative;
 }
 
-.input-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 10px; 
-  pointer-events: none; 
-}
 .input-task-select {
   cursor: pointer;
 }
@@ -775,10 +761,6 @@ h2 {
     height: calc(50% - 20px); 
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
-  }
-  
-  .todo-item{
-    margin-bottom: 10px;
   }
   
   .add-task-form-popup {
