@@ -325,6 +325,34 @@ function SaveEditedTask(taskId) {
 }
 
 
+// /**
+//  * Generates an edited task object based on the provided taskId and DOM elements.
+//  * 
+//  * @param {*} taskId - The ID of the task to be edited.
+//  * @returns {*} - The edited task object.
+//  */
+// function generateEditedTask(taskId) {
+//   return {
+//     id: taskId,
+//     titel: document.getElementById('titel').value,
+//     description: document.getElementById('description').value,
+//     dueDate: document.getElementById('dueDate').value,
+//     category: allTasks.find(task => task.id === taskId).category,
+//     priority: {
+//       low: document.getElementById('low').classList.contains('active-low'),
+//       medium: document.getElementById('medium').classList.contains('active-medium'),
+//       urgent: document.getElementById('urgent').classList.contains('active-urgent')
+//     },
+//     subtask: allTasks.find(task => task.id === taskId).subtask,
+//     userList: selectedUser.map(user => ({
+//       fname: user.name.split(' ')[0],
+//       lname: user.name.split(' ')[1],
+//       backgroundcolor: user.color
+//     })),
+//     progressfield: allTasks.find(task => task.id === taskId).progressfield
+//   };
+// }
+
 /**
  * Generates an edited task object based on the provided taskId and DOM elements.
  * 
@@ -343,7 +371,7 @@ function generateEditedTask(taskId) {
       medium: document.getElementById('medium').classList.contains('active-medium'),
       urgent: document.getElementById('urgent').classList.contains('active-urgent')
     },
-    subtask: allTasks.find(task => task.id === taskId).subtask,
+    subtask: todos.map(name => ({ name, status: false })),
     userList: selectedUser.map(user => ({
       fname: user.name.split(' ')[0],
       lname: user.name.split(' ')[1],
@@ -352,6 +380,7 @@ function generateEditedTask(taskId) {
     progressfield: allTasks.find(task => task.id === taskId).progressfield
   };
 }
+
 
 
 /**
