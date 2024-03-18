@@ -408,25 +408,12 @@ function handleSubtaskInputEnter(event) {
   if (event.key === 'Enter') {
     event.preventDefault();
     event.target.blur();
-    addTodo(); // Stelle sicher, dass die Funktion 'addTodo' existiert
+    addTodo();
   }
 
-  // Event-Listener für das Subtask-Inputfeld
   const subtaskInput = document.getElementById('subtask-inputfield');
   subtaskInput.addEventListener('keydown', handleSubtaskInputEnter);
 }
-
-// // /**
-// //  *  adds subtasks to local storage when push enter!
-// //  */
-// const subtaskInput = document.getElementById('subtask-inputfield');
-// subtaskInput.addEventListener('keydown', function(event) {
-//   if (event.key === 'Enter') {
-//     event.preventDefault();
-//     subtaskInput.blur();
-//     addTodo();
-//   }
-// });
 
 
 /**

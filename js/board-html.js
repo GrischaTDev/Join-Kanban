@@ -109,7 +109,7 @@ function renderAddNewTaskInPopup() {
                     <div class="subtask-container">
                         <span>Subtask</span>
                         <div onclick="doNotClose(event)" class="input-sub-field">
-                            <input class="input-subtask" id="subtask-inputfield" placeholder="Add new subtask" onclick="activeInput()"/>
+                            <input class="input-subtask" id="subtask-inputfield" placeholder="Add new subtask" onclick="activeInput()" onkeydown="handleSubtaskInputEnter(event)"/>
                             <img src="./assets/img/add_subtask.svg" class="suffix" id="addButton" alt="" onclick="activeInput()">
                             <div id="input-options" class="d-none">
                                 <img src="./assets/img/subtask-clear.svg" class="subtask-btn" alt="" onclick="clearInput()">
@@ -307,7 +307,7 @@ function generateHtmlForEditPopup(taskId) {
     <div class="subtask-container">
                         <span>Subtask</span>
                         <div onclick="doNotClose(event)" class="input-sub-field">
-                            <input class="input-subtask" id="subtask-inputfield" placeholder="Add new subtask" onclick="activeInput()"/>
+                            <input class="input-subtask" id="subtask-inputfield" placeholder="Add new subtask" onclick="activeInput()" onkeydown="handleSubtaskInputEnter(event)"/>
                             <img src="./assets/img/add_subtask.svg" class="suffix" id="addButton" alt="" onclick="activeInput()">
                             <div id="input-options" class="d-none">
                                 <img src="./assets/img/subtask-clear.svg" class="subtask-btn" alt="" onclick="clearInput()">
