@@ -226,7 +226,8 @@ function saveTasksToLocalStorage(tasks) {
 /**
  * This function adds a task to allTasks array
  */
-async function addTask() {
+async function addTask(event) {
+  event.preventDefault();
   let { titel, description, category, urgent, medium, low, dueDate } = getValueFromAddTaskForm();
   let allTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
   let userListData = selectedUser.map(user => ({

@@ -677,8 +677,9 @@ h2 {
   padding: 50px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   max-width: 800px;
+  height: 80%;
+  overflow: scroll;
 }
 
 .add-task-header-container {
