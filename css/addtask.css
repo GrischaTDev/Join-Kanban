@@ -285,12 +285,8 @@ textarea {
 #selected-user {
   display: flex;
   gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.0) transparent;
+  flex-wrap: wrap;
 }
-
-
 
 .user-icon {
   color: white;
@@ -321,9 +317,7 @@ textarea {
 
 .input-sub-field {
   display: flex;
-  justify-content: end;
   align-items: center;
-  gap: 6px;
 }
 
 #input-options {
@@ -354,12 +348,11 @@ textarea {
   cursor: pointer;
   height: 14px;
   margin-right: 10px;
-  margin-right: 10px;
   margin-left: -36px;
+  padding: 4px;
 }
 
 .suffix:hover {
-  padding: 4px;
   border-radius: 50%;
   background-color: #e7e7e7;
   margin-right: 6px;
@@ -373,6 +366,7 @@ textarea {
   border-radius: 10px;
   border: 1px solid rgb(209, 209, 209);
   font-family: "Inter", sans-serif;
+  box-sizing: border-box;
 }
 
 .actions {
@@ -661,6 +655,10 @@ ul {
     justify-content: center;
     align-items: center;
     gap: 20px;
+  }
+
+  .content {
+    margin-top: 50px;
   }
 }
 
