@@ -148,8 +148,13 @@ h2 {
   padding: 8px;
   width: 100%;
   box-sizing: border-box;
-  border-radius: 30px;
+  border-radius: 15px;
   height: 100%;
+  background-color:rgb(235, 235, 235);
+}
+
+.drag-area-highlight {
+  background-color:rgb(218, 218, 218);
 }
 
 .section-done {
