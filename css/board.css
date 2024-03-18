@@ -701,6 +701,7 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 90%;
 }
 
 .button-edit-ok {
@@ -801,12 +802,10 @@ h2 {
     justify-content: space-between;
   }
 
-
   .task-edit-form {
     margin: 20px;
     overflow-x: hidden;
     overflow-y: auto;
-    height: 90%;
     max-width: 400px;
   }
 

@@ -379,7 +379,7 @@ function showTodos() {
 
   todos.forEach((todo, i) => {
     const li = `
-      <li id="todo-id-${i}" class="todo-item">
+      <li id="todo-id-${i}" class="todo-item" ondblclick="editTodo(${i})">
         ${generateTaskHtml(todo, i)}
       </li>
     `;
@@ -404,18 +404,29 @@ function addTodo() {
   }
 }
 
-
-// /**
-//  *  adds subtasks to local storage when push enter!
-//  */
-const subtaskInput = document.getElementById('subtask-inputfield');
-subtaskInput.addEventListener('keydown', function(event) {
+function handleSubtaskInputEnter(event) {
   if (event.key === 'Enter') {
     event.preventDefault();
-    subtaskInput.blur();
-    addTodo();
+    event.target.blur();
+    addTodo(); // Stelle sicher, dass die Funktion 'addTodo' existiert
   }
-});
+
+  // Event-Listener für das Subtask-Inputfeld
+  const subtaskInput = document.getElementById('subtask-inputfield');
+  subtaskInput.addEventListener('keydown', handleSubtaskInputEnter);
+}
+
+// // /**
+// //  *  adds subtasks to local storage when push enter!
+// //  */
+// const subtaskInput = document.getElementById('subtask-inputfield');
+// subtaskInput.addEventListener('keydown', function(event) {
+//   if (event.key === 'Enter') {
+//     event.preventDefault();
+//     subtaskInput.blur();
+//     addTodo();
+//   }
+// });
 
 
 /**

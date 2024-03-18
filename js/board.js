@@ -325,34 +325,6 @@ function SaveEditedTask(taskId) {
 }
 
 
-// /**
-//  * Generates an edited task object based on the provided taskId and DOM elements.
-//  * 
-//  * @param {*} taskId - The ID of the task to be edited.
-//  * @returns {*} - The edited task object.
-//  */
-// function generateEditedTask(taskId) {
-//   return {
-//     id: taskId,
-//     titel: document.getElementById('titel').value,
-//     description: document.getElementById('description').value,
-//     dueDate: document.getElementById('dueDate').value,
-//     category: allTasks.find(task => task.id === taskId).category,
-//     priority: {
-//       low: document.getElementById('low').classList.contains('active-low'),
-//       medium: document.getElementById('medium').classList.contains('active-medium'),
-//       urgent: document.getElementById('urgent').classList.contains('active-urgent')
-//     },
-//     subtask: allTasks.find(task => task.id === taskId).subtask,
-//     userList: selectedUser.map(user => ({
-//       fname: user.name.split(' ')[0],
-//       lname: user.name.split(' ')[1],
-//       backgroundcolor: user.color
-//     })),
-//     progressfield: allTasks.find(task => task.id === taskId).progressfield
-//   };
-// }
-
 /**
  * Generates an edited task object based on the provided taskId and DOM elements.
  * 
@@ -642,3 +614,18 @@ function deleteTask(taskId) {
     console.log("Task not found");
   }
 }
+
+
+// Verhindert die Formularübermittlung bei der Eingabe der Eingabetaste
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form");
+  const inputs = form.querySelectorAll("input");
+
+  inputs.forEach(function (input) {
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+      }
+    });
+  });
+});
