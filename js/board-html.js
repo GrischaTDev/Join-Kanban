@@ -229,7 +229,7 @@ function renderTaskDetailsInPopup(task, urgentSymbolHTML, mediumSymbolHTML, lowS
  */
 function generateHtmlForEditPopup(taskId) {
     return/*html*/ `
-<form class="task-edit-form" onsubmit="addTask(); return false;" onclick="doNotClose(event), closeUserListInPopup(), clearInput()">
+<form class="task-edit-form" onsubmit="addTask(event)" onclick="doNotClose(event), closeUserListInPopup(), clearInput()">
 <div class="close-icon-edit-popup">
         <img class="img_popup" style="cursor: pointer;" onclick="closeEditPopup()" src="./assets/img/close_icon.svg" alt="close Button">
     </div>
