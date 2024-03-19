@@ -521,6 +521,7 @@ h2 {
   height: 50px;
   font-size: 20px;
   pointer-events: none;
+  width: 100%;
 }
 
 .p-element {
@@ -683,8 +684,8 @@ h2 {
   display: flex;
   flex-direction: column;
   max-width: 800px;
-  height: 80%;
-  overflow: scroll;
+  max-height: 80%;
+  overflow: auto;
 }
 
 .add-task-header-container {
@@ -703,11 +704,11 @@ h2 {
   overflow-y: auto;
   width: 100%;
   max-width: 500px;
+  max-height: 90%;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 90%;
 }
 
 .button-edit-ok {
