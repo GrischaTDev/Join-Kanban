@@ -614,18 +614,3 @@ function deleteTask(taskId) {
     console.log("Task not found");
   }
 }
-
-
-// Verhindert die Formularübermittlung bei der Eingabe der Eingabetaste
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector("form");
-  const inputs = form.querySelectorAll("input");
-
-  inputs.forEach(function (input) {
-    input.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-      }
-    });
-  });
-});
