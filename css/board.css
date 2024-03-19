@@ -996,6 +996,7 @@ h2 {
     justify-content: flex-start;
     align-items: center;
     width: 100%;
+    height: auto;
   }
 
   .desktop-card-section {
