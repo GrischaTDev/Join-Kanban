@@ -7,9 +7,7 @@ body {
 
 
 .content {
-  padding-top: 80px;
   margin: 130px 16px 30px 16px;
-
 }
 
 .input-container {
@@ -283,6 +281,7 @@ textarea {
 }
 
 #selected-user {
+  height: auto;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
@@ -562,7 +561,6 @@ ul {
   }
 
   .content {
-    margin-top: 30px;
     padding-bottom: 150px;
   }
 
@@ -656,15 +654,14 @@ ul {
     align-items: center;
     gap: 20px;
   }
-
-  .content {
-    margin-top: 50px;
-  }
 }
 
 /* Responsiv for desktop */
 @media screen and (min-width: 1600px) {
   .content {
     margin: 160px 0 0 331px;
+  }
+  .add-task-desktop {
+    font-size: 61px;
   }
 }
