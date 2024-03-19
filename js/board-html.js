@@ -341,7 +341,10 @@ function renderAllTasksInProgressfieldTodo(task, urgentSymbolHTML, mediumSymbolH
     return /*html*/`
     <a draggable="true" href="#" ondragstart="startDragging(${task.id})" class="card-section desktop-card-section" onclick="showPopup(${task.id})">
         <div class="card">
-            <div class="card-category-${task.category}">${task.category}</div>
+            <div class="card-category-and-drag-menu">
+                <div class="card-category-${task.category}">${task.category}</div>
+                <img src="./assets/img/drag-icon.png" alt="">
+            </div>
             <div class="card-headline">${task.titel}</div>
             <div class="card-description">${task.description}</div>
             ${progressContainerHTML}
