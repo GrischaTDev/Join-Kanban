@@ -283,6 +283,7 @@ textarea {
 }
 
 #selected-user {
+  height: auto;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
