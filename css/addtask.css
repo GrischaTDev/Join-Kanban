@@ -660,4 +660,7 @@ ul {
   .content {
     margin: 160px 0 0 331px;
   }
+  .add-task-desktop {
+    font-size: 61px;
+  }
 }
