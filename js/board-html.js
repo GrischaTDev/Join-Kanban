@@ -343,7 +343,7 @@ function renderAllTasksInProgressfieldTodo(task, urgentSymbolHTML, mediumSymbolH
         <div class="card">
             <div class="card-category-and-drag-menu">
                 <div class="card-category-${task.category}">${task.category}</div>
-                <img src="./assets/img/drag-icon.png" alt="" onclick="dragAndDropPopup()">
+                <img src="./assets/img/drag-icon.png" alt="" onclick="event.stopPropagation(); dragAndDropPopup()">
             </div>
             <div class="card-headline">${task.titel}</div>
             <div class="card-description">${task.description}</div>
