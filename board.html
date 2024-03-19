@@ -108,6 +108,17 @@
     <div id="msg-box-create-task" class="d-none">
         <span>Task added to board <img src="./assets/img/menu-icon-board-white.svg" alt="Board icon"></span>
     </div>
+
+    <div id="mobile-drag-popup" class="mobile-drag-popup d-none">
+        <div class="mobile-drag-menu">
+            <img class="img_popup img_popup_mobile" style="cursor: pointer;"  src="./assets/img/close_icon.svg" alt="close Button" onclick="dragAndDropPopup()">
+            <div class="mobile-drag-item">To do</div>
+            <div class="mobile-drag-item">In progress</div>
+            <div class="mobile-drag-item">Await feedback</div>
+            <div class="mobile-drag-item">Done</div>
+        </div>
+    </div>
+
     <div w3-include-html="/assets/templates/mobile_menu.html"></div>
 </body>
 
