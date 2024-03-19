@@ -614,3 +614,14 @@ function deleteTask(taskId) {
     console.log("Task not found");
   }
 }
+
+
+function dragAndDropPopup() {
+  let mobileDragPopup = document.getElementById('mobile-drag-popup');
+
+  if (mobileDragPopup.classList.contains('d-none')) {
+    mobileDragPopup.classList.remove('d-none')
+  } else {
+    mobileDragPopup.classList.add('d-none')
+  }
+}

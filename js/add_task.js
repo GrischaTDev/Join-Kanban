@@ -526,14 +526,3 @@ function clearInput() {
   inputOptions.classList.add('d-none');
   subTaskInput.value = '';
 }
-
-
-function dragAndDropPopup() {
-  let mobileDragPopup = document.getElementById('mobile-drag-popup');
-
-  if (mobileDragPopup.classList.contains('d-none')) {
-    mobileDragPopup.classList.remove('d-none')
-  } else {
-    mobileDragPopup.classList.add('d-none')
-  }
-}
