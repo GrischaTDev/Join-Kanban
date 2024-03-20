@@ -77,6 +77,7 @@ function checkPrivacyConsent(registerButton) {
   registerButton.disabled = false;
 }
 
+
 /**
  * Push the registered user into a json.
  * 

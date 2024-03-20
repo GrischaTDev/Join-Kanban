@@ -119,10 +119,6 @@ h2 {
 /*-todo-END*/
 /*-no_tasks-*/
 
-/* span {
-  color: #a8a8a8;
-} */
-
 .no-tasks {
   color: #A8A8A8;
   display: flex;
@@ -150,7 +146,6 @@ h2 {
   box-sizing: border-box;
   border-radius: 15px;
   height: 100%;
-  /* background-color:rgb(235, 235, 235); */
 }
 
 .drag-area-highlight {

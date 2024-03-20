@@ -23,9 +23,7 @@
     <script src="/js/add-task-userlist.js"></script>
     <script src="./js/board-html.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 
 <body onload="initBoard()" id="container">
@@ -39,8 +37,7 @@
             <div class="desktop-position-add-task-button">
                 <a class="button-add-task desktop-button-add-task" onclick="openAddNewTaskPopup()">
                     <span class="add-task-text">Add Task</span>
-                    <img class="plus-button desktop-plus-button" src="/assets/img/plus_button_black.svg"
-                        alt="Bild plus Button" />
+                    <img class="plus-button desktop-plus-button" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                 </a>
             </div>
         </div>
@@ -101,10 +98,7 @@
                 <div class="headlines-container desktop-headlines-container" id="done">
                     <h6>Done</h6>
                 </div>
-                <div id="done_container" class="drag-area desktop-drag-area"
-                    ondrop="moveTo('done_container', event), removeHighlight(id)"
-                    ondragover="allowDrop(event); highlight('done_container')"
-                    ondragleave="removeHighlight('done_container')">
+                <div id="done_container" class="drag-area desktop-drag-area" ondrop="moveTo('done_container', event), removeHighlight(id)" ondragover="allowDrop(event); highlight('done_container')" ondragleave="removeHighlight('done_container')">
                 </div>
             </div>
 
@@ -122,7 +116,7 @@
 
     <div id="mobile-drag-popup" class="mobile-drag-popup d-none" onclick="">
 
-        <div w3-include-html="/assets/templates/mobile_menu.html"></div>
+    <div w3-include-html="/assets/templates/mobile_menu.html"></div>
 </body>
 
 </html>

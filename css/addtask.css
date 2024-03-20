@@ -2,10 +2,7 @@ body {
   height: 100vh;
 }
 
-
 /*-add-task-container-*/
-
-
 .content {
   margin: 130px 16px 30px 16px;
 }
@@ -15,9 +12,7 @@ body {
   box-sizing: border-box;
 }
 
-
 /*-topic*/
-
 .header-container {
   display: flex;
   align-items: flex-end;
@@ -120,13 +115,9 @@ textarea {
 
 .priority-button {
   flex-grow: 1;
-  /* Schaltflächen sollen sich gleichmäßig ausdehnen */
   flex-shrink: 1;
-  /* Schaltflächen sollen sich gleichermaßen verkleinern */
   width: 25%;
-  /* Anfangsbreite der Schaltflächen in Prozent */
   max-width: 150px;
-  /* Maximale Breite der Schaltflächen, falls erforderlich */
 }
 
 .priority-button {
