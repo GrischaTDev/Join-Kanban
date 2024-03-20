@@ -1044,6 +1044,7 @@ h2 {
     align-items: center;
     width: 100%;
     height: auto;
+    min-height: 100vh;
   }
 
   .desktop-card-section {
