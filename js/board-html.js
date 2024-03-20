@@ -280,6 +280,19 @@ function generateHtmlForEditPopup(taskId) {
 }
 
 
+/**
+ * Renders a task in the "To-Do" status.
+ * 
+ * @param {Object} task The object containing task information.
+ * @param {string} urgentSymbolHTML HTML code for the urgent priority symbol.
+ * @param {string} mediumSymbolHTML HTML code for the medium priority symbol.
+ * @param {string} lowSymbolHTML HTML code for the low priority symbol.
+ * @param {string} userInitialsHTML HTML code for user initials.
+ * @param {number} progressPercentage Percentage progress of the task.
+ * @param {number} completedSubtasks Number of completed subtasks.
+ * @param {number} totalSubtasks Total number of subtasks.
+ * @returns An HTML string representing the rendered task.
+ */
 function renderAllTasksInProgressfieldTodo(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
     let progressContainerHTML = '';
     if (task.subtask && task.subtask.length > 0) {
@@ -317,6 +330,19 @@ function renderAllTasksInProgressfieldTodo(task, urgentSymbolHTML, mediumSymbolH
 }
 
 
+/**
+ * Renders a task in the "In Progress" status.
+ * 
+ * @param {Object} task The object containing task information.
+ * @param {string} urgentSymbolHTML HTML code for the urgent priority symbol.
+ * @param {string} mediumSymbolHTML HTML code for the medium priority symbol.
+ * @param {string} lowSymbolHTML HTML code for the low priority symbol.
+ * @param {string} userInitialsHTML HTML code for user initials.
+ * @param {number} progressPercentage Percentage progress of the task.
+ * @param {number} completedSubtasks Number of completed subtasks.
+ * @param {number} totalSubtasks Total number of subtasks.
+ * @returns An HTML string representing the rendered task.
+ */
 function renderAllTasksInProgressfieldInProgress(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
     let progressContainerHTML = '';
     if (task.subtask && task.subtask.length > 0) {
@@ -354,6 +380,19 @@ function renderAllTasksInProgressfieldInProgress(task, urgentSymbolHTML, mediumS
 }
 
 
+/**
+ * Renders a task in the "Await Feedback" status.
+ * 
+ * @param {Object} task The object containing task information.
+ * @param {string} urgentSymbolHTML HTML code for the urgent priority symbol.
+ * @param {string} mediumSymbolHTML HTML code for the medium priority symbol.
+ * @param {string} lowSymbolHTML HTML code for the low priority symbol.
+ * @param {string} userInitialsHTML HTML code for user initials.
+ * @param {number} progressPercentage Percentage progress of the task.
+ * @param {number} completedSubtasks Number of completed subtasks.
+ * @param {number} totalSubtasks Total number of subtasks.
+ * @returns An HTML string representing the rendered task.
+ */
 function renderAllTasksInProgressfieldAwaitFeedback(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
     let progressContainerHTML = '';
     if (task.subtask && task.subtask.length > 0) {
@@ -391,6 +430,19 @@ function renderAllTasksInProgressfieldAwaitFeedback(task, urgentSymbolHTML, medi
 }
 
 
+/**
+ * Renders a task in the "Done" status.
+ * 
+ * @param {Object} task The object containing task information.
+ * @param {string} urgentSymbolHTML HTML code for the urgent priority symbol.
+ * @param {string} mediumSymbolHTML HTML code for the medium priority symbol.
+ * @param {string} lowSymbolHTML HTML code for the low priority symbol.
+ * @param {string} userInitialsHTML HTML code for user initials.
+ * @param {number} progressPercentage Percentage progress of the task.
+ * @param {number} completedSubtasks Number of completed subtasks.
+ * @param {number} totalSubtasks Total number of subtasks.
+ * @returns An HTML string representing the rendered task.
+ */
 function renderAllTasksInProgressfieldDone(task, urgentSymbolHTML, mediumSymbolHTML, lowSymbolHTML, userInitialsHTML, progressPercentage, completedSubtasks, totalSubtasks) {
     let progressContainerHTML = '';
     if (task.subtask && task.subtask.length > 0) {
