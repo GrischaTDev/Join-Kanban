@@ -507,10 +507,10 @@ function filterAndRenderTasksDone(allTasks) {
   }
 }
 
+
 /**
  * this function calculates all tasks details
  * 
- * @param {*} task 
  */
 function calculateTaskDetails(task) {
   let urgentSymbolHTML = task.priority.urgent ? `<img src="/assets/img/prio-urgent.svg" alt="Urgent">` : "";
@@ -534,11 +534,9 @@ function startDragging(taskId) {
 }
 
 
-
 /**
  * this function allows too drop an element
  * 
- * @param {*} ev 
  */
 function allowDrop(ev) {
   ev.preventDefault();
@@ -546,16 +544,37 @@ function allowDrop(ev) {
 
 
 /**
- * This function moves a task to another progress field
+ * This function moves a task to another progress field in desktop version
  * 
  * @param {*} progressfield - The progress field to move the task to
  */
-function moveTo(progressfield) {
+function moveTo(progressfield, taskId) {
   const task = allTasks.find(task => task.id === currentDraggedElement);
   if (task) {
     task.progressfield = progressfield;
     localStorage.setItem("allTasks", JSON.stringify(allTasks));
     showAllTasks(allTasks);
+  } else {
+    console.error("Task not found.");
+  }
+}
+
+
+
+/**
+ * This function moves a task to another progress field in mobile version
+ * 
+ * @param {*} progressfield - The progress field to move the task to
+ * @param {*} taskId - The ID of the task being moved
+ */
+function moveToMobile(progressfield, taskId) {
+  const task = allTasks.find(task => task.id === taskId);
+
+  if (task) {
+    task.progressfield = progressfield;
+    localStorage.setItem("allTasks", JSON.stringify(allTasks));
+    showAllTasks(allTasks);
+    closeDragAndDropPopup(); // Schließe das Popup nach dem Verschieben des Tasks
   } else {
     console.error("Task not found.");
   }
@@ -616,12 +635,44 @@ function deleteTask(taskId) {
 }
 
 
-function dragAndDropPopup() {
+/**
+ * its used to render the drag and drop popup
+ * 
+ * @param {*} taskId 
+ */
+function dragAndDropPopup(taskId) {
   let mobileDragPopup = document.getElementById('mobile-drag-popup');
-
   if (mobileDragPopup.classList.contains('d-none')) {
     mobileDragPopup.classList.remove('d-none')
   } else {
     mobileDragPopup.classList.add('d-none')
   }
+  mobileDragPopup.innerHTML = '';
+  mobileDragPopup.innerHTML += generateDragAndDropPopupHtml(taskId);
+}
+
+
+/**
+ * 
+ * @returns the html of the drag and drop popup
+ */
+function generateDragAndDropPopupHtml(taskId) {
+  return /*html*/`
+  <div class="mobile-drag-menu">
+            <img class="img_popup img_popup_mobile" style="cursor: pointer;"  src="./assets/img/close_icon.svg" alt="close Button" onclick="dragAndDropPopup()">
+        <div class="mobile-drag-item" onclick="moveToMobile('todo_container', ${taskId})">To do</div>
+        <div class="mobile-drag-item" onclick="moveToMobile('inprogress_container', ${taskId})">In progress</div>
+        <div class="mobile-drag-item" onclick="moveToMobile('await_feedback_container', ${taskId})">Await feedback</div>
+        <div class="mobile-drag-item" onclick="moveToMobile('done_container', ${taskId})">Done</div>
+        </div>
+    </div>
+  `;
+}
+
+
+/**
+ * closes the drag and drop popup
+ */
+function closeDragAndDropPopup() {
+  document.getElementById('mobile-drag-popup').classList.add('d-none');
 }

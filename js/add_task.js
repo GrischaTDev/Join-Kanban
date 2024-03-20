@@ -238,15 +238,15 @@ async function addTask(event) {
   let subtasks = todos.map(todo => ({ name: todo, status: false }));
   let task = setVariableforSaveTask(allTasks, titel, description, dueDate, category, userListData, subtasks, urgent, medium, low);
   allTasks.push(task);
-  
+
   saveTasksToLocalStorage(allTasks);
   clearInputFields();
   await createTaskMessage()
 
   let currentPage = window.location.pathname;
   if (currentPage === "/board.html") {
-  showTaskOnPage(task);
-  closeAddTaskPopup();
+    showTaskOnPage(task);
+    closeAddTaskPopup();
   }
 }
 
@@ -374,6 +374,10 @@ function loadTodos() {
   }
 }
 
+
+/**
+ * shows subtask array
+ */
 function showTodos() {
   const mylist = document.getElementById("mylist");
   mylist.innerHTML = "";
@@ -405,6 +409,12 @@ function addTodo() {
   }
 }
 
+
+/**
+ * function to use enter key to save a subtask in todos array
+ * 
+ * @param {*} event 
+ */
 function handleSubtaskInputEnter(event) {
   if (event.key === 'Enter') {
     event.preventDefault();
@@ -448,18 +458,28 @@ function editTodo(index) {
   newStyle.classList.add('todo-style');
   hoverActions.classList.add('d-none');
   editActions.classList.remove('d-none');
-  
+
 }
+
+
+/**
+ * saves subtasks to local Storage
+ * 
+ * @param {*} index 
+ */
 function saveTodo(index) {
   let = document.getElementById(`edit-input-${index}`).value;
   saveTodosToLocalStorage();
 }
+
+
+/**
+ * saves subtasks to local Storage
+ */
 function saveTodosToLocalStorage() {
   localStorage.setItem('todos', JSON.stringify(todos));
   showTodos();
 }
-
-
 
 
 /**
@@ -503,6 +523,7 @@ async function createTaskMessage() {
     window.location.href = "/board.html";
   }, 1500);
 }
+
 
 /**
  * Activate subtask inputfield options to add a subtask

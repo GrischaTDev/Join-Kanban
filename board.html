@@ -60,7 +60,8 @@
                         <img class="plus-button-two" src="/assets/img/plus_button_black.svg" alt="Bild plus Button" />
                     </a>
                 </div>
-                <div id="todo_container" class="drag-area desktop-drag-area" ondrop="moveTo('todo_container', event), removeHighlight(id)"
+                <div id="todo_container" class="drag-area desktop-drag-area"
+                    ondrop="moveTo('todo_container', event), removeHighlight(id)"
                     ondragleave="removeHighlight('todo_container')"
                     ondragover="allowDrop(event); highlight('todo_container')">
                 </div>
@@ -74,7 +75,8 @@
                     </a>
                 </div>
                 <div id="inprogress_container" class="drag-area desktop-drag-area"
-                    ondrop="moveTo('inprogress_container', event), removeHighlight(id)" ondragleave="removeHighlight('inprogress_container')"
+                    ondrop="moveTo('inprogress_container', event), removeHighlight(id)"
+                    ondragleave="removeHighlight('inprogress_container')"
                     ondragover="allowDrop(event); highlight('inprogress_container')"></div>
             </div>
 
@@ -86,15 +88,19 @@
                     </a>
                 </div>
                 <div id="await_feedback_container" class="drag-area desktop-drag-area"
-                    ondrop="moveTo('await_feedback_container', event), removeHighlight(id)" ondragover="allowDrop(event); highlight('await_feedback_container')" ondragleave="removeHighlight('await_feedback_container')"></div>
+                    ondrop="moveTo('await_feedback_container', event), removeHighlight(id)"
+                    ondragover="allowDrop(event); highlight('await_feedback_container')"
+                    ondragleave="removeHighlight('await_feedback_container')"></div>
             </div>
 
             <div class="desktop-complete-card">
                 <div class="headlines-container desktop-headlines-container" id="done">
                     <h6>Done</h6>
                 </div>
-                <div id="done_container" class="drag-area desktop-drag-area" ondrop="moveTo('done_container', event), removeHighlight(id)"
-                    ondragover="allowDrop(event); highlight('done_container')" ondragleave="removeHighlight('done_container')"></div>
+                <div id="done_container" class="drag-area desktop-drag-area"
+                    ondrop="moveTo('done_container', event), removeHighlight(id)"
+                    ondragover="allowDrop(event); highlight('done_container')"
+                    ondragleave="removeHighlight('done_container')"></div>
             </div>
 
             <div>
@@ -109,17 +115,9 @@
         <span>Task added to board <img src="./assets/img/menu-icon-board-white.svg" alt="Board icon"></span>
     </div>
 
-    <div id="mobile-drag-popup" class="mobile-drag-popup d-none">
-        <div class="mobile-drag-menu">
-            <img class="img_popup img_popup_mobile" style="cursor: pointer;"  src="./assets/img/close_icon.svg" alt="close Button" onclick="dragAndDropPopup();">
-            <div class="mobile-drag-item">To do</div>
-            <div class="mobile-drag-item">In progress</div>
-            <div class="mobile-drag-item">Await feedback</div>
-            <div class="mobile-drag-item">Done</div>
-        </div>
-    </div>
+    <div id="mobile-drag-popup" class="mobile-drag-popup d-none" onclick="">
 
-    <div w3-include-html="/assets/templates/mobile_menu.html"></div>
+        <div w3-include-html="/assets/templates/mobile_menu.html"></div>
 </body>
 
 </html>

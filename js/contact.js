@@ -193,6 +193,7 @@ function selectedContactIfElseBranch(elements) {
     });
 }
 
+
 /**
  * This function is used to rendering an selected contact to show all details.
  * 
@@ -206,6 +207,7 @@ function renderContactDetails(contact) {
 
     document.getElementById('showContactContainer').innerHTML = generateContactDetailsHtml(contact);
 }
+
 
 /**
  * This function is used to delete a selected contact from the contact list.
