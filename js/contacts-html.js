@@ -232,7 +232,7 @@ function generateContactDetailsHtml(contact) {
  * @param {string} contactId - This shows the parameter which contact can be edited or deleted
  * @returns this returns the HTML box 
  */
-function renderEditDeleteContactPoup (contactId){
+function renderEditDeleteContactPoup(contactId) {
     return /*html*/ `
     <div class="edit_delete_contact_popup" id="edit_delete_contact_popup">
                     <div class="fill_icon" onclick="openEditContactCard('${contactId}'); return false;" class="edit_delete_buttons">

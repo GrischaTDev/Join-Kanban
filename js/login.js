@@ -5,7 +5,7 @@ let checkBoxLogin = false;
 /**
  * Load registered users.
  */
-async function initLogin(){
+async function initLogin() {
     await includeHTML();
     loadRegisteredUsers();
     loadRememberMeUser();
@@ -15,10 +15,10 @@ async function initLogin(){
 /**
  * Load registered users from server.
  */
-async function loadRegisteredUsers(){
+async function loadRegisteredUsers() {
     try {
         users = JSON.parse(await getItem('users'));
-    } catch(e){
+    } catch (e) {
         console.error('Loading error:', e);
     }
 }
@@ -63,9 +63,9 @@ function resetLoginForm(loginEmail, loginPassword) {
  */
 async function userPushLogin(user) {
     loggedInUser.push({
-      id: user.id,
-      name: user.name,
-      color: user.color
+        id: user.id,
+        name: user.name,
+        color: user.color
     });
     save();
 }
@@ -93,16 +93,16 @@ function rememberMe() {
     }
 
     if (!checkBoxLogin) {
-      checkBoxImage.src = './assets/img/checkbox_active.svg';
-      checkBoxLogin = true;
-      pushRememberMe(loginEmail, loginPassword)
-      loadRememberMeUser();
+        checkBoxImage.src = './assets/img/checkbox_active.svg';
+        checkBoxLogin = true;
+        pushRememberMe(loginEmail, loginPassword)
+        loadRememberMeUser();
     } else {
-      checkBoxImage.src = './assets/img/checkbox.svg';
-      checkBoxLogin = false;
-      rememberMeUser.splice(0, rememberMeUser.length);
-      saveRememberMe();
-      loadRememberMeUser();
+        checkBoxImage.src = './assets/img/checkbox.svg';
+        checkBoxLogin = false;
+        rememberMeUser.splice(0, rememberMeUser.length);
+        saveRememberMe();
+        loadRememberMeUser();
     }
 }
 
@@ -115,8 +115,8 @@ function rememberMe() {
 function pushRememberMe(loginEmail, loginPassword) {
     rememberMeUser = [];
     rememberMeUser.push({
-      email: loginEmail,
-      password: loginPassword,
+        email: loginEmail,
+        password: loginPassword,
     });
     saveRememberMe();
 }
@@ -154,7 +154,7 @@ function loadRememberMeInputValue() {
         checkBoxLogin = true;
         document.getElementById('login-email').value = rememberMeUser[0].email;
         document.getElementById('login-password').value = rememberMeUser[0].password;
-    } 
+    }
 }
 
 
@@ -168,7 +168,7 @@ function guestLogIn() {
         id: 99,
         name: 'Guest',
         color: 'rgb(222,222,69)'
-        });
+    });
     location.href = './summary.html';
     save();
 }

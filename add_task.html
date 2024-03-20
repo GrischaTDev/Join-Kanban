@@ -120,7 +120,8 @@
 
                     <div class="add-task-title">
                         <span>Category<span class="red-asterisk">*</span></span>
-                        <select class="input-task-select" required id="category" aria-placeholder="Select task category">
+                        <select class="input-task-select" required id="category"
+                            aria-placeholder="Select task category">
                             <option value="" disabled selected>Select a Category</option>
                             <option value="technical-task">Technical Task</option>
                             <option value="user-story">User Story</option>
@@ -130,12 +131,16 @@
                     <div class="subtask-container">
                         <span>Subtask</span>
                         <div onclick="doNotClose(event)" class="input-sub-field">
-                            <input class="input-subtask" id="subtask-inputfield" placeholder="Add new subtask" onclick="activeInput()" onkeydown="handleSubtaskInputEnter(event)"/>
-                            <img src="./assets/img/add_subtask.svg" class="suffix" id="addButton" alt="" onclick="activeInput()">
+                            <input class="input-subtask" id="subtask-inputfield" placeholder="Add new subtask"
+                                onclick="activeInput()" onkeydown="handleSubtaskInputEnter(event)" />
+                            <img src="./assets/img/add_subtask.svg" class="suffix" id="addButton" alt=""
+                                onclick="activeInput()">
                             <div id="input-options" class="d-none">
-                                <img src="./assets/img/subtask-clear.svg" class="subtask-btn" alt="" onclick="clearInput()">
+                                <img src="./assets/img/subtask-clear.svg" class="subtask-btn" alt=""
+                                    onclick="clearInput()">
                                 <span class="input-options-border"></span>
-                                <img src="./assets/img/create-subtask.svg" class="subtask-btn" alt="" onclick="addTodo()">
+                                <img src="./assets/img/create-subtask.svg" class="subtask-btn" alt=""
+                                    onclick="addTodo()">
                             </div>
                         </div>
                         <ul id="mylist"></ul>

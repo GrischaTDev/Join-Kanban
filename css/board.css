@@ -154,7 +154,7 @@ h2 {
 }
 
 .drag-area-highlight {
-  background-color:rgba(184, 184, 184, 0.1);
+  background-color: rgba(184, 184, 184, 0.1);
 }
 
 .section-done {
@@ -236,12 +236,12 @@ h2 {
 }
 
 .card-headline::-webkit-scrollbar {
-  height: 8px; 
+  height: 8px;
 }
 
 .card-headline::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.0); 
-  border-radius: 6px; 
+  background: rgba(0, 0, 0, 0.0);
+  border-radius: 6px;
 }
 
 .card-description {
@@ -256,12 +256,12 @@ h2 {
 }
 
 .card-description::-webkit-scrollbar {
-  height: 8px; 
+  height: 8px;
 }
 
 .card-description::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.0); 
-  border-radius: 6px; 
+  background: rgba(0, 0, 0, 0.0);
+  border-radius: 6px;
 }
 
 .progress {
@@ -327,12 +327,14 @@ h2 {
   overflow: auto;
   width: 100%;
 }
+
 .user-container::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.0); 
-  border-radius: 6px; 
+  background: rgba(0, 0, 0, 0.0);
+  border-radius: 6px;
 }
+
 .user-container::-webkit-scrollbar {
-  height: 8px; 
+  height: 8px;
 }
 
 .user-container-popup {
@@ -971,6 +973,7 @@ h2 {
   .add-task-text {
     display: none;
   }
+
   .card {
     width: 250px;
     height: 250px;

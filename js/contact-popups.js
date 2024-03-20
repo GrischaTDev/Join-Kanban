@@ -189,7 +189,7 @@ function clearAddContactInputfields(first_name, last_name, email, phone) {
  */
 function generateUniqueId() {
     let maxId = 0;
-    
+
     // Iterate through the existing contacts to find the highest used ID
     for (const contact of contact_list) {
         const contactId = parseInt(contact.id);

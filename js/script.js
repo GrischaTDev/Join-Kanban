@@ -46,7 +46,7 @@ function logout() {
     window.location.href = './index.html';
     save();
 }
-  
+
 
 /**
  *  * Includes HTML content from external files into the specified elements with the attribute 'w3-include-html'.
@@ -75,17 +75,17 @@ async function includeHTML() {
 function activeMenu() {
     const menuItems = document.querySelectorAll('.menu-item');
     const currentPath = window.location.pathname.substring(1);
-  
+
     menuItems.forEach(item => {
-      const href = item.getAttribute('href');
-      if (href === currentPath) {
-        item.classList.add('active-menu');
-      } else {
-        item.classList.remove('active-menu');
-      }
+        const href = item.getAttribute('href');
+        if (href === currentPath) {
+            item.classList.add('active-menu');
+        } else {
+            item.classList.remove('active-menu');
+        }
     });
 }
-  
+
 
 /**
  * Greets the logged-in user by displaying their name on the mobile and desktop interfaces.

@@ -115,6 +115,7 @@ menu {
     .desktop-menu {
         display: none;
     }
+
     .desktop {
         display: none;
     }
@@ -124,6 +125,7 @@ menu {
     .mobile-menu {
         display: none;
     }
+
     .mobile {
         display: none;
     }
@@ -137,6 +139,7 @@ menu {
     .mobile-menu {
         display: none;
     }
+
     .mobile {
         display: none;
     }
